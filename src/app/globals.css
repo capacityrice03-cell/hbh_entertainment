@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* 品牌色：取自 Logo 與簡報配色 */
+@theme {
+  --color-brand-sky: #7ecef4;
+  --color-brand-yellow: #f5d933;
+  --color-brand-green: #a5cd39;
+  --color-brand-navy: #1f3a6e;
+  --color-brand-blue: #5b9bd5;
+  --color-brand-cream: #fdf6dc;
+  --color-brand-orange: #c8641e;
+  --color-ink: #2f3440;
+  --color-muted: #6b7280;
+
+  --font-sans: var(--font-geist-sans), "PingFang TC", "Microsoft JhengHei",
+    "Noto Sans TC", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
