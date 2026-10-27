@@ -50,11 +50,11 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { label: "關於我們", href: "#about" },
   { label: "服務項目", href: "#services" },
   { label: "短影音", href: "#short-video" },
   { label: "實際案例", href: "#cases" },
   { label: "聯絡我們", href: "#contact" },
+  { label: "關於我們", href: "#about" },
 ] as const;
 
 export const ABOUT_PILLARS = [

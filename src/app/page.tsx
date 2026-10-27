@@ -50,12 +50,12 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <About />
         <Services />
         <Stats />
         <ShortVideo />
         <Cases />
         <Contact />
+        <About />
       </main>
       <Footer />
     </>
