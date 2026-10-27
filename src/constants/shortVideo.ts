@@ -11,12 +11,6 @@ export const SHORT_VIDEO_HIGHLIGHTS: {
   stats: { value: string; platform?: string; url: string }[];
 }[] = [
   {
-    src: "/images/post-474.jpg",
-    alt: "炸綺來短影音，474 萬次播放",
-    label: "單支短影音播放",
-    stats: [{ value: "474萬", url: "https://www.facebook.com/reel/1679009686178136" }],
-  },
-  {
     src: "/images/post-dance.jpg",
     alt: "炸綺來小費箱跳舞短影音，FB 118 萬、IG 158.2 萬次播放",
     label: "跳舞短影音",
@@ -24,6 +18,12 @@ export const SHORT_VIDEO_HIGHLIGHTS: {
       { value: "158.2萬", platform: "IG", url: "https://www.instagram.com/reel/DWgBe7RkVMV/" },
       { value: "118萬", platform: "FB", url: "https://www.facebook.com/share/r/155mk4okgDw/" },
     ],
+  },
+  {
+    src: "/images/post-474.jpg",
+    alt: "炸綺來短影音，474 萬次播放",
+    label: "單支短影音播放",
+    stats: [{ value: "474萬", url: "https://www.facebook.com/reel/1679009686178136" }],
   },
   {
     src: "/images/post-tainan.jpg",

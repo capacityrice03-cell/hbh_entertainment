@@ -53,13 +53,15 @@ export default function ShortVideo() {
                   </div>
                 </a>
                 <figcaption className="mt-3 text-center">
+                  {/* 多平台時 IG / FB 標籤靠左對齊排成一欄，整組仍置中 */}
+                  <div className="inline-flex flex-col items-start">
                   {h.stats.map((s) => (
                     <a
                       key={s.url}
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-baseline justify-center gap-1.5 hover:opacity-80"
+                      className="flex items-baseline gap-1.5 hover:opacity-80"
                     >
                       {s.platform && (
                         <span className="rounded bg-brand-navy px-1.5 py-0.5 text-[10px] font-bold text-white">
@@ -69,6 +71,7 @@ export default function ShortVideo() {
                       <span className="text-2xl font-bold text-brand-orange md:text-3xl">{s.value}</span>
                     </a>
                   ))}
+                  </div>
                   <p className="mt-0.5 text-xs leading-snug text-muted md:text-sm">{h.label}</p>
                 </figcaption>
               </figure>
