@@ -94,7 +94,7 @@ export const CASES: CaseStudy[] = [
     id: "live-event",
     title: "EFP 多機導播系統 × 活動直播",
     subtitle: "活動現場多平台串流直播",
-    client: "原繞臺北城－原住民族文化節 等",
+    client: "原民台北城-原住民文化節花博公園演唱會",
     services: ["efp", "event"],
     description:
       "講座、演唱會、大型戶外文化節，皆可提供多機作業與多平台同步串流，讓無法到場的觀眾也能即時參與。",
