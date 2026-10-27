@@ -75,23 +75,6 @@ export const CASES: CaseStudy[] = [
     links: [{ label: "形象影片", url: "https://youtu.be/KoawbCiQWes" }],
   },
   {
-    id: "charity",
-    title: "品牌活動｜藝人 × 公益 × 形象影片",
-    subtitle: "一日愛心大使 前往十方啟能中心",
-    client: "中友家具",
-    services: ["commercial", "sponsored"],
-    description:
-      "從內容擬定、企劃腳本到拍攝製作，邀請藝人謝承均擔任品牌一日愛心大使，以公益行動帶出品牌溫度。",
-    highlights: ["三版腳本主題大綱提案", "藝人公益行程規劃", "社群影片宣傳"],
-    images: [
-      { src: "/images/charity-02.jpg", alt: "腳本主題大綱提案（版本1）" },
-      { src: "/images/charity-01.jpg", alt: "謝承均社群貼文影片" },
-      { src: "/images/charity-03.jpg", alt: "腳本主題大綱提案（版本2）" },
-      { src: "/images/charity-04.jpg", alt: "腳本主題大綱提案（版本3）" },
-    ],
-    metrics: [{ value: "128萬", label: "社群宣傳曝光量" }],
-  },
-  {
     id: "live-commerce",
     title: "EFP 多機導播系統 × 帶貨直播",
     subtitle: "淘寶帶貨直播《憲在出發》吳宗憲、Sandy",
