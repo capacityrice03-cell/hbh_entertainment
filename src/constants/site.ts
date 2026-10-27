@@ -1,3 +1,30 @@
+// 網站正式網址（不含結尾斜線），給 Google、社群分享預覽和 sitemap 用。
+// 之後換成自己的網域（例如 https://haobuhao.com.tw）時，改這裡就好。
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://capacityrice03-cell.github.io/hbh_entertainment"
+).replace(/\/$/, "");
+
+// SEO 主打關鍵字：用在網頁標題、描述和結構化資料
+export const SEO = {
+  title: "好不好娛樂｜品牌影音製作・業配拍攝・EFP 直播・記者會活動",
+  description:
+    "好不好娛樂是專為企業、品牌規劃的影音製作團隊：企業形象影片、業配拍攝與 KOL 行銷、YouTube 頻道經營、EFP 多機直播、代言人記者會與開幕活動企劃，一站整合拍攝、直播與媒體曝光。",
+  keywords: [
+    "影音製作",
+    "影片製作公司",
+    "企業形象影片",
+    "業配拍攝",
+    "KOL 行銷",
+    "頻道經營",
+    "EFP 直播",
+    "直播團隊",
+    "記者會",
+    "活動企劃",
+    "好不好娛樂",
+  ],
+  ogImage: "/images/hero.jpg",
+} as const;
+
 export const SITE = {
   name: "好不好娛樂",
   nameEn: "Haobuhao Entertainment",

@@ -16,7 +16,7 @@ export default function Services() {
         <SectionTitle
           title="服務項目"
           en="Our Services"
-          description="六大接案類別，可單項委託，也能整合成完整的品牌影音方案。"
+          description="從企業形象影片、業配拍攝、EFP 直播到記者會活動企劃，六大接案類別可單項委託，也能整合成完整的品牌影音製作方案。"
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -31,7 +31,7 @@ export default function Hero() {
           規劃的影音運營團隊
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
-          {SITE.subSlogan}。從代言人記者會到 YT、IG、TikTok 多平台經營，一站整合企劃、拍攝、直播與曝光。
+          {SITE.subSlogan}。從代言人記者會到 YT、IG、TikTok 多平台經營，一站整合企劃、影片製作、直播與媒體曝光。
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">

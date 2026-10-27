@@ -5,7 +5,7 @@ import { SITE } from "@/constants/site";
 export const metadata: Metadata = {
   title: `隱私權政策｜${SITE.name} ${SITE.nameEn}`,
   description: `${SITE.name}網站隱私權政策：說明我們如何蒐集、使用與保護您的個人資料。`,
-};
+  alternates: { canonical: "/privacy/" },};
 
 const UPDATED = "2026 年 10 月 27 日";
 

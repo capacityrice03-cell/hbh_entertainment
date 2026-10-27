@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import { SEO, SITE, SITE_URL } from "@/constants/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -8,9 +9,28 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "好不好娛樂 Haobuhao Entertainment｜品牌影音運營團隊",
-  description:
-    "專為企業、品牌規劃的影音運營團隊。商業影像拍攝、頻道經營企劃、業配拍攝置入、EFP 直播系統、活動舉辦與新聞媒體操作。",
+  // 讓下面的相對路徑（"/"、"/images/..."）自動補成完整網址
+  metadataBase: new URL(`${SITE_URL}/`),
+  title: SEO.title,
+  description: SEO.description,
+  keywords: [...SEO.keywords],
+  applicationName: SITE.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "zh_TW",
+    siteName: `${SITE.name} ${SITE.nameEn}`,
+    title: SEO.title,
+    description: SEO.description,
+    url: "/",
+    images: [{ url: SEO.ogImage, width: 960, height: 640, alt: `${SITE.name}活動現場` }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO.title,
+    description: SEO.description,
+    images: [SEO.ogImage],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

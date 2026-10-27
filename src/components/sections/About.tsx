@@ -6,7 +6,11 @@ export default function About() {
   return (
     <section id="about" className="bg-brand-cream/60 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle title="關於我們" en="About Us" />
+        <SectionTitle
+          title="關於我們"
+          en="About Us"
+          description={`${SITE.name}是來自電視節目製作背景的影音製作團隊，為企業與品牌提供影片拍攝、頻道經營、直播與活動企劃服務。`}
+        />
 
         <div className="grid gap-8 md:grid-cols-3">
           {ABOUT_PILLARS.map((p) => (
