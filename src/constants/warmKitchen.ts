@@ -7,6 +7,8 @@ export const WARM = {
   subtitle: "米其林主廚 × 公益料理實境節目",
   intro:
     "集結跨國名廚走進廚房與家人做菜的料理實境節目，再將主廚招牌料理製作成線上課程販售募資，所得全數捐贈 1919 食物銀行，化為食物包送到需要的家庭。",
+  /** 內文中要用黃底凸顯的字 */
+  introHighlight: "1919 食物銀行",
   poster: { src: "/images/warm-poster.jpg", alt: "暖廚家味 2025 主視覺：5 位暖廚 15 道招牌料理" },
 } as const;
 
@@ -46,7 +48,7 @@ export const WARM_MEDIA = {
   ],
   episodesCaption: "TVBS 娛樂頭條《暖廚家味》實境版",
   photos: [
-    { src: "/images/warm-team.jpg", alt: "暖廚家味 2025 記者會幕後團隊合照", caption: "記者會幕後團隊" },
+    { src: "/images/warm-team.jpg", alt: "暖廚家味 2025 拍攝幕後團隊合照", caption: "拍攝幕後團隊" },
     { src: "/images/warm-volunteer.jpg", alt: "穿著 1919 食物銀行背心的志工與食物包", caption: "1919 食物銀行 親送食物包" },
   ],
 } as const;

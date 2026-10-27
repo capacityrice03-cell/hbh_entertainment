@@ -56,7 +56,18 @@ export default function WarmKitchen() {
             </div>
 
             <div className="flex flex-col">
-              <p className="leading-relaxed text-ink">{WARM.intro}</p>
+              <p className="leading-relaxed text-ink">
+                {WARM.intro.split(WARM.introHighlight).map((part, i) => (
+                  <span key={i}>
+                    {i > 0 && (
+                      <mark className="mx-0.5 rounded bg-brand-yellow px-1.5 py-0.5 font-bold text-[#2b1a14]">
+                        {WARM.introHighlight}
+                      </mark>
+                    )}
+                    {part}
+                  </span>
+                ))}
+              </p>
 
               {/* 流程 */}
               <ol className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
