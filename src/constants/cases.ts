@@ -94,8 +94,8 @@ export const CASES: CaseStudy[] = [
     client: "Hydrafacial",
     services: ["sponsored", "event", "commercial"],
     description:
-      "串連品牌端、快閃店、KOL 與廣告四個環節：KOL 現身快閃店體驗，同步拍攝形象影片，帶動現場人潮與線上聲量。",
-    highlights: ["KOL 現場體驗與粉絲見面", "快閃店活動執行", "形象影片拍攝"],
+      "品牌端、快閃店、KOL 與廣告四個環節；\nKOL 現身快閃店體驗，同步拍攝活動系列影片，帶動現場人潮與線上聲量。",
+    highlights: ["KOL 現場體驗與粉絲見面"],
     images: [
       { src: "/images/hydra-02.jpg", alt: "KOL 於快閃店化妝準備" },
       { src: "/images/hydra-01.jpg", alt: "快閃店現場體驗" },

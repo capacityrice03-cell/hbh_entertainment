@@ -197,7 +197,8 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
             </p>
           )}
 
-          <p className="mt-5 leading-relaxed text-ink">{item.description}</p>
+          {/* 說明文字裡的 \n 會換行 */}
+          <p className="mt-5 leading-relaxed whitespace-pre-line text-ink">{item.description}</p>
 
           <ul className="mt-5 space-y-2">
             {item.highlights.map((h) => (
