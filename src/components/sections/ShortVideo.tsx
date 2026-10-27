@@ -14,14 +14,17 @@ export default function ShortVideo() {
         <SectionTitle
           title="短影音經營"
           en="Short Video"
-          description="IG Reels、FB、TikTok 短影音企劃拍攝與社群經營。以炸綺來鹹酥雞為例，從開幕活動到日常門市，用短影音為品牌帶來長期的自然流量。"
+          description="藉由短影音的內容矩陣，編排企劃內容來達成各項行銷目標，透過社群平台的長期經營曝光達成數倍效益。"
         />
 
+        {/* 獨立標語 */}
+        <p className="text-center text-2xl font-bold tracking-wider text-brand-orange md:text-3xl">
+          長期的
+          <span className="underline decoration-brand-yellow decoration-4 underline-offset-8">持續性曝光</span>
+        </p>
+
         {/* 成效亮點：一條精簡橫幅，放在影片卡上方 */}
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-2 rounded-2xl bg-gradient-to-r from-brand-navy to-[#2c5592] px-6 py-4 text-center text-white shadow-lg sm:flex-row sm:justify-center sm:gap-4">
-          <span className="shrink-0 rounded-full bg-white/15 px-3 py-0.5 text-xs font-semibold tracking-wider text-brand-yellow ring-1 ring-white/25">
-            長期的持續性曝光
-          </span>
+        <div className="mx-auto mt-6 flex max-w-3xl items-center justify-center rounded-2xl bg-gradient-to-r from-brand-navy to-[#2c5592] px-6 py-4 text-center text-white shadow-lg">
           <p className="text-base leading-relaxed md:text-lg">
             數支短影音，自然流量即突破
             {/* 手機在「突破」後換行，讓「1,000 萬次觀看!!」整組不被拆開 */}
