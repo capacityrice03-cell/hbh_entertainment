@@ -22,7 +22,7 @@ export default function Contact() {
                 </span>
               ))}
             </p>
-            <p className="mt-2 text-muted">歡迎來信或加 LINE 洽詢，我們會依您的需求提供客製化提案。</p>
+            <p className="mt-2 text-muted">歡迎來信、加 LINE 洽詢，或到 YouTube 看看我們的作品，我們會依您的需求提供客製化提案。</p>
 
             <dl className="mt-8 space-y-4">
               <div className="flex items-center gap-4">
@@ -48,6 +48,17 @@ export default function Contact() {
                 className="rounded-full bg-brand-yellow px-6 py-2.5 font-semibold text-brand-navy transition-transform hover:scale-105"
               >
                 寄信洽詢
+              </a>
+              <a
+                href={contact.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#ff0000] px-6 py-2.5 font-semibold text-white transition-transform hover:scale-105"
+              >
+                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
+                </svg>
+                YouTube 頻道
               </a>
             </div>
           </div>

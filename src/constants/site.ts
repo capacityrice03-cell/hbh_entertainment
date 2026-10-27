@@ -10,7 +10,8 @@ export const SITE = {
   ],
   contact: {
     person: "Rice",
-    email: "chouricky3315@gmail.com",
+    email: "haobuhao0112@gmail.com",
+    youtube: "https://www.youtube.com/@hbh_entertainment",
   },
   tagline: ["活動", "通告", "業配"],
 } as const;
