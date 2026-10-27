@@ -78,6 +78,7 @@ export const CASES: CaseStudy[] = [
     id: "live-commerce",
     title: "EFP 多機導播系統 × 帶貨直播",
     client: "品牌端 × KOL × MCN",
+    clientLabel: "架構",
     services: ["efp", "sponsored"],
     description:
       "整合品牌端、KOL 與 MCN 三方資源，以 EFP 多機導播系統執行帶貨直播，從棚內佈燈、導播到多平台推流一手包辦。",
