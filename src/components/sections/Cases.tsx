@@ -93,14 +93,16 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
     <article className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
       <div className={`grid lg:grid-cols-2 ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
         {/* 照片 */}
-        <div className="grid grid-cols-3 gap-1 bg-white p-1">
-          <div className="relative col-span-3 aspect-[16/10]">
+        <div className={`grid content-start grid-cols-3 gap-1 bg-white p-1 ${item.portraitMain ? "grid-rows-3" : ""}`}>
+          <div className={`relative ${item.portraitMain ? "col-span-2 row-span-3" : "col-span-3 aspect-[16/10]"}`}>
             <Image
               src={main.src}
               alt={main.alt}
               fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="rounded-t-[1.25rem] object-cover lg:rounded-[1.25rem]"
+              sizes={item.portraitMain ? "(min-width: 1024px) 34vw, 67vw" : "(min-width: 1024px) 50vw, 100vw"}
+              className={`object-cover ${
+                item.portraitMain ? "rounded-l-[1.25rem]" : "rounded-t-[1.25rem] lg:rounded-[1.25rem]"
+              }`}
             />
           </div>
           {rest.map((img) => (

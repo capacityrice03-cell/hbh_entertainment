@@ -122,6 +122,7 @@ export const CASES: CaseStudy[] = [
       { src: "/images/duck-03.jpg", alt: "胡椒鴨火鍋宣傳圖" },
       { src: "/images/duck-04.jpg", alt: "產品攝影棚現場" },
     ],
+    portraitMain: true,
     links: [{ label: "相關影片", url: "https://youtube.com/shorts/hGbdgd4zIPs" }],
   },
   {
