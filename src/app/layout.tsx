@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   keywords: [...SEO.keywords],
   applicationName: SITE.name,
   alternates: { canonical: "/" },
+  // Google Search Console 網站擁有權驗證
+  verification: { google: "92Z8ONTNTHsJAkaO1AGDU88xsEBEYxlpYpxQtBY8q2E" },
   openGraph: {
     type: "website",
     locale: "zh_TW",
