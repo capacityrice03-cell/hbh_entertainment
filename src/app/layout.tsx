@@ -17,8 +17,10 @@ export const metadata: Metadata = {
   keywords: [...SEO.keywords],
   applicationName: SITE.name,
   alternates: { canonical: "/" },
-  // Google Search Console 網站擁有權驗證
-  verification: { google: "92Z8ONTNTHsJAkaO1AGDU88xsEBEYxlpYpxQtBY8q2E" },
+  // Google Search Console 網站擁有權驗證（舊網址 github.io、新網域 hbh-tw.store 各一組）
+  verification: {
+    google: ["92Z8ONTNTHsJAkaO1AGDU88xsEBEYxlpYpxQtBY8q2E", "jLv7y4wiVA9zV0BnBkSIat-2F0HhcwRSSsj3aatIlZ8"],
+  },
   openGraph: {
     type: "website",
     locale: "zh_TW",
