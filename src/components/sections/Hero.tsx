@@ -1,18 +1,22 @@
 import Image from "next/image";
 import { SITE } from "@/constants/site";
 import { SERVICES } from "@/constants/services";
+import Parallax from "@/components/ui/Parallax";
 
 export default function Hero() {
   return (
     <section id="top" className="relative flex min-h-[88vh] items-center overflow-hidden pt-20">
-      <Image
-        src="/images/hero.jpg"
-        alt="台北京站開幕活動現場人潮"
-        fill
-        preload
-        sizes="100vw"
-        className="object-cover"
-      />
+      {/* 背景圖比頁面捲動慢（視差）；上方預留空間避免移動時露出空白 */}
+      <Parallax speed={0.3} className="absolute inset-x-0 -top-[40%] -bottom-[5%]">
+        <Image
+          src="/images/hero.jpg"
+          alt="台北京站開幕活動現場人潮"
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover"
+        />
+      </Parallax>
       <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/90 via-brand-navy/70 to-brand-navy/30" />
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-16">

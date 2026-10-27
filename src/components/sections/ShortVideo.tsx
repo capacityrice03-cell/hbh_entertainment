@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
+import Parallax from "@/components/ui/Parallax";
 import {
   SHORT_VIDEO_HIGHLIGHTS,
   SHORT_VIDEO_PLAYLIST,
@@ -32,8 +33,10 @@ export default function ShortVideo() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-5">
-            {SHORT_VIDEO_HIGHLIGHTS.map((h) => (
-              <figure key={h.src}>
+            {SHORT_VIDEO_HIGHLIGHTS.map((h, i) => (
+              // 桌機版四張卡片交錯浮動（視差），手機不啟用
+              <Parallax key={h.src} speed={i % 2 === 0 ? 0.05 : -0.04} minWidth={1024}>
+              <figure>
                 <a href={h.stats[0].url} target="_blank" rel="noopener noreferrer" className="group block">
                   <div className="relative aspect-[59/100] overflow-hidden rounded-xl shadow-md ring-1 ring-black/10">
                     <Image
@@ -75,6 +78,7 @@ export default function ShortVideo() {
                   {h.label && <p className="mt-0.5 text-xs leading-snug text-muted md:text-sm">{h.label}</p>}
                 </figcaption>
               </figure>
+              </Parallax>
             ))}
           </div>
         </div>
