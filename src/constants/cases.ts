@@ -77,7 +77,6 @@ export const CASES: CaseStudy[] = [
   {
     id: "live-commerce",
     title: "EFP 多機導播系統 × 帶貨直播",
-    subtitle: "淘寶帶貨直播《憲在出發》吳宗憲、Sandy",
     client: "品牌端 × KOL × MCN",
     services: ["efp", "sponsored"],
     description:

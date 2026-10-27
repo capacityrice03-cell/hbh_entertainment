@@ -25,7 +25,7 @@ export type CaseMetric = {
 export type CaseStudy = {
   id: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   client: string;
   services: ServiceId[];
   description: string;

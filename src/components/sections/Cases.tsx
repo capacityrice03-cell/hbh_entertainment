@@ -132,7 +132,7 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
           </div>
 
           <h3 className="mt-4 text-2xl font-bold text-brand-navy">{item.title}</h3>
-          <p className="mt-1 font-medium text-brand-orange">{item.subtitle}</p>
+          {item.subtitle && <p className="mt-1 font-medium text-brand-orange">{item.subtitle}</p>}
           <p className="mt-1 text-sm text-muted">合作對象：{item.client}</p>
 
           <p className="mt-5 leading-relaxed text-ink">{item.description}</p>
