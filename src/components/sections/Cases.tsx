@@ -193,7 +193,12 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
               ? item.title.split(item.titleHighlight).map((part, i) => (
                   <span key={i}>
                     {i > 0 && (
-                      <mark className="mx-0.5 rounded bg-brand-yellow px-1.5 text-brand-navy">{item.titleHighlight}</mark>
+                      <mark
+                        className="mx-0.5 rounded bg-brand-yellow px-1.5 text-brand-navy"
+                        style={item.titleHighlightColor ? { backgroundColor: item.titleHighlightColor } : undefined}
+                      >
+                        {item.titleHighlight}
+                      </mark>
                     )}
                     {part}
                   </span>

@@ -38,6 +38,8 @@ export type CaseStudy = {
   title: string;
   /** 標題中要用黃底凸顯的字 */
   titleHighlight?: string;
+  /** 凸顯字的底色（色碼），預設黃色 */
+  titleHighlightColor?: string;
   subtitle?: string;
   client?: string;
   /** 「合作對象」這個標籤可以換成別的字，例如「架構」；設成空字串就不顯示標籤 */

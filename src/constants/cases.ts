@@ -7,8 +7,11 @@ export const CASES: CaseStudy[] = [
     id: "chi-vlog",
     title: "品牌自媒體｜從零開始孵化",
     titleHighlight: "孵化",
+    // 與 Ep 封面邊框同色（炸綺來品牌藍綠色）
+    titleHighlightColor: "#7ccdc4",
     subtitle: "炸綺來 鹹酥雞新品牌誕生",
-    client: "炸綺來",
+    client: "三年即達成全台加盟店面超過十間。",
+    clientLabel: "",
     services: ["channel", "commercial", "event"],
     description:
       "依照需求為品牌量身打造自媒體經營規劃，以實境拍攝紀錄品牌從誕生、展店、試營運到盛大開幕的過程，再將內容投放至網路社群、實體店面與街頭廣告版面。",
