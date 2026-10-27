@@ -5,7 +5,8 @@ import { SHORT_VIDEO_PLAYLIST } from "@/constants/shortVideo";
 export const CASES: CaseStudy[] = [
   {
     id: "chi-vlog",
-    title: "品牌自媒體｜從零開始的品牌 VLOG",
+    title: "品牌自媒體｜從零開始孵化",
+    titleHighlight: "孵化",
     subtitle: "炸綺來 鹹酥雞新品牌誕生",
     client: "炸綺來",
     services: ["channel", "commercial", "event"],

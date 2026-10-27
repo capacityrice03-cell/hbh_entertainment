@@ -188,7 +188,18 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
             ))}
           </div>
 
-          <h3 className="mt-4 text-2xl font-bold text-brand-navy">{item.title}</h3>
+          <h3 className="mt-4 text-2xl font-bold text-brand-navy">
+            {item.titleHighlight
+              ? item.title.split(item.titleHighlight).map((part, i) => (
+                  <span key={i}>
+                    {i > 0 && (
+                      <mark className="mx-0.5 rounded bg-brand-yellow px-1.5 text-brand-navy">{item.titleHighlight}</mark>
+                    )}
+                    {part}
+                  </span>
+                ))
+              : item.title}
+          </h3>
           {item.subtitle && <p className="mt-1 font-medium text-brand-orange">{item.subtitle}</p>}
           {item.client && (
             <p className="mt-1 text-sm text-muted">
