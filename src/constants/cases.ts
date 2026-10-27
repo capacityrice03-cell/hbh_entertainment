@@ -66,7 +66,7 @@ export const CASES: CaseStudy[] = [
     feature: "warm-kitchen",
     title: "暖廚家味 Taste of Love",
     subtitle: "米其林主廚 × 公益料理實境節目",
-    services: ["channel", "commercial", "event", "media"],
+    services: ["channel", "event", "commercial"],
     description: "米其林主廚料理實境節目，TVBS 播出，並製作成線上公益課程募資，捐贈 1919 食物銀行。",
     highlights: [],
     images: [{ src: "/images/warm-poster.jpg", alt: "暖廚家味 2025 主視覺" }],
@@ -76,7 +76,7 @@ export const CASES: CaseStudy[] = [
     title: "品牌活動｜門市開幕記者會",
     subtitle: "2022.05 台中開幕・2024.11 台北京站開幕",
     client: "炸綺來",
-    services: ["event", "media"],
+    services: ["event"],
     description:
       "從活動企劃、藝人邀約、現場執行到活動影音紀錄，打造人潮滿滿的開幕記者會，並同步在社群擴散。",
     highlights: ["藝人站台與粉絲互動", "現場活動影音紀錄", "社群與新聞同步曝光"],
@@ -96,7 +96,7 @@ export const CASES: CaseStudy[] = [
     title: "品牌活動｜KOL × 快閃店 × 新客體驗",
     subtitle: "以快閃店提升知名度、獲取新客",
     client: "Hydrafacial",
-    services: ["sponsored", "event", "commercial"],
+    services: ["event", "commercial"],
     description:
       "品牌端、快閃店、KOL 與廣告四個環節。",
     highlights: ["KOL 現場體驗與粉絲見面"],
@@ -113,7 +113,7 @@ export const CASES: CaseStudy[] = [
     title: "電商 × 帶貨直播",
     client: "品牌端 × KOL × MCN",
     clientLabel: "架構",
-    services: ["efp", "sponsored"],
+    services: ["event", "commercial"],
     description:
       "整合品牌端、KOL 與 MCN 三方資源，以 EFP 多機導播系統執行帶貨直播，從棚內佈燈、導播到多平台推流一手包辦。",
     highlights: ["多機位導播系統", "棚內燈光與場景佈置", "電商帶貨直播操作"],
@@ -130,7 +130,7 @@ export const CASES: CaseStudy[] = [
     subtitle: "活動現場多平台串流直播",
     client: "原民台北城-原住民文化節花博公園演唱會",
     clientLabel: "",
-    services: ["efp", "event"],
+    services: ["event"],
     description:
       "講座、演唱會、大型戶外文化節，皆可提供多機作業與多平台同步串流，讓無法到場的觀眾也能即時參與。",
     highlights: ["演講講座直播", "大型舞台演出直播", "多平台同步串流"],
@@ -146,7 +146,7 @@ export const CASES: CaseStudy[] = [
     id: "duck-hotpot",
     title: "品牌行銷｜客製化ODM × 影像 × 電商",
     subtitle: "李熊鴨霸 胡椒鴨火鍋",
-    services: ["sponsored", "commercial"],
+    services: ["commercial"],
     description:
       "從商品包裝設計、置入行銷影片到網站架設，一次完成產品上市所需的視覺與銷售素材，直接帶動轉單。",
     highlights: ["商品包裝設計", "置入行銷影片拍攝", "銷售網站架設"],
@@ -164,7 +164,7 @@ export const CASES: CaseStudy[] = [
     title: "品牌行銷｜影像製作 × 廣告 × 轉單",
     subtitle: "高品質影像・精準曝光・置入行銷・導購",
     client: "多個品牌合作",
-    services: ["commercial", "sponsored"],
+    services: ["commercial"],
     description:
       "以高品質人像與商品影像搭配精準投放，結合置入行銷與導購，讓內容不只好看，也能帶來實際銷售。",
     highlights: ["人像 × 商品平面攝影", "廣告影片製作", "置入行銷與導購"],
@@ -186,7 +186,7 @@ export const CASES: CaseStudy[] = [
     title: "品牌代言人記者會",
     subtitle: "代言人曝光 & 新品上市發布",
     client: "森田藥粧 DR.JOU",
-    services: ["event", "media", "efp"],
+    services: ["event"],
     description:
       "結合記者會、媒體曝光與 KOL 宣傳：FB 與 YouTube 雙平台同步直播，事前號召代言人粉絲，現場百名粉絲入場，獲數十家媒體報導。",
     highlights: [

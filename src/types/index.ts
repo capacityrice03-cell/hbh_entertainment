@@ -1,10 +1,5 @@
-export type ServiceId =
-  | "commercial"
-  | "channel"
-  | "sponsored"
-  | "efp"
-  | "event"
-  | "media";
+/** channel = 品牌影音營銷、event = 活動 / EFP 直播 / 媒體廣告、commercial = 商業拍攝 */
+export type ServiceId = "channel" | "event" | "commercial";
 
 export type Service = {
   id: ServiceId;

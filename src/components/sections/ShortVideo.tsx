@@ -18,17 +18,29 @@ export default function ShortVideo() {
         />
 
         {/* 重點成效：左邊文案、右邊四則代表性短影音（皆可點開原影片） */}
-        <div className="grid items-center gap-10 lg:grid-cols-[1.3fr_3fr]">
-          <div className="text-center lg:text-left">
-            <p className="text-2xl font-bold tracking-wider text-brand-orange">
-              長期的
-              <span className="underline decoration-brand-yellow decoration-4 underline-offset-8">持續性曝光</span>
+        <div className="grid items-start gap-8 lg:grid-cols-[1.3fr_3fr] lg:gap-10">
+          {/* 成效亮點卡：靠上對齊，跟右邊影片卡同高起頭 */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-navy via-[#24467f] to-brand-blue px-7 py-8 text-white shadow-xl">
+            <span aria-hidden="true" className="absolute -top-12 -right-12 h-44 w-44 rounded-full bg-brand-yellow/25 blur-2xl" />
+            <span aria-hidden="true" className="absolute -bottom-14 -left-10 h-40 w-40 rounded-full bg-brand-sky/30 blur-2xl" />
+
+            <p className="relative inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1 text-sm font-semibold tracking-wider text-brand-yellow ring-1 ring-white/25">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-yellow" />
+              長期的持續性曝光
             </p>
-            <div className="mt-8 rounded-2xl bg-brand-navy px-6 py-5 text-white">
-              <p className="text-base text-white/80">10 多支短影音即</p>
-              <p className="mt-1 text-3xl font-bold whitespace-nowrap text-brand-yellow">
-                突破 1000 萬<span className="text-xl">次觀看</span>
-              </p>
+
+            <p className="relative mt-6 text-lg tracking-wide text-white/85">不到 10 支短影音即</p>
+            <p className="relative mt-1 flex items-baseline gap-2 whitespace-nowrap">
+              <span className="text-2xl font-bold">突破</span>
+              <span className="text-6xl leading-none font-black tracking-tight text-brand-yellow">1000</span>
+              <span className="text-3xl font-black text-brand-yellow">萬</span>
+            </p>
+            <p className="relative mt-2 text-xl font-bold tracking-[0.3em]">次觀看</p>
+
+            <div className="relative mt-6 flex gap-1.5">
+              <span className="h-1.5 w-10 rounded-full bg-brand-sky" />
+              <span className="h-1.5 w-10 rounded-full bg-brand-yellow" />
+              <span className="h-1.5 w-10 rounded-full bg-brand-green" />
             </div>
           </div>
 

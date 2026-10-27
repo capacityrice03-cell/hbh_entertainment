@@ -3,14 +3,17 @@ export default function SectionTitle({
   en,
   description,
   light = false,
+  compact = false,
 }: {
   title: string;
   en: string;
   description?: string;
   light?: boolean;
+  /** 縮小與下方內容的間距（精簡版區塊用） */
+  compact?: boolean;
 }) {
   return (
-    <div className="mx-auto mb-12 max-w-2xl text-center">
+    <div className={`mx-auto max-w-2xl text-center ${compact ? "mb-7" : "mb-12"}`}>
       <p
         className={`text-xs font-semibold tracking-[0.3em] uppercase ${
           light ? "text-brand-yellow" : "text-brand-blue"
