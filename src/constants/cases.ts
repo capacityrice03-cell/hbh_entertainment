@@ -92,7 +92,7 @@ export const CASES: CaseStudy[] = [
       { src: "/images/hydra-03.jpg", alt: "快閃店主視覺看板" },
       { src: "/images/hydra-04.jpg", alt: "快閃店外排隊人潮" },
     ],
-    links: [{ label: "形象影片", url: "https://youtu.be/KoawbCiQWes" }],
+    links: [{ label: "快閃活動影片", url: "https://youtu.be/KoawbCiQWes" }],
   },
   {
     id: "live-commerce",
