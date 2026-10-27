@@ -17,6 +17,17 @@ export type CaseLink = {
   url: string;
 };
 
+export type CaseImage = {
+  src: string;
+  alt: string;
+  /** 集數，例如 "Ep.01"（layout 為 "episodes" 時顯示） */
+  episode?: string;
+  /** 圖片下方標題（layout 為 "episodes" 時顯示） */
+  caption?: string;
+  /** 點圖片開啟的影片網址 */
+  url?: string;
+};
+
 export type CaseMetric = {
   value: string;
   label: string;
@@ -32,9 +43,11 @@ export type CaseStudy = {
   services: ServiceId[];
   description: string;
   highlights: string[];
-  images: { src: string; alt: string }[];
+  images: CaseImage[];
   /** 主圖是直式照片時設為 true：主圖放左邊直式，其他小圖直排在右邊，避免裁切 */
   portraitMain?: boolean;
+  /** "episodes"：系列影片封面，以 2×2 完整 16:9 封面加集數標題呈現，不裁切 */
+  layout?: "episodes";
   metrics?: CaseMetric[];
   links?: CaseLink[];
 };

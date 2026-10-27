@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { CASES } from "@/constants/cases";
 import { SERVICES, SERVICE_TITLE } from "@/constants/services";
-import type { CaseStudy, ServiceId } from "@/types";
+import type { CaseImage, CaseStudy, ServiceId } from "@/types";
 
 type Filter = ServiceId | "all";
 
@@ -86,6 +86,54 @@ function FilterButton({
   );
 }
 
+function EpisodeGrid({ images }: { images: CaseImage[] }) {
+  return (
+    <div className="grid content-center grid-cols-2 gap-x-3 gap-y-4 bg-white p-4 md:p-5">
+      {images.map((img) => {
+        const cover = (
+          <div className="group relative aspect-video overflow-hidden rounded-md ring-4 ring-[#7ccdc4]">
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              sizes="(min-width: 1024px) 25vw, 50vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            {img.url && (
+              <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/25">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 opacity-0 shadow transition-opacity group-hover:opacity-100">
+                  <svg viewBox="0 0 20 20" className="ml-0.5 h-4 w-4 text-[#ff0000]" fill="currentColor" aria-hidden="true">
+                    <path d="M6 4.5v11l9-5.5z" />
+                  </svg>
+                </span>
+              </span>
+            )}
+          </div>
+        );
+        const caption = (
+          <p className="mt-2 text-sm font-medium tracking-wider text-brand-navy md:text-base">
+            {img.episode && (
+              <span className="mr-2 text-brand-blue underline underline-offset-4">{img.episode}</span>
+            )}
+            {img.caption}
+          </p>
+        );
+        return img.url ? (
+          <a key={img.src} href={img.url} target="_blank" rel="noopener noreferrer" className="block">
+            {cover}
+            {caption}
+          </a>
+        ) : (
+          <div key={img.src}>
+            {cover}
+            {caption}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
   const [main, ...rest] = item.images;
 
@@ -93,6 +141,9 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
     <article className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
       <div className={`grid lg:grid-cols-2 ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
         {/* 照片 */}
+        {item.layout === "episodes" ? (
+          <EpisodeGrid images={item.images} />
+        ) : (
         <div className={`grid content-start grid-cols-3 gap-1 bg-white p-1 ${item.portraitMain ? "grid-rows-3" : ""}`}>
           <div className={`relative ${item.portraitMain ? "col-span-2 row-span-3" : "col-span-3 aspect-[16/10]"}`}>
             <Image
@@ -117,6 +168,7 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
             </div>
           ))}
         </div>
+        )}
 
         {/* 文字 */}
         <div className="flex flex-col p-7 md:p-10">
@@ -170,8 +222,7 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
                 <a
                   key={l.url + l.label}
                   href={l.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(l.url.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
                   className="inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
                 >
                   <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">

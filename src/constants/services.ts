@@ -9,7 +9,7 @@ export const SERVICES: Service[] = [
   {
     id: "channel",
     title: "頻道經營企劃",
-    items: ["客製化企劃內容", "外景、棚內錄影剪輯", "社群經營"],
+    items: ["客製化企劃內容", "短影音企劃拍攝－IG Reels、TikTok", "外景、棚內錄影剪輯", "社群經營"],
   },
   {
     id: "sponsored",

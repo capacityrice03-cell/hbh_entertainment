@@ -1,4 +1,5 @@
 import type { CaseStudy } from "@/types";
+import { SHORT_VIDEO_PLAYLIST } from "@/constants/shortVideo";
 
 // 內容整理自《好不好娛樂_公司簡介2024V1》簡報
 export const CASES: CaseStudy[] = [
@@ -15,11 +16,36 @@ export const CASES: CaseStudy[] = [
       "四集系列：品牌誕生、展店規劃、試營運活動、開幕記者會",
       "全年度節慶與活動檔期，長期持續性曝光",
     ],
+    layout: "episodes",
     images: [
-      { src: "/images/chi-ep04.jpg", alt: "炸綺來 Ep.04 盛大開幕記者會" },
-      { src: "/images/chi-ep01.jpg", alt: "炸綺來 Ep.01 鹹酥雞品牌誕生" },
-      { src: "/images/chi-ep02.jpg", alt: "炸綺來 Ep.02 展店規劃" },
-      { src: "/images/chi-ep03.jpg", alt: "炸綺來 Ep.03 試營運活動" },
+      {
+        src: "/images/chi-ep01.jpg",
+        alt: "炸綺來 Ep.01 鹹酥雞品牌誕生 影片封面",
+        episode: "Ep.01",
+        caption: "鹹酥雞品牌誕生",
+        url: "https://youtu.be/mKr5qE1s-5A",
+      },
+      {
+        src: "/images/chi-ep02.jpg",
+        alt: "炸綺來 Ep.02 展店規劃 影片封面",
+        episode: "Ep.02",
+        caption: "展店規劃",
+        url: "https://youtu.be/bqOzOKDlYSQ",
+      },
+      {
+        src: "/images/chi-ep03.jpg",
+        alt: "炸綺來 Ep.03 試營運活動 影片封面",
+        episode: "Ep.03",
+        caption: "試營運活動",
+        url: "https://youtu.be/TABMIosjn3s",
+      },
+      {
+        src: "/images/chi-ep04.jpg",
+        alt: "炸綺來 Ep.04 盛大開幕記者會 影片封面",
+        episode: "Ep.04",
+        caption: "盛大開幕 記者會",
+        url: "https://youtu.be/6EXJEHtxD3c",
+      },
     ],
     metrics: [
       { value: "194萬", label: "台南永康店開幕 自然曝光" },
@@ -27,14 +53,8 @@ export const CASES: CaseStudy[] = [
       { value: "368萬", label: "單支短影音播放" },
     ],
     links: [
-      { label: "Ep.01 品牌誕生", url: "https://youtu.be/mKr5qE1s-5A" },
-      { label: "Ep.02 展店規劃", url: "https://youtu.be/bqOzOKDlYSQ" },
-      { label: "Ep.03 試營運活動", url: "https://youtu.be/TABMIosjn3s" },
-      { label: "Ep.04 開幕記者會", url: "https://youtu.be/6EXJEHtxD3c" },
-      {
-        label: "IG Reels / FB 短影音",
-        url: "https://youtube.com/playlist?list=PLWaU_EMlsoBpjwS9AXaFxXhoZCZSU9Ye8",
-      },
+      { label: "看短影音成效", url: "#short-video" },
+      { label: "IG Reels / FB 短影音", url: SHORT_VIDEO_PLAYLIST },
     ],
   },
   {
