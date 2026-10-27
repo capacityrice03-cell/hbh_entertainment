@@ -1,8 +1,6 @@
 // 網站正式網址（不含結尾斜線），給 Google、社群分享預覽和 sitemap 用。
-// 之後換成自己的網域（例如 https://haobuhao.com.tw）時，改這裡就好。
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://capacityrice03-cell.github.io/hbh_entertainment"
-).replace(/\/$/, "");
+// 換網域時改這裡就好。
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://hbh-tw.store").replace(/\/$/, "");
 
 // Google Analytics 4 評估 ID（G- 開頭）。留空就不載入 GA。
 export const GA_ID = "G-ZB8HP6W0CG";

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-// GitHub Pages 網址是 https://<帳號>.github.io/<repo>/，所以部署時要加上 repo 子路徑。
+// 網站使用自訂網域 hbh-tw.store，放在網域最上層，所以不設子路徑。
+// 若改回 https://<帳號>.github.io/<repo>/ 這種網址，部署時要設定 NEXT_PUBLIC_BASE_PATH=/<repo>。
 // 本機開發不設定，維持 http://localhost:3000/。
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 

@@ -24,9 +24,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # 使用自訂網域 hbh-tw.store，網站放在網域最上層，不需要子路徑（basePath）
       - run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
       - uses: actions/upload-pages-artifact@v5
         with:
           path: out
