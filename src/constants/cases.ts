@@ -108,16 +108,15 @@ export const CASES: CaseStudy[] = [
   },
   {
     id: "duck-hotpot",
-    title: "品牌行銷｜產品 × 影像製作 × 轉單",
-    subtitle: "李能鴨霸 胡椒鴨火鍋",
-    client: "李能鴨霸",
+    title: "品牌行銷｜客製化ODM × 影像 × 電商",
+    subtitle: "李熊鴨霸 胡椒鴨火鍋",
     services: ["sponsored", "commercial"],
     description:
       "從商品包裝設計、置入行銷影片到網站架設，一次完成產品上市所需的視覺與銷售素材，直接帶動轉單。",
     highlights: ["商品包裝設計", "置入行銷影片拍攝", "銷售網站架設"],
     images: [
-      { src: "/images/duck-01.jpg", alt: "李能鴨霸產品拍攝" },
-      { src: "/images/duck-02.jpg", alt: "李能鴨霸商品包裝" },
+      { src: "/images/duck-01.jpg", alt: "李熊鴨霸產品拍攝" },
+      { src: "/images/duck-02.jpg", alt: "李熊鴨霸商品包裝" },
       { src: "/images/duck-03.jpg", alt: "胡椒鴨火鍋宣傳圖" },
       { src: "/images/duck-04.jpg", alt: "產品攝影棚現場" },
     ],

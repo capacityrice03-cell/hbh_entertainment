@@ -26,7 +26,7 @@ export type CaseStudy = {
   id: string;
   title: string;
   subtitle?: string;
-  client: string;
+  client?: string;
   services: ServiceId[];
   description: string;
   highlights: string[];
