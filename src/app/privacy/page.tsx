@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import Footer from "@/components/layout/Footer";
+import LegalPage, { type LegalSection } from "@/components/layout/LegalPage";
 import { SITE } from "@/constants/site";
 
 export const metadata: Metadata = {
@@ -11,7 +9,7 @@ export const metadata: Metadata = {
 
 const UPDATED = "2026 年 10 月 27 日";
 
-const SECTIONS: { title: string; body: React.ReactNode }[] = [
+const SECTIONS: LegalSection[] = [
   {
     title: "一、適用範圍",
     body: (
@@ -113,42 +111,12 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
 
 export default function PrivacyPage() {
   return (
-    <>
-      <header className="border-b border-black/5 bg-white">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20">
-          <Link href="/" className="flex items-center" aria-label={`${SITE.name} 首頁`}>
-            <Image src="/images/logo.png" alt={SITE.name} width={1225} height={746} className="h-11 w-auto md:h-14" />
-          </Link>
-          <Link href="/" className="text-sm font-medium tracking-wider text-ink transition-colors hover:text-brand-blue">
-            ← 回首頁
-          </Link>
-        </div>
-      </header>
-
-      <main className="flex-1 bg-brand-cream/40 py-14 md:py-20">
-        <article className="mx-auto max-w-3xl px-4">
-          <h1 className="text-3xl font-bold tracking-widest text-brand-navy md:text-4xl">隱私權政策</h1>
-          <p className="mt-2 text-sm text-muted">Privacy Policy｜最後更新日期：{UPDATED}</p>
-
-          <p className="mt-8 leading-relaxed">
-            {SITE.name}非常重視您的隱私。本政策說明您使用本網站及與我們聯繫時，我們如何蒐集、使用與保護您的個人資料。
-          </p>
-
-          <div className="mt-10 space-y-10">
-            {SECTIONS.map((s) => (
-              <section
-                key={s.title}
-                className="space-y-3 leading-relaxed [&_a]:text-brand-blue [&_a]:underline [&_a]:underline-offset-2 [&_li]:mt-1.5 [&_ul]:list-disc [&_ul]:pl-6"
-              >
-                <h2 className="text-xl font-bold text-brand-navy">{s.title}</h2>
-                {s.body}
-              </section>
-            ))}
-          </div>
-        </article>
-      </main>
-
-      <Footer />
-    </>
+    <LegalPage
+      title="隱私權政策"
+      titleEn="Privacy Policy"
+      updated={UPDATED}
+      intro={`${SITE.name}非常重視您的隱私。本政策說明您使用本網站及與我們聯繫時，我們如何蒐集、使用與保護您的個人資料。`}
+      sections={SECTIONS}
+    />
   );
 }
