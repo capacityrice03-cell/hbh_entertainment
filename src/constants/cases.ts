@@ -84,7 +84,7 @@ export const CASES: CaseStudy[] = [
     highlights: ["多機位導播系統", "棚內燈光與場景佈置", "電商帶貨直播操作"],
     images: [
       { src: "/images/live-shop-01.jpg", alt: "直播攝影棚現場" },
-      { src: "/images/live-shop-02.jpg", alt: "憲在出發直播現場" },
+      { src: "/images/live-shop-02.jpg", alt: "帶貨直播現場" },
       { src: "/images/live-shop-03.jpg", alt: "直播節目音樂演出" },
       { src: "/images/live-shop-04.jpg", alt: "直播導播控制台" },
     ],
