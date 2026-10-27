@@ -72,7 +72,7 @@ export default function ShortVideo() {
                     </a>
                   ))}
                   </div>
-                  <p className="mt-0.5 text-xs leading-snug text-muted md:text-sm">{h.label}</p>
+                  {h.label && <p className="mt-0.5 text-xs leading-snug text-muted md:text-sm">{h.label}</p>}
                 </figcaption>
               </figure>
             ))}

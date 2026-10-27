@@ -7,13 +7,13 @@ export const SHORT_VIDEO_PLAYLIST =
 export const SHORT_VIDEO_HIGHLIGHTS: {
   src: string;
   alt: string;
-  label: string;
+  /** 數字下方的說明，可省略 */
+  label?: string;
   stats: { value: string; platform?: string; url: string }[];
 }[] = [
   {
     src: "/images/post-dance.jpg",
     alt: "炸綺來小費箱跳舞短影音，FB 118 萬、IG 158.2 萬次播放",
-    label: "跳舞短影音",
     stats: [
       { value: "158.2萬", platform: "IG", url: "https://www.instagram.com/reel/DWgBe7RkVMV/" },
       { value: "118萬", platform: "FB", url: "https://www.facebook.com/share/r/155mk4okgDw/" },
