@@ -79,7 +79,7 @@ export const ABOUT_PILLARS = [
 ] as const;
 
 export const STATS = [
-  { value: "368萬", label: "單支短影音播放" },
+  { value: "474萬", label: "單支短影音播放" },
   { value: "194萬", label: "門市開幕社群自然曝光" },
   { value: "128萬", label: "藝人公益影片曝光" },
   { value: "數十家", label: "代言記者會媒體報導" },
