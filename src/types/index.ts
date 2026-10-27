@@ -27,7 +27,7 @@ export type CaseStudy = {
   title: string;
   subtitle?: string;
   client?: string;
-  /** 「合作對象」這個標籤可以換成別的字，例如「架構」 */
+  /** 「合作對象」這個標籤可以換成別的字，例如「架構」；設成空字串就不顯示標籤 */
   clientLabel?: string;
   services: ServiceId[];
   description: string;
