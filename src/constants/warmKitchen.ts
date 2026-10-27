@@ -6,7 +6,7 @@ export const WARM = {
   title: "暖廚家味 Taste of Love",
   subtitle: "米其林主廚 × 公益料理實境節目",
   intro:
-    "集結跨國名廚走進廚房與家人做菜的料理實境節目，在 TVBS 播出；再將主廚招牌料理製作成線上課程販售募資，所得全數捐贈 1919 食物銀行，化為食物包送到需要的家庭。",
+    "集結跨國名廚走進廚房與家人做菜的料理實境節目，再將主廚招牌料理製作成線上課程販售募資，所得全數捐贈 1919 食物銀行，化為食物包送到需要的家庭。",
   poster: { src: "/images/warm-poster.jpg", alt: "暖廚家味 2025 主視覺：5 位暖廚 15 道招牌料理" },
 } as const;
 
@@ -20,7 +20,7 @@ export const WARM_FLOW = [
 
 export const WARM_METRICS = [
   { value: "3,300萬+", label: "線上課程募資金額" },
-  { value: "8,144份", label: "第一季捐出食物包" },
+  { value: "8,144份", highlight: "前一季", label: "捐出食物包" },
   { value: "1,357戶", label: "弱勢、急難家庭受助" },
   { value: "1,300公里", label: "志工環台親送" },
 ] as const;

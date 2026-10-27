@@ -39,9 +39,8 @@ export default function WarmKitchen() {
       {/* 標題列 */}
       <header className={`${RED} px-7 py-8 text-white md:px-10`}>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-[#b8230c]">代表作品</span>
+          <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-[#b8230c]">公益 × 線上課程</span>
           <span className="rounded-full bg-white/15 px-3 py-1 text-xs">TVBS 播出</span>
-          <span className="rounded-full bg-white/15 px-3 py-1 text-xs">公益 × 線上課程</span>
         </div>
         <h3 className="mt-4 text-3xl font-bold tracking-wide md:text-4xl">{WARM.title}</h3>
         <p className="mt-2 text-lg text-white/90 md:text-xl">{WARM.subtitle}</p>
@@ -50,7 +49,7 @@ export default function WarmKitchen() {
       <div className="space-y-14 px-5 py-10 md:px-10 md:py-12">
         {/* 區塊 1：節目 × 課程 × 公益 */}
         <section>
-          <BlockTitle no="01" title="一檔節目，三種價值" en="Show × Course × Charity" />
+          <BlockTitle no="01" title="一檔節目，善的循環" en="A Cycle of Good" />
           <div className="grid gap-8 lg:grid-cols-[2fr_3fr]">
             <div className="relative aspect-[880/1000] overflow-hidden rounded-2xl shadow-md">
               <Image src={WARM.poster.src} alt={WARM.poster.alt} fill sizes="(min-width: 1024px) 420px, 100vw" className="object-cover" />
@@ -82,7 +81,14 @@ export default function WarmKitchen() {
                 {WARM_METRICS.map((m) => (
                   <div key={m.label} className="rounded-xl border border-[#b8230c]/15 bg-white px-4 py-3">
                     <p className="text-2xl font-bold text-[#b8230c] md:text-3xl">{m.value}</p>
-                    <p className="mt-0.5 text-xs text-muted md:text-sm">{m.label}</p>
+                    <p className="mt-0.5 text-xs text-muted md:text-sm">
+                      {"highlight" in m && (
+                        <mark className="mr-1 rounded bg-brand-yellow px-1.5 py-0.5 font-bold text-[#2b1a14]">
+                          {m.highlight}
+                        </mark>
+                      )}
+                      {m.label}
+                    </p>
                   </div>
                 ))}
               </div>
