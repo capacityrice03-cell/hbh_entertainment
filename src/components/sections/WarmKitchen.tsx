@@ -176,7 +176,7 @@ export default function WarmKitchen() {
           <div className="grid items-center gap-8 lg:grid-cols-[1fr_2fr]">
             <div>
               <p className="leading-relaxed text-ink">
-                為每位主廚量身打造人物故事短影音，從主廚的人生轉折切入，帶出公益課程與食物包的意義，在 IG 創造大量自然觸及。
+                為每位主廚量身打造人物故事短影音，從主廚的人生轉折切入，帶出公益課程與食物包的意義。
               </p>
               <div className={`mt-6 rounded-2xl ${RED} px-6 py-5 text-white`}>
                 <p className="text-sm text-white/80">{WARM_REELS.length} 支主廚 Reels</p>
