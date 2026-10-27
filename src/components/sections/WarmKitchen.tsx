@@ -204,7 +204,7 @@ export default function WarmKitchen() {
                     <div className="relative aspect-[9/14] overflow-hidden rounded-xl shadow-md ring-1 ring-black/10">
                       <Image
                         src={r.src}
-                        alt={`${r.chef} Reels：${r.hook}，${r.views} 萬次觀看`}
+                        alt={`${r.chef} Reels：${r.hook}`}
                         fill
                         sizes="(min-width: 1024px) 220px, 32vw"
                         className="object-cover object-bottom transition-transform duration-300 group-hover:scale-105"
@@ -215,8 +215,7 @@ export default function WarmKitchen() {
                         </span>
                       </span>
                     </div>
-                    <p className="mt-2 text-center text-xl font-bold text-[#b8230c] md:text-2xl">{r.views}萬</p>
-                    <p className="text-center text-xs text-muted md:text-sm">{r.chef}</p>
+                    <p className="mt-2 text-center text-sm font-bold text-[#2b1a14] md:text-base">{r.chef}</p>
                   </a>
                 </li>
               ))}
