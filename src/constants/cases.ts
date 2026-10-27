@@ -76,7 +76,7 @@ export const CASES: CaseStudy[] = [
   },
   {
     id: "live-commerce",
-    title: "EFP 多機導播系統 × 帶貨直播",
+    title: "電商 × 帶貨直播",
     client: "品牌端 × KOL × MCN",
     clientLabel: "架構",
     services: ["efp", "sponsored"],
