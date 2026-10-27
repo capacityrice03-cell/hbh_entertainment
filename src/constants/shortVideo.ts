@@ -22,13 +22,13 @@ export const SHORT_VIDEO_HIGHLIGHTS = [
     src: "/images/post-tainan.jpg",
     alt: "炸綺來台南永康店開幕貼文，194 萬次播放",
     value: "194萬",
-    label: "台南永康店 2024.07 開幕\n社群自然曝光",
+    label: "台南永康店開幕",
   },
   {
     src: "/images/post-taipei.jpg",
     alt: "炸綺來台北京站店開幕貼文，39.9 萬次播放",
     value: "39.9萬",
-    label: "台北京站店 2024.11 開幕\n社群自然曝光",
+    label: "台北京站店開幕",
   },
 ] as const;
 
