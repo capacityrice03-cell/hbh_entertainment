@@ -7,8 +7,6 @@ import {
   SHORT_VIDEOS,
 } from "@/constants/shortVideo";
 
-const totalViews = Math.floor(SHORT_VIDEOS.reduce((sum, v) => sum + v.views, 0));
-
 export default function ShortVideo() {
   return (
     <section id="short-video" className="bg-brand-cream/60 py-20 md:py-28">
@@ -39,9 +37,9 @@ export default function ShortVideo() {
               ))}
             </ul>
             <div className="mt-8 rounded-2xl bg-brand-navy px-6 py-5 text-white">
-              <p className="text-sm text-white/70">下方精選 {SHORT_VIDEOS.length} 支短影音</p>
+              <p className="text-base text-white/80">17 支短影音即</p>
               <p className="mt-1 text-3xl font-bold text-brand-yellow">
-                累積 {totalViews} 萬<span className="text-xl">次播放</span>
+                突破 1000 萬<span className="text-xl">次觀看</span>
               </p>
             </div>
           </div>
