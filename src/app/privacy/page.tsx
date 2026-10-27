@@ -54,9 +54,25 @@ const SECTIONS: LegalSection[] = [
     ),
   },
   {
-    title: "四、Cookie 與追蹤技術",
+    title: "四、Cookie 與網站分析",
     body: (
-      <p>本網站目前沒有使用 Cookie 進行追蹤，也沒有安裝 Google Analytics、Facebook Pixel 等第三方分析或廣告追蹤工具。若日後新增此類工具，我們會更新本政策並在網站上告知。</p>
+      <>
+        <p>
+          本網站使用 Google Analytics 4（Google 分析）了解網站的使用情況，例如瀏覽人數、造訪頁面、停留時間、訪客來源與大致地區、使用的裝置與瀏覽器。Google Analytics 會透過 Cookie 蒐集這些資料，資料經過彙整統計，我們無法從中辨識您的個人身分，也只用於改善網站內容與服務。
+        </p>
+        <p>
+          這些資料由 Google 處理，詳情請參考{" "}
+          <a href="https://policies.google.com/technologies/partner-sites?hl=zh-TW" target="_blank" rel="noopener noreferrer">
+            Google 如何使用合作夥伴網站的資料
+          </a>
+          。如果您不希望被記錄，可以在瀏覽器設定中封鎖 Cookie，或安裝{" "}
+          <a href="https://tools.google.com/dlpage/gaoptout?hl=zh-TW" target="_blank" rel="noopener noreferrer">
+            Google Analytics 停用瀏覽器外掛程式
+          </a>
+          ，這不影響您瀏覽本網站。
+        </p>
+        <p>本網站沒有使用 Facebook Pixel 等廣告追蹤工具。</p>
+      </>
     ),
   },
   {

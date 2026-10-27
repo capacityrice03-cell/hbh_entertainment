@@ -4,6 +4,9 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://capacityrice03-cell.github.io/hbh_entertainment"
 ).replace(/\/$/, "");
 
+// Google Analytics 4 評估 ID（G- 開頭）。留空就不載入 GA。
+export const GA_ID = "G-ZB8HP6W0CG";
+
 // SEO 主打關鍵字：用在網頁標題、描述和結構化資料
 export const SEO = {
   title: "好不好娛樂｜品牌影音製作・業配拍攝・EFP 直播・記者會活動",
