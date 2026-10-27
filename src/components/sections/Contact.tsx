@@ -65,7 +65,7 @@ export default function Contact() {
 
           <div className="text-center">
             <div className="relative mx-auto h-40 w-40 rounded-2xl p-2 ring-1 ring-black/10">
-              <Image src="/images/line-qr.jpg" alt="LINE 加好友 QR Code" fill sizes="160px" className="object-contain p-2" />
+              <Image src="/images/line-qr-haobuhao.jpg" alt="LINE 加好友 QR Code" fill sizes="160px" className="object-contain p-2" />
             </div>
             <p className="mt-3 text-sm font-medium text-[#06c755]">掃描加入 LINE</p>
           </div>
