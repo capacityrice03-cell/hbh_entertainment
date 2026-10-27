@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import SectionTitle from "@/components/ui/SectionTitle";
+import WarmKitchen from "@/components/sections/WarmKitchen";
 import { CASES } from "@/constants/cases";
 import { SERVICES, SERVICE_TITLE } from "@/constants/services";
 import type { CaseImage, CaseStudy, ServiceId } from "@/types";
@@ -51,9 +52,13 @@ export default function Cases() {
         </div>
 
         <div className="space-y-10">
-          {list.map((c, i) => (
-            <CaseCard key={c.id} item={c} reverse={i % 2 === 1} />
-          ))}
+          {list.map((c, i) =>
+            c.feature === "warm-kitchen" ? (
+              <WarmKitchen key={c.id} />
+            ) : (
+              <CaseCard key={c.id} item={c} reverse={i % 2 === 1} />
+            ),
+          )}
         </div>
       </div>
     </section>

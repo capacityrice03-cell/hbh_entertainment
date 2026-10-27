@@ -48,6 +48,8 @@ export type CaseStudy = {
   portraitMain?: boolean;
   /** "episodes"：系列影片封面，以 2×2 完整 16:9 封面加集數標題呈現，不裁切 */
   layout?: "episodes";
+  /** 設定後改用專屬元件呈現整張卡片（例如代表作品專區），其他欄位只用於分類篩選與計數 */
+  feature?: "warm-kitchen";
   metrics?: CaseMetric[];
   links?: CaseLink[];
 };

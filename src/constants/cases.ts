@@ -58,6 +58,16 @@ export const CASES: CaseStudy[] = [
     ],
   },
   {
+    id: "warm-kitchen",
+    feature: "warm-kitchen",
+    title: "暖廚家味 Taste of Love",
+    subtitle: "米其林主廚 × 公益料理實境節目",
+    services: ["channel", "commercial", "event", "media"],
+    description: "米其林主廚料理實境節目，TVBS 播出，並製作成線上公益課程募資，捐贈 1919 食物銀行。",
+    highlights: [],
+    images: [{ src: "/images/warm-poster.jpg", alt: "暖廚家味 2025 主視覺" }],
+  },
+  {
     id: "chi-opening",
     title: "品牌活動｜門市開幕記者會",
     subtitle: "2022.05 台中開幕・2024.11 台北京站開幕",
