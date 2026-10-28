@@ -7,6 +7,12 @@ import {
   SHORT_VIDEOS,
 } from "@/constants/shortVideo";
 
+// 播放數前面的平台圖示（沒列在這裡的平台會顯示文字標籤）
+const PLATFORM_ICONS: Record<string, string> = {
+  IG: "/images/icon-ig.png",
+  FB: "/images/icon-fb.png",
+};
+
 export default function ShortVideo() {
   return (
     <section id="short-video" className="bg-brand-cream/60 py-20 md:py-28">
@@ -70,12 +76,22 @@ export default function ShortVideo() {
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-baseline gap-1.5 hover:opacity-80"
+                      className="flex items-center gap-1.5 hover:opacity-80"
                     >
-                      {s.platform && (
-                        <span className="rounded bg-brand-navy px-1.5 py-0.5 text-[10px] font-bold text-white">
-                          {s.platform}
-                        </span>
+                      {s.platform && PLATFORM_ICONS[s.platform] ? (
+                        <Image
+                          src={PLATFORM_ICONS[s.platform]}
+                          alt={s.platform}
+                          width={96}
+                          height={96}
+                          className="h-5 w-5 shrink-0 md:h-6 md:w-6"
+                        />
+                      ) : (
+                        s.platform && (
+                          <span className="rounded bg-brand-navy px-1.5 py-0.5 text-[10px] font-bold text-white">
+                            {s.platform}
+                          </span>
+                        )
                       )}
                       <span className="text-2xl font-bold text-brand-orange md:text-3xl">{s.value}</span>
                     </a>
