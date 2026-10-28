@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Parallax from "@/components/ui/Parallax";
+import LoopingWall from "@/components/ui/LoopingWall";
 import {
   SHORT_VIDEO_HIGHLIGHTS,
   SHORT_VIDEO_PLAYLIST,
@@ -110,21 +111,11 @@ export default function ShortVideo() {
           <h3 className="text-center text-lg font-bold tracking-wider text-brand-navy">
             IG Reels・FB 自然曝光流量數據
           </h3>
-          <p className="mt-1 text-center text-xs text-muted sm:hidden">← 左右滑動看更多 →</p>
-          {/* 手機：三列橫向滑動；平板：6 欄；電腦：8 × 6 格 */}
-          <ul className="mt-6 grid auto-cols-[30%] grid-flow-col grid-rows-3 gap-1 overflow-x-auto rounded-2xl sm:grid-flow-row sm:grid-cols-6 sm:grid-rows-none sm:overflow-hidden lg:grid-cols-8">
-            {SHORT_VIDEOS.map((v, i) => (
-              <li key={v.src} className="relative aspect-[9/14]">
-                <Image
-                  src={v.src}
-                  alt={`短影音作品 ${i + 1}，${v.views} 萬次播放`}
-                  fill
-                  sizes="(min-width: 1152px) 144px, (min-width: 1024px) 12.5vw, (min-width: 640px) 17vw, 30vw"
-                  className="object-cover"
-                />
-              </li>
-            ))}
-          </ul>
+          <p className="mt-1 text-center text-xs text-muted">← 左右滑動看更多 →</p>
+          {/* 兩排、左右無限循環滑動，一開始停在正中間 */}
+          <div className="mt-6">
+            <LoopingWall items={SHORT_VIDEOS} />
+          </div>
           <div className="mt-8 text-center">
             <a
               href={SHORT_VIDEO_PLAYLIST}
