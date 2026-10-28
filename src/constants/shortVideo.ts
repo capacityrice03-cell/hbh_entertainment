@@ -13,9 +13,9 @@ export const SHORT_VIDEO_HIGHLIGHTS: {
 }[] = [
   {
     src: "/images/post-dance.jpg",
-    alt: "炸綺來小費箱跳舞短影音，FB 118 萬、IG 158.2 萬次播放",
+    alt: "炸綺來小費箱跳舞短影音，FB 118 萬、IG 158 萬次播放",
     stats: [
-      { value: "158.2萬", platform: "IG", url: "https://www.instagram.com/reel/DWgBe7RkVMV/" },
+      { value: "158萬", platform: "IG", url: "https://www.instagram.com/reel/DWgBe7RkVMV/" },
       { value: "118萬", platform: "FB", url: "https://www.facebook.com/share/r/155mk4okgDw/" },
     ],
   },
