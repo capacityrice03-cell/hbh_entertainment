@@ -117,14 +117,22 @@ export default function WarmKitchen() {
                 </ul>
               </div>
 
-              <a
-                href={WARM.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#b8230c]/40 px-4 py-1.5 text-sm font-medium text-[#b8230c] transition-colors hover:bg-[#b8230c] hover:text-white"
-              >
-                暖廚家味官網 →
-              </a>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {[
+                  { href: WARM.website, label: "暖廚家味官網" },
+                  { href: WARM.foodBank, label: "1919食物銀行" },
+                ].map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#b8230c]/40 px-4 py-1.5 text-sm font-medium text-[#b8230c] transition-colors hover:bg-[#b8230c] hover:text-white"
+                  >
+                    {l.label} →
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>

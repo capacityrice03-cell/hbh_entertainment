@@ -3,6 +3,7 @@
 
 export const WARM = {
   website: "https://warmlearning.com/",
+  foodBank: "https://www.ccra.org.tw/SviArticlePage.html?SVSID=3",
   title: "暖廚家味 Taste of Love",
   subtitle: "米其林主廚 × 公益料理實境節目",
   intro:
