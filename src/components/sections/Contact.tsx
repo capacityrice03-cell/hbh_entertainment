@@ -33,7 +33,7 @@ export default function Contact() {
                 </span>
               ))}
             </p>
-            <p className="mt-2 text-muted">合作業務</p>
+            <p className="mt-2 text-muted">歡迎加line聯繫合作業務需求。</p>
 
             <dl className="mt-8 space-y-4">
               <div className="flex items-center gap-4">

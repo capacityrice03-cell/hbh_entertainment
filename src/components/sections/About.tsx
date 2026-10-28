@@ -9,7 +9,7 @@ export default function About() {
         <SectionTitle
           title="關於我們"
           en="About Us"
-          description={`${SITE.name}是來自電視節目製作背景的影音製作團隊，為企業與品牌提供影片拍攝、頻道經營、直播與活動企劃服務。`}
+          description="我們是擁有製作電視節目背景與各類型拍攝企劃、活動經驗豐富的團隊。"
         />
 
         <div className="grid gap-8 md:grid-cols-3">
