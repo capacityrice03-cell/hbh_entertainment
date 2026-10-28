@@ -34,6 +34,8 @@ export const VENUE_PLACES = [
     name: "台北市-捷運松江南京站",
     /** 名稱旁的小字，沒有就不寫 */
     note: "(1號出口步行3分鐘)",
+    /** 公開的 Google 日曆 ID（日曆設定 →「整合日曆」→ 日曆 ID），會顯示在照片下方 */
+    calendarId: "664726615bc553a58f9aeb2094cc769d802e3201491867f75eb75a976ad8ae3d@group.calendar.google.com",
     photos: [
       { src: "/images/venue-songjiang-01.jpg", alt: "松江南京場地：舞台與投影幕正面", width: 2000, height: 1125 },
       { src: "/images/venue-songjiang-02.jpg", alt: "松江南京場地：全場沙發座位與打光燈", width: 2000, height: 1125 },

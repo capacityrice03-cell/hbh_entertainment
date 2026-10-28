@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
+import VenueCalendar from "@/components/ui/VenueCalendar";
 import VenueGallery from "@/components/ui/VenueGallery";
 import { VENUE, VENUE_PLACES } from "@/constants/services";
 import { SITE } from "@/constants/site";
@@ -78,6 +79,7 @@ export default function VenuePage() {
                 </div>
               </div>
               <VenueGallery photos={place.photos} />
+              {"calendarId" in place && <VenueCalendar id={place.calendarId} title={place.name} />}
             </section>
           ))}
 
