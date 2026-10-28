@@ -35,7 +35,6 @@ export const SITE = {
   slogan: "專為企業、品牌規劃的影音運營團隊",
   subSlogan: "最貼切需求的客製化服務",
   contact: {
-    person: "Rice",
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",
   },

@@ -91,14 +91,6 @@ const SECTIONS: LegalSection[] = [
     title: "十、準據法與管轄法院",
     body: <p>本條款的解釋與適用，以中華民國法律為準據法。因本條款或本服務所生的爭議，雙方同意以本公司所在地的地方法院為第一審管轄法院。</p>,
   },
-  {
-    title: "十一、聯絡我們",
-    body: (
-      <p>
-        對本服務條款有任何疑問，歡迎來信：<a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>（聯絡人：{SITE.contact.person}）。
-      </p>
-    ),
-  },
 ];
 
 export default function TermsPage() {

@@ -106,22 +106,12 @@ const SECTIONS: LegalSection[] = [
           <li>請求停止蒐集、處理或利用</li>
           <li>請求刪除</li>
         </ul>
-        <p>如需行使上述權利，請透過下方聯絡方式與我們聯繫，我們會盡快處理。</p>
       </>
     ),
   },
   {
     title: "八、政策修訂",
     body: <p>本政策可能因法令變更或服務調整而修訂，修訂後的內容會公布於本頁面，並更新頁面上方的「最後更新日期」。</p>,
-  },
-  {
-    title: "九、聯絡我們",
-    body: (
-      <p>
-        對本隱私權政策或您的個人資料有任何疑問，歡迎來信：
-        <a href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>（聯絡人：{SITE.contact.person}）。
-      </p>
-    ),
   },
 ];
 
