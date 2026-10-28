@@ -65,7 +65,7 @@ export const SHORT_VIDEOS = [
   { src: "/images/short-22.jpg", views: 25 },
   { src: "/images/short-44.jpg", views: 23 },
   { src: "/images/short-34.jpg", views: 47 },
-  { src: "/images/short-09.jpg", views: 11.3 },
+  { src: "/images/short-49.jpg", views: 24.9 },
   { src: "/images/short-27.jpg", views: 34 },
   { src: "/images/short-16.jpg", views: 14 },
   { src: "/images/short-31.jpg", views: 5.7 },
@@ -86,6 +86,6 @@ export const SHORT_VIDEOS = [
   { src: "/images/short-32.jpg", views: 4.2 },
   { src: "/images/short-37.jpg", views: 21 },
   { src: "/images/short-24.jpg", views: 45 },
-  { src: "/images/short-18.jpg", views: 11 },
+  { src: "/images/short-50.jpg", views: 118 },
   { src: "/images/short-45.jpg", views: 37.6 },
 ] as const;
