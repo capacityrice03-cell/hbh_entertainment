@@ -59,18 +59,20 @@ export default function Header() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="block py-3 text-base font-medium text-ink"
+              className="block py-3 text-center text-base font-medium text-ink"
             >
               {item.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="my-2 block rounded-full bg-brand-navy py-3 text-center text-base font-medium text-white"
-          >
-            洽詢合作
-          </a>
+          <div className="pt-2 pb-3 text-center">
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="inline-block rounded-full bg-brand-navy px-6 py-2 text-sm font-medium text-white"
+            >
+              洽詢合作
+            </a>
+          </div>
         </nav>
       )}
     </header>
