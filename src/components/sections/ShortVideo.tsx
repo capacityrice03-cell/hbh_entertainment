@@ -111,15 +111,15 @@ export default function ShortVideo() {
             IG Reels・FB 自然曝光流量數據
           </h3>
           <p className="mt-1 text-center text-xs text-muted sm:hidden">← 左右滑動看更多 →</p>
-          {/* 手機：兩列橫向滑動；平板以上：7 × 2 格 */}
-          <ul className="mt-6 grid auto-cols-[30%] grid-flow-col grid-rows-2 gap-1 overflow-x-auto rounded-2xl sm:grid-flow-row sm:grid-cols-7 sm:overflow-hidden">
+          {/* 手機：三列橫向滑動；平板：6 欄；電腦：8 × 6 格 */}
+          <ul className="mt-6 grid auto-cols-[30%] grid-flow-col grid-rows-3 gap-1 overflow-x-auto rounded-2xl sm:grid-flow-row sm:grid-cols-6 sm:grid-rows-none sm:overflow-hidden lg:grid-cols-8">
             {SHORT_VIDEOS.map((v, i) => (
               <li key={v.src} className="relative aspect-[9/14]">
                 <Image
                   src={v.src}
-                  alt={`炸綺來短影音 ${i + 1}，${v.views} 萬次播放`}
+                  alt={`短影音作品 ${i + 1}，${v.views} 萬次播放`}
                   fill
-                  sizes="(min-width: 1152px) 165px, (min-width: 640px) 14vw, 30vw"
+                  sizes="(min-width: 1152px) 144px, (min-width: 1024px) 12.5vw, (min-width: 640px) 17vw, 30vw"
                   className="object-cover"
                 />
               </li>
