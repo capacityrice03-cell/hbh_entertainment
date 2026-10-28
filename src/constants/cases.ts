@@ -89,7 +89,7 @@ export const CASES: CaseStudy[] = [
     links: [
       { label: "台中西區店開幕", url: "https://youtu.be/6EXJEHtxD3c" },
       { label: "台北京站廣場店開幕", url: "https://www.facebook.com/share/v/18KacYBWDZ/" },
-      { label: "台南永康店開幕", url: "https://www.facebook.com/share/v/18KacYBWDZ/" },
+      { label: "台南永康店開幕", url: "https://www.facebook.com/share/v/1HXzAjUGAY/" },
       { label: "台中東區十甲店開幕", url: "https://www.facebook.com/share/v/1DahE6j4jS/" },
       { label: "南投埔里店開幕", url: "https://www.facebook.com/share/v/1FBJVw2fi4/" },
       { label: "台北信義A11試營運", url: "https://www.facebook.com/share/v/1KHFPaxQfT/" },
