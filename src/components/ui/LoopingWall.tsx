@@ -1,18 +1,36 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Item = { src: string; views: number };
+
+/** 洗牌（Fisher–Yates），回傳新陣列 */
+function shuffle<T>(list: readonly T[]): T[] {
+  const a = [...list];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 /**
  * 兩排、可左右滑動的無限循環短影音牆。
  * 做法：把整組圖片重複 3 份，一開始停在中間那份的正中央；
  * 滑到接近兩端時，悄悄往回跳「一份的寬度」，畫面一模一樣，看起來就是頭尾相接的閉環。
  */
-export default function LoopingWall({ items }: { items: readonly Item[] }) {
+export default function LoopingWall({ items: source }: { items: readonly Item[] }) {
   const scroller = useRef<HTMLUListElement>(null);
   const setWidth = useRef(0);
+  // 每次開網頁都隨機排序：網站是預先產生的靜態頁，所以載入後才洗牌，洗好前先隱藏，避免看到順序跳動
+  const [items, setItems] = useState<readonly Item[]>(source);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 只能在瀏覽器端洗牌，否則和預先產生的頁面對不上
+    setItems(shuffle(source));
+    setReady(true);
+  }, [source]);
 
   useEffect(() => {
     const el = scroller.current;
@@ -121,7 +139,9 @@ export default function LoopingWall({ items }: { items: readonly Item[] }) {
     <div className="relative">
       <ul
         ref={scroller}
-        className="grid cursor-grab auto-cols-[28vw] grid-flow-col grid-rows-2 gap-1 overflow-x-auto rounded-2xl select-none [scrollbar-width:none] sm:auto-cols-[150px] lg:auto-cols-[165px] [&::-webkit-scrollbar]:hidden"
+        className={`grid cursor-grab auto-cols-[28vw] grid-flow-col grid-rows-2 gap-1 overflow-x-auto rounded-2xl transition-opacity duration-500 select-none [scrollbar-width:none] sm:auto-cols-[150px] lg:auto-cols-[165px] [&::-webkit-scrollbar]:hidden ${
+          ready ? "opacity-100" : "opacity-0"
+        }`}
       >
         {copies.flatMap((c) =>
           items.map((v, i) => (
