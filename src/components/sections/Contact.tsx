@@ -2,8 +2,6 @@ import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { SITE } from "@/constants/site";
 
-const taglineColors = ["text-brand-sky", "text-brand-yellow", "text-brand-green"];
-
 function LineQr() {
   return (
     <div className="text-center">
@@ -25,27 +23,15 @@ export default function Contact() {
 
         <div className="grid items-center gap-10 rounded-3xl bg-white p-8 shadow-xl md:grid-cols-[1fr_auto] md:p-12">
           <div>
-            <p className="text-2xl font-bold tracking-widest">
-              {SITE.tagline.map((t, i) => (
-                <span key={t}>
-                  <span className={taglineColors[i]}>{t}</span>
-                  {i < SITE.tagline.length - 1 && <span className="text-muted">、</span>}
-                </span>
-              ))}
-            </p>
-            <p className="mt-2 text-muted">歡迎加line聯繫合作業務需求。</p>
+            <p className="text-lg font-medium tracking-wide text-brand-navy">歡迎加LINE聯繫合作業務需求。</p>
 
-            <dl className="mt-8 space-y-4">
-              <div className="flex items-center gap-4">
-                <dt className="w-16 shrink-0 text-sm text-muted">聯絡人</dt>
-                <dd className="text-lg font-semibold text-brand-navy">{contact.person}</dd>
-              </div>
+            <dl className="mt-6 space-y-4">
               <div className="flex items-center gap-4">
                 <dt className="w-16 shrink-0 text-sm text-muted">Email</dt>
                 <dd className="min-w-0">
                   <a
                     href={`mailto:${contact.email}`}
-                    className="text-lg font-semibold break-all text-brand-navy hover:text-brand-blue"
+                    className="text-base font-semibold break-all text-brand-navy hover:text-brand-blue md:text-lg"
                   >
                     {contact.email}
                   </a>

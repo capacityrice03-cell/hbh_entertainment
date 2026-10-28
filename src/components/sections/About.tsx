@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { ABOUT_PILLARS, SITE } from "@/constants/site";
+import { ABOUT_PILLARS } from "@/constants/site";
 
 export default function About() {
   return (
@@ -36,12 +36,6 @@ export default function About() {
                 <p className="mt-3 font-bold tracking-wider text-brand-blue">{p.keyword}</p>
               </div>
             </article>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-14 max-w-3xl space-y-3 text-center text-base leading-relaxed tracking-wide text-muted md:text-lg">
-          {SITE.intro.map((line) => (
-            <p key={line}>{line}</p>
           ))}
         </div>
       </div>

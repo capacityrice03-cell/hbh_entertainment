@@ -34,17 +34,11 @@ export const SITE = {
   nameEn: "Haobuhao Entertainment",
   slogan: "專為企業、品牌規劃的影音運營團隊",
   subSlogan: "最貼切需求的客製化服務",
-  intro: [
-    "提供高質感，各類型節目、業配影音製作",
-    "從大型代言人記者會，至新媒體 YT、IG、TikTok 多平台經營",
-    "讓您的商業模式獲得大幅成長並強化轉換率，達到永續經營",
-  ],
   contact: {
     person: "Rice",
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",
   },
-  tagline: ["活動", "通告", "業配"],
 } as const;
 
 export const NAV = [
