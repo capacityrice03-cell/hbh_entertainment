@@ -19,6 +19,12 @@ export const SERVICES: Service[] = [
   },
 ];
 
+// 場域租借：只顯示在「服務項目」區，沒有對應案例，所以不放進 SERVICES（不會出現在案例分類）
+export const VENUE = {
+  title: "場域租借",
+  items: ["北市松江南京站", "新北烏來"],
+};
+
 export const SERVICE_TITLE: Record<Service["id"], string> = Object.fromEntries(
   SERVICES.map((s) => [s.id, s.title]),
 ) as Record<Service["id"], string>;
