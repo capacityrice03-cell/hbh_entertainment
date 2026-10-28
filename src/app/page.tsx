@@ -3,7 +3,6 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
-import Stats from "@/components/sections/Stats";
 import ShortVideo from "@/components/sections/ShortVideo";
 import Cases from "@/components/sections/Cases";
 import Contact from "@/components/sections/Contact";
@@ -53,7 +52,6 @@ export default function Home() {
         <Services />
         <ShortVideo />
         <Cases />
-        <Stats />
         <Contact />
         <About />
       </main>

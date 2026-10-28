@@ -29,7 +29,7 @@
 
 | 檔案 | 內容 |
 |---|---|
-| `src/constants/site.ts` | 公司名稱、聯絡方式、導覽列、關於我們、數字列（`STATS`）、SEO 文字、正式網址、GA4 ID |
+| `src/constants/site.ts` | 公司名稱、聯絡方式、導覽列、關於我們、SEO 文字、正式網址、GA4 ID |
 | `src/constants/services.ts` | 六大服務項目（`commercial`、`channel`、`sponsored`、`efp`、`event`、`media`） |
 | `src/constants/cases.ts` | 實際案例（型別見 `src/types/index.ts` 的 `CaseStudy`） |
 | `src/constants/shortVideo.ts` | 短影音區塊：代表影片（含 IG / FB 連結與播放數）、14 支短影音牆 |

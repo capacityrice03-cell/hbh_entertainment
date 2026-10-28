@@ -4,6 +4,17 @@ import { SITE } from "@/constants/site";
 
 const taglineColors = ["text-brand-sky", "text-brand-yellow", "text-brand-green"];
 
+function LineQr() {
+  return (
+    <div className="text-center">
+      <div className="relative mx-auto h-40 w-40 rounded-2xl p-2 ring-1 ring-black/10">
+        <Image src="/images/line-qr-haobuhao.jpg" alt="LINE 加好友 QR Code" fill sizes="160px" className="object-contain p-2" />
+      </div>
+      <p className="mt-3 text-sm font-medium text-[#06c755]">掃描加入 LINE</p>
+    </div>
+  );
+}
+
 export default function Contact() {
   const { contact } = SITE;
 
@@ -22,7 +33,7 @@ export default function Contact() {
                 </span>
               ))}
             </p>
-            <p className="mt-2 text-muted">歡迎來信、加 LINE 洽詢，或到 YouTube 看看我們的作品，我們會依您的需求提供客製化提案。</p>
+            <p className="mt-2 text-muted">合作業務</p>
 
             <dl className="mt-8 space-y-4">
               <div className="flex items-center gap-4">
@@ -41,6 +52,11 @@ export default function Contact() {
                 </dd>
               </div>
             </dl>
+
+            {/* 手機版：QR Code 放在按鈕上方 */}
+            <div className="mt-8 md:hidden">
+              <LineQr />
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a
@@ -63,11 +79,9 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="text-center">
-            <div className="relative mx-auto h-40 w-40 rounded-2xl p-2 ring-1 ring-black/10">
-              <Image src="/images/line-qr-haobuhao.jpg" alt="LINE 加好友 QR Code" fill sizes="160px" className="object-contain p-2" />
-            </div>
-            <p className="mt-3 text-sm font-medium text-[#06c755]">掃描加入 LINE</p>
+          {/* 電腦版：QR Code 在右邊 */}
+          <div className="hidden md:block">
+            <LineQr />
           </div>
         </div>
       </div>
