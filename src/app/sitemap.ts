@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       images: [`${SITE_URL}${SEO.ogImage}`],
     },
+    { url: `${SITE_URL}/venue/`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy/`, lastModified, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms/`, lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];

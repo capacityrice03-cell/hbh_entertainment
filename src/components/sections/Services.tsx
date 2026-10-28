@@ -65,10 +65,10 @@ export default function Services() {
             />
           ))}
           <ServiceCard
-            href="#contact"
+            href="/venue/"
             title={VENUE.title}
             items={VENUE.items}
-            linkText="場地洽詢 →"
+            linkText="場地租借資訊 →"
             accent="bg-brand-sky/20 text-brand-navy"
             icon={
               // 地點圖釘
