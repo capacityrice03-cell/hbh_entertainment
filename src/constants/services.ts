@@ -22,7 +22,7 @@ export const SERVICES: Service[] = [
 // 活動場域/包場租借：只顯示在「服務項目」區，沒有對應案例，所以不放進 SERVICES（不會出現在案例分類）
 export const VENUE = {
   title: "活動場域/包場租借",
-  items: ["北市松江南京站", "新北烏來"],
+  items: ["台北市-捷運松江南京站", "新北烏來"],
 };
 
 /**
@@ -31,7 +31,9 @@ export const VENUE = {
  */
 export const VENUE_PLACES = [
   {
-    name: "北市松江南京站",
+    name: "台北市-捷運松江南京站",
+    /** 名稱旁的小字，沒有就不寫 */
+    note: "(1號出口步行3分鐘)",
     photos: [
       { src: "/images/venue-songjiang-01.jpg", alt: "松江南京場地：舞台與投影幕正面", width: 2000, height: 1125 },
       { src: "/images/venue-songjiang-02.jpg", alt: "松江南京場地：全場沙發座位與打光燈", width: 2000, height: 1125 },

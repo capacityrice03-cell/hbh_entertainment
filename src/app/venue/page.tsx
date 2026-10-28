@@ -60,7 +60,10 @@ export default function VenuePage() {
                 className="flex items-center gap-4 rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 <PinIcon />
-                <span className="text-lg font-bold text-brand-blue">{place.name}</span>
+                <span>
+                  <span className="block text-lg font-bold text-brand-blue">{place.name}</span>
+                  {"note" in place && <span className="mt-0.5 block text-sm text-muted">{place.note}</span>}
+                </span>
                 <span className="ml-auto text-brand-blue" aria-hidden="true">
                   ↓
                 </span>
@@ -72,7 +75,10 @@ export default function VenuePage() {
             <section key={place.name} id={`place-${i + 1}`} className="mt-14 scroll-mt-6 md:mt-20">
               <div className="mb-5 flex items-center gap-3 md:mb-6">
                 <PinIcon />
-                <h2 className="text-2xl font-bold tracking-wider text-brand-navy md:text-3xl">{place.name}</h2>
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h2 className="text-2xl font-bold tracking-wider text-brand-navy md:text-3xl">{place.name}</h2>
+                  {"note" in place && <p className="text-sm text-muted md:text-base">{place.note}</p>}
+                </div>
               </div>
               <VenueGallery photos={place.photos} />
             </section>
