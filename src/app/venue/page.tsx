@@ -60,10 +60,7 @@ export default function VenuePage() {
                 className="flex items-center gap-4 rounded-2xl border border-black/5 bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
               >
                 <PinIcon />
-                <span>
-                  <span className="block text-lg font-bold text-brand-blue">{place.name}</span>
-                  {"note" in place && <span className="mt-0.5 block text-sm text-muted">{place.note}</span>}
-                </span>
+                <span className="text-lg font-bold text-brand-blue">{place.name}</span>
                 <span className="ml-auto text-brand-blue" aria-hidden="true">
                   ↓
                 </span>
