@@ -64,6 +64,13 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="my-2 block rounded-full bg-brand-navy py-3 text-center text-base font-medium text-white"
+          >
+            洽詢合作
+          </a>
         </nav>
       )}
     </header>
