@@ -19,9 +19,9 @@ export const SERVICES: Service[] = [
   },
 ];
 
-// 場域租借：只顯示在「服務項目」區，沒有對應案例，所以不放進 SERVICES（不會出現在案例分類）
+// 活動包場出租：只顯示在「服務項目」區，沒有對應案例，所以不放進 SERVICES（不會出現在案例分類）
 export const VENUE = {
-  title: "場域租借",
+  title: "活動包場出租",
   items: ["北市松江南京站", "新北烏來"],
 };
 

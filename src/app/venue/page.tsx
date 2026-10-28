@@ -6,8 +6,8 @@ import { VENUE } from "@/constants/services";
 import { SITE } from "@/constants/site";
 
 export const metadata: Metadata = {
-  title: `場域租借｜${SITE.name} ${SITE.nameEn}`,
-  description: `${SITE.name}場域租借：${VENUE.items.join("、")}。`,
+  title: `${VENUE.title}｜${SITE.name} ${SITE.nameEn}`,
+  description: `${SITE.name}${VENUE.title}：${VENUE.items.join("、")}。`,
   alternates: { canonical: "/venue/" },
 };
 
@@ -54,14 +54,22 @@ export default function VenuePage() {
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl bg-brand-navy p-6 text-white md:p-8">
-            <p className="leading-relaxed">場地租借歡迎來信洽詢</p>
-            <a
-              href={`mailto:${SITE.contact.email}`}
-              className="mt-4 inline-block rounded-full bg-brand-yellow px-6 py-2.5 font-semibold text-brand-navy transition-opacity hover:opacity-90"
-            >
-              {SITE.contact.email}
-            </a>
+          <div className="mt-10 flex flex-col gap-6 rounded-2xl bg-brand-navy p-6 text-white sm:flex-row sm:items-center sm:justify-between md:p-8">
+            <div>
+              <p className="leading-relaxed">場地租借歡迎來信或加 LINE 洽詢</p>
+              <a
+                href={`mailto:${SITE.contact.email}`}
+                className="mt-4 inline-block rounded-full bg-brand-yellow px-6 py-2.5 font-semibold break-all text-brand-navy transition-opacity hover:opacity-90"
+              >
+                {SITE.contact.email}
+              </a>
+            </div>
+            <div className="text-center">
+              <div className="relative mx-auto h-36 w-36 rounded-2xl bg-white p-2">
+                <Image src="/images/line-qr-haobuhao.jpg" alt="LINE 加好友 QR Code" fill sizes="144px" className="object-contain p-2" />
+              </div>
+              <p className="mt-2 text-sm font-medium text-[#06c755]">掃描加入 LINE</p>
+            </div>
           </div>
         </div>
       </main>
