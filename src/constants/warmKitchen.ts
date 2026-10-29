@@ -50,7 +50,8 @@ export const WARM_MEDIA = {
   episodesCaption: "TVBS 娛樂頭條《暖廚家味》實境版",
   photos: [
     { src: "/images/warm-team.jpg", alt: "暖廚家味 2025 拍攝幕後團隊合照", caption: "拍攝幕後團隊" },
-    { src: "/images/warm-volunteer.jpg", alt: "穿著 1919 食物銀行背心的志工與食物包", caption: "1919 食物銀行 親送食物包" },
+    // contain：照片比框寬，完整顯示不裁切（四個人都入鏡），上下空白用模糊的同張照片補滿
+    { src: "/images/warm-volunteer.jpg", alt: "穿著 1919 食物銀行背心的志工與食物包", caption: "1919 食物銀行 親送食物包", contain: true },
   ],
 } as const;
 

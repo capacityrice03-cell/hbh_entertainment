@@ -170,7 +170,21 @@ export default function WarmKitchen() {
             {WARM_MEDIA.photos.map((p) => (
               <figure key={p.src}>
                 <div className="relative aspect-[3/2] overflow-hidden rounded-2xl shadow-md">
-                  <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                  {"contain" in p && p.contain ? (
+                    <>
+                      <Image
+                        src={p.src}
+                        alt=""
+                        aria-hidden="true"
+                        fill
+                        sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw"
+                        className="scale-110 object-cover blur-xl"
+                      />
+                      <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw" className="object-contain" />
+                    </>
+                  ) : (
+                    <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                  )}
                 </div>
                 <figcaption className="mt-2 text-sm text-muted">{p.caption}</figcaption>
               </figure>
