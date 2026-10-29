@@ -237,7 +237,12 @@ export default function WarmKitchen() {
                         </span>
                       </span>
                     </div>
-                    <p className="mt-2 text-center text-sm font-bold text-[#2b1a14] md:text-base">{r.chef}</p>
+                    {/* 店名／主廚：手機拆兩行（避免名字最後一個字被擠到下一行），電腦版同一行 */}
+                    <p className="mt-2 text-center text-sm leading-snug font-bold text-[#2b1a14] md:text-base">
+                      <span className="block text-xs text-[#b8230c] md:inline md:text-base">{r.chef.split(" ")[0]}</span>
+                      <span className="hidden md:inline"> </span>
+                      <span className="block md:inline">{r.chef.split(" ").slice(1).join(" ")}</span>
+                    </p>
                   </a>
                 </li>
               ))}
