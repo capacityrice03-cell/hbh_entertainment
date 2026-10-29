@@ -172,12 +172,9 @@ export const CASES: CaseStudy[] = [
   {
     id: "ad-production",
     title: "品牌行銷｜影像製作 × 廣告 × 轉單",
-    subtitle: "高品質影像・精準曝光・置入行銷・導購",
-    client: "多個品牌合作",
     services: ["commercial"],
-    description:
-      "以高品質人像與商品影像搭配精準投放，結合置入行銷與導購，讓內容不只好看，也能帶來實際銷售。",
-    highlights: ["人像 × 商品平面攝影", "廣告影片製作", "置入行銷與導購"],
+    description: "",
+    highlights: ["廣告影片製作", "置入行銷與導購"],
     images: [
       { src: "/images/ad-01.jpg", alt: "飲品廣告人像攝影" },
       { src: "/images/ad-02.jpg", alt: "咖啡廳人像攝影" },
