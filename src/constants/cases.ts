@@ -126,7 +126,7 @@ export const CASES: CaseStudy[] = [
     services: ["event", "commercial"],
     description:
       "整合品牌端、KOL 與 MCN 三方資源，以 EFP 多機導播系統執行帶貨直播，從棚內佈燈、導播到多平台推流一手包辦。",
-    highlights: ["多機位導播系統", "棚內燈光與場景佈置", "電商帶貨直播操作"],
+    highlights: ["多機位導播系統", "棚內燈光與場景佈置", "淘寶平台-帶貨直播節目", "台灣貿易商直營操作"],
     images: [
       { src: "/images/live-shop-01.jpg", alt: "直播攝影棚現場" },
       { src: "/images/live-shop-02.jpg", alt: "帶貨直播現場" },
