@@ -65,7 +65,7 @@ export const CASES: CaseStudy[] = [
     id: "warm-kitchen",
     feature: "warm-kitchen",
     title: "暖廚家味 Taste of Love",
-    subtitle: "米其林主廚 × 公益料理實境節目",
+    subtitle: "米其林主廚 × 料理實境節目",
     services: ["channel", "event", "commercial"],
     description: "米其林主廚料理實境節目，TVBS 播出，並製作成線上公益課程募資，捐贈 1919 食物銀行。",
     highlights: [],

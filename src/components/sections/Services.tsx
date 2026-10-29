@@ -56,7 +56,7 @@ export default function Services() {
           {SERVICES.map((s, i) => (
             <ServiceCard
               key={s.id}
-              href={`#cases-${s.id}`}
+              href={s.caseHref ?? `#cases-${s.id}`}
               title={s.title}
               items={s.items}
               linkText="相關案例引導 →"

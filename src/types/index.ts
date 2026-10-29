@@ -5,6 +5,8 @@ export type Service = {
   id: ServiceId;
   title: string;
   items: string[];
+  /** 「相關案例引導」要跳去的位置；沒填就跳到該分類的案例列表 */
+  caseHref?: string;
 };
 
 export type CaseLink = {

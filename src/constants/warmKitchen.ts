@@ -5,7 +5,7 @@ export const WARM = {
   website: "https://warmlearning.com/",
   foodBank: "https://www.ccra.org.tw/SviArticlePage.html?SVSID=3",
   title: "暖廚家味 Taste of Love",
-  subtitle: "米其林主廚 × 公益料理實境節目",
+  subtitle: "米其林主廚 × 料理實境節目",
   intro:
     "集結跨國名廚走進廚房與家人做菜的料理實境節目，再將主廚招牌料理製作成線上課程販售募資，所得全數捐贈 1919 食物銀行，化為食物包送到需要的家庭。",
   /** 內文中要用黃底凸顯的字 */

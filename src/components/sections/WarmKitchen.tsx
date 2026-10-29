@@ -35,7 +35,7 @@ function PlayIcon({ className = "h-4 w-4" }: { className?: string }) {
 
 export default function WarmKitchen() {
   return (
-    <article className="overflow-hidden rounded-3xl bg-[#f6efe6] shadow-sm ring-1 ring-black/5">
+    <article id="warm-kitchen" className="scroll-mt-6 overflow-hidden rounded-3xl bg-[#f6efe6] shadow-sm ring-1 ring-black/5">
       {/* 標題列 */}
       <header className={`${RED} px-7 py-8 text-white md:px-10`}>
         <div className="flex flex-wrap items-center gap-2">
