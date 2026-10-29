@@ -51,11 +51,6 @@ export const CASES: CaseStudy[] = [
         url: "https://youtu.be/6EXJEHtxD3c",
       },
     ],
-    metrics: [
-      { value: "194萬", label: "台南永康店開幕 自然曝光" },
-      { value: "39.9萬", label: "台北京站店開幕 自然曝光" },
-      { value: "474萬", label: "單支短影音播放" },
-    ],
     links: [
       { label: "看短影音成效", url: "#short-video" },
       { label: "IG Reels / FB 短影音", url: SHORT_VIDEO_PLAYLIST },
