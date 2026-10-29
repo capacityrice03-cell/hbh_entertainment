@@ -33,7 +33,7 @@ export const SITE = {
   name: "好不好娛樂",
   nameEn: "Haobuhao Entertainment",
   slogan: "專為企業、品牌規劃的影音運營團隊",
-  subSlogan: "最貼切需求的客製化服務",
+  subSlogan: "理解需求，提供精準的客製化服務",
   contact: {
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",

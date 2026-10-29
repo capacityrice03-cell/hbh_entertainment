@@ -30,7 +30,9 @@ export default function Hero() {
           規劃的影音運營團隊
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
-          {SITE.subSlogan}。從代言人記者會到 YT、IG、TikTok 多平台經營，一站整合企劃、影片製作、直播與媒體曝光。
+          {SITE.subSlogan}
+          <br />
+          從傳統媒體到新媒體平台、實體活動的線上線下整合。
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
@@ -49,12 +51,12 @@ export default function Hero() {
         </div>
 
         <ul className="mt-14 flex flex-wrap gap-2">
-          {SERVICES.map((s) => (
+          {[...SERVICES.map((s) => s.title), "場域租借"].map((title) => (
             <li
-              key={s.id}
+              key={title}
               className="rounded-full bg-white/10 px-4 py-1.5 text-sm text-white/90 backdrop-blur"
             >
-              {s.title}
+              {title}
             </li>
           ))}
         </ul>
