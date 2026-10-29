@@ -16,7 +16,7 @@ const PLATFORM_ICONS: Record<string, string> = {
 
 // 說明文字裡要凸顯的關鍵字
 function Em({ children }: { children: React.ReactNode }) {
-  return <span className="font-bold text-brand-orange">{children}</span>;
+  return <span className="font-bold text-red-600">{children}</span>;
 }
 
 export default function ShortVideo() {
@@ -28,15 +28,11 @@ export default function ShortVideo() {
           en="Short Video"
           description={
             <>
-              {/* 電腦版三行；手機版另在逗號後換行（className="sm:hidden" 的 br），避免字被擠斷 */}
-              藉由短影音的內容矩陣，
-              <br className="sm:hidden" />
-              來達成各項需求與目標，
+              {/* 電腦版兩行；手機版另在逗號後換行（className="sm:hidden" 的 br），避免字被擠斷 */}
+              將社群平台長期累積的經營曝光，
               <br />
-              社群平台<Em>長期累積</Em>的<Em>經營曝光</Em>，
-              <br className="sm:hidden" />
               能將每週微小的邊際投入，
-              <br />
+              <br className="sm:hidden" />
               轉化為<Em>指數型成長</Em>的<Em>商業效益</Em>。
             </>
           }
