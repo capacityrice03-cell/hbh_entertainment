@@ -29,6 +29,14 @@ export const SEO = {
   ogImage: "/images/hero.jpg",
 } as const;
 
+// 網址丟到 LINE / FB 時的預覽卡片（標題 + 圖片）；Google 搜尋仍用上面的 SEO 標題與描述
+export const SHARE = {
+  title: "好不好娛樂｜陪伴品牌成長的影音製作團隊",
+  // 描述刻意放一個全形空白：不填的話會自動帶入上面那段很長的 SEO 描述
+  description: "　",
+  image: "/images/og-logo.jpg",
+} as const;
+
 export const SITE = {
   name: "好不好娛樂",
   nameEn: "Haobuhao Entertainment",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { GA_ID, SEO, SITE, SITE_URL } from "@/constants/site";
+import { GA_ID, SEO, SHARE, SITE, SITE_URL } from "@/constants/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,16 +25,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_TW",
     siteName: `${SITE.name} ${SITE.nameEn}`,
-    title: SEO.title,
-    description: SEO.description,
+    // 分享預覽只放一行標題，不放長描述
+    title: SHARE.title,
+    description: SHARE.description,
     url: "/",
-    images: [{ url: SEO.ogImage, width: 960, height: 640, alt: `${SITE.name}活動現場` }],
+    images: [{ url: SHARE.image, width: 1200, height: 630, alt: `${SITE.name} LOGO` }],
   },
   twitter: {
     card: "summary_large_image",
-    title: SEO.title,
-    description: SEO.description,
-    images: [SEO.ogImage],
+    title: SHARE.title,
+    description: SHARE.description,
+    images: [SHARE.image],
   },
 };
 
