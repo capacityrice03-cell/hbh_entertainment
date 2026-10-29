@@ -215,7 +215,11 @@ export default function WarmKitchen() {
                 <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${RED} text-white`}>
                   <PlayIcon />
                 </span>
-                <span className="text-sm font-bold text-[#2b1a14]">{WARM_CELEBRATION_REEL.label}</span>
+                {/* 以「｜」拆成兩行，避免字被擠斷 */}
+                <span className="text-sm leading-snug font-bold text-[#2b1a14]">
+                  <span className="block">{WARM_CELEBRATION_REEL.label.split("｜")[0]}</span>
+                  <span className="block text-[#b8230c]">{WARM_CELEBRATION_REEL.label.split("｜")[1]}</span>
+                </span>
               </a>
             </div>
 
