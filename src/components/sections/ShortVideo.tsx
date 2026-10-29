@@ -29,7 +29,7 @@ export default function ShortVideo() {
           description={
             <>
               {/* 電腦版兩行；手機版另在逗號後換行（className="sm:hidden" 的 br），避免字被擠斷 */}
-              將社群平台長期累積的經營曝光，
+              社群平台長期累積的經營曝光，
               <br />
               能將每週微小的邊際投入，
               <br className="sm:hidden" />
