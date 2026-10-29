@@ -108,7 +108,7 @@ export const CASES: CaseStudy[] = [
     client: "Hydrafacial",
     services: ["event", "commercial"],
     description:
-      "品牌端、快閃店、KOL 與廣告四個環節。",
+      "美國原廠，結合品牌代理端、快閃店活動、KOL廣告效益與代理客戶(銷售排名前十大醫美診所)展示新機並接觸新客(提供體驗)。",
     highlights: ["KOL 現場體驗與粉絲見面"],
     images: [
       { src: "/images/hydra-02.jpg", alt: "KOL 於快閃店化妝準備" },
