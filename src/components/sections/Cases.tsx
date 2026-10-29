@@ -37,7 +37,6 @@ export default function Cases() {
         <SectionTitle
           title="實際案例"
           en="Case Sharing"
-          description="依接案類別瀏覽我們執行過的品牌影片、業配、直播與記者會專案。"
         />
 
         <div className="mb-10 flex flex-wrap justify-center gap-2" role="tablist">
