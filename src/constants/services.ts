@@ -14,8 +14,8 @@ export const SERVICES: Service[] = [
   },
   {
     id: "commercial",
-    title: "商業拍攝",
-    items: ["企業形象影片", "平面 / 動態－人像 × 商品", "KOL 業配－FB、IG、TikTok", "圖文影片業配 × 廣告轉單"],
+    title: "節目製作",
+    items: ["電視/OTT節目製作", "專案策劃&統籌"],
   },
 ];
 

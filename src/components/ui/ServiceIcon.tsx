@@ -20,7 +20,7 @@ const paths: Record<ServiceId, React.ReactNode> = {
       <path d="M17 3.5a6 6 0 0 1 3.5 3.5M15.5 6a3 3 0 0 1 2 2" />
     </>
   ),
-  // 商業拍攝：攝影機
+  // 節目製作：攝影機
   commercial: (
     <>
       <rect x="3" y="9" width="13" height="10" rx="2" />
