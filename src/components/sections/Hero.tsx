@@ -32,7 +32,9 @@ export default function Hero() {
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
           {SITE.subSlogan}
           <br />
-          從傳統媒體到新媒體平台、實體活動的線上線下整合。
+          傳統媒體跨足新媒體平台，
+          <br />
+          線上線下整合的實體活動與商品販售。
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
