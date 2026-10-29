@@ -179,7 +179,7 @@ export const CASES: CaseStudy[] = [
     links: [
       {
         label: "相關影片",
-        url: "https://youtube.com/playlist?list=PLWaU_EMlsoBoXOTzrAJibJEQQLEnFmPOC",
+        url: "https://www.facebook.com/share/v/1CMYx8qJyQ/",
       },
     ],
   },
