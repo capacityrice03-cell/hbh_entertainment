@@ -7,7 +7,8 @@ export default function SectionTitle({
 }: {
   title: string;
   en: string;
-  description?: string;
+  /** 可放純文字，或含上色、換行的內容 */
+  description?: React.ReactNode;
   light?: boolean;
   /** 縮小與下方內容的間距（精簡版區塊用） */
   compact?: boolean;

@@ -14,6 +14,11 @@ const PLATFORM_ICONS: Record<string, string> = {
   FB: "/images/icon-fb.png",
 };
 
+// 說明文字裡要凸顯的關鍵字
+function Em({ children }: { children: React.ReactNode }) {
+  return <span className="font-bold text-brand-orange">{children}</span>;
+}
+
 export default function ShortVideo() {
   return (
     <section id="short-video" className="bg-brand-cream/60 py-20 md:py-28">
@@ -21,7 +26,20 @@ export default function ShortVideo() {
         <SectionTitle
           title="短影音經營"
           en="Short Video"
-          description="藉由短影音的內容矩陣，編排企劃內容來達成各項行銷目標，透過社群平台的長期經營曝光達成數倍效益。"
+          description={
+            <>
+              {/* 電腦版三行；手機版另在逗號後換行（className="sm:hidden" 的 br），避免字被擠斷 */}
+              藉由短影音的內容矩陣，
+              <br className="sm:hidden" />
+              來達成各項需求與目標，
+              <br />
+              社群平台<Em>長期累積</Em>的<Em>經營曝光</Em>，
+              <br className="sm:hidden" />
+              能將每週微小的邊際投入，
+              <br />
+              轉化為<Em>指數型成長</Em>的<Em>商業效益</Em>。
+            </>
+          }
         />
 
         {/* 獨立標語 */}
