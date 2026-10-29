@@ -27,14 +27,10 @@ export default function ShortVideo() {
           title="短影音經營"
           en="Short Video"
           description={
-            <>
-              {/* 電腦版兩行；手機版另在逗號後換行（className="sm:hidden" 的 br），避免字被擠斷 */}
-              社群平台長期累積的經營曝光，
-              <br />
-              能將每週微小的邊際投入，
-              <br className="sm:hidden" />
-              轉化為<Em>指數型成長</Em>的<Em>商業效益</Em>。
-            </>
+            // 固定一行：手機版字級依螢幕寬度縮小（約 24 個字剛好塞滿），電腦版維持 16px
+            <span className="block text-[min(1rem,calc((100vw-2rem)/24))] whitespace-nowrap">
+              每週微小的邊際投入，轉化為<Em>指數型成長</Em>的<Em>商業效益</Em>
+            </span>
           }
         />
 
