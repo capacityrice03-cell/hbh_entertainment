@@ -203,14 +203,11 @@ export const CASES: CaseStudy[] = [
     layout: "gallery",
     images: [
       { src: "/images/golead-03.jpg", alt: "宏力移動尾牙戶外大合照，背景為台北 101", caption: "戶外大合照・台北 101 同框", tile: "big" },
-      { src: "/images/golead-04.jpg", alt: "宏力移動尾牙直式大合照與台北 101", caption: "領航者尾牙派對全員合影", tile: "tall" },
       { src: "/images/golead-01.jpg", alt: "宏力移動尾牙致詞", caption: "宏力移動致詞" },
       { src: "/images/golead-07.jpg", alt: "臺北市交通局局長謝銘鴻於尾牙致詞", caption: "臺北市交通局 謝銘鴻局長致詞" },
       { src: "/images/golead-02.jpg", alt: "宏力移動與合作夥伴室內大合照", caption: "叫車平台與合作夥伴合影" },
       { src: "/images/golead-06.jpg", alt: "尾牙多圈呼拉圈表演", caption: "表演高潮・全場同歡" },
-      { src: "/images/golead-05.jpg", alt: "尾牙呼拉圈表演與台下賓客", caption: "呼拉圈表演", tile: "big" },
     ],
-    galleryNote: { kicker: "2026.02.03・台北信義 Hooters", text: "多元怪物・領航者尾牙派對" },
   },
   {
     id: "dr-jou",
