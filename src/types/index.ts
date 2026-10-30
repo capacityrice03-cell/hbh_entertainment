@@ -12,6 +12,8 @@ export type Service = {
 export type CaseLink = {
   label: string;
   url: string;
+  /** 按鈕圖示：預設 "play"（影片）；"external" 用於官網、新聞等外部網頁 */
+  icon?: "play" | "external";
 };
 
 export type CaseImage = {
@@ -23,6 +25,8 @@ export type CaseImage = {
   caption?: string;
   /** 點圖片開啟的影片網址 */
   url?: string;
+  /** 照片牆（layout 為 "gallery"）裡的格子大小："big" 佔 2×2、"tall" 直式佔 1×2，沒填佔 1 格 */
+  tile?: "big" | "tall";
 };
 
 export type CaseMetric = {
@@ -47,8 +51,13 @@ export type CaseStudy = {
   images: CaseImage[];
   /** 主圖是直式照片時設為 true：主圖放左邊直式，其他小圖直排在右邊，避免裁切 */
   portraitMain?: boolean;
-  /** "episodes"：系列影片封面，以 2×2 完整 16:9 封面加集數標題呈現，不裁切 */
-  layout?: "episodes";
+  /**
+   * "episodes"：系列影片封面，以 2×2 完整 16:9 封面加集數標題呈現，不裁切
+   * "gallery"：文字在上、全寬拼貼照片牆在下，點照片可全螢幕瀏覽
+   */
+  layout?: "episodes" | "gallery";
+  /** 照片牆裡的文字格（佔 2×1），用來寫活動名稱、補滿拼貼空位 */
+  galleryNote?: { kicker: string; text: string };
   /** 設定後改用專屬元件呈現整張卡片（例如代表作品專區），其他欄位只用於分類篩選與計數 */
   feature?: "warm-kitchen";
   metrics?: CaseMetric[];

@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
+import Lightbox from "@/components/ui/Lightbox";
 
 type Photo = { src: string; alt: string; width: number; height: number };
 
@@ -12,32 +13,6 @@ type Photo = { src: string; alt: string; width: number; height: number };
 export default function VenueGallery({ photos }: { photos: readonly Photo[] }) {
   const [open, setOpen] = useState<number | null>(null);
   const [main, ...rest] = photos;
-
-  const close = useCallback(() => setOpen(null), []);
-  const step = useCallback(
-    (d: number) => setOpen((i) => (i === null ? i : (i + d + photos.length) % photos.length)),
-    [photos.length],
-  );
-
-  // 放大時：鍵盤操作、鎖住背景捲動
-  useEffect(() => {
-    if (open === null) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowRight") step(1);
-      if (e.key === "ArrowLeft") step(-1);
-    };
-    window.addEventListener("keydown", onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [open, close, step]);
-
-  // 手機左右滑
-  const [touchX, setTouchX] = useState<number | null>(null);
 
   return (
     <>
@@ -84,64 +59,7 @@ export default function VenueGallery({ photos }: { photos: readonly Photo[] }) {
         </ul>
       )}
 
-      {open !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={photos[open].alt}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-2 md:p-8"
-          onClick={close}
-          onTouchStart={(e) => setTouchX(e.touches[0].clientX)}
-          onTouchEnd={(e) => {
-            if (touchX === null) return;
-            const dx = e.changedTouches[0].clientX - touchX;
-            if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
-            setTouchX(null);
-          }}
-        >
-          <div className="relative h-full w-full" onClick={(e) => e.stopPropagation()}>
-            <Image src={photos[open].src} alt={photos[open].alt} fill sizes="100vw" className="object-contain" />
-          </div>
-
-          <button
-            type="button"
-            onClick={close}
-            className="absolute top-3 right-3 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-2xl text-white hover:bg-white/30"
-            aria-label="關閉"
-          >
-            ×
-          </button>
-          {photos.length > 1 && (
-            <>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  step(-1);
-                }}
-                className="absolute left-2 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-2xl text-white hover:bg-white/30 md:left-6"
-                aria-label="上一張"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  step(1);
-                }}
-                className="absolute right-2 flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-2xl text-white hover:bg-white/30 md:right-6"
-                aria-label="下一張"
-              >
-                ›
-              </button>
-            </>
-          )}
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/50 px-3 py-1 text-sm text-white/90">
-            {open + 1} / {photos.length}
-          </p>
-        </div>
-      )}
+      <Lightbox photos={photos} index={open} onChange={setOpen} />
     </>
   );
 }

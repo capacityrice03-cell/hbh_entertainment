@@ -184,6 +184,39 @@ export const CASES: CaseStudy[] = [
     ],
   },
   {
+    id: "golead-year-end",
+    title: "企業尾牙｜活動攝影紀錄",
+    subtitle: "宏力移動「2026 多元怪物・領航者尾牙派對」",
+    services: ["event"],
+    description:
+      "宏力移動為 Uber 駕駛夥伴提供零成本上路、事故支援的車隊服務，正全力推動純電多元計程車。\n\n2026.02.03 尾牙於台北 101 旁的信義區 Hooters 舉辦，百位司機齊聚，臺北市交通局局長、計程車公會理事長，以及 Uber、LINE GO、55688、Bolt 等平台代表皆到場。我們負責全場活動攝影。",
+    highlights: [
+      "全場活動攝影：董事長與總經理致詞、貴賓、表演節目",
+      "戶外大合照：與台北 101 天際線同框",
+      "叫車平台與合作夥伴品牌合影，呈現產業串聯",
+      "照片調色精修，供新聞稿與社群發布使用",
+    ],
+    metrics: [
+      { value: "百位", label: "司機夥伴齊聚" },
+      { value: "4 大", label: "叫車平台代表出席" },
+    ],
+    links: [
+      { label: "宏力移動官網", url: "https://go-lead.com.tw/", icon: "external" },
+      { label: "工商時報新聞報導", url: "https://www.ctee.com.tw/news/20260204701460-431202", icon: "external" },
+    ],
+    layout: "gallery",
+    images: [
+      { src: "/images/golead-03.jpg", alt: "宏力移動尾牙戶外大合照，背景為台北 101", caption: "戶外大合照・台北 101 同框", tile: "big" },
+      { src: "/images/golead-04.jpg", alt: "宏力移動尾牙直式大合照與台北 101", caption: "領航者尾牙派對全員合影", tile: "tall" },
+      { src: "/images/golead-01.jpg", alt: "宏力移動尾牙致詞", caption: "宏力移動致詞" },
+      { src: "/images/golead-07.jpg", alt: "臺北市交通局局長謝銘鴻於尾牙致詞", caption: "臺北市交通局 謝銘鴻局長致詞" },
+      { src: "/images/golead-02.jpg", alt: "宏力移動與合作夥伴室內大合照", caption: "叫車平台與合作夥伴合影" },
+      { src: "/images/golead-06.jpg", alt: "尾牙多圈呼拉圈表演", caption: "表演高潮・全場同歡" },
+      { src: "/images/golead-05.jpg", alt: "尾牙呼拉圈表演與台下賓客", caption: "呼拉圈表演", tile: "big" },
+    ],
+    galleryNote: { kicker: "2026.02.03・台北信義 Hooters", text: "多元怪物・領航者尾牙派對" },
+  },
+  {
     id: "dr-jou",
     title: "品牌代言人記者會",
     subtitle: "代言人曝光 & 新品上市發布",

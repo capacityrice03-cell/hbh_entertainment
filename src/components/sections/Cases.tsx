@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import PhotoWall from "@/components/ui/PhotoWall";
 import SectionTitle from "@/components/ui/SectionTitle";
 import WarmKitchen from "@/components/sections/WarmKitchen";
 import { CASES } from "@/constants/cases";
@@ -139,6 +140,25 @@ function EpisodeGrid({ images }: { images: CaseImage[] }) {
 }
 
 function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
+  // 照片牆：文字在上（電腦版左右兩欄），全寬照片牆在下
+  if (item.layout === "gallery") {
+    return (
+      <article id={item.id} className="scroll-mt-24 overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
+        <div className="grid gap-x-12 p-7 md:p-10 lg:grid-cols-2">
+          <div>
+            <CaseHeading item={item} />
+          </div>
+          <div className="flex flex-col lg:justify-end">
+            <CaseDetails item={item} />
+          </div>
+        </div>
+        <div className="px-2 pb-2 md:px-3 md:pb-3">
+          <PhotoWall images={item.images} note={item.galleryNote} />
+        </div>
+      </article>
+    );
+  }
+
   const [main, ...rest] = item.images;
 
   return (
@@ -176,86 +196,109 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
 
         {/* 文字 */}
         <div className="flex flex-col p-7 md:p-10">
-          <div className="flex flex-wrap gap-2">
-            {item.services.map((id) => (
-              <span
-                key={id}
-                className="rounded-full bg-brand-sky/20 px-3 py-1 text-xs font-medium text-brand-navy"
-              >
-                {SERVICE_TITLE[id]}
-              </span>
-            ))}
-          </div>
-
-          <h3 className="mt-4 text-2xl font-bold text-brand-navy">
-            {item.titleHighlight
-              ? item.title.split(item.titleHighlight).map((part, i) => (
-                  <span key={i}>
-                    {i > 0 && (
-                      <mark
-                        className="mx-0.5 rounded bg-brand-yellow px-1.5 text-brand-navy"
-                        style={item.titleHighlightColor ? { backgroundColor: item.titleHighlightColor } : undefined}
-                      >
-                        {item.titleHighlight}
-                      </mark>
-                    )}
-                    {part}
-                  </span>
-                ))
-              : item.title}
-          </h3>
-          {item.subtitle && <p className="mt-1 font-medium text-brand-orange">{item.subtitle}</p>}
-          {item.client && (
-            <p className="mt-1 text-sm text-muted">
-              {item.clientLabel === "" ? "" : `${item.clientLabel ?? "合作對象"}：`}
-              {item.client}
-            </p>
-          )}
-
-          {/* 說明文字裡的 \n 會換行 */}
-          {item.description && <p className="mt-5 leading-relaxed whitespace-pre-line text-ink">{item.description}</p>}
-
-          <ul className="mt-5 space-y-2">
-            {item.highlights.map((h) => (
-              <li key={h} className="flex gap-2 text-sm text-ink">
-                <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" fill="currentColor">
-                  <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z" />
-                </svg>
-                {h}
-              </li>
-            ))}
-          </ul>
-
-          {item.metrics && (
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {item.metrics.map((m) => (
-                <div key={m.label} className="rounded-xl bg-brand-cream px-4 py-3">
-                  <p className="text-2xl font-bold text-brand-orange">{m.value}</p>
-                  <p className="mt-0.5 text-xs text-muted">{m.label}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {item.links && (
-            <div className="mt-auto flex flex-wrap gap-2 pt-6">
-              {item.links.map((l) => (
-                <a
-                  key={l.url + l.label}
-                  href={l.url}
-                  {...(l.url.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
-                >
-                  <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
-                    <path d="M6 4.5v11l9-5.5z" />
-                  </svg>
-                  {l.label}
-                </a>
-              ))}
-            </div>
-          )}
+          <CaseHeading item={item} />
+          <CaseDetails item={item} />
         </div>
       </div>
     </article>
+  );
+}
+
+/** 分類標籤、標題、副標、合作對象、說明 */
+function CaseHeading({ item }: { item: CaseStudy }) {
+  return (
+    <>
+      <div className="flex flex-wrap gap-2">
+        {item.services.map((id) => (
+          <span
+            key={id}
+            className="rounded-full bg-brand-sky/20 px-3 py-1 text-xs font-medium text-brand-navy"
+          >
+            {SERVICE_TITLE[id]}
+          </span>
+        ))}
+      </div>
+
+      <h3 className="mt-4 text-2xl font-bold text-brand-navy">
+        {item.titleHighlight
+          ? item.title.split(item.titleHighlight).map((part, i) => (
+              <span key={i}>
+                {i > 0 && (
+                  <mark
+                    className="mx-0.5 rounded bg-brand-yellow px-1.5 text-brand-navy"
+                    style={item.titleHighlightColor ? { backgroundColor: item.titleHighlightColor } : undefined}
+                  >
+                    {item.titleHighlight}
+                  </mark>
+                )}
+                {part}
+              </span>
+            ))
+          : item.title}
+      </h3>
+      {item.subtitle && <p className="mt-1 font-medium text-brand-orange">{item.subtitle}</p>}
+      {item.client && (
+        <p className="mt-1 text-sm text-muted">
+          {item.clientLabel === "" ? "" : `${item.clientLabel ?? "合作對象"}：`}
+          {item.client}
+        </p>
+      )}
+
+      {/* 說明文字裡的 \n 會換行 */}
+      {item.description && <p className="mt-5 leading-relaxed whitespace-pre-line text-ink">{item.description}</p>}
+    </>
+  );
+}
+
+/** 重點清單、數據、連結 */
+function CaseDetails({ item }: { item: CaseStudy }) {
+  return (
+    <>
+      <ul className="mt-5 space-y-2">
+        {item.highlights.map((h) => (
+          <li key={h} className="flex gap-2 text-sm text-ink">
+            <svg viewBox="0 0 20 20" className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" fill="currentColor">
+              <path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z" />
+            </svg>
+            {h}
+          </li>
+        ))}
+      </ul>
+
+      {item.metrics && (
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {item.metrics.map((m) => (
+            <div key={m.label} className="rounded-xl bg-brand-cream px-4 py-3">
+              <p className="text-2xl font-bold text-brand-orange">{m.value}</p>
+              <p className="mt-0.5 text-xs text-muted">{m.label}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {item.links && (
+        <div className="mt-auto flex flex-wrap gap-2 pt-6">
+          {item.links.map((l) => (
+            <a
+              key={l.url + l.label}
+              href={l.url}
+              {...(l.url.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+              className="inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+            >
+              {l.icon === "external" ? (
+                <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M11 3h6v6M17 3l-8 8M8 5H4v11h11v-4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+                  <path d="M6 4.5v11l9-5.5z" />
+                </svg>
+              )}
+              {l.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </>
   );
 }
