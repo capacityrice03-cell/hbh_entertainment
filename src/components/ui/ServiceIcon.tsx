@@ -1,7 +1,7 @@
 import type { ServiceId } from "@/types";
 
 const paths: Record<ServiceId, React.ReactNode> = {
-  // 品牌影音營銷：手機 + AI 星芒
+  // 品牌影音行銷：手機 + AI 星芒
   channel: (
     <>
       <rect x="5" y="2.5" width="10" height="19" rx="2" />

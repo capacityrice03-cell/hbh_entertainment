@@ -1,4 +1,4 @@
-/** channel = 品牌影音營銷、event = 活動 / EFP 直播 / 媒體廣告、commercial = 節目製作 */
+/** channel = 品牌影音行銷、event = 活動 / EFP 直播 / 媒體廣告、commercial = 節目製作 */
 export type ServiceId = "channel" | "event" | "commercial";
 
 export type Service = {
