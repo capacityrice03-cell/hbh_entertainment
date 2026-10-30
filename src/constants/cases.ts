@@ -166,8 +166,8 @@ export const CASES: CaseStudy[] = [
   },
   {
     id: "ad-production",
-    title: "品牌行銷｜影像製作 × 廣告 × 轉單",
-    services: ["commercial"],
+    title: "業配拍攝｜商品 × 廣告 × 轉化率",
+    services: ["channel"],
     description: "",
     highlights: ["廣告影片製作", "置入行銷與導購"],
     images: [
