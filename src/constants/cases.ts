@@ -187,7 +187,6 @@ export const CASES: CaseStudy[] = [
     id: "dr-jou",
     title: "品牌代言人記者會",
     subtitle: "代言人曝光 & 新品上市發布",
-    client: "森田藥粧 DR.JOU",
     services: ["event"],
     description:
       "結合記者會、媒體曝光與 KOL 宣傳：FB 與 YouTube 雙平台同步直播，事前號召代言人粉絲，現場百名粉絲入場，獲數十家媒體報導。",
