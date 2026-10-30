@@ -51,8 +51,14 @@ export default function WarmKitchen() {
         <section>
           <BlockTitle no="01" title="一檔節目，善的循環" en="A Cycle of Good" />
           <div className="grid gap-8 lg:grid-cols-[2fr_3fr]">
-            <div className="relative aspect-[880/1000] overflow-hidden rounded-2xl shadow-md">
-              <Image src={WARM.poster.src} alt={WARM.poster.alt} fill sizes="(min-width: 1024px) 420px, 100vw" className="object-cover" />
+            <div className="group relative aspect-[880/1000] overflow-hidden rounded-2xl shadow-md">
+              <Image
+                src={WARM.poster.src}
+                alt={WARM.poster.alt}
+                fill
+                sizes="(min-width: 1024px) 420px, 100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
 
             <div className="flex flex-col">
@@ -157,8 +163,14 @@ export default function WarmKitchen() {
             <figure className="flex flex-col">
               <div className="grid flex-1 gap-3 max-lg:grid-cols-2">
                 {WARM_MEDIA.episodes.map((ep) => (
-                  <div key={ep.src} className="relative aspect-video overflow-hidden rounded-xl shadow-md">
-                    <Image src={ep.src} alt={ep.alt} fill sizes="(min-width: 1024px) 400px, 50vw" className="object-cover" />
+                  <div key={ep.src} className="group relative aspect-video overflow-hidden rounded-xl shadow-md">
+                    <Image
+                      src={ep.src}
+                      alt={ep.alt}
+                      fill
+                      sizes="(min-width: 1024px) 400px, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
                 ))}
               </div>
@@ -169,7 +181,7 @@ export default function WarmKitchen() {
           <div className="mt-5 grid gap-5 sm:grid-cols-2">
             {WARM_MEDIA.photos.map((p) => (
               <figure key={p.src}>
-                <div className="relative aspect-[3/2] overflow-hidden rounded-2xl shadow-md">
+                <div className="group relative aspect-[3/2] overflow-hidden rounded-2xl shadow-md">
                   {"contain" in p && p.contain ? (
                     <>
                       <Image
@@ -180,10 +192,22 @@ export default function WarmKitchen() {
                         sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw"
                         className="scale-110 object-cover blur-xl"
                       />
-                      <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw" className="object-contain" />
+                      <Image
+                        src={p.src}
+                        alt={p.alt}
+                        fill
+                        sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw"
+                        className="object-contain transition-transform duration-500 group-hover:scale-105"
+                      />
                     </>
                   ) : (
-                    <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                    <Image
+                      src={p.src}
+                      alt={p.alt}
+                      fill
+                      sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                   )}
                 </div>
                 <figcaption className="mt-2 text-sm text-muted">{p.caption}</figcaption>

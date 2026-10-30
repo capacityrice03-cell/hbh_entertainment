@@ -12,15 +12,15 @@ export default function About() {
           {ABOUT_PILLARS.map((p) => (
             <article
               key={p.keyword}
-              className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
+              className="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5"
             >
-              <div className="relative aspect-[4/3]">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={p.image}
                   alt={p.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-6 text-center">

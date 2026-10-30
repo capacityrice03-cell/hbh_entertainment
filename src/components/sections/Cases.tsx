@@ -169,25 +169,30 @@ function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
           <EpisodeGrid images={item.images} />
         ) : (
         <div className={`grid content-start grid-cols-3 gap-1 bg-white p-1 ${item.portraitMain ? "grid-rows-3" : ""}`}>
-          <div className={`relative ${item.portraitMain ? "col-span-2 row-span-3" : "col-span-3 aspect-[16/10]"}`}>
+          {/* 圓角與裁切放在外框，滑鼠經過時照片在框內放大 */}
+          <div
+            className={`group relative overflow-hidden ${
+              item.portraitMain
+                ? "col-span-2 row-span-3 rounded-l-[1.25rem]"
+                : "col-span-3 aspect-[16/10] rounded-t-[1.25rem] lg:rounded-[1.25rem]"
+            }`}
+          >
             <Image
               src={main.src}
               alt={main.alt}
               fill
               sizes={item.portraitMain ? "(min-width: 1024px) 34vw, 67vw" : "(min-width: 1024px) 50vw, 100vw"}
-              className={`object-cover ${
-                item.portraitMain ? "rounded-l-[1.25rem]" : "rounded-t-[1.25rem] lg:rounded-[1.25rem]"
-              }`}
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
           {rest.map((img) => (
-            <div key={img.src} className="relative aspect-square">
+            <div key={img.src} className="group relative aspect-square overflow-hidden rounded-lg">
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
                 sizes="(min-width: 1024px) 17vw, 33vw"
-                className="rounded-lg object-cover"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           ))}

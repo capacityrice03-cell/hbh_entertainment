@@ -145,14 +145,14 @@ export default function LoopingWall({ items: source }: { items: readonly Item[] 
       >
         {copies.flatMap((c) =>
           items.map((v, i) => (
-            <li key={`${c}-${v.src}`} className="relative aspect-[9/14]" aria-hidden={c !== 1 || undefined}>
+            <li key={`${c}-${v.src}`} className="group relative aspect-[9/14] overflow-hidden" aria-hidden={c !== 1 || undefined}>
               <Image
                 src={v.src}
                 alt={c === 1 ? `短影音作品 ${i + 1}，${v.views} 萬次播放` : ""}
                 fill
                 draggable={false}
                 sizes="(min-width: 1024px) 165px, (min-width: 640px) 150px, 28vw"
-                className="pointer-events-none object-cover"
+                className="pointer-events-none object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </li>
           )),
