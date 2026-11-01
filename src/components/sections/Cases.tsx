@@ -60,6 +60,15 @@ export default function Cases() {
             ),
           )}
         </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="/works/"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-7 py-3 font-medium tracking-wider text-white transition-colors hover:bg-brand-blue"
+          >
+            綜合瀏覽作品集
+          </a>
+        </div>
       </div>
     </section>
   );
