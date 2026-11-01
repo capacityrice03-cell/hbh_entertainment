@@ -35,7 +35,7 @@ export const SITE = {
   name: "好不好娛樂",
   nameEn: "Haobuhao Entertainment",
   slogan: "專為企業、品牌規劃的影音製作團隊",
-  subSlogan: "理解需求，提供精準的客製化服務",
+  subSlogan: "提供精準的客製化服務",
   contact: {
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",
@@ -45,7 +45,7 @@ export const SITE = {
 // 網址丟到 LINE / FB 時的預覽卡片（標題 + 一句短描述 + 圖片）；Google 搜尋仍用上面的 SEO 標題與描述
 export const SHARE = {
   title: "好不好娛樂｜陪伴品牌成長的影音製作團隊",
-  description: "提供精準的客製化服務",
+  description: SITE.subSlogan,
   image: "/images/og-logo.jpg",
 } as const;
 
