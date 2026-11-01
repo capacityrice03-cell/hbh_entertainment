@@ -4,9 +4,12 @@
 export const BRAND_VIDEO = {
   title: "品牌影音行銷",
   en: "Brand Video Marketing",
-  // 頁面開頭的一段介紹，也用在 Google 搜尋結果的描述
+  // 頁面開頭的一段介紹（畫面上看得到）
   intro:
-    "品牌影音行銷是好不好娛樂為企業、品牌量身規劃的社群影音服務：從企劃、拍攝到剪輯一條龍，產出系列短影音與 Reels，並持續經營 FB、IG、Threads、TikTok 帳號，讓品牌在社群上長期曝光。",
+    "品牌影音行銷不適用一套公式，量身打造雖費時費力，但成效會說話，品牌在社群上長期曝光，需要的是與時俱進的正確方向。",
+  // Google 搜尋結果與結構化資料用的描述（畫面上看不到）；目前和開頭介紹相同
+  description:
+    "品牌影音行銷不適用一套公式，量身打造雖費時費力，但成效會說話，品牌在社群上長期曝光，需要的是與時俱進的正確方向。",
 } as const;
 
 // 服務內容：每項一個標題 + 一句說明
@@ -29,7 +32,7 @@ export const BRAND_VIDEO_ITEMS = [
   },
   {
     title: "人物故事短影音",
-    text: "為主廚、創辦人等關鍵人物量身打造故事短影音，從人生轉折帶出品牌的意義。",
+    text: "為IP關鍵人物量身打造故事短影音，是介紹品牌的一項利器。",
   },
 ] as const;
 
@@ -56,7 +59,7 @@ export const MARKET_PRICES: {
   {
     plan: "品牌IP打造",
     deliverable: "每月8支影片企劃製作",
-    period: "月約，首次合作需 3 個月",
+    period: "",
     amount: "12 萬",
     unit: "／月",
     icon: "star",

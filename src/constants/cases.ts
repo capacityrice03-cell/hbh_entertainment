@@ -16,7 +16,7 @@ export const CASES: CaseStudy[] = [
     description:
       '量身打造"自媒體經營/行銷企劃"\n\n將品牌從誕生、試營運、展店與盛大開幕的過程，\n執行活動規劃與拍攝，\n內容投放至社群媒體、街頭實體版面，放大影響力吸引客群。',
     highlights: [
-      "統籌、企劃、執行、攝影、剪輯一條龍",
+      "統籌、企劃、執行、攝影、剪輯",
       "系列影音：品牌誕生、展店規劃、試營運活動、開幕記者會",
       "Reels 產出：全年度節慶與活動檔期，長期持續性曝光",
     ],
@@ -120,7 +120,7 @@ export const CASES: CaseStudy[] = [
     clientLabel: "架構",
     services: ["event", "commercial"],
     description:
-      "整合品牌端、KOL 與 MCN 三方資源，以 EFP 多機導播系統執行帶貨直播，從棚內佈燈、導播到多平台推流一手包辦。",
+      "整合品牌端、KOL 與 MCN 三方資源，以 EFP 多機導播系統執行帶貨直播，從棚內佈燈、導播到多平台推流。",
     highlights: ["多機位導播系統", "棚內燈光與場景佈置", "淘寶平台-帶貨直播節目", "台灣貿易商直營操作"],
     images: [
       { src: "/images/live-shop-01.jpg", alt: "直播攝影棚現場" },

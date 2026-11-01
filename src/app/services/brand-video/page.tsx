@@ -23,7 +23,7 @@ const cases = CASES.filter((c) => c.services.includes("channel"));
 
 export const metadata: Metadata = {
   title: `${BRAND_VIDEO.title}｜品牌短影音企劃拍攝・社群經營｜${SITE.name}`,
-  description: BRAND_VIDEO.intro,
+  description: BRAND_VIDEO.description,
   alternates: { canonical: PATH },
   ...shareMeta(`${BRAND_VIDEO.title}｜${SITE.name}`, PATH),
 };
@@ -34,7 +34,7 @@ const serviceLd = {
   "@type": "Service",
   name: BRAND_VIDEO.title,
   serviceType: BRAND_VIDEO.title,
-  description: BRAND_VIDEO.intro,
+  description: BRAND_VIDEO.description,
   url: `${SITE_URL}${PATH}`,
   areaServed: { "@type": "Country", name: "Taiwan" },
   provider: { "@type": "Organization", name: SITE.name, url: `${SITE_URL}/` },
@@ -185,7 +185,8 @@ export default function BrandVideoPage() {
                     </td>
                     <td
                       data-label="週期"
-                      className="mt-4 block text-sm text-ink before:mb-1 before:block before:text-xs before:text-muted before:content-[attr(data-label)] md:mt-0 md:table-cell md:px-6 md:py-6 md:align-middle md:before:hidden"
+                      // 週期留空時：電腦版保留空白格子，手機版整個不顯示（避免只剩「週期」兩個字）
+                      className={`${p.period ? "block" : "hidden"} mt-4 text-sm text-ink before:mb-1 before:block before:text-xs before:text-muted before:content-[attr(data-label)] md:mt-0 md:table-cell md:px-6 md:py-6 md:align-middle md:before:hidden`}
                     >
                       {p.period}
                     </td>
