@@ -33,18 +33,45 @@ export const BRAND_VIDEO_ITEMS = [
   },
 ] as const;
 
-// 市場行情參考（整理自業界公開方案，不寫公司名稱；原始資料在 素材/素材_給ai/短影音業界行情_整理.md）
-// detail：金額上方的小字；amount：放大顯示的金額（前面自動加「約」、後面加「元」）
-export const MARKET_PRICES = [
-  { type: "單次拍攝", detail: "網路業配", amount: "5 萬", icon: "camera" },
-  { type: "季約品牌代操", detail: "3 個月 36 支", amount: "42 萬", icon: "calendar" },
-  { type: "教學陪跑", detail: "每月", amount: "15 萬", icon: "teach" },
-] as const;
+// 服務方案與費用（負責人訂定的價格；市場行情原始整理在 素材/素材_給ai/短影音業界行情_整理.md）
+// amount：放大顯示的金額（前面自動加「約」、後面加「元」）；unit：金額後面的「／月」這類小字
+// caseLink：選填，交付內容下方的實際案例按鈕
+export const MARKET_PRICES: {
+  plan: string;
+  deliverable: string;
+  caseLink?: { label: string; url: string };
+  period: string;
+  amount: string;
+  unit?: string;
+  icon: "camera" | "star" | "calendar";
+}[] = [
+  {
+    plan: "單次拍攝",
+    deliverable: "網路業配影片 1 支",
+    caseLink: { label: "實際案例：品牌 × 節目 × 公益", url: "https://youtu.be/0DEVAr1YG90" },
+    period: "專案制",
+    amount: "5–10 萬",
+    icon: "camera",
+  },
+  {
+    plan: "品牌IP打造",
+    deliverable: "每月8支影片企劃製作",
+    period: "月約，首次合作需 3 個月",
+    amount: "12 萬",
+    unit: "／月",
+    icon: "star",
+  },
+  {
+    plan: "季約品牌代操",
+    deliverable: "3 個月共 36 支：帳號規劃、腳本企劃、拍攝、剪輯後製、協助上片",
+    period: "季約（3 個月）",
+    amount: "40 萬",
+    unit: "／季",
+    icon: "calendar",
+  },
+];
 
-export const MARKET_PRICE_NOTES = [
-  "以上為市場行情參考（未稅），並非本公司報價。",
-  "我們提供專案優惠價，將依照專案需求進行報價。",
-] as const;
+export const MARKET_PRICE_NOTES = ["以上價格皆為未稅，實際費用依專案需求報價，我們提供專案優惠價。"] as const;
 
 // 合作流程（依序顯示）；text 可省略，省略就只顯示標題
 export const BRAND_VIDEO_STEPS: { title: string; text?: string }[] = [

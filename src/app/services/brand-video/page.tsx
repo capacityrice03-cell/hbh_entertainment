@@ -66,10 +66,10 @@ function PriceIcon({ name }: { name: (typeof MARKET_PRICES)[number]["icon"] }) {
         <path d="M3 9.5h18M8 2.5v4M16 2.5v4M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2" />
       </svg>
     );
+  // star：品牌IP
   return (
     <svg {...common}>
-      <path d="M2.5 9 12 4.5 21.5 9 12 13.5z" />
-      <path d="M6.5 11v4.5c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3V11M21.5 9v5" />
+      <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />
     </svg>
   );
 }
@@ -134,43 +134,73 @@ export default function BrandVideoPage() {
           </div>
         </section>
 
-        {/* 市場行情參考 */}
+        {/* 服務方案與費用 */}
         <section className="bg-brand-cream/40 py-14 md:py-20">
           <div className="mx-auto max-w-5xl px-4">
-            <p className="text-center text-xs font-semibold tracking-[0.3em] text-brand-blue uppercase">Market Price</p>
-            <h2 className="mt-2 text-center text-3xl font-bold tracking-wide text-brand-navy md:text-4xl">市場行情參考</h2>
-            <ul className="mt-10 grid gap-5 md:grid-cols-3">
-              {MARKET_PRICES.map((p, i) => (
-                <li
-                  key={p.type}
-                  className={`relative overflow-hidden rounded-3xl p-7 text-center shadow-sm ring-1 md:p-8 ${
-                    i === 1 ? "bg-brand-navy text-white ring-brand-navy md:-my-3" : "bg-white text-brand-navy ring-black/5"
-                  }`}
-                >
-                  {/* 右上角的裝飾圓 */}
-                  <span
-                    aria-hidden="true"
-                    className={`absolute -top-10 -right-10 h-28 w-28 rounded-full ${i === 1 ? "bg-white/10" : "bg-brand-sky/20"}`}
-                  />
-                  <span
-                    className={`relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl ${
-                      i === 1 ? "bg-brand-yellow text-brand-navy" : "bg-brand-sky/25 text-brand-navy"
-                    }`}
+            <p className="text-center text-xs font-semibold tracking-[0.3em] text-brand-blue uppercase">Plans &amp; Pricing</p>
+            <h2 className="mt-2 text-center text-3xl font-bold tracking-wide text-brand-navy md:text-4xl">服務方案與費用</h2>
+            {/* 電腦版是表格；手機版每一列變成一張卡片，欄位名稱顯示在內容上方（data-label） */}
+            <table className="mt-10 w-full border-separate border-spacing-0 text-left md:overflow-hidden md:rounded-3xl md:bg-white md:shadow-sm md:ring-1 md:ring-black/5">
+              <thead className="hidden bg-brand-navy text-white md:table-header-group">
+                <tr>
+                  {["方案", "交付內容", "週期", "價格"].map((h) => (
+                    <th key={h} scope="col" className="px-6 py-4 text-sm font-medium tracking-widest">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {MARKET_PRICES.map((p) => (
+                  <tr
+                    key={p.plan}
+                    className="mb-4 block rounded-3xl bg-white p-6 shadow-sm md:mb-0 ring-1 ring-black/5 md:table-row md:rounded-none md:p-0 md:shadow-none md:ring-0 md:[&:not(:last-child)>*]:border-b md:[&>*]:border-black/5"
                   >
-                    <PriceIcon name={p.icon} />
-                  </span>
-                  <h3 className="relative mt-5 text-xl font-bold tracking-wider">{p.type}</h3>
-                  <p className={`relative mt-4 text-sm tracking-wider ${i === 1 ? "text-white/75" : "text-muted"}`}>{p.detail}</p>
-                  <p className="relative mt-1">
-                    <span className={`text-base ${i === 1 ? "text-white/75" : "text-muted"}`}>約 </span>
-                    <span className={`text-5xl font-black tracking-tight ${i === 1 ? "text-brand-yellow" : "text-brand-orange"}`}>
-                      {p.amount}
-                    </span>
-                    <span className={`text-base ${i === 1 ? "text-white/75" : "text-muted"}`}> 元</span>
-                  </p>
-                </li>
-              ))}
-            </ul>
+                    <th scope="row" className="block md:table-cell md:px-6 md:py-6 md:align-middle">
+                      <span className="flex items-center gap-3">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-sky/25 text-brand-navy">
+                          <PriceIcon name={p.icon} />
+                        </span>
+                        <span className="text-lg font-bold tracking-wider whitespace-nowrap text-brand-navy">{p.plan}</span>
+                      </span>
+                    </th>
+                    <td
+                      data-label="交付內容"
+                      className="mt-4 block text-ink before:mb-1 before:block before:text-xs before:text-muted before:content-[attr(data-label)] md:mt-0 md:table-cell md:px-6 md:py-6 md:align-middle md:before:hidden"
+                    >
+                      <p className="leading-relaxed">{p.deliverable}</p>
+                      {p.caseLink && (
+                        <a
+                          href={p.caseLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-3 py-1 text-sm font-medium text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+                        >
+                          <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+                            <path d="M6 4.5v11l9-5.5z" />
+                          </svg>
+                          {p.caseLink.label}
+                        </a>
+                      )}
+                    </td>
+                    <td
+                      data-label="週期"
+                      className="mt-4 block text-sm text-ink before:mb-1 before:block before:text-xs before:text-muted before:content-[attr(data-label)] md:mt-0 md:table-cell md:px-6 md:py-6 md:align-middle md:before:hidden"
+                    >
+                      {p.period}
+                    </td>
+                    <td
+                      data-label="價格"
+                      className="mt-4 block whitespace-nowrap before:mb-1 before:block before:text-xs before:text-muted before:content-[attr(data-label)] md:mt-0 md:table-cell md:px-6 md:py-6 md:align-middle md:before:hidden"
+                    >
+                      <span className="text-sm text-muted">約 </span>
+                      <span className="text-3xl font-black tracking-tight text-brand-orange">{p.amount}</span>
+                      <span className="text-sm text-muted"> 元{p.unit}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
             <ul className="mt-8 space-y-1 text-center text-sm text-muted">
               {MARKET_PRICE_NOTES.map((note) => (
                 <li key={note}>※ {note}</li>
