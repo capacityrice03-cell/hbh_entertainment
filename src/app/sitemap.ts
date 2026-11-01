@@ -9,6 +9,7 @@ export const dynamic = "force-static";
 const UPDATED = {
   home: "2026-11-01",
   venue: "2026-11-01",
+  brandVideo: "2026-11-01",
   privacy: "2026-10-27",
   terms: "2026-10-27",
 };
@@ -22,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
       images: [`${SITE_URL}${SEO.ogImage}`],
     },
+    { url: `${SITE_URL}/services/brand-video/`, lastModified: UPDATED.brandVideo, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/venue/`, lastModified: UPDATED.venue, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy/`, lastModified: UPDATED.privacy, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms/`, lastModified: UPDATED.terms, changeFrequency: "yearly", priority: 0.3 },

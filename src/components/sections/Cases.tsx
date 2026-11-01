@@ -139,7 +139,8 @@ function EpisodeGrid({ images }: { images: CaseImage[] }) {
   );
 }
 
-function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
+/** 單一案例卡片（首頁案例區與服務分頁共用） */
+export function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean }) {
   // 照片牆：文字在上（電腦版左右兩欄），全寬照片牆在下
   if (item.layout === "gallery") {
     return (

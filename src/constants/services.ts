@@ -6,6 +6,7 @@ export const SERVICES: Service[] = [
     id: "channel",
     title: "品牌影音行銷",
     items: ["客製化企劃內容", "FB、IG、Threads、TikTok 帳號 AI 自動化營運"],
+    caseHref: "/services/brand-video/",
   },
   {
     id: "event",

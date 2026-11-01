@@ -24,7 +24,8 @@ export function optimizedSrc(src: string, width: number) {
 export default function imageLoader({ src, width }: { src: string; width: number }) {
   if (/^https?:\/\//.test(src)) return src;
   const match = src.match(/^\/images\/(.+)\.(jpe?g|png)$/i);
-  if (process.env.NODE_ENV !== "production" || !match) return `${basePath}${src}`;
+  // 開發模式用原圖；網址帶上 ?w= 只是讓 Next.js 知道 loader 有用到寬度（不然會一直跳警告），對原圖沒有影響
+  if (process.env.NODE_ENV !== "production" || !match) return `${basePath}${src}?w=${width}`;
   // 用清單中「不小於需要寬度」的最小一種；超過最大的就用最大的
   const w = WIDTHS.find((n) => n >= width) ?? WIDTHS[WIDTHS.length - 1];
   return `${basePath}/images/_w/${match[1]}-${w}.webp`;
