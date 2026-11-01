@@ -5,7 +5,8 @@ import Footer from "@/components/layout/Footer";
 import VenueCalendar from "@/components/ui/VenueCalendar";
 import VenueGallery from "@/components/ui/VenueGallery";
 import { VENUE, VENUE_PLACES } from "@/constants/services";
-import { SITE, shareMeta } from "@/constants/site";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE, breadcrumbLd, shareMeta } from "@/constants/site";
 
 function PinIcon() {
   return (
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
 export default function VenuePage() {
   return (
     <>
+      <JsonLd data={breadcrumbLd(VENUE.title, "/venue/")} />
       <header className="border-b border-black/5 bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20">
           <Link href="/" className="flex items-center" aria-label={`${SITE.name} 首頁`}>

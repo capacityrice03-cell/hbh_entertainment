@@ -122,6 +122,7 @@ export default function PrivacyPage() {
     <LegalPage
       title="隱私權政策"
       titleEn="Privacy Policy"
+      path="/privacy/"
       updated={UPDATED}
       intro={`${SITE.name}非常重視您的隱私。本政策說明您使用本網站及與我們聯繫時，我們如何蒐集、使用與保護您的個人資料。`}
       sections={SECTIONS}

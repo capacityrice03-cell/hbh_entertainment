@@ -1,22 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
-import { SITE } from "@/constants/site";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE, breadcrumbLd } from "@/constants/site";
 
 export type LegalSection = { title: string; body: React.ReactNode };
 
 type Props = {
   title: string;
   titleEn: string;
+  /** 本頁網址路徑，例如 "/privacy/"，給麵包屑結構化資料用 */
+  path: string;
   updated: string;
   intro: React.ReactNode;
   sections: LegalSection[];
 };
 
 /** 隱私權政策、服務條款等法律頁面共用的版面 */
-export default function LegalPage({ title, titleEn, updated, intro, sections }: Props) {
+export default function LegalPage({ title, titleEn, path, updated, intro, sections }: Props) {
   return (
     <>
+      <JsonLd data={breadcrumbLd(title, path)} />
       <header className="border-b border-black/5 bg-white">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20">
           <Link href="/" className="flex items-center" aria-label={`${SITE.name} 首頁`}>

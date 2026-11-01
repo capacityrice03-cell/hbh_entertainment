@@ -72,6 +72,18 @@ export function shareMeta(title: string, url: string): Pick<Metadata, "openGraph
   };
 }
 
+// 結構化資料：子頁面的麵包屑「首頁 › 本頁」，Google 搜尋結果可能用它顯示網址路徑
+export function breadcrumbLd(name: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name, item: `${SITE_URL}${path}` },
+    ],
+  };
+}
+
 export const NAV = [
   { label: "關於我們", href: "#about" },
   { label: "服務項目", href: "#services" },

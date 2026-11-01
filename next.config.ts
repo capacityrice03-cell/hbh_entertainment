@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { deviceSizes, imageSizes } from "./src/lib/image-widths.json";
 
 // 網站使用自訂網域 hbh-tw.store，放在網域最上層，所以不設子路徑。
 // 若改回 https://<帳號>.github.io/<repo>/ 這種網址，部署時要設定 NEXT_PUBLIC_BASE_PATH=/<repo>。
@@ -14,6 +15,9 @@ const nextConfig: NextConfig = {
     // 靜態網站沒有伺服器做圖片最佳化，改用自訂 loader 補上 basePath
     loader: "custom",
     loaderFile: "./src/lib/image-loader.ts",
+    // 只產生這幾種寬度的縮圖（scripts/optimize-images.mjs 會照這份清單輸出 WebP）
+    deviceSizes,
+    imageSizes,
   },
   turbopack: {
     rules: {

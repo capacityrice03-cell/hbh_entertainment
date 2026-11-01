@@ -6,6 +6,7 @@ import Services from "@/components/sections/Services";
 import ShortVideo from "@/components/sections/ShortVideo";
 import Cases from "@/components/sections/Cases";
 import Contact from "@/components/sections/Contact";
+import JsonLd from "@/components/seo/JsonLd";
 import { SEO, SITE, SITE_URL } from "@/constants/site";
 import { SERVICES } from "@/constants/services";
 
@@ -51,13 +52,8 @@ const websiteLd = {
 export default function Home() {
   return (
     <>
-      {[jsonLd, websiteLd].map((ld) => (
-        <script
-          key={ld["@type"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }}
-        />
-      ))}
+      <JsonLd data={jsonLd} />
+      <JsonLd data={websiteLd} />
       <Header />
       <main id="main" className="flex-1">
         <Hero />

@@ -100,6 +100,7 @@ export default function TermsPage() {
     <LegalPage
       title="服務條款"
       titleEn="Terms of Service"
+      path="/terms/"
       updated={UPDATED}
       intro={`以下條款說明您使用${SITE.name}網站及相關服務時，雙方的權利與義務。使用前請詳細閱讀。`}
       sections={SECTIONS}
