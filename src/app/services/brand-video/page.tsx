@@ -101,7 +101,7 @@ export default function BrandVideoPage() {
               <p className="text-xs font-semibold tracking-[0.3em] text-brand-blue uppercase">{BRAND_VIDEO.en}</p>
             </div>
             <h1 className="mt-4 text-3xl font-bold tracking-widest text-brand-navy md:text-5xl">{BRAND_VIDEO.title}</h1>
-            <p className="mt-6 text-lg leading-relaxed text-ink md:text-xl">{BRAND_VIDEO.intro}</p>
+            <p className="mt-6 text-lg leading-relaxed whitespace-pre-line text-ink md:text-xl">{BRAND_VIDEO.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contact"
