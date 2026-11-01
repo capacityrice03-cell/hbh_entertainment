@@ -8,7 +8,8 @@ export default function Hero() {
         src="/images/hero.jpg"
         alt="台北京站開幕活動現場人潮"
         fill
-        preload
+        loading="eager"
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover"
       />

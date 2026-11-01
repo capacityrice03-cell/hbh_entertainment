@@ -17,7 +17,9 @@ export default function Header() {
             width={1225}
             height={746}
             className="h-11 w-auto md:h-14"
-            preload
+            loading="eager"
+            // 低優先權：讓首頁主圖先下載（也避免 React 自動替它加 preload）
+            fetchPriority="low"
           />
         </a>
 
