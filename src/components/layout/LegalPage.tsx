@@ -28,7 +28,7 @@ export default function LegalPage({ title, titleEn, updated, intro, sections }: 
         </div>
       </header>
 
-      <main className="flex-1 bg-brand-cream/40 py-14 md:py-20">
+      <main id="main" className="flex-1 bg-brand-cream/40 py-14 md:py-20">
         <article className="mx-auto max-w-3xl px-4">
           <h1 className="text-3xl font-bold tracking-widest text-brand-navy md:text-4xl">{title}</h1>
           <p className="mt-2 text-sm text-muted">

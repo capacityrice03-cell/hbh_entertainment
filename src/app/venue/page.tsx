@@ -48,7 +48,7 @@ export default function VenuePage() {
         </div>
       </header>
 
-      <main className="flex-1 bg-brand-cream/40 py-14 md:py-20">
+      <main id="main" className="flex-1 bg-brand-cream/40 py-14 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
           <p className="text-xs font-semibold tracking-[0.3em] text-brand-blue">VENUE RENTAL</p>
           <h1 className="mt-2 text-3xl font-bold tracking-widest text-brand-navy md:text-4xl">{VENUE.title}</h1>

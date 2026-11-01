@@ -39,15 +39,27 @@ const jsonLd = {
   },
 };
 
+// 結構化資料：告訴 Google 搜尋結果上方要顯示的網站名稱
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  alternateName: SITE.nameEn,
+  url: `${SITE_URL}/`,
+};
+
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
+      {[jsonLd, websiteLd].map((ld) => (
+        <script
+          key={ld["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }}
+        />
+      ))}
       <Header />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         <Hero />
         <Services />
         <ShortVideo />
