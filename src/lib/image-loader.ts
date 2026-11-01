@@ -9,6 +9,14 @@ export function withBase(path: string) {
 }
 
 /**
+ * 不經過 next/image 的圖片（例如 <video poster>）也想用 WebP 縮圖時用這個。
+ * width 會自動換成清單中最接近、且不小於它的寬度。
+ */
+export function optimizedSrc(src: string, width: number) {
+  return imageLoader({ src, width });
+}
+
+/**
  * next/image 的圖片網址。
  * 正式網站：/images/xxx.jpg → /images/_w/xxx-<寬度>.webp（建置後由 scripts/optimize-images.mjs 產生）
  * 開發模式：直接用原始檔，不需要先產生縮圖。

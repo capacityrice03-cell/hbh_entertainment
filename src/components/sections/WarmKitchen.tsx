@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { withBase } from "@/lib/image-loader";
+import { optimizedSrc, withBase } from "@/lib/image-loader";
 import {
   WARM,
   WARM_CELEBRATION_REEL,
@@ -152,7 +152,7 @@ export default function WarmKitchen() {
                 controls
                 preload="none"
                 playsInline
-                poster={withBase(WARM_MEDIA.newsVideo.poster)}
+                poster={optimizedSrc(WARM_MEDIA.newsVideo.poster, 1080)}
                 className="aspect-video w-full rounded-2xl bg-black shadow-md"
               >
                 <source src={withBase(WARM_MEDIA.newsVideo.src)} type="video/mp4" />

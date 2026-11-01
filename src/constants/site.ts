@@ -31,14 +31,6 @@ export const SEO = {
   ogImage: "/images/hero.jpg",
 } as const;
 
-// 網址丟到 LINE / FB 時的預覽卡片（標題 + 圖片）；Google 搜尋仍用上面的 SEO 標題與描述
-export const SHARE = {
-  title: "好不好娛樂｜陪伴品牌成長的影音製作團隊",
-  // 描述刻意放一個全形空白：不填的話會自動帶入上面那段很長的 SEO 描述
-  description: "　",
-  image: "/images/og-logo.jpg",
-} as const;
-
 export const SITE = {
   name: "好不好娛樂",
   nameEn: "Haobuhao Entertainment",
@@ -48,6 +40,13 @@ export const SITE = {
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",
   },
+} as const;
+
+// 網址丟到 LINE / FB 時的預覽卡片（標題 + 一句短描述 + 圖片）；Google 搜尋仍用上面的 SEO 標題與描述
+export const SHARE = {
+  title: "好不好娛樂｜陪伴品牌成長的影音製作團隊",
+  description: SITE.subSlogan,
+  image: "/images/og-logo.jpg",
 } as const;
 
 // 社群分享預覽（LINE / FB / X）的完整設定。

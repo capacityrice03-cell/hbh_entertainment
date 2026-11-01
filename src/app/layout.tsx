@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   title: SEO.title,
   description: SEO.description,
   applicationName: SITE.name,
+  // 點外部連結時，只把本站網域（不含完整網址）告訴對方網站
+  referrer: "strict-origin-when-cross-origin",
   alternates: { canonical: "/" },
   // Google Search Console 網站擁有權驗證（舊網址 github.io、新網域 hbh-tw.store 各一組）
   verification: {
