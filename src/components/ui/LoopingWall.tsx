@@ -34,7 +34,8 @@ export default function LoopingWall({ items: source }: { items: readonly Item[] 
 
   useEffect(() => {
     const el = scroller.current;
-    if (!el) return;
+    // 前後兩份要等洗牌完成才會出現，之後才能量寬度、置中
+    if (!el || !ready) return;
 
     // 一份的寬度 = 第二份第一張的位置 − 第一份第一張的位置
     const measure = () => {
@@ -126,14 +127,15 @@ export default function LoopingWall({ items: source }: { items: readonly Item[] 
       el.removeEventListener("click", stopClick, true);
       el.removeEventListener("dragstart", noDrag);
     };
-  }, [items.length]);
+  }, [items.length, ready]);
 
   const step = (dir: 1 | -1) => {
     const el = scroller.current;
     if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
   };
 
-  const copies = [0, 1, 2];
+  // 預先產生的頁面只放中間那份（減少 HTML 和圖片標籤），前後兩份等瀏覽器洗牌後再補上
+  const copies = ready ? [0, 1, 2] : [1];
 
   return (
     <div className="relative">
