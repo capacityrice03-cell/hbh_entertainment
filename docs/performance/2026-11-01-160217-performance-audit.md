@@ -16,8 +16,10 @@
 |-------------------|-------|------------|
 | Critical Issues   | 0     | 0%         |
 | High Impact       | 0     | 0%         |
-| Medium Impact     | 4     | 44%        |
-| Low Impact        | 5     | 56%        |
+| Medium Impact     | 3     | 33%        |
+| Low Impact        | 6     | 67%        |
+
+> 2026-11-01 更新：P-001 已修正並上線；P-002 實測效益不明顯，從 Medium 降為 Low（見 P-002 說明）。
 | **Total**         | **9** | **100%**   |
 
 ### Key Analysis Results
@@ -127,8 +129,10 @@ No high issues identified.
 
 #### P-002: 整個「實際案例」區塊都是 Client Component，案例資料和渲染全部送到瀏覽器
 
+> **2026-11-01 實測更新：已降為 Low（2.0），不建議修改。** 依下方建議實作後量測首頁（gzip）：JS 204.4 → 195.6 KB（−8.8 KB），但 HTML 28.7 → 38.2 KB（+9.5 KB），合計反而多約 0.7 KB。原因是改成 Server Component 後，Next.js 會把整個卡片結構寫進 HTML 的 RSC 資料（flight payload 43 KB → 123 KB），內容一樣送兩次；載入後瀏覽器要接手的 DOM 也差不多多，hydration 的負擔沒有明顯減少。下方原本的分析高估了效益，改動已還原。
+
 **Location**: `src/components/sections/Cases.tsx:1`（`"use client"`），連帶 `src/components/sections/WarmKitchen.tsx`、`src/components/ui/PhotoWall.tsx`，以及 `src/app/services/brand-video/page.tsx:6` 引用的 `CaseCard`
-**Performance Impact**: 5.5 (Medium)
+**Performance Impact**: ~~5.5 (Medium)~~ → 2.0 (Low，實測後調整)
 **Pattern Detected**: Over-hydration——只有「分類篩選按鈕」需要互動，卻把整份案例資料、所有卡片、暖廚家味大區塊都變成瀏覽器端元件
 **Code Context**:
 
@@ -409,7 +413,7 @@ for (const w of widths) {
 | Rank | Component | Issue | Impact Score | Estimated Cost |
 |------|-----------|-------|--------------|----------------|
 | 1 | `Hero.tsx` / `Header.tsx` | LCP 圖沒有高優先權，Logo 一起 preload 搶頻寬（P-001） | 6.0 | 手機 LCP 慢 150–400 ms |
-| 2 | `Cases.tsx` | 整個案例區塊是 client component（P-002） | 5.5 | +11.6 KB gzip JS、hydration +30–80 ms |
+| 2 | `Cases.tsx` | 整個案例區塊是 client component（P-002，實測後降為 Low） | 2.0 | 改成 Server Component 後總傳輸量約打平，不建議改 |
 | 3 | `LoopingWall.tsx` | 153 張圖 SSR + 載入後重排（P-003） | 5.0 | HTML +60–80 KB、可能多下載 8–16 張縮圖 |
 | 4 | GitHub Pages | 快取 10 分鐘、無 brotli（P-004） | 4.5 | 回訪者 30–80 個 304 請求 |
 | 5 | `BentoShowcase.tsx` | 完整 motion 打包（P-005） | 3.5 | 作品集頁 +47.8 KB gzip |
@@ -428,7 +432,7 @@ for (const w of widths) {
 
 ### Performance Enhancements
 
-1. **P-002**：`Cases` 改回 Server Component，只把篩選按鈕做成 client 元件。
+1. ~~**P-002**：`Cases` 改回 Server Component，只把篩選按鈕做成 client 元件。~~（已實測，效益打平，不做）
 2. **P-003**：短影音牆伺服器端只輸出中間那份，載入後再補前後兩份。
 3. **P-006**：Logo `width`/`height` 改成實際顯示尺寸。
 4. **P-005**：作品集頁改用 `LazyMotion` + `m`。
@@ -475,6 +479,8 @@ for (const w of widths) {
 **Expected Improvement**: 手機 4G LCP 約快 150–400 ms（瀏覽器一看到 `<img>` 就以高優先權下載，不必等版面計算）
 
 ### 案例區只讓篩選按鈕在瀏覽器執行（references P-002）
+
+> 實測後不建議採用：JS 少 8.8 KB，但 HTML 多 9.5 KB（gzip），見 P-002 說明。以下保留做為紀錄。
 
 **Before (Inefficient)**:
 
@@ -572,7 +578,8 @@ const copies = ready ? [0, 1, 2] : [1];
 
 ### Phase 2: High Impact Optimizations
 
-- [ ] 無 High 問題。依序處理 Medium：P-002（Cases 改 Server Component）
+- [x] P-001（Hero 高優先權、Logo 不 preload）：已上線
+- [x] P-002（Cases 改 Server Component）：已實測，效益打平，不做
 - [ ] P-003（短影音牆只 SSR 中間那份）
 
 ### Phase 3: Medium Impact Improvements
@@ -637,7 +644,7 @@ const copies = ready ? [0, 1, 2] : [1];
 
 ## Summary
 
-This performance analysis identified **0 critical**, **0 high**, **4 medium**, and **5 low** performance issues across the application stack. The analysis focused on code patterns, database queries, resource utilization, and architectural performance.
+This performance analysis identified **0 critical**, **0 high**, **3 medium**, and **6 low** performance issues across the application stack. The analysis focused on code patterns, database queries, resource utilization, and architectural performance.
 
 **Key Strengths Identified**:
 
@@ -652,7 +659,6 @@ This performance analysis identified **0 critical**, **0 high**, **4 medium**, a
 **Critical Areas Requiring Immediate Attention**:
 
 - Hero 首屏圖要設 `fetchPriority="high"`，Logo 不要 preload（P-001）
-- 案例區塊整個是 client component，資料與渲染送了兩次（P-002）
 - 短影音牆 153 張圖在伺服器端全部輸出（P-003）
 - GitHub Pages 快取只有 10 分鐘（P-004）
 
