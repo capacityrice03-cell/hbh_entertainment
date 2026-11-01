@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 // 網站正式網址（不含結尾斜線），給 Google、社群分享預覽和 sitemap 用。
 // 換網域時改這裡就好。
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://hbh-tw.store").replace(/\/$/, "");
@@ -47,6 +49,28 @@ export const SITE = {
     youtube: "https://www.youtube.com/@hbh_entertainment",
   },
 } as const;
+
+// 社群分享預覽（LINE / FB / X）的完整設定。
+// Next.js 子頁面只要寫了 openGraph 就會整組取代上層設定，所以每一頁都用這個函式產生一整組。
+export function shareMeta(title: string, url: string): Pick<Metadata, "openGraph" | "twitter"> {
+  return {
+    openGraph: {
+      type: "website",
+      locale: "zh_TW",
+      siteName: `${SITE.name} ${SITE.nameEn}`,
+      title,
+      description: SHARE.description,
+      url,
+      images: [{ url: SHARE.image, width: 1200, height: 630, alt: `${SITE.name} LOGO` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: SHARE.description,
+      images: [SHARE.image],
+    },
+  };
+}
 
 export const NAV = [
   { label: "關於我們", href: "#about" },

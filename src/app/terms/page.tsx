@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LegalPage, { type LegalSection } from "@/components/layout/LegalPage";
-import { SITE } from "@/constants/site";
+import { SITE, shareMeta } from "@/constants/site";
 
 export const metadata: Metadata = {
   title: `服務條款｜${SITE.name} ${SITE.nameEn}`,
   description: `${SITE.name}網站與服務使用條款。`,
-  alternates: { canonical: "/terms/" },};
+  alternates: { canonical: "/terms/" },
+  ...shareMeta(`服務條款｜${SITE.name}`, "/terms/"),
+};
 
 const UPDATED = "2026 年 10 月 27 日";
 

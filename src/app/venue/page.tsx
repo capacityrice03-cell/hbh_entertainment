@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import VenueCalendar from "@/components/ui/VenueCalendar";
 import VenueGallery from "@/components/ui/VenueGallery";
 import { VENUE, VENUE_PLACES } from "@/constants/services";
-import { SITE } from "@/constants/site";
+import { SITE, shareMeta } from "@/constants/site";
 
 function PinIcon() {
   return (
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   title: `${VENUE.title}｜${SITE.name} ${SITE.nameEn}`,
   description: `${SITE.name}${VENUE.title}：${VENUE.items.join("、")}。`,
   alternates: { canonical: "/venue/" },
+  ...shareMeta(`${VENUE.title}｜${SITE.name}`, "/venue/"),
 };
 
 export default function VenuePage() {
