@@ -151,7 +151,7 @@ export const CASES: CaseStudy[] = [
     id: "duck-hotpot",
     title: "品牌行銷｜客製化ODM × 影像 × 電商",
     subtitle: "李熊鴨霸 胡椒鴨火鍋",
-    services: ["commercial"],
+    services: ["event"],
     description:
       "從商品包裝設計、置入行銷影片到網站架設，一次完成產品上市所需的視覺與銷售素材，直接帶動轉單。",
     highlights: ["商品包裝設計", "置入行銷影片拍攝", "銷售網站架設"],
