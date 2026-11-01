@@ -226,6 +226,8 @@ const copies = [0, 1, 2];
 
 #### P-005: 作品集頁整包載入 motion，可改用 LazyMotion 縮小
 
+> **2026-11-01 實測：無效，不做。** 改用 `LazyMotion` + `domMax` + `m` 後，動畫 chunk 47.8 → 47.9 KB（gzip），沒有變小：共享佈局動畫需要的 `domMax` 幾乎就是完整功能。改成非同步載入 `domMax` 則讓首次載入 JS 從 239.0 KB 增加到 244.6 KB（拆出的 chunk 仍在首次載入，主程式中的動畫核心仍有 45 KB）。改動已還原。
+
 **Location**: `src/components/showcase/BentoShowcase.tsx:4`
 **Performance Impact**: 3.5 (Low)
 **Pattern Detected**: 使用完整的 `motion.*` 元件，所有動畫功能都被打包
@@ -256,6 +258,8 @@ export default function BentoShowcase({ items }: { items: ShowcaseItem[] }) {
 **Fix Priority**: Within 2 months
 
 #### P-006: Logo 用 1600 px 寬的圖顯示在約 90 px 的位置
+
+> **2026-11-01 檢查檔案大小後：不做。** Logo 的 1600w 檔是無損 WebP，只有 9.9 KB；改成正確尺寸後，2 倍以上解析度的手機會改抓 256w（10.1 KB，有損），幾乎一樣大。只有 1 倍螢幕能省約 5 KB。
 
 **Location**: `src/components/layout/Header.tsx:14-21`、`src/app/works/page.tsx:123`、`src/app/venue/page.tsx:45`、`src/app/services/brand-video/page.tsx:85`
 **Performance Impact**: 2.5 (Low)
