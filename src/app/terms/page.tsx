@@ -5,7 +5,7 @@ import { SITE, shareMeta } from "@/constants/site";
 
 export const metadata: Metadata = {
   title: `服務條款｜${SITE.name} ${SITE.nameEn}`,
-  description: `${SITE.name}網站與服務使用條款。`,
+  description: `${SITE.name}網站服務條款：說明使用本網站時的權利義務、智慧財產權與免責聲明。`,
   alternates: { canonical: "/terms/" },
   ...shareMeta(`服務條款｜${SITE.name}`, "/terms/"),
 };
