@@ -3,11 +3,11 @@ import Link from "next/link";
 import { SITE } from "@/constants/site";
 
 // 404 頁不要沿用首頁的描述和標準網址（canonical），避免 Google 混淆
+// （不讓 Google 收錄的 noindex 標籤 Next.js 會自動加，這裡不用再寫）
 export const metadata: Metadata = {
   title: `找不到頁面｜${SITE.name}`,
   description: null,
   alternates: { canonical: null },
-  robots: { index: false },
 };
 
 export default function NotFound() {

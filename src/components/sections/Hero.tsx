@@ -27,7 +27,7 @@ export default function Hero() {
           專為<span className="text-brand-sky">企業</span>、
           <span className="text-brand-sky">品牌</span>
           <br />
-          規劃的影音運營團隊
+          規劃的影音製作團隊
         </h1>
         <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85 md:text-xl">
           {SITE.subSlogan}

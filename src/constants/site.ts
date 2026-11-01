@@ -11,7 +11,7 @@ export const GA_ID = "G-ZB8HP6W0CG";
 export const SEO = {
   title: "好不好娛樂｜品牌短影音・影音製作・業配拍攝・EFP 直播・記者會",
   description:
-    "好不好娛樂是專為企業、品牌規劃的影音製作團隊：品牌短影音（IG Reels、TikTok）企劃拍攝、企業形象影片、業配拍攝與 KOL 行銷、頻道經營、EFP 多機直播、代言人記者會與開幕活動企劃，一站整合拍攝、直播與媒體曝光。",
+    "好不好娛樂是專為企業、品牌規劃的影音製作團隊，提供品牌短影音企劃拍攝、企業形象影片、業配拍攝、EFP 多機直播與記者會活動企劃，一站整合拍攝、直播與媒體曝光。",
   keywords: [
     "短影音製作",
     "品牌短影音",
@@ -42,7 +42,7 @@ export const SHARE = {
 export const SITE = {
   name: "好不好娛樂",
   nameEn: "Haobuhao Entertainment",
-  slogan: "專為企業、品牌規劃的影音運營團隊",
+  slogan: "專為企業、品牌規劃的影音製作團隊",
   subSlogan: "理解需求，提供精準的客製化服務",
   contact: {
     email: "haobuhao0112@gmail.com",
