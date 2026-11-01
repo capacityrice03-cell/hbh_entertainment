@@ -122,8 +122,9 @@ export default function BrandVideoPage() {
         {/* 服務內容 */}
         <section className="py-14 md:py-20">
           <div className="mx-auto max-w-6xl px-4">
-            <h2 className="text-center text-3xl font-bold tracking-wide text-brand-navy md:text-4xl">服務內容</h2>
-            <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* 標題畫面上不顯示，但保留給 Google 和螢幕閱讀器，讓標題層級維持 h1 → h2 → h3 */}
+            <h2 className="sr-only">服務內容</h2>
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {BRAND_VIDEO_ITEMS.map((item) => (
                 <li key={item.title} className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
                   <h3 className="text-lg font-bold text-brand-blue">{item.title}</h3>
