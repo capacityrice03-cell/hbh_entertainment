@@ -21,6 +21,11 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* Lenis 啟用時由它負責平滑捲動，關掉瀏覽器原生的 smooth，避免兩者互相干擾 */
+html.lenis {
+  scroll-behavior: auto;
+}
+
 body {
   background: #ffffff;
   color: var(--color-ink);

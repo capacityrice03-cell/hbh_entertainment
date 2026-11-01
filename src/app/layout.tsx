@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import { GA_ID, SEO, SHARE, SITE, SITE_URL, shareMeta } from "@/constants/site";
 
 const geistSans = Geist({
@@ -37,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           跳到主要內容
         </a>
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
     </html>
