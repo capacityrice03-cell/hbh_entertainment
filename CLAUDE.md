@@ -6,7 +6,7 @@ Next.js 16 靜態輸出（`output: "export"`）＋ Tailwind 4。push 到 `main` 
 網址、內容檔位置、DNS、GA4、Search Console 等完整資訊：`docs/INTEGRATION.md`（先讀它，不要重新摸索專案）。
 
 ## 內容放哪裡
-- 文字和資料：`src/constants/`（`site.ts` 公司資訊／SEO／網址／GA_ID、`services.ts`、`cases.ts`、`shortVideo.ts`、`warmKitchen.ts`）
+- 文字和資料：`src/constants/`（`site.ts` 公司資訊／SEO／網址／GA_ID、`services.ts`、`cases.ts`、`shortVideo.ts`、`serviceBrandVideo.ts` 品牌影音行銷頁、`warmKitchen.ts`）
 - 頁面：`src/app/`；圖片影片：`public/images/`、`public/videos/`
 
 ## 上線規則（不可違反）
