@@ -38,6 +38,7 @@ Next.js 16 靜態輸出（`output: "export"`）＋ Tailwind 4。push 到 `main` 
 ## 其他
 - 專案層級裝了：ai-seo、ai-performance、playwright（用電腦上的 Chrome）、frontend-design（做新頁面時的設計指引）、Context7 MCP。
 - 改版後截圖檢查畫面再回報。
+- 網址清單在 Notion「會議記錄&影片素材庫」→「網頁資訊」資料庫（data source `collection://2a99eb1c-330a-4add-8113-f9c1a944f97e`）。上線後新增、改名或移除頁面／案例／區塊錨點，同一次更新那裡的網址、狀態、更新日期。
 - 場地檔期（`VenueCalendar`）嵌入的是另一個 Google 帳號的公開日曆，ID 在 `src/constants/services.ts` 的 `calendarId`；Rice 自己在那個帳號維護，Claude 的日曆連接器讀不到，AI 不寫。
 - AI 生成圖片要付費（fal.ai，金鑰在 ai-office 的 `.env` 的 `FAL_KEY`，只在執行時讀，不複製、不印出）：先說模型和張數，圖放 `D:\Downloads\fal-images\` 讓使用者挑；不可冒充案例照片。
 - `/ai-seo:seo-audit`、`/ai-performance:performance-audit` 只能使用者自己輸入，報告在 `docs/`。
