@@ -104,6 +104,7 @@ function SpotlightCard({
         alt={item.cover.alt}
         fill
         sizes="(min-width: 768px) 50vw, 100vw"
+        style={item.coverPosition ? { objectPosition: item.coverPosition } : undefined}
         className="object-cover opacity-70 transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
       />
 
@@ -308,7 +309,14 @@ function Media({ item }: { item: ShowcaseItem }) {
     <div className="grid grid-cols-2 gap-1 bg-black p-1 md:grid-cols-3">
       {m.images.map((img, i) => (
         <div key={img.src} className={`relative aspect-video ${i === 0 ? "col-span-2 row-span-2" : ""}`}>
-          <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 60vw, 100vw" className="object-cover" />
+          <Image
+            src={img.src}
+            alt={img.alt}
+            fill
+            sizes="(min-width: 768px) 60vw, 100vw"
+            style={img.position ? { objectPosition: img.position } : undefined}
+            className="object-cover"
+          />
         </div>
       ))}
     </div>

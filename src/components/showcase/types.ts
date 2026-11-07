@@ -6,6 +6,8 @@ export type ShowcaseItem = {
   title: string;
   subtitle?: string;
   cover: { src: string; alt: string };
+  /** 封面裁切時保留的位置（CSS object-position，例如 "50% 15%" = 偏上）。直式照片放進扁卡片時，用它避免切到臉 */
+  coverPosition?: string;
   /** 滑鼠移上去時播放的靜音預覽短片（選填，沒有就只做照片放大） */
   previewVideo?: string;
   /** 卡片在網格中的大小（Tailwind class，例如 "md:col-span-2 md:row-span-2"） */
@@ -19,6 +21,6 @@ export type ShowcaseItem = {
   media:
     | { type: "youtube"; id: string; title: string }
     | { type: "video"; src: string; poster: string; title: string }
-    | { type: "images"; images: { src: string; alt: string }[] };
+    | { type: "images"; images: { src: string; alt: string; position?: string }[] };
   links?: { label: string; url: string }[];
 };

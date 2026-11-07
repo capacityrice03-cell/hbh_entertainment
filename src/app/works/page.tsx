@@ -52,7 +52,13 @@ function fromCase(id: string, category: string, span: string, extra?: Partial<Sh
     ],
     media: yt
       ? { type: "youtube", id: ytId(yt.url), title: `${c.title} 影片` }
-      : { type: "images", images: c.images.slice(0, 5).map((i) => ({ src: i.src, alt: i.alt })) },
+      : {
+          type: "images",
+          // 第一張就是封面，裁切位置跟卡片一致
+          images: c.images
+            .slice(0, 5)
+            .map((img, i) => ({ src: img.src, alt: img.alt, position: i === 0 ? extra?.coverPosition : undefined })),
+        },
     links: (c.links ?? []).filter((l) => !l.url.startsWith("#")).slice(0, 4),
     ...extra,
   };
@@ -109,7 +115,8 @@ const ITEMS: ShowcaseItem[] = [
   fromCase("hydrafacial", "活動策畫", ""),
   fromCase("golead-year-end", "活動策畫", "md:col-span-2"),
   fromCase("live-commerce", "節目製作", ""),
-  fromCase("duck-hotpot", "品牌行銷", ""),
+  // 直式照片：裁切偏上，保留人物的臉
+  fromCase("duck-hotpot", "品牌行銷", "", { coverPosition: "50% 15%" }),
 ];
 // 桌面版 4 欄 × 4 列 = 16 格：2×2 + 2×1 + 1×2 + 1×2 + 1 + 1 + 2×1 + 1 + 1，剛好填滿
 
