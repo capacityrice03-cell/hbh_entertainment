@@ -76,8 +76,7 @@ export default function IgFeed() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-2.5 font-semibold text-white transition-colors hover:bg-brand-blue"
           >
-            {/* 按鈕文字待 Rice 定稿 */}
-            @hbh__entertainment
+            追蹤我們的 Instagram
           </a>
         </div>
       </div>
