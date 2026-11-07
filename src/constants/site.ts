@@ -40,6 +40,8 @@ export const SITE = {
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",
     instagram: "https://www.instagram.com/hbh__entertainment/",
+    facebook: "https://www.facebook.com/104332311258834",
+    threads: "https://www.threads.com/@hbh__entertainment",
   },
 } as const;
 

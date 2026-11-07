@@ -22,7 +22,7 @@ const jsonLd = {
   image: `${SITE_URL}${SEO.ogImage}`,
   description: SEO.description,
   email: SITE.contact.email,
-  sameAs: [SITE.contact.youtube, SITE.contact.instagram],
+  sameAs: [SITE.contact.youtube, SITE.contact.instagram, SITE.contact.facebook, SITE.contact.threads],
   areaServed: { "@type": "Country", name: "Taiwan" },
   knowsAbout: [...SEO.keywords],
   contactPoint: {

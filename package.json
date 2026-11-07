@@ -7,6 +7,8 @@
     "build": "next build",
     "postbuild": "node scripts/optimize-images.mjs",
     "fetch-ig": "node scripts/fetch-ig.mjs",
+    "fetch-threads": "node scripts/fetch-threads.mjs",
+    "fetch-fb": "node scripts/fetch-fb.mjs",
     "start": "next start",
     "lint": "eslint"
   },
