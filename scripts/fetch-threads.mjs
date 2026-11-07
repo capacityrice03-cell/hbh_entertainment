@@ -10,7 +10,7 @@ import path from "node:path";
 import { downloadJpeg, getJson, root, saveFeed, warn } from "./social-lib.mjs";
 
 const LABEL = "Threads 貼文";
-const COUNT = 3; // 一排幾則
+const COUNT = 4; // 一排 4 則
 
 // API 的時間像 2026-11-07T14:00:34+0000 → 台灣日期 "2026-11-07"
 const twDate = (ts) =>

@@ -5,7 +5,7 @@
 import { downloadJpeg, getJson, saveFeed, warn } from "./social-lib.mjs";
 
 const LABEL = "IG 貼文";
-const COUNT = 6; // 顯示幾則
+const COUNT = 4; // 一排 4 則
 const API = "https://graph.instagram.com/v21.0";
 
 async function main() {
