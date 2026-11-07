@@ -1,8 +1,10 @@
 // 抓 Threads（hbh__entertainment）貼文，給首頁「AI自動化社群更新」的 Threads 那一排用。
 // 為了不跟 IG 那排重複同一個題目（Rice 2026-11-08）：只挑比 IG 那幾則都早至少一天的貼文
-// （台灣日期早於 igFeed.json 裡最舊那則的日期），取其中最新的 3 則。所以要在 fetch-ig 之後跑。
-// 有圖的貼文存第一張圖（輪播取第一張、影片取封面）；純文字貼文沒有圖，網站顯示深藍底大字卡。
-// 輸出：src/constants/threadsFeed.json、public/images/threads/<貼文ID>.jpg。
+// （台灣日期早於 igFeed.json 裡最舊那則的日期）。所以要在 fetch-ig 之後跑。
+// 只放 1 篇，網站上把它的圖卡排成一列左右滑（Rice 2026-11-08）：
+// 也跳過 FB 那排已有的題目（fbFeed.json，比對標題開頭）。
+// 挑最新一篇有多張圖的輪播貼文；都沒有就挑最新一篇有圖的貼文。影片用封面圖。
+// 輸出：src/constants/threadsFeed.json（陣列，只有 1 篇）、public/images/threads/<貼文ID>-<序號>.jpg。
 // 需要環境變數 THREADS_ACCESS_TOKEN（GitHub 上存在 Secrets；ai-office 續期後會同步過去）。
 // 沒有權杖或抓取失敗時：保留上一次的資料，不讓網站建置失敗。
 import { readFile } from "node:fs/promises";
@@ -10,7 +12,6 @@ import path from "node:path";
 import { downloadJpeg, getJson, root, saveFeed, warn } from "./social-lib.mjs";
 
 const LABEL = "Threads 貼文";
-const COUNT = 4; // 一排 4 則
 
 // API 的時間像 2026-11-07T14:00:34+0000 → 台灣日期 "2026-11-07"
 const twDate = (ts) =>
@@ -26,11 +27,24 @@ async function igOldestDate() {
   }
 }
 
-/** 貼文的代表圖網址；沒有圖回傳 undefined */
-function coverOf(p) {
-  const m = p.media_type === "CAROUSEL_ALBUM" ? p.children?.data?.[0] : p;
-  if (!m) return undefined;
-  return m.media_type === "VIDEO" ? m.thumbnail_url : m.media_url;
+/** 標題開頭（第一行去掉【】和空白，取前 12 字），用來比對是不是同一個題目 */
+const titleKey = (text) =>
+  (text ?? "").split("\n")[0].replace(/[【】\s]/g, "").slice(0, 12);
+
+/** FB 那排已經放的題目（避免 Threads 跟 FB 兩排同一篇）；讀不到就回傳空集合 */
+async function fbTitleKeys() {
+  try {
+    const fb = JSON.parse(await readFile(path.join(root, "src", "constants", "fbFeed.json"), "utf8"));
+    return new Set(fb.map((p) => titleKey(p.message)).filter(Boolean));
+  } catch {
+    return new Set();
+  }
+}
+
+/** 貼文所有圖的網址（輪播是每一張，影片用封面）；沒有圖回傳空陣列 */
+function imagesOf(p) {
+  const items = p.media_type === "CAROUSEL_ALBUM" ? (p.children?.data ?? []) : [p];
+  return items.map((m) => (m.media_type === "VIDEO" ? m.thumbnail_url : m.media_url)).filter(Boolean);
 }
 
 async function main() {
@@ -53,29 +67,36 @@ async function main() {
     return warn(LABEL, `${e.message}，沿用上一次的資料`);
   }
 
-  const posts = [];
-  const images = new Map();
-  for (const p of body.data ?? []) {
-    if (posts.length >= COUNT) break;
-    if (!p.text?.trim() || !p.permalink) continue;
-    if (before && twDate(p.timestamp) >= before) continue; // 跟 IG 同一天或更新的不放
-    const post = { id: p.id, text: p.text.trim(), permalink: p.permalink, timestamp: p.timestamp };
-    const src = coverOf(p);
-    if (src) {
-      try {
-        const { data, width, height } = await downloadJpeg(src);
-        images.set(`${p.id}.jpg`, data);
-        Object.assign(post, { image: `/images/threads/${p.id}.jpg`, width, height });
-      } catch (e) {
-        warn(LABEL, `貼文 ${p.id} 的圖片下載失敗（${e.message}），這則改顯示文字`);
-      }
-    }
-    posts.push(post);
-  }
+  // 候選：有文字、有圖、比 IG 早一天以上、不是 FB 那排已有的題目；API 已經照新到舊排好
+  const onFb = await fbTitleKeys();
+  const candidates = (body.data ?? []).filter(
+    (p) =>
+      p.text?.trim() &&
+      p.permalink &&
+      imagesOf(p).length > 0 &&
+      !(before && twDate(p.timestamp) >= before) &&
+      !onFb.has(titleKey(p.text)),
+  );
+  const pick = candidates.find((p) => imagesOf(p).length > 1) ?? candidates[0];
+  if (!pick) return warn(LABEL, "沒有找到有圖的貼文，沿用上一次的資料");
 
-  if (posts.length === 0) return warn(LABEL, "沒有抓到任何貼文，沿用上一次的資料");
-  await saveFeed("threads", images, "threadsFeed.json", posts);
-  console.log(`${LABEL}：已更新 ${posts.length} 則（${before ? `早於 IG 的 ${before}，` : ""}最新 ${posts[0].timestamp}）`);
+  const images = new Map();
+  const list = [];
+  for (const [i, src] of imagesOf(pick).entries()) {
+    try {
+      const { data, width, height } = await downloadJpeg(src);
+      const name = `${pick.id}-${i + 1}.jpg`;
+      images.set(name, data);
+      list.push({ src: `/images/threads/${name}`, width, height });
+    } catch (e) {
+      warn(LABEL, `貼文 ${pick.id} 第 ${i + 1} 張圖下載失敗（${e.message}），跳過這張`);
+    }
+  }
+  if (list.length === 0) return warn(LABEL, "圖片全部下載失敗，沿用上一次的資料");
+
+  const post = { id: pick.id, text: pick.text.trim(), permalink: pick.permalink, timestamp: pick.timestamp, images: list };
+  await saveFeed("threads", images, "threadsFeed.json", [post]);
+  console.log(`${LABEL}：已更新 1 則，${list.length} 張圖（${before ? `早於 IG 的 ${before}，` : ""}${pick.timestamp}）`);
 }
 
 await main();
