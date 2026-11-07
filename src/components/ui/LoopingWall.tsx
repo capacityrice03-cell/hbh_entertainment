@@ -23,7 +23,7 @@ function shuffle<T>(list: readonly T[]): T[] {
 export default function LoopingWall({ items: source }: { items: readonly Item[] }) {
   const scroller = useRef<HTMLUListElement>(null);
   const setWidth = useRef(0);
-  // 每次開網頁都隨機排序：網站是預先產生的靜態頁，所以載入後才洗牌，洗好前先隱藏，避免看到順序跳動
+  // 每次開網頁都隨機排序：網站是預先產生的靜態頁，所以載入後才洗牌，洗好前先照原順序顯示（JS 失敗也看得到），洗好後才換順序
   const [items, setItems] = useState<readonly Item[]>(source);
   const [ready, setReady] = useState(false);
   useEffect(() => {
@@ -141,9 +141,7 @@ export default function LoopingWall({ items: source }: { items: readonly Item[] 
     <div className="relative">
       <ul
         ref={scroller}
-        className={`grid cursor-grab auto-cols-[28vw] grid-flow-col grid-rows-2 gap-1 overflow-x-auto rounded-2xl transition-opacity duration-500 select-none [scrollbar-width:none] sm:auto-cols-[150px] lg:auto-cols-[165px] [&::-webkit-scrollbar]:hidden ${
-          ready ? "opacity-100" : "opacity-0"
-        }`}
+        className="grid cursor-grab auto-cols-[28vw] grid-flow-col grid-rows-2 gap-1 overflow-x-auto rounded-2xl select-none [scrollbar-width:none] sm:auto-cols-[150px] lg:auto-cols-[165px] [&::-webkit-scrollbar]:hidden"
       >
         {copies.flatMap((c) =>
           items.map((v, i) => (
@@ -154,7 +152,7 @@ export default function LoopingWall({ items: source }: { items: readonly Item[] 
                 fill
                 draggable={false}
                 sizes="(min-width: 1024px) 165px, (min-width: 640px) 150px, 28vw"
-                className="pointer-events-none object-cover transition-transform duration-500 group-hover:scale-105"
+                className="pointer-events-none object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               />
             </li>
           )),

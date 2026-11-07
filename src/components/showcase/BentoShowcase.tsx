@@ -104,7 +104,7 @@ function SpotlightCard({
         alt={item.cover.alt}
         fill
         sizes="(min-width: 768px) 50vw, 100vw"
-        className="object-cover opacity-70 transition-transform duration-700 ease-out group-hover:scale-105"
+        className="object-cover opacity-70 transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
       />
 
       {/* 預覽短片：平時透明、不下載；滑鼠移上去才載入並淡入 */}

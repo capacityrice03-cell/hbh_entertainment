@@ -57,7 +57,7 @@ export default function WarmKitchen() {
                 alt={WARM.poster.alt}
                 fill
                 sizes="(min-width: 1024px) 420px, 100vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               />
             </div>
 
@@ -169,7 +169,7 @@ export default function WarmKitchen() {
                       alt={ep.alt}
                       fill
                       sizes="(min-width: 1024px) 400px, 50vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                     />
                   </div>
                 ))}
@@ -197,7 +197,7 @@ export default function WarmKitchen() {
                         alt={p.alt}
                         fill
                         sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw"
-                        className="object-contain transition-transform duration-500 group-hover:scale-105"
+                        className="object-contain transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                       />
                     </>
                   ) : (
@@ -206,7 +206,7 @@ export default function WarmKitchen() {
                       alt={p.alt}
                       fill
                       sizes="(min-width: 1024px) 540px, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                     />
                   )}
                 </div>
@@ -257,7 +257,7 @@ export default function WarmKitchen() {
                         alt={`${r.chef} Reels：${r.hook}`}
                         fill
                         sizes="(min-width: 1024px) 220px, 32vw"
-                        className="object-cover object-bottom transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover object-bottom transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                       />
                       <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/25">
                         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#b8230c] opacity-0 shadow transition-opacity group-hover:opacity-100">

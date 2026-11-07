@@ -111,7 +111,7 @@ function EpisodeGrid({ images }: { images: CaseImage[] }) {
               alt={img.alt}
               fill
               sizes="(min-width: 1024px) 25vw, 50vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
             />
             {img.url && (
               <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/25">
@@ -127,7 +127,7 @@ function EpisodeGrid({ images }: { images: CaseImage[] }) {
         const caption = (
           <p className="mt-2 text-sm font-medium tracking-wider text-brand-navy md:text-base">
             {img.episode && (
-              <span className="mr-2 text-brand-blue underline underline-offset-4">{img.episode}</span>
+              <span className="mr-2 text-brand-blue-ink underline underline-offset-4">{img.episode}</span>
             )}
             {img.caption}
           </p>
@@ -192,7 +192,7 @@ export function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean 
               alt={main.alt}
               fill
               sizes={item.portraitMain ? "(min-width: 1024px) 34vw, 67vw" : "(min-width: 1024px) 50vw, 100vw"}
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
             />
           </div>
           {rest.map((img) => (
@@ -202,7 +202,7 @@ export function CaseCard({ item, reverse }: { item: CaseStudy; reverse: boolean 
                 alt={img.alt}
                 fill
                 sizes="(min-width: 1024px) 17vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               />
             </div>
           ))}
@@ -251,7 +251,7 @@ function CaseHeading({ item }: { item: CaseStudy }) {
             ))
           : item.title}
       </h3>
-      {item.subtitle && <p className="mt-1 font-medium text-brand-orange">{item.subtitle}</p>}
+      {item.subtitle && <p className="mt-1 font-medium text-brand-orange-ink">{item.subtitle}</p>}
       {item.client && (
         <p className="mt-1 text-sm text-muted">
           {item.clientLabel === "" ? "" : `${item.clientLabel ?? "合作對象"}：`}
@@ -298,7 +298,7 @@ function CaseDetails({ item }: { item: CaseStudy }) {
               key={l.url + l.label}
               href={l.url}
               {...(l.url.startsWith("#") ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-              className="inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue transition-colors hover:bg-brand-blue hover:text-white"
+              className="inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue-ink transition-colors hover:bg-brand-blue hover:text-white"
             >
               {l.icon === "external" ? (
                 <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

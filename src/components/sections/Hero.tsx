@@ -3,7 +3,7 @@ import { SITE } from "@/constants/site";
 import { SERVICES } from "@/constants/services";
 export default function Hero() {
   return (
-    <section id="top" className="relative flex min-h-[88vh] items-center overflow-hidden pt-20">
+    <section id="top" className="relative flex min-h-[88svh] items-center overflow-hidden pt-20">
       <Image
         src="/images/hero.jpg"
         alt="台北京站開幕活動現場人潮"
@@ -41,7 +41,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap gap-4">
           <a
             href="#cases"
-            className="rounded-full bg-brand-yellow px-7 py-3 font-semibold text-brand-navy transition-transform hover:scale-105"
+            className="rounded-full bg-brand-yellow px-7 py-3 font-semibold text-brand-navy transition-transform hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
           >
             看實際案例
           </a>

@@ -67,7 +67,7 @@ export default function ShortVideo() {
                       alt={h.alt}
                       fill
                       sizes="(min-width: 1024px) 200px, (min-width: 640px) 24vw, 48vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                     />
                     <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/25">
                       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-brand-navy opacity-0 shadow transition-opacity group-hover:opacity-100">

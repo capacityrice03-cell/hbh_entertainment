@@ -26,12 +26,12 @@ function ServiceCard({
   return (
     <a
       href={href}
-      className="group flex gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+      className="group flex gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-[transform,box-shadow] hover:-translate-y-0.5 hover:shadow-md motion-reduce:transform-none motion-reduce:transition-none"
     >
       <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${accent}`}>{icon}</div>
       {/* 直向排列，「引導」那行推到卡片底部，電腦版同一排的卡片底部會對齊 */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <h3 className="text-lg leading-snug font-bold text-brand-blue">{title}</h3>
+        <h3 className="text-lg leading-snug font-bold text-brand-blue-ink">{title}</h3>
         <ul className="mt-2 flex flex-wrap gap-1.5">
           {items.map((item) => (
             <li key={item} className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs leading-relaxed text-ink">
@@ -39,7 +39,7 @@ function ServiceCard({
             </li>
           ))}
         </ul>
-        <p className="mt-auto pt-2.5 text-xs font-medium text-brand-navy/60 group-hover:text-brand-blue">{linkText}</p>
+        <p className="mt-auto pt-2.5 text-xs font-medium text-brand-navy/60 group-hover:text-brand-blue-ink">{linkText}</p>
       </div>
     </a>
   );

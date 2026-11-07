@@ -20,7 +20,7 @@ export default function About() {
                   alt={p.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                 />
               </div>
               <div className="p-6 text-center">
@@ -29,7 +29,7 @@ export default function About() {
                     {line}
                   </p>
                 ))}
-                <p className="mt-3 font-bold tracking-wider text-brand-blue">{p.keyword}</p>
+                <p className="mt-3 font-bold tracking-wider text-brand-blue-ink">{p.keyword}</p>
               </div>
             </article>
           ))}

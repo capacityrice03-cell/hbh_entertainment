@@ -8,7 +8,7 @@ function LineQr() {
       <div className="relative mx-auto h-40 w-40 rounded-2xl p-2 ring-1 ring-black/10">
         <Image src="/images/line-qr-haobuhao.jpg" alt="LINE 加好友 QR Code" fill sizes="160px" className="object-contain p-2" />
       </div>
-      <p className="mt-3 text-sm font-medium text-[#06c755]">掃描加入 LINE</p>
+      <p className="mt-3 text-sm font-medium text-line-ink">掃描加入 LINE</p>
     </div>
   );
 }
@@ -31,7 +31,7 @@ export default function Contact() {
                 <dd className="min-w-0">
                   <a
                     href={`mailto:${contact.email}`}
-                    className="text-base font-semibold break-all text-brand-navy hover:text-brand-blue md:text-lg"
+                    className="text-base font-semibold break-all text-brand-navy hover:text-brand-blue-ink md:text-lg"
                   >
                     {contact.email}
                   </a>
@@ -47,7 +47,7 @@ export default function Contact() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={`mailto:${contact.email}?subject=${encodeURIComponent("合作洽詢")}`}
-                className="rounded-full bg-brand-yellow px-6 py-2.5 font-semibold text-brand-navy transition-transform hover:scale-105"
+                className="rounded-full bg-brand-yellow px-6 py-2.5 font-semibold text-brand-navy transition-transform hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               >
                 寄信洽詢
               </a>
@@ -55,7 +55,7 @@ export default function Contact() {
                 href={contact.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#ff0000] px-6 py-2.5 font-semibold text-white transition-transform hover:scale-105"
+                className="inline-flex items-center gap-2 rounded-full bg-[#ff0000] px-6 py-2.5 font-semibold text-white transition-transform hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
                   <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />

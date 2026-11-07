@@ -43,12 +43,12 @@ export default function PhotoWall({
                   alt={img.alt}
                   fill
                   sizes={img.tile === "big" ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 50vw"}
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
                 />
                 {/* 滑過時：漸層加說明文字 */}
                 <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 {img.caption && (
-                  <span className="absolute right-3 bottom-2.5 left-3 translate-y-1 text-left text-sm font-medium text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <span className="absolute right-3 bottom-2.5 left-3 translate-y-1 text-left text-sm font-medium text-white opacity-0 transition-[transform,opacity] duration-300 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:transform-none motion-reduce:transition-none">
                     {img.caption}
                   </span>
                 )}

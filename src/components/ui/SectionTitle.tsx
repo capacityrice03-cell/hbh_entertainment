@@ -17,7 +17,7 @@ export default function SectionTitle({
     <div className={`mx-auto max-w-2xl text-center ${compact ? "mb-7" : "mb-12"}`}>
       <p
         className={`text-xs font-semibold tracking-[0.3em] uppercase ${
-          light ? "text-brand-yellow" : "text-brand-blue"
+          light ? "text-brand-yellow" : "text-brand-blue-ink"
         }`}
       >
         {en}

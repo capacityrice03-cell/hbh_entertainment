@@ -9,6 +9,10 @@
   --color-brand-blue: #5b9bd5;
   --color-brand-cream: #fdf6dc;
   --color-brand-orange: #c8641e;
+  /* 白底小字專用的加深版（對比度 4.5:1 以上） */
+  --color-brand-blue-ink: #2f6fae;
+  --color-brand-orange-ink: #a14f15;
+  --color-line-ink: #037a3a;
   --color-ink: #2f3440;
   --color-muted: #6b7280;
 
