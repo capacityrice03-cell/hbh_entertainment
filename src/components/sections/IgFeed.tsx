@@ -91,17 +91,11 @@ function FollowButton({ href, label, icon }: { href: string; label: string; icon
 }
 
 /** FB、Threads 那排左上角的平台名稱（點了到該平台主頁） */
-function RowLabel({ name, href, icon }: { name: string; href: string; icon?: string }) {
+function RowLabel({ name, href, icon }: { name: string; href: string; icon: string }) {
   return (
     <h3 className="mb-3 text-base font-bold tracking-wide text-brand-navy">
       <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-brand-blue">
-        {icon ? (
-          <Image src={icon} alt="" width={96} height={96} className="h-5 w-5" />
-        ) : (
-          <span aria-hidden="true" className="flex h-5 w-5 items-center justify-center rounded-md bg-ink text-xs font-bold text-white">
-            @
-          </span>
-        )}
+        <Image src={icon} alt="" width={96} height={96} className="h-5 w-5" />
         {name}
       </a>
     </h3>
@@ -147,7 +141,7 @@ export default function IgFeed() {
 
         {threadsPosts.length > 0 && (
           <div className="mt-14">
-            <RowLabel name="Threads" href={SITE.contact.threads} />
+            <RowLabel name="Threads" href={SITE.contact.threads} icon="/images/icon-threads.png" />
             <ul className={ROW}>
               {threadsPosts.map((p) => (
                 <li key={p.id} className={ROW_ITEM}>
