@@ -1,7 +1,8 @@
 // 抓 Threads（hbh__entertainment）貼文，給首頁「AI自動化社群更新」的 Threads 那一排用。
 // 只放 1 篇，網站上把它的圖卡排成一列左右滑（Rice 2026-11-08）：
 // 從「當天」（台灣日期）發的有圖貼文裡隨機挑一篇；當天還沒有，就從最近一天有發的貼文裡隨機挑。
-// 跳過 FB 那排已有的題目（fbFeed.json，比對標題開頭）。影片用封面圖。
+// 跳過 IG、FB 那兩排已有的題目（igFeed.json、fbFeed.json，比對文字相似度，見 sameTopic），所以要在 fetch-ig 之後跑。
+// 當天的貼文都被跳過時，就從最近一天還有剩的貼文裡挑。影片用封面圖。
 // GitHub Actions 每天台灣時間 11:00 跑一次。
 // 輸出：src/constants/threadsFeed.json（陣列，只有 1 篇）、public/images/threads/<貼文ID>-<序號>.jpg。
 // 需要環境變數 THREADS_ACCESS_TOKEN（GitHub 上存在 Secrets；ai-office 續期後會同步過去）。
@@ -16,19 +17,41 @@ const LABEL = "Threads 貼文";
 const twDate = (ts) =>
   new Date(ts.replace(/([+-]\d{2})(\d{2})$/, "$1:$2")).toLocaleDateString("sv-SE", { timeZone: "Asia/Taipei" });
 
-/** 標題開頭（第一行去掉【】和空白，取前 12 字），用來比對是不是同一個題目 */
-const titleKey = (text) =>
-  (text ?? "").split("\n")[0].replace(/[【】\s]/g, "").slice(0, 12);
+/** 只留文字和數字（去掉標點、空白、【】），方便比對 */
+const plain = (text) => (text ?? "").replace(/[^\p{L}\p{N}]/gu, "");
 
-/** FB 那排已經放的題目（避免 Threads 跟 FB 兩排同一篇）；讀不到就回傳空集合 */
-async function fbTitleKeys() {
-  try {
-    const fb = JSON.parse(await readFile(path.join(root, "src", "constants", "fbFeed.json"), "utf8"));
-    return new Set(fb.map((p) => titleKey(p.message)).filter(Boolean));
-  } catch {
-    return new Set();
+/** IG、FB 那兩排每篇的全文（只留文字和數字）；讀不到的檔案略過 */
+async function usedTexts() {
+  const texts = [];
+  for (const [file, field] of [["igFeed.json", "caption"], ["fbFeed.json", "message"]]) {
+    try {
+      const posts = JSON.parse(await readFile(path.join(root, "src", "constants", file), "utf8"));
+      for (const p of posts) texts.push(plain(p[field]));
+    } catch {
+      // 讀不到就不比對這一排
+    }
   }
+  return texts;
 }
+
+/** 字串裡每兩個相鄰的字（「一枚火箭」→ 一枚、枚火、火箭） */
+const pairs = (s) => new Set([...Array(Math.max(s.length - 1, 0)).keys()].map((i) => s.slice(i, i + 2)));
+
+/**
+ * 判斷是不是同一個題目：Threads 這篇的「每兩個相鄰的字」有 25% 以上也出現在 IG／FB 某篇裡。
+ * IG 會改寫標題（例：Threads「一枚火箭飛上天」、IG「天啊天啊！一枚火箭飛上去」），所以不比整句。
+ * 2026-11-08 用真實貼文測過：不同題目最高 0.15，同題目最低 0.27。
+ */
+const SAME_TOPIC = 0.25;
+const sameTopic = (text, texts) => {
+  const a = pairs(plain(text));
+  if (a.size === 0) return false;
+  return texts.some((t) => {
+    let hit = 0;
+    for (const x of a) if (t.includes(x)) hit++;
+    return hit / a.size >= SAME_TOPIC;
+  });
+};
 
 /** 貼文所有圖的網址（輪播是每一張，影片用封面）；沒有圖回傳空陣列 */
 function imagesOf(p) {
@@ -55,10 +78,10 @@ async function main() {
     return warn(LABEL, `${e.message}，沿用上一次的資料`);
   }
 
-  // 候選：有文字、有圖、不是 FB 那排已有的題目；API 已經照新到舊排好
-  const onFb = await fbTitleKeys();
+  // 候選：有文字、有圖、不是 IG／FB 那兩排已有的題目；API 已經照新到舊排好
+  const used = await usedTexts();
   const candidates = (body.data ?? []).filter(
-    (p) => p.text?.trim() && p.permalink && imagesOf(p).length > 0 && !onFb.has(titleKey(p.text)),
+    (p) => p.text?.trim() && p.permalink && imagesOf(p).length > 0 && !sameTopic(p.text, used),
   );
   if (candidates.length === 0) return warn(LABEL, "沒有找到有圖的貼文，沿用上一次的資料");
 

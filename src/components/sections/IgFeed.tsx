@@ -9,7 +9,7 @@ import threadsPosts from "@/constants/threadsFeed.json";
 // 首頁「AI自動化社群更新」：三排。IG、FB 電腦一排 4 則；Threads 只放 1 篇，圖卡左右滑；只有 IG 那排下面有追蹤按鈕
 // - Instagram：GitHub Actions 每天跑 scripts/fetch-ig.mjs 自動更新
 // - Facebook：Rice 指定的貼文（src/constants/fbPicks.json），本機跑 scripts/fetch-fb.mjs 更新
-// - Threads：GitHub Actions 每天跑 scripts/fetch-threads.mjs 自動更新（只放 1 篇，當天的貼文隨機挑，圖卡左右滑）
+// - Threads：GitHub Actions 每天跑 scripts/fetch-threads.mjs 自動更新（只放 1 篇，當天的貼文隨機挑、不跟 IG／FB 同題目，圖卡左右滑）
 
 // 日期一律用台灣時間顯示，例如 2026/11/07
 const dateFmt = new Intl.DateTimeFormat("zh-TW", {
