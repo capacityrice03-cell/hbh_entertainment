@@ -11,7 +11,7 @@ Next.js 16 靜態輸出（`output: "export"`）＋ Tailwind 4。push 到 `main` 
 
 ## 上線規則（不可違反）
 - 改完先在本機 commit（中文訊息）。**使用者說「推上去」才 push**，push 就是正式網站改版。
-- 例外（Rice 2026-11-08 同意）：GitHub Actions 每天 23:00 自動重新上線，只為了更新首頁 IG、Threads 貼文。
+- 例外（Rice 2026-11-08 同意）：GitHub Actions 每天 11:00 自動重新上線（2026-11-08 從 23:00 改），只為了更新首頁 IG、Threads 貼文。
 - 「先存檔」= 確認都已 commit。
 - push 後等 GitHub Actions 跑完，用 curl 確認正式網站已更新，回報時提醒使用者 Ctrl+F5。
 - 參考用、不上線的設計放本機分支，不留在 `main`。

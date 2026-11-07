@@ -1,9 +1,8 @@
 // 抓 Threads（hbh__entertainment）貼文，給首頁「AI自動化社群更新」的 Threads 那一排用。
-// 為了不跟 IG 那排重複同一個題目（Rice 2026-11-08）：只挑比 IG 那幾則都早至少一天的貼文
-// （台灣日期早於 igFeed.json 裡最舊那則的日期）。所以要在 fetch-ig 之後跑。
 // 只放 1 篇，網站上把它的圖卡排成一列左右滑（Rice 2026-11-08）：
-// 也跳過 FB 那排已有的題目（fbFeed.json，比對標題開頭）。
-// 挑最新一篇有多張圖的輪播貼文；都沒有就挑最新一篇有圖的貼文。影片用封面圖。
+// 從「當天」（台灣日期）發的有圖貼文裡隨機挑一篇；當天還沒有，就從最近一天有發的貼文裡隨機挑。
+// 跳過 FB 那排已有的題目（fbFeed.json，比對標題開頭）。影片用封面圖。
+// GitHub Actions 每天台灣時間 11:00 跑一次。
 // 輸出：src/constants/threadsFeed.json（陣列，只有 1 篇）、public/images/threads/<貼文ID>-<序號>.jpg。
 // 需要環境變數 THREADS_ACCESS_TOKEN（GitHub 上存在 Secrets；ai-office 續期後會同步過去）。
 // 沒有權杖或抓取失敗時：保留上一次的資料，不讓網站建置失敗。
@@ -16,16 +15,6 @@ const LABEL = "Threads 貼文";
 // API 的時間像 2026-11-07T14:00:34+0000 → 台灣日期 "2026-11-07"
 const twDate = (ts) =>
   new Date(ts.replace(/([+-]\d{2})(\d{2})$/, "$1:$2")).toLocaleDateString("sv-SE", { timeZone: "Asia/Taipei" });
-
-/** IG 那排最舊一則的台灣日期；讀不到就回傳 undefined（不限制） */
-async function igOldestDate() {
-  try {
-    const ig = JSON.parse(await readFile(path.join(root, "src", "constants", "igFeed.json"), "utf8"));
-    return ig.map((p) => twDate(p.timestamp)).sort()[0];
-  } catch {
-    return undefined;
-  }
-}
 
 /** 標題開頭（第一行去掉【】和空白，取前 12 字），用來比對是不是同一個題目 */
 const titleKey = (text) =>
@@ -56,9 +45,8 @@ async function main() {
     "fields",
     "id,text,media_type,media_url,thumbnail_url,permalink,timestamp,children{media_type,media_url,thumbnail_url}",
   );
-  url.searchParams.set("limit", "50"); // 多抓一些，才挑得到比 IG 早一天的
+  url.searchParams.set("limit", "25"); // 一天最多發幾篇，25 篇夠涵蓋當天
   url.searchParams.set("access_token", token);
-  const before = await igOldestDate();
 
   let body;
   try {
@@ -67,18 +55,18 @@ async function main() {
     return warn(LABEL, `${e.message}，沿用上一次的資料`);
   }
 
-  // 候選：有文字、有圖、比 IG 早一天以上、不是 FB 那排已有的題目；API 已經照新到舊排好
+  // 候選：有文字、有圖、不是 FB 那排已有的題目；API 已經照新到舊排好
   const onFb = await fbTitleKeys();
   const candidates = (body.data ?? []).filter(
-    (p) =>
-      p.text?.trim() &&
-      p.permalink &&
-      imagesOf(p).length > 0 &&
-      !(before && twDate(p.timestamp) >= before) &&
-      !onFb.has(titleKey(p.text)),
+    (p) => p.text?.trim() && p.permalink && imagesOf(p).length > 0 && !onFb.has(titleKey(p.text)),
   );
-  const pick = candidates.find((p) => imagesOf(p).length > 1) ?? candidates[0];
-  if (!pick) return warn(LABEL, "沒有找到有圖的貼文，沿用上一次的資料");
+  if (candidates.length === 0) return warn(LABEL, "沒有找到有圖的貼文，沿用上一次的資料");
+
+  // 當天（台灣日期）的貼文；當天還沒發，就用最近一天有發的
+  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Taipei" });
+  const day = candidates.some((p) => twDate(p.timestamp) === today) ? today : twDate(candidates[0].timestamp);
+  const sameDay = candidates.filter((p) => twDate(p.timestamp) === day);
+  const pick = sameDay[Math.floor(Math.random() * sameDay.length)];
 
   const images = new Map();
   const list = [];
@@ -96,7 +84,8 @@ async function main() {
 
   const post = { id: pick.id, text: pick.text.trim(), permalink: pick.permalink, timestamp: pick.timestamp, images: list };
   await saveFeed("threads", images, "threadsFeed.json", [post]);
-  console.log(`${LABEL}：已更新 1 則，${list.length} 張圖（${before ? `早於 IG 的 ${before}，` : ""}${pick.timestamp}）`);
+  const note = day === today ? "當天" : `當天還沒發，改用 ${day}`;
+  console.log(`${LABEL}：已更新 1 則，${list.length} 張圖（${note}，${sameDay.length} 篇裡隨機挑，${pick.timestamp}）`);
 }
 
 await main();
