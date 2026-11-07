@@ -4,9 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # 每天台灣時間早上 6 點重新上線一次，更新首頁「AI自動化社群更新」的 IG、Threads 貼文
+  # 每天台灣時間晚上 11 點重新上線一次，更新首頁「AI自動化社群更新」的 IG、Threads 貼文
+  # （ai-office 最晚 22:00 發文，當天的貼文當天上網站；cron 用 UTC，15:00 UTC = 台灣 23:00）
   schedule:
-    - cron: "0 22 * * *"
+    - cron: "0 15 * * *"
 
 permissions:
   contents: read
