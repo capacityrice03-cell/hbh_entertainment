@@ -39,6 +39,7 @@ export const SITE = {
   contact: {
     email: "haobuhao0112@gmail.com",
     youtube: "https://www.youtube.com/@hbh_entertainment",
+    instagram: "https://www.instagram.com/hbh__entertainment/",
   },
 } as const;
 

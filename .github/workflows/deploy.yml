@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # 每天台灣時間早上 6 點重新上線一次，更新首頁「AI自動化社群更新」的 IG 貼文
+  schedule:
+    - cron: "0 22 * * *"
 
 permissions:
   contents: read
@@ -24,6 +27,11 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # 抓 IG 最新貼文；失敗時沿用 repo 裡上一次的資料，不擋上線
+      - run: npm run fetch-ig
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       # 使用自訂網域 hbh-tw.store，網站放在網域最上層，不需要子路徑（basePath）
       - run: npm run build
       - uses: actions/upload-pages-artifact@v5

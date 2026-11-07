@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import ShortVideo from "@/components/sections/ShortVideo";
+import IgFeed from "@/components/sections/IgFeed";
 import Cases from "@/components/sections/Cases";
 import Contact from "@/components/sections/Contact";
 import JsonLd from "@/components/seo/JsonLd";
@@ -21,7 +22,7 @@ const jsonLd = {
   image: `${SITE_URL}${SEO.ogImage}`,
   description: SEO.description,
   email: SITE.contact.email,
-  sameAs: [SITE.contact.youtube],
+  sameAs: [SITE.contact.youtube, SITE.contact.instagram],
   areaServed: { "@type": "Country", name: "Taiwan" },
   knowsAbout: [...SEO.keywords],
   contactPoint: {
@@ -59,6 +60,7 @@ export default function Home() {
         <Hero />
         <Services />
         <ShortVideo />
+        <IgFeed />
         <Cases />
         <Contact />
         <About />

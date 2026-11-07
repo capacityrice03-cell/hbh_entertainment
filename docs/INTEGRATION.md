@@ -13,7 +13,8 @@
 | 正式網址 | https://hbh-tw.store（`www.` 與舊網址 `capacityrice03-cell.github.io/hbh_entertainment/` 都會 301 轉到這裡） |
 | GitHub repo | `capacityrice03-cell/hbh_entertainment`（**公開 repo**），分支 `main` |
 | 框架 | Next.js 16（App Router），`output: "export"` 純靜態網站，Tailwind CSS 4 |
-| 部署 | push 到 `main` → GitHub Actions（`.github/workflows/deploy.yml`）→ GitHub Pages，約 1–2 分鐘上線 |
+| 部署 | push 到 `main` → GitHub Actions（`.github/workflows/deploy.yml`）→ GitHub Pages，約 1–2 分鐘上線；另外每天台灣時間 06:00 自動重新上線一次 |
+| IG 貼文（首頁「AI自動化社群更新」） | 建置前跑 `npm run fetch-ig`（`scripts/fetch-ig.mjs`）抓 hbh__entertainment 最新 6 則 → `src/constants/igFeed.json`＋`public/images/ig/`。權杖在 GitHub Secrets `IG_USER_ID`、`IG_ACCESS_TOKEN`，由 ai-office `refresh_tokens.py` 每週續期後自動同步（`sync_github_secrets.py`）。抓不到時沿用 repo 裡的舊資料，Actions 顯示黃色警告。本機測試：`_tmp\run-fetch-ig.ps1`（從 ai-office `.env` 讀，不印出） |
 | 建置 | `npm ci && npm run build`，輸出在 `out/`（Node 24） |
 | 網域 | GoDaddy 購買，DNS：4 筆 A 記錄 `185.199.108–111.153`、`www` CNAME → `capacityrice03-cell.github.io`。**只買一年**，預計明年換新網域 |
 | GA4 | 評估 ID `G-ZB8HP6W0CG`（`src/constants/site.ts` 的 `GA_ID`） |
