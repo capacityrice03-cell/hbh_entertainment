@@ -24,7 +24,7 @@ export const BRAND_VIDEO_ITEMS = [
   },
   {
     title: "社群帳號經營",
-    text: "FB、IG、Threads、TikTok 帳號 AI 自動化營運，維持穩定的發文節奏。",
+    text: "FB、IG、Threads 帳號 AI 自動化營運，維持穩定的發文節奏。",
   },
   {
     title: "業配與廣告影片",
