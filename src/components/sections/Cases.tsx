@@ -61,6 +61,7 @@ export default function Cases() {
           )}
         </div>
 
+        {/* 「綜合瀏覽作品集」按鈕先隱藏（2026-11-08 Rice：作品集分頁先不導入），要恢復把這段註解拿掉
         <div className="mt-12 text-center">
           <a
             href="/works/"
@@ -69,6 +70,7 @@ export default function Cases() {
             綜合瀏覽作品集
           </a>
         </div>
+        */}
       </div>
     </section>
   );
