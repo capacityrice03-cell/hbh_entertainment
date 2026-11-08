@@ -8,7 +8,7 @@ import type { IconHandle } from "pulsoicon-react";
  * order：同一排第幾個，依序錯開一點時間，看起來像輪流動。
  * 系統設定「減少動態」時圖示本身不會動。
  */
-export function useAutoPlay(order = 0, every = 2500) {
+export function useAutoPlay(order = 0, every = 1200) {
   const ref = useRef<IconHandle>(null);
 
   useEffect(() => {
