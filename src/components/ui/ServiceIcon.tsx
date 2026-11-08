@@ -1,10 +1,11 @@
 "use client";
 
 // 服務項目圖示：保留原本的自訂圖案，用 PulsoIcon 的 createIcon 加上動作。
-// 滑鼠移到所在的連結（卡片）上就會播放；系統設定「減少動態」時不動。
+// 每隔幾秒自己動一次，滑鼠移到卡片上也會播放；系統設定「減少動態」時不動。
 // 授權（ISC）全文：public/licenses/pulsoicon-LICENSE.txt
 import { createIcon, type IconSpec } from "pulsoicon-react";
 import type { ServiceId } from "@/types";
+import { useAutoPlay } from "./useAutoPlay";
 
 const specs: Record<ServiceId | "venue", IconSpec> = {
   // 品牌影音行銷：手機 + AI 星芒
@@ -55,10 +56,14 @@ const icons = {
 export default function ServiceIcon({
   id,
   className = "h-8 w-8",
+  order = 0,
 }: {
   id: ServiceId | "venue";
   className?: string;
+  /** 輪流自動播放的順序 */
+  order?: number;
 }) {
+  const ref = useAutoPlay(order);
   const Icon = icons[id];
-  return <Icon className={className} strokeWidth={1.6} />;
+  return <Icon ref={ref} className={className} strokeWidth={1.6} />;
 }

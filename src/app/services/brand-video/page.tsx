@@ -119,7 +119,7 @@ export default function BrandVideoPage() {
                 </tr>
               </thead>
               <tbody>
-                {MARKET_PRICES.map((p) => (
+                {MARKET_PRICES.map((p, i) => (
                   <tr
                     key={p.plan}
                     data-icon-trigger
@@ -128,7 +128,7 @@ export default function BrandVideoPage() {
                     <th scope="row" className="block md:table-cell md:px-6 md:py-6 md:align-middle">
                       <span className="flex items-center gap-3">
                         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-sky/25 text-brand-navy">
-                          <PriceIcon name={p.icon} />
+                          <PriceIcon name={p.icon} order={i} />
                         </span>
                         <span className="text-lg font-bold tracking-wider whitespace-nowrap text-brand-navy">{p.plan}</span>
                       </span>

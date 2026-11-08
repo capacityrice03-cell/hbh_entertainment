@@ -61,7 +61,7 @@ export default function Services() {
               items={s.items}
               linkText="相關案例引導 →"
               accent={accents[i % 3]}
-              icon={<ServiceIcon id={s.id} className="h-6 w-6" />}
+              icon={<ServiceIcon id={s.id} className="h-6 w-6" order={i} />}
             />
           ))}
           <ServiceCard
@@ -70,7 +70,7 @@ export default function Services() {
             items={VENUE.items}
             linkText="場地租借資訊 →"
             accent="bg-brand-sky/20 text-brand-navy"
-            icon={<ServiceIcon id="venue" className="h-6 w-6" />}
+            icon={<ServiceIcon id="venue" className="h-6 w-6" order={SERVICES.length} />}
           />
         </div>
       </div>
