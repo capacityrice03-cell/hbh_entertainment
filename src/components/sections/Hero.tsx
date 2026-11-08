@@ -62,6 +62,15 @@ export default function Hero() {
               {title}
             </li>
           ))}
+          {/* 黃色半透明標籤，點了跳到首頁「AI自動化社群更新」區塊（Rice 2026-11-08） */}
+          <li>
+            <a
+              href="#ig-feed"
+              className="block rounded-full bg-brand-yellow/35 px-4 py-1.5 text-sm text-white backdrop-blur transition-colors hover:bg-brand-yellow/55"
+            >
+              社群ai自動化經營
+            </a>
+          </li>
         </ul>
       </div>
     </section>
