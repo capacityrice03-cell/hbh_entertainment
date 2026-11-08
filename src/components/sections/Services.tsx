@@ -70,22 +70,7 @@ export default function Services() {
             items={VENUE.items}
             linkText="場地租借資訊 →"
             accent="bg-brand-sky/20 text-brand-navy"
-            icon={
-              // 地點圖釘
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.6}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-                aria-hidden="true"
-              >
-                <path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z" />
-                <circle cx="12" cy="10" r="2.3" />
-              </svg>
-            }
+            icon={<ServiceIcon id="venue" className="h-6 w-6" />}
           />
         </div>
       </div>
