@@ -91,7 +91,7 @@ function FollowButton({ href, label, icon }: { href: string; label: string; icon
   );
 }
 
-/** FB、Threads 那排左上角的平台名稱（點了到該平台主頁） */
+/** IG、FB、Threads 那排左上角的平台名稱（點了到該平台主頁） */
 function RowLabel({ name, href, icon }: { name: string; href: string; icon: string }) {
   return (
     <h3 className="mb-3 text-base font-bold tracking-wide text-brand-navy">
@@ -169,10 +169,11 @@ export default function IgFeed() {
   return (
     <section id="ig-feed" className="scroll-mt-24 bg-white py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-4">
-        <SectionTitle title="AI自動化社群更新" en="Instagram" />
+        <SectionTitle title="AI自動化社群更新" en="Auto-update social media" />
 
         {igPosts.length > 0 && (
           <div>
+            <RowLabel name="Instagram" href={SITE.contact.instagram} icon="/images/icon-ig.png" />
             <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
               {igPosts.map((p) => (
                 <li key={p.id}>
