@@ -1,57 +1,19 @@
 // 抓 Threads（hbh__entertainment）貼文，給首頁「AI自動化社群更新」的 Threads 那一排用。
 // 只放 1 篇，網站上把它的圖卡排成一列左右滑（Rice 2026-11-08）：
 // 從「當天」（台灣日期）發的有圖貼文裡隨機挑一篇；當天還沒有，就從最近一天有發的貼文裡隨機挑。
-// 跳過 IG、FB 那兩排已有的題目（igFeed.json、fbFeed.json，比對文字相似度，見 sameTopic），所以要在 fetch-ig 之後跑。
+// 跳過 IG、FB 那兩排已有的題目（igFeed.json、fbFeed.json，比對文字相似度，見 sameTopic），所以要在 fetch-ig、fetch-fb 之後跑。
 // 當天的貼文都被跳過時，就從最近一天還有剩的貼文裡挑。影片用封面圖。
 // GitHub Actions 每天台灣時間 11:00 跑一次。
 // 輸出：src/constants/threadsFeed.json（陣列，只有 1 篇）、public/images/threads/<貼文ID>-<序號>.jpg。
 // 需要環境變數 THREADS_ACCESS_TOKEN（GitHub 上存在 Secrets；ai-office 續期後會同步過去）。
 // 沒有權杖或抓取失敗時：保留上一次的資料，不讓網站建置失敗。
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { downloadJpeg, getJson, root, saveFeed, warn } from "./social-lib.mjs";
+import { downloadJpeg, getJson, sameTopic, saveFeed, usedTexts, warn } from "./social-lib.mjs";
 
 const LABEL = "Threads 貼文";
 
 // API 的時間像 2026-11-07T14:00:34+0000 → 台灣日期 "2026-11-07"
 const twDate = (ts) =>
   new Date(ts.replace(/([+-]\d{2})(\d{2})$/, "$1:$2")).toLocaleDateString("sv-SE", { timeZone: "Asia/Taipei" });
-
-/** 只留文字和數字（去掉標點、空白、【】），方便比對 */
-const plain = (text) => (text ?? "").replace(/[^\p{L}\p{N}]/gu, "");
-
-/** IG、FB 那兩排每篇的全文（只留文字和數字）；讀不到的檔案略過 */
-async function usedTexts() {
-  const texts = [];
-  for (const [file, field] of [["igFeed.json", "caption"], ["fbFeed.json", "message"]]) {
-    try {
-      const posts = JSON.parse(await readFile(path.join(root, "src", "constants", file), "utf8"));
-      for (const p of posts) texts.push(plain(p[field]));
-    } catch {
-      // 讀不到就不比對這一排
-    }
-  }
-  return texts;
-}
-
-/** 字串裡每兩個相鄰的字（「一枚火箭」→ 一枚、枚火、火箭） */
-const pairs = (s) => new Set([...Array(Math.max(s.length - 1, 0)).keys()].map((i) => s.slice(i, i + 2)));
-
-/**
- * 判斷是不是同一個題目：Threads 這篇的「每兩個相鄰的字」有 25% 以上也出現在 IG／FB 某篇裡。
- * IG 會改寫標題（例：Threads「一枚火箭飛上天」、IG「天啊天啊！一枚火箭飛上去」），所以不比整句。
- * 2026-11-08 用真實貼文測過：不同題目最高 0.15，同題目最低 0.27。
- */
-const SAME_TOPIC = 0.25;
-const sameTopic = (text, texts) => {
-  const a = pairs(plain(text));
-  if (a.size === 0) return false;
-  return texts.some((t) => {
-    let hit = 0;
-    for (const x of a) if (t.includes(x)) hit++;
-    return hit / a.size >= SAME_TOPIC;
-  });
-};
 
 /** 貼文所有圖的網址（輪播是每一張，影片用封面）；沒有圖回傳空陣列 */
 function imagesOf(p) {
@@ -79,7 +41,7 @@ async function main() {
   }
 
   // 候選：有文字、有圖、不是 IG／FB 那兩排已有的題目；API 已經照新到舊排好
-  const used = await usedTexts();
+  const used = await usedTexts([["igFeed.json", "caption"], ["fbFeed.json", "message"]]);
   const candidates = (body.data ?? []).filter(
     (p) => p.text?.trim() && p.permalink && imagesOf(p).length > 0 && !sameTopic(p.text, used),
   );
