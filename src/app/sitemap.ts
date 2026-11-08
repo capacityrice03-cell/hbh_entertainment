@@ -25,7 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [`${SITE_URL}${SEO.ogImage}`],
     },
     { url: `${SITE_URL}/services/brand-video/`, lastModified: UPDATED.brandVideo, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${SITE_URL}/works/`, lastModified: UPDATED.works, changeFrequency: "monthly", priority: 0.8 },
+    // 作品集分頁先不導入（2026-11-08 Rice），要恢復把下一行註解拿掉
+    // { url: `${SITE_URL}/works/`, lastModified: UPDATED.works, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/venue/`, lastModified: UPDATED.venue, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy/`, lastModified: UPDATED.privacy, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms/`, lastModified: UPDATED.terms, changeFrequency: "yearly", priority: 0.3 },
