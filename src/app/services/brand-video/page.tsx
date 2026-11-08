@@ -7,6 +7,7 @@ import { CaseCard } from "@/components/sections/Cases";
 import Contact from "@/components/sections/Contact";
 import ShortVideo from "@/components/sections/ShortVideo";
 import WarmKitchen from "@/components/sections/WarmKitchen";
+import PriceIcon from "@/components/ui/PriceIcon";
 import ServiceIcon from "@/components/ui/ServiceIcon";
 import { CASES } from "@/constants/cases";
 import {
@@ -39,40 +40,6 @@ const serviceLd = {
   areaServed: { "@type": "Country", name: "Taiwan" },
   provider: { "@type": "Organization", name: SITE.name, url: `${SITE_URL}/` },
 };
-
-/** 市場行情卡片的圖示 */
-function PriceIcon({ name }: { name: (typeof MARKET_PRICES)[number]["icon"] }) {
-  const common = {
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.6,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-    className: "h-7 w-7",
-    "aria-hidden": true,
-  };
-  if (name === "camera")
-    return (
-      <svg {...common}>
-        <rect x="2.5" y="6" width="13" height="12" rx="2.5" />
-        <path d="M15.5 10.5 21.5 7v10l-6-3.5" />
-      </svg>
-    );
-  if (name === "calendar")
-    return (
-      <svg {...common}>
-        <rect x="3" y="4.5" width="18" height="16" rx="2.5" />
-        <path d="M3 9.5h18M8 2.5v4M16 2.5v4M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2" />
-      </svg>
-    );
-  // star：品牌IP
-  return (
-    <svg {...common}>
-      <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" />
-    </svg>
-  );
-}
 
 export default function BrandVideoPage() {
   return (
@@ -155,6 +122,7 @@ export default function BrandVideoPage() {
                 {MARKET_PRICES.map((p) => (
                   <tr
                     key={p.plan}
+                    data-icon-trigger
                     className="mb-4 block rounded-3xl bg-white p-6 shadow-sm md:mb-0 ring-1 ring-black/5 md:table-row md:rounded-none md:p-0 md:shadow-none md:ring-0 md:[&:not(:last-child)>*]:border-b md:[&>*]:border-black/5"
                   >
                     <th scope="row" className="block md:table-cell md:px-6 md:py-6 md:align-middle">
