@@ -13,7 +13,7 @@
 | 正式網址 | https://hbh-tw.store（`www.` 與舊網址 `capacityrice03-cell.github.io/hbh_entertainment/` 都會 301 轉到這裡） |
 | GitHub repo | `capacityrice03-cell/hbh_entertainment`（**公開 repo**），分支 `main` |
 | 框架 | Next.js 16（App Router），`output: "export"` 純靜態網站，Tailwind CSS 4 |
-| 部署 | push 到 `main` → GitHub Actions（`.github/workflows/deploy.yml`）→ GitHub Pages，約 1–2 分鐘上線；另外每天台灣時間 11:00 自動重新上線一次（更新 IG、FB、Threads 貼文） |
+| 部署 | push 到 `main` → GitHub Actions（`.github/workflows/deploy.yml`）→ GitHub Pages，約 1–2 分鐘上線；另外每天台灣時間 08:00、12:00 自動重新上線（2026-11-10 起）（更新 IG、FB、Threads 貼文） |
 | 社群貼文（首頁「AI自動化社群更新」，元件 `IgFeed.tsx`） | 三排：**IG** 最新 4 則、**FB** 從最近 25 篇有圖的貼文隨機挑 4 篇（照新到舊排，不跳過跟 IG 同題目的，Rice 2026-11-08）、**Threads** 只放 1 篇、圖卡排成一列左右滑（電腦版有左右箭頭，元件 `ScrollStrip.tsx`）：從當天（台灣日期）發的有圖貼文裡隨機挑一篇，跳過 IG、FB 那兩排已有的題目（所以 fetch-threads 要在 fetch-ig、fetch-fb 之後跑），當天沒有剩的就用最近一天的。建置前由 `npm run fetch-ig`、`fetch-fb`、`fetch-threads` 依序自動抓（資料 `src/constants/igFeed.json`、`fbFeed.json`、`threadsFeed.json`，圖 `public/images/ig/`、`fb/`、`threads/`）；權杖在 GitHub Secrets `IG_USER_ID`、`IG_ACCESS_TOKEN`、`FB_PAGE_ID`、`FB_PAGE_ACCESS_TOKEN`、`THREADS_ACCESS_TOKEN`，由 ai-office `sync_github_secrets.py` 同步（`refresh_tokens.py` 每週續期後自動呼叫；FB 權杖是手動重新授權的，換了之後要手動跑一次這支）；抓不到時沿用 repo 裡的舊資料，Actions 顯示黃色警告。本機測試：`node 素材\_claude工作\run-fetch-fb.mjs`（從 ai-office `.env` 讀，不印出）。沒圖的貼文顯示深藍底大字卡 |
 | 建置 | `npm ci && npm run build`，輸出在 `out/`（Node 24） |
 | 網域 | GoDaddy 購買，DNS：4 筆 A 記錄 `185.199.108–111.153`、`www` CNAME → `capacityrice03-cell.github.io`。**只買一年**，預計明年換新網域 |
