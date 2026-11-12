@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   // 草稿：待負責人確認
   description: `${SITE.name}作品集：暖廚家味料理實境節目、品牌代言人記者會、EFP 多機直播、品牌自媒體、企業尾牙與場域出租等實際案例。`,
   alternates: { canonical: PATH },
+  // 作品集分頁先不公開（2026-11-13 Rice）：請 Google 不要收錄。要導入時把下一行拿掉
+  robots: { index: false, follow: true },
   ...shareMeta(`${TITLE}｜${SITE.name}`, PATH),
 };
 

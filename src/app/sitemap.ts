@@ -7,9 +7,9 @@ export const dynamic = "force-static";
 // 各頁「內容」最後更新的日期。改了某一頁的內容，就順手更新這裡對應的日期。
 // （不用 new Date()：那會讓每次部署所有頁面都變成「剛更新」，Google 會因此不信任這個欄位）
 const UPDATED = {
-  home: "2026-11-01",
+  home: "2026-11-08",
   venue: "2026-11-01",
-  brandVideo: "2026-11-01",
+  brandVideo: "2026-11-08",
   works: "2026-11-01",
   privacy: "2026-10-27",
   terms: "2026-10-27",
