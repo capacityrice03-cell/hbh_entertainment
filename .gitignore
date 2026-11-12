@@ -22,6 +22,7 @@
 
 # misc
 /_tmp/
+/.playwright-mcp/
 .DS_Store
 *.pem
 
