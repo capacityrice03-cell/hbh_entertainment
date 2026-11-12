@@ -2,15 +2,15 @@
 
 **Project:** practice1（好不好娛樂官網 hbh-tw.store）
 **Framework:** Next.js 16.4.2（App Router、靜態輸出 `output: "export"`，部署在 GitHub Pages；沒有 vercel.json、netlify.toml、_headers、middleware 等主機或邊緣設定）
-**Audit Date:** 2026-11-01T10:15:48+08:00
+**Audit Date:** 2026-11-13T04:06:37+08:00
 **Auditor:** ai-seo plugin 2.1.0
 **Lenses:** SEO, AEO, GEO
 **Knowledge Source:** Context7 MCP
 **Scope:** Entire solution
-**Live Check:** Not run
+**Live Check:** https://hbh-tw.store
 **Web Search:** Not run
 **Question Map:** None
-**Settings:** Lenses = All (answer)；Scope = Entire solution (answer)；Version control = commit audits (answer)；Live check = Codebase only (answer)；Web search = Not run（沒有選 live URL）。依網站負責人的決定，場域租借頁（`/venue/`）不是主要營業項目，不列入內容與描述檢查。
+**Settings:** Lenses = All (answer)；Scope = Entire solution (answer)；Version control = commit audits (answer)；Live check = Codebase + live URL，https://hbh-tw.store (answer)；Web search = Not run (answer)。依網站負責人的決定，場域租借頁（`/venue/`）不做 SEO，不列入檢查。
 
 ---
 
@@ -18,13 +18,13 @@
 
 | Lens | Measures | Score | Grade | Trend | Critical | High | Medium | Low |
 |------|----------|-------|-------|-------|----------|------|--------|-----|
-| SEO | Search Health | 99.9/100 | A+ | ➡️ from 98 | 0 | 0 | 0 | 1 |
-| AEO | Answer Readiness | 98/100 | A+ | first run | 0 | 0 | 2 | 4 |
-| GEO | Citation Readiness | 94/100 | A | first run | 0 | 2 | 4 | 4 |
+| SEO | Search Health | 99.1/100 | A+ | ➡️ from 99.9 | 0 | 0 | 1 | 2 |
+| AEO | Answer Readiness | 97.7/100 | A+ | ➡️ from 98 | 0 | 0 | 2 | 5 |
+| GEO | Citation Readiness | 94.4/100 | A | ➡️ from 94 | 0 | 1 | 6 | 4 |
 
 Each lens is scored on its own. There is no combined score.
 
-**Summary:** 技術面（SEO）已經接近滿分，唯一剩下的是 GitHub Pages 無法自訂安全性標頭。AEO 分數高，主要是因為網站是作品集型的一頁式官網，可被當成「直接答案」檢查的內容本來就少；真正缺的是常見問題區（費用、流程、時程等）和每項服務的一句話說明。GEO 最大的缺口有兩個：所有服務和案例都擠在首頁，沒有各自的獨立頁面；暖廚家味的募資金額、加盟店數等關鍵數字旁邊沒有附來源連結。這些都需要網站負責人提供內容，不能由 AI 代寫。
+**Summary:** 三項分數和 11/1 幾乎一樣，沒有退步。這次第一次連到正式網站檢查：上線的內容和程式一致，robots.txt、sitemap、轉址都正確，7 種 AI 爬蟲拿到的首頁和一般瀏覽器完全相同。11/1 之後新增的「品牌影音行銷」分頁補上了費用和合作流程，Organization 的官方帳號也從 1 個變 4 個。新發現的問題是「作品集」分頁（`/works/`）：雖然已決定暫不導入，但它仍在正式網站上、Google 可以收錄，而且描述還是草稿。最大的缺口仍然是成果數字沒有附來源，這需要負責人提供資料。
 
 ### Top Critical Issues
 
@@ -36,33 +36,33 @@ None found.
 
 ### Executive Summary
 
-**SEO Health Score:** 99.9 / 100
+**SEO Health Score:** 99.1 / 100
 
 **Grade:** A+
 
-**Summary:** 上次報告的服務條款描述、影片封面 WebP、referrer 政策、分享預覽描述都已修好。唯一剩下的扣分是 GitHub Pages 的主機限制，在程式裡無法處理。
+**Summary:** 技術面維持接近滿分。正式網站每頁都有自己的標題、描述、canonical 和分享設定，結構化資料全部是合法的 JSON-LD。這次扣分來自暫不導入的作品集分頁仍可被收錄，以及 sitemap 的更新日期沒有跟著 11/8 的改版更新。
 
 #### Score Breakdown
 
 | Category | Score | Weight |
 |----------|-------|--------|
 | Deprecated Patterns | 100/100 | 20% |
-| Modern Meta Tags | 100/100 | 15% |
+| Modern Meta Tags | 95/100 | 15% |
 | Semantic HTML | 100/100 | 10% |
 | Structured Data | 100/100 | 15% |
 | Performance Signals | 100/100 | 15% |
 | Accessibility | 100/100 | 10% |
 | URL Structure | 100/100 | 5% |
 | Security Headers | 98/100 | 5% |
-| Framework Best Practices | 100/100 | 5% |
+| Framework Best Practices | 98/100 | 5% |
 
 #### Issue Counts
 
 - 🔴 **Critical Issues:** 0
 - 🟠 **High Priority:** 0
-- 🟡 **Medium Priority:** 0
-- 🔵 **Low Priority / Suggestions:** 1
-- 🟢 **Passing Checks:** 35
+- 🟡 **Medium Priority:** 1
+- 🔵 **Low Priority / Suggestions:** 2
+- 🟢 **Passing Checks:** 36
 
 ### 🔴 Critical Issues
 
@@ -74,11 +74,73 @@ None found.
 
 ### 🟡 Medium Priority Issues
 
-None found.
+#### SEO-1: 暫不導入的作品集分頁仍在正式網站上，Google 可以收錄
+
+**File:** `src/app/works/page.tsx:17`
+**Category:** Modern Meta Tags
+**Impact:** Medium
+
+**Current Code:**
+```tsx
+export const metadata: Metadata = {
+  title: `${TITLE}｜節目製作・活動策畫・EFP 直播・場域出租｜${SITE.name}`,
+  // 草稿：待負責人確認
+  description: `${SITE.name}作品集：暖廚家味料理實境節目、品牌代言人記者會、EFP 多機直播、品牌自媒體、企業尾牙與場域出租等實際案例。`,
+  alternates: { canonical: PATH },
+  ...shareMeta(`${TITLE}｜${SITE.name}`, PATH),
+};
+```
+
+**Problem:**
+11/8 已經把首頁的「綜合瀏覽作品集」按鈕隱藏（`src/components/sections/Cases.tsx:64`），也從 sitemap 拿掉（`src/app/sitemap.ts:29`），但頁面本身還在。正式網站檢查結果：`https://hbh-tw.store/works/` 回傳 200，沒有 `noindex`，canonical 指向自己。11/1 到 11/8 這段期間它在 sitemap 裡，Google 可能已經收錄。這一頁的描述還是「草稿：待負責人確認」，全站也沒有任何連結連到它。
+
+**Recommended Fix:**
+```tsx
+// 請負責人二選一：
+// A. 確定暫時不公開：加上 noindex，等要導入時再拿掉
+export const metadata: Metadata = {
+  title: `${TITLE}｜節目製作・活動策畫・EFP 直播・場域出租｜${SITE.name}`,
+  description: `...`,
+  alternates: { canonical: PATH },
+  robots: { index: false, follow: true },
+  ...shareMeta(`${TITLE}｜${SITE.name}`, PATH),
+};
+// B. 其實可以公開：確認描述文字、放回 sitemap、恢復首頁按鈕
+```
+
+**Source:** https://developers.google.com/search/docs/crawling-indexing/block-indexing
 
 ### 🔵 Suggestions & Nice-to-Haves
 
-#### SEO-1: 無法設定 HSTS、CSP 等安全性標頭
+#### SEO-2: sitemap 的更新日期沒有跟著 11/8 的改版更新
+
+**File:** `src/app/sitemap.ts:10`
+**Category:** Framework Best Practices
+**Impact:** Low
+
+**Current Code:**
+```ts
+const UPDATED = {
+  home: "2026-11-01",
+  venue: "2026-11-01",
+  brandVideo: "2026-11-01",
+```
+
+**Problem:**
+首頁在 11/8 新增了「AI自動化社群更新」區塊和主圖上的標籤，品牌影音行銷頁在 11/8 也改了文字，但 `home`、`brandVideo` 還是 `2026-11-01`。正式網站的 sitemap.xml 顯示的也是 11/1。日期不準，Google 會比較不信任這個欄位。
+
+**Recommended Fix:**
+```ts
+const UPDATED = {
+  home: "2026-11-08",
+  venue: "2026-11-01",
+  brandVideo: "2026-11-08",
+```
+首頁的社群貼文每天自動更新，那部分不用每天改日期；只在版面或文案有改時更新。
+
+**Source:** https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+
+#### SEO-3: 無法設定 HSTS、CSP 等安全性標頭
 
 **File:** `next.config.ts:11`
 **Category:** Security Headers
@@ -90,7 +152,7 @@ None found.
 ```
 
 **Problem:**
-GitHub Pages 無法自訂回應標頭。`Referrer-Policy` 已經改用 `<meta name="referrer">` 補上；HSTS、CSP、`X-Content-Type-Options` 則只能靠主機或 CDN 設定。這是主機限制，不是程式寫錯。
+GitHub Pages 無法自訂回應標頭。正式網站的回應標頭確認：沒有 `Strict-Transport-Security`、`Content-Security-Policy`、`X-Content-Type-Options`。`Referrer-Policy` 已經用 `<meta name="referrer">` 補上。這是主機限制，不是程式寫錯（和上次報告相同）。
 
 **Recommended Fix:**
 ```text
@@ -101,36 +163,36 @@ GitHub Pages 無法自訂回應標頭。`Referrer-Policy` 已經改用 `<meta na
 
 ### ✅ What's Working Well
 
-- ✅ 服務條款描述已補成完整的一句話（上次 SEO-1，已修正）
-- ✅ 分享預覽改用副標語「提供精準的客製化服務」，不再是空白（上次 SEO-2，已修正）
-- ✅ 影片封面改用建置時產生的 WebP（`optimizedSrc()`），約 61 KB，原圖約 182 KB（上次 SEO-4，已修正）
-- ✅ `metadata.referrer` 已設為 `strict-origin-when-cross-origin`（上次 SEO-5 中能在程式裡處理的部分）
-- ✅ 沒有 `keywords` 標籤、IE 寫法、jQuery、float 排版、microdata 或 `<b>`/`<i>`
-- ✅ 每頁都有自己的 title、description、canonical 和完整的分享設定；`metadataBase`、`lang="zh-Hant"`、viewport 都正確
-- ✅ 首頁有 `Organization`、`WebSite` JSON-LD，子頁面有 `BreadcrumbList`
-- ✅ 圖片在建置時產生多尺寸 WebP，每張都有 `alt`、尺寸和 `decoding="async"`，首屏以外的圖片延遲載入
-- ✅ 每頁只有一個 `<h1>`、標題層級沒有跳級；有「跳到主要內容」連結
-- ✅ 外部連結的 `rel` 正確，沒有混合內容
-- ✅ 404 頁是 `noindex`，不沿用首頁的描述和 canonical
-- ✅ sitemap 用各頁真正的更新日期，robots.txt 有指向 sitemap
+- ✅ 正式網站 5 個頁面都有各自的 title、description、canonical 和完整的 Open Graph／Twitter 設定
+- ✅ `http://`、`www.`、沒有結尾斜線的網址都是 301 轉到正確網址
+- ✅ 正式網站的 robots.txt、sitemap.xml 和程式產生的內容一致
+- ✅ 每頁只有一個 `<h1>`，標題層級沒有跳級（首頁 37 個標題、品牌影音行銷頁 24 個）
+- ✅ 5 筆 JSON-LD 全部是合法 JSON：首頁 `Organization`、`WebSite`，子頁 `BreadcrumbList`，品牌影音行銷頁另有 `Service`
+- ✅ 首頁 124 張圖全部是 WebP、都有 `alt`（5 張裝飾用圖示是空 `alt`，正確）、首屏以外延遲載入
+- ✅ 首頁 61 個、品牌影音行銷頁 24 個外部連結都有 `rel="noopener noreferrer"`；沒有 `http://` 混合內容
+- ✅ 沒有 `keywords` 標籤、IE 寫法、jQuery、float 排版、microdata 或 `<b>`／`<i>`
+- ✅ 404 頁回傳 404 狀態碼，並帶 `noindex`
+- ✅ 有「跳到主要內容」連結；`lang="zh-Hant"`、viewport、charset 正確
 
 ### 🏗️ Framework-Specific Recommendations
 
 **Detected Framework:** Next.js 16.4.2（App Router、static export）
 
-- 依 Context7 查到的 Next.js 16 文件，子頁面寫了 `openGraph` 就會整組取代上層設定；目前用 `shareMeta()` 處理是正確做法。
-- 新增頁面時：metadata 加 `...shareMeta()`、`sitemap.ts` 的 `UPDATED` 加日期、用 `JsonLd` + `breadcrumbLd()` 加麵包屑。
-- 不經過 `next/image` 的圖片用 `optimizedSrc()` 取得 WebP。
+- 暫時不公開的頁面，用 Metadata API 的 `robots: { index: false, follow: true }`；Next.js 會輸出 `<meta name="robots" content="noindex, follow">`。
+- 新增頁面時：metadata 加 `...shareMeta()`、`sitemap.ts` 的 `UPDATED` 加日期、用 `JsonLd` + `breadcrumbLd()` 加麵包屑（品牌影音行銷頁都有做到）。
+- 改了某頁的版面或文案，同一次更新 `sitemap.ts` 的 `UPDATED`。
 
 ### 📊 Core Web Vitals Considerations
 
 Static-analysis findings that may impact Core Web Vitals:
 
-- **LCP (Largest Contentful Paint):** 首屏大圖有 `preload`，並依螢幕寬度提供 WebP（手機約 70 KB）。
-- **CLS (Cumulative Layout Shift):** 圖片都有固定比例或尺寸，字型由 `next/font` 處理，風險低。
-- **INP (Interaction to Next Paint):** 互動元件不多（案例篩選、短影音牆），看不出明顯的長任務。
+- **LCP (Largest Contentful Paint):** 首頁主圖有 `preload` 和多尺寸 WebP。首頁 HTML 現在約 268 KB（加了社群貼文區），仍在合理範圍。
+- **CLS (Cumulative Layout Shift):** 社群貼文圖片都用固定比例（4:5）的容器，風險低。
+- **INP (Interaction to Next Paint):** 新增的服務圖示自動動畫每 1.2 秒觸發一次，建議用 PageSpeed Insights 實測手機表現。
 
 Runtime measurement is required for actual Core Web Vitals scores. Use PageSpeed Insights or Chrome DevTools. INP replaced FID in March 2024.
+
+**For deeper a11y coverage, run `/accessibility-audit` from the ai-accessibility plugin.**
 
 ---
 
@@ -144,24 +206,24 @@ No markup guarantees a direct answer. Engines choose answers automatically, and 
 
 ### Executive Summary
 
-**Answer Readiness Score:** 98 / 100
+**Answer Readiness Score:** 97.7 / 100
 
 **Grade:** A+
 
-**Summary:** 網站沒有任何會擋住摘要的設定，內容全部在靜態 HTML 裡，清單也都是真正的 `<ul>`／`<ol>`。分數高的主要原因是可檢查的「答案內容」很少：整個網站只有首頁算是答案頁，而且沒有問句式標題或常見問題區。最大的缺口是：企業主常問的費用、流程、時程等問題，網站上都找不到答案。
+**Summary:** 新的品牌影音行銷頁用真正的表格列出三種方案的價格，用編號清單列出五步合作流程，這兩項正好回答上次報告說缺少的「費用怎麼算」「合作流程是什麼」。還缺的是：問句式的常見問題區、每項服務的一句話定義，以及價格旁邊的「更新日期」。
 
 #### Score Breakdown
 
 | Category | Score | Weight |
 |----------|-------|--------|
-| Answer-First Formatting | 98/100 | 20% |
+| Answer-First Formatting | 97/100 | 20% |
 | Question Coverage & Headings | 98/100 | 15% |
 | Concise Definitions | 95/100 | 10% |
 | Snippet-Ready Structure | 98/100 | 15% |
 | Snippet Eligibility & Indexing Controls | 100/100 | 15% |
 | FAQ Sections & Structured Data | 95/100 | 10% |
-| Voice & Assistant Readiness | 100/100（not applicable：沒有實體門市資料） | 5% |
-| Answer Trust Signals | 100/100 | 5% |
+| Voice & Assistant Readiness | 100/100（not applicable：場域租借頁不列入） | 5% |
+| Answer Trust Signals | 98/100 | 5% |
 | Technical Answer Accessibility | 100/100 | 5% |
 
 #### Issue Counts
@@ -169,8 +231,8 @@ No markup guarantees a direct answer. Engines choose answers automatically, and 
 - 🔴 **Critical:** 0
 - 🟠 **High:** 0
 - 🟡 **Medium:** 2
-- 🔵 **Low / Suggestions:** 4
-- 🟢 **Passing checks:** 14
+- 🔵 **Low / Suggestions:** 5
+- 🟢 **Passing checks:** 16
 
 Items marked 🧪 rest on industry heuristics or limited features rather than documented engine behavior. Apply judgment.
 
@@ -178,15 +240,20 @@ Items marked 🧪 rest on industry heuristics or limited features rather than do
 
 | Directive | Where | Scope | Looks intended? |
 |-----------|-------|-------|-----------------|
-| noindex | `src/app/not-found.tsx`（Next.js 自動加上） | 404 頁 | yes |
+| noindex | `src/app/not-found.tsx`（Next.js 自動加上；正式網站 404 頁確認有 `<meta name="robots" content="noindex">`） | 404 頁 | yes |
 
-No snippet restrictions found on answer pages.
+No snippet restrictions found on answer pages. 正式網站的回應標頭沒有 `X-Robots-Tag`。
 
 **Manual check:** in Search Console, Settings → "Search generative AI". "Exclude" removes the site from AI Overviews and AI Mode.
 
 ### Question Coverage
 
-沒有問題地圖（question map）。首頁的標題都是描述型（「服務項目」「短影音經營」「實際案例」「聯絡我們」「關於我們」），沒有問句式標題；以作品集為主的頁面這樣寫是合理的。企業主在委託前常問的問題，例如費用怎麼算、合作流程、拍攝或製作要多久、服務哪些地區，網站上都沒有回答。建議執行 `/seo-questions` 整理目標問題。
+沒有問題地圖（question map）。兩個答案頁的標題都是描述型，沒有問句式標題：
+
+- 首頁：「服務項目」「短影音經營」「AI自動化社群更新」「實際案例」「聯絡我們」「關於我們」
+- 品牌影音行銷頁：「服務內容」「服務方案與費用」「合作流程」「短影音經營」「品牌影音行銷案例」
+
+「服務方案與費用」「合作流程」實質上回答了費用和流程兩個問題。還沒回答的常見問題：製作要多久、服務哪些地區、直播需要哪些場地條件、活動和節目製作怎麼計價。建議執行 `/seo-questions` 整理目標問題。
 
 ### 🔴 Critical Issues
 
@@ -200,30 +267,26 @@ None found.
 
 #### AEO-1: 沒有常見問題區
 
-**File:** `src/app/page.tsx:58`
+**File:** `src/app/services/brand-video/page.tsx:182`
 **Category:** FAQ Sections & Structured Data
 **Impact:** Medium
 
 **Current Code:**
 ```tsx
-      <main id="main" className="flex-1">
-        <Hero />
-        <Services />
-        <ShortVideo />
-        <Cases />
-        <Contact />
-        <About />
-      </main>
+        {/* 合作流程 */}
+        <section className="bg-slate-50 py-14 md:py-20">
+          <div className="mx-auto max-w-6xl px-4">
+            <h2 className="text-center text-3xl font-bold tracking-wide text-brand-navy md:text-4xl">合作流程</h2>
 ```
 
 **Problem:**
-這是企業委託型的服務網站，訪客通常帶著固定的問題來，例如「費用怎麼算？」「合作流程是什麼？」「短影音多久可以交片？」「直播需要哪些場地條件？」。目前這些問題都沒有答案，搜尋引擎和 AI 助理找不到可以直接引用的段落。
+品牌影音行銷頁有費用和流程，是放常見問題最合適的頁面，但全站都沒有「問句＋直接回答」的區塊。訪客帶著問題來（例如「一支短影音多久可以交片？」「可以只拍不代操嗎？」），搜尋引擎和 AI 助理找不到可以原句引用的問答。
 
 **Recommended Fix:**
 ```text
-在「聯絡我們」前面加一個常見問題區，每題一個問句標題，第一句就直接回答。
-問題和答案必須由網站負責人提供（費用區間、流程、時程等），不能由 AI 編寫。
-可以用 /seo-faq 一題一題整理；答案用 <details> 呈現時，前幾題要預設展開。
+在品牌影音行銷頁的「合作流程」後面加一個常見問題區，每題一個問句標題，第一句直接回答。
+問題和答案必須由網站負責人提供，不能由 AI 編寫。可以用 /seo-faq 一題一題整理。
+答案用 <details> 呈現時，前幾題要預設展開。
 FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不顯示 FAQ 複合式結果。
 ```
 
@@ -232,37 +295,40 @@ FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不
 
 **Source:** https://about.ads.microsoft.com/en/blog/post/october-2025/optimizing-your-content-for-inclusion-in-ai-search-answers
 
-#### AEO-2: 服務項目沒有一句話說明
+#### AEO-2: 服務沒有一句話定義
 
-**File:** `src/constants/services.ts:5`
+**File:** `src/constants/serviceBrandVideo.ts:8`、`src/constants/services.ts:5`
 **Category:** Concise Definitions
 **Impact:** Medium
 
 **Current Code:**
 ```ts
+// src/constants/serviceBrandVideo.ts:8-9
+  intro:
+    "品牌影音行銷不適用一套公式，量身打造雖費時費力，但成效會說話；\n品牌在社群上長期曝光，需要的是與時俱進的正確方向。",
+
+// src/constants/services.ts:5-9
   {
     id: "channel",
     title: "品牌影音行銷",
-    items: ["客製化企劃內容", "FB、IG、Threads、TikTok 帳號 AI 自動化營運"],
+    items: ["客製化企劃內容", "FB、IG、Threads 帳號 AI 自動化營運"],
+    caseHref: "/services/brand-video/",
   },
 ```
 
 **Problem:**
-三項主要服務（品牌影音行銷；活動／EFP 直播／媒體廣告；節目製作）都只有標題和幾個短詞，沒有一句完整的話說明「這項服務是什麼、幫企業做到什麼」。短詞被單獨引用時，讀者看不懂意思。
+品牌影音行銷頁開頭那段是理念，沒有說「這項服務是什麼、包含什麼」；同一段也用在 Google 搜尋結果的描述（`description`）。首頁三項服務仍然只有標題和短詞。被問到「好不好娛樂的品牌影音行銷包含什麼」時，沒有一句完整的話可以引用。
 
 **Recommended Fix:**
 ```ts
-// 在每項服務加一個 summary 欄位，顯示在標題下方；文字請網站負責人確認，例如（僅示意格式）：
-  {
-    id: "channel",
-    title: "品牌影音行銷",
-    summary: "<一句話：這項服務為品牌做什麼、產出什麼>",
-    items: [...],
-  },
+// 在理念那段的前面或後面加一句定義，文字請負責人決定，格式示意：
+//   "<品牌影音行銷是……，包含 A、B、C>"
+// 現有五項服務內容（客製化影音企劃、系列短影音拍攝、社群帳號經營、業配與廣告影片、人物故事短影音）可以當素材。
+// 同一句也適合放進這一頁的 description。
 ```
 
 **Why it matters for AEO:**
-「X 是……」或「我們為品牌……」這類完整定義句，最容易被當成「好不好娛樂提供什麼服務」這類問題的答案。
+「X 是……」這類完整定義句，最容易被當成「某公司提供什麼服務」的答案。
 
 **Source:** https://developers.google.com/search/docs/appearance/featured-snippets
 
@@ -277,11 +343,11 @@ FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不
 **Current Code:** N/A — element absent
 
 **Problem:**
-沒有整理過目標客戶會搜尋的問題，無法判斷網站涵蓋了哪些問題、漏了哪些。
+沒有整理過目標客戶會搜尋的問題，無法判斷網站涵蓋了哪些、漏了哪些。
 
 **Recommended Fix:**
 ```text
-執行 /seo-questions，整理企業主委託影音製作、直播、記者會前常問的問題，再對照網站內容。
+執行 /seo-questions，整理企業主委託短影音、直播、記者會前常問的問題，再對照網站內容。
 ```
 
 **Why it matters for AEO:**
@@ -301,12 +367,12 @@ FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不
 ```
 
 **Problem:**
-「指數型成長」「商業效益」沒有具體內容。Microsoft 提醒，沒有具體說明的形容詞對 AI 的意義不大。下方的「自然流量突破 1,000 萬次觀看」反而具體又有連結佐證，是好的寫法。
+「指數型成長」「商業效益」沒有具體內容。這個區塊現在同時出現在首頁和品牌影音行銷頁。下方有連結佐證的觀看數是好的寫法。
 
 **Recommended Fix:**
 ```text
-視覺標語可以保留。若想讓這段更容易被引用，可以在附近加一句具體說明，
-例如每週產出幾支、經營多久達到多少觀看（數字請由網站負責人提供）。
+視覺標語可以保留。若想讓這段更容易被引用，在附近加一句具體說明
+（每週產出幾支、經營多久達到多少觀看；數字請負責人提供）。
 ```
 
 **Why it matters for AEO:**
@@ -316,7 +382,7 @@ FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不
 
 #### AEO-5: 文字裡夾雜裝飾符號
 
-**File:** `src/components/sections/ShortVideo.tsx:51`、`src/components/sections/ShortVideo.tsx:124`、`src/components/sections/Services.tsx:62`
+**File:** `src/components/sections/ShortVideo.tsx:51`、`src/components/sections/ShortVideo.tsx:124`、`src/components/sections/Services.tsx:75`、`src/components/sections/Services.tsx:84`、`src/app/services/brand-video/page.tsx:55`
 **Category:** Snippet-Ready Structure
 **Impact:** Low
 
@@ -325,15 +391,17 @@ FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不
               次觀看!!
           <p className="mt-1 text-center text-xs text-muted">← 左右滑動看更多 →</p>
               linkText="相關案例引導 →"
+            linkText="場地租借資訊 →"
+            ← 回服務項目
 ```
 
 **Problem:**
-`!!`、`←`、`→` 這類符號在網頁上是視覺效果，但被擷取成純文字時會變成雜訊。Microsoft 提到裝飾符號可能干擾擷取。
+`!!`、`←`、`→` 在網頁上是視覺效果，被擷取成純文字時會變成雜訊。
 
 **Recommended Fix:**
 ```tsx
-// 把箭頭改成 CSS 或加上 aria-hidden 的 <span>，文字本身保持乾淨，例如：
-              linkText="相關案例引導"  // 箭頭改由元件用 <span aria-hidden="true">→</span> 加上
+// 箭頭改放在加了 aria-hidden 的 <span> 裡，文字本身保持乾淨，例如：
+<span aria-hidden="true">← </span>回服務項目
 ```
 
 **Why it matters for AEO:**
@@ -343,7 +411,7 @@ FAQPage 結構化資料可加可不加 🧪：Google 自 2026 年 5 月起已不
 
 #### AEO-6: 首頁沒有一段完整的公司介紹文字 🧪
 
-**File:** `src/constants/site.ts:94`
+**File:** `src/constants/site.ts:97`
 **Category:** Answer-First Formatting
 **Impact:** Low 🧪
 
@@ -357,13 +425,13 @@ export const ABOUT_PILLARS = [
 ```
 
 **Problem:**
-「關於我們」由三組短詞組成，沒有一段能回答「好不好娛樂是什麼公司？」的完整句子。只有 meta description 裡有完整的一句，頁面上看不到。
+「關於我們」由三組短詞組成，沒有一段能回答「好不好娛樂是什麼公司？」的完整句子。完整的一句只在 meta description 裡，頁面上看不到。
 
 **Recommended Fix:**
 ```text
 在「關於我們」標題下加一兩句完整介紹，例如把首頁描述那句放到頁面上：
 「好不好娛樂是專為企業、品牌規劃的影音製作團隊，提供系列短影音拍攝、EFP多機直播、……」
-文字請網站負責人確認。
+文字請負責人確認。
 ```
 
 **Why it matters for AEO:**
@@ -371,37 +439,73 @@ export const ABOUT_PILLARS = [
 
 **Source:** https://developers.google.com/search/docs/appearance/featured-snippets
 
+#### AEO-7: 價格旁邊沒有更新日期
+
+**File:** `src/constants/serviceBrandVideo.ts:77`
+**Category:** Answer Trust Signals
+**Impact:** Low
+
+**Current Code:**
+```ts
+export const MARKET_PRICE_NOTES = ["以上價格皆為未稅，實際費用依專案需求報價，我們提供專案優惠價。"] as const;
+```
+
+**Problem:**
+價格會隨時間調整。頁面上看不到這份價格是什麼時候訂的，結構化資料也沒有 `dateModified`。搜尋引擎和 AI 無法判斷「約 12 萬元／月」是不是現在的價格。
+
+**Recommended Fix:**
+```ts
+// 在備註加一行更新日期（日期用價格實際訂定或最後修改的那天，請負責人確認）：
+export const MARKET_PRICE_NOTES = [
+  "以上價格皆為未稅，實際費用依專案需求報價，我們提供專案優惠價。",
+  "價格更新日期：<YYYY 年 MM 月>",
+] as const;
+```
+
+**Why it matters for AEO:**
+會變動的答案附上日期，才會被當成可信的現況引用。
+
+**Source:** https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+
 ### ✅ What's Working Well
 
-- ✅ 沒有 `nosnippet`、`max-snippet`、`data-nosnippet`、`X-Robots-Tag`；只有 404 頁有 `noindex`，屬於刻意設定
-- ✅ 全站靜態輸出，所有內容都在初始 HTML 裡；案例篩選器預設顯示「全部」，10 個案例都在 HTML 中
-- ✅ 沒有「點了才出現」的折疊答案
-- ✅ 清單都是真正的 `<ul>`／`<ol>`（服務項目、案例重點、暖廚家味的四個步驟）
-- ✅ 案例敘述以具體成果開頭，例如「三年即達成全台加盟店面超過十間」「現場百名粉絲入場，獲數十家媒體報導」
-- ✅ 案例都標了時間（例如「2022.05 台中開幕・2024.11 台北京站開幕」）
-- ✅ 標題、描述、H1 都清楚說明網站主題
-- ✅ robots.txt 沒有擋 Applebot、Amzn-SearchBot 等語音助理爬蟲
+- ✅ 「服務方案與費用」是真正的 `<table>`，有 `<th scope="col">` 欄標題和 `<th scope="row">` 列標題
+- ✅ 「合作流程」是真正的 `<ol>`，五個步驟依序排列
+- ✅ 價格寫得具體：單次拍攝約 5–10 萬元、品牌IP打造約 12 萬元／月、季約品牌代操約 40 萬元／季，並註明未稅
+- ✅ 正式網站確認：價格、流程、開頭介紹都在伺服器回傳的 HTML 裡，不需要執行 JavaScript
+- ✅ 沒有 `nosnippet`、`max-snippet`、`data-nosnippet`、`X-Robots-Tag`
+- ✅ 沒有「點了才出現」的折疊答案（兩頁的 `<details>` 數量都是 0）
+- ✅ 首頁社群貼文都有 `<time datetime>` 標示日期
 - ✅ 結構化資料都是 JSON-LD，而且只描述頁面上看得到的內容
+- ✅ robots.txt 沒有擋 Applebot、Amzn-SearchBot 等語音助理爬蟲
 
 ### Live Check
 
-Not run.
+| URL | 狀態 | robots 設定 | 答案文字在初始 HTML | 主要答案不用點就看得到 | FAQ 標記與畫面一致 | canonical |
+|-----|------|-------------|---------------------|------------------------|--------------------|-----------|
+| `/` | 200 | 無限制 | yes | yes | n/a | `https://hbh-tw.store/` |
+| `/services/brand-video/` | 200 | 無限制 | yes（開頭介紹、三種方案與價格、五步流程） | yes | n/a | `https://hbh-tw.store/services/brand-video/` |
+| `/privacy/` | 200 | 無限制 | yes | yes | n/a | `https://hbh-tw.store/privacy/` |
+| `/terms/` | 200 | 無限制 | yes | yes | n/a | `https://hbh-tw.store/terms/` |
+| 不存在的網址 | 404 | `noindex` | — | — | — | 無 |
+
+正式網站的 `/robots.txt` 和程式產生的內容相同（`User-Agent: *`、`Allow: /`、指向 sitemap），主機沒有另外加規則。
 
 ### 🏗️ Framework-Specific Recommendations
 
 **Detected Framework:** Next.js 16.4.2（App Router、static export）
 
-- 加常見問題區時，用同一份資料陣列同時產生畫面和（可選的）FAQPage JSON-LD，避免兩邊內容不一致；JSON-LD 用現有的 `JsonLd` 元件輸出。
+- 加常見問題區時，用同一份資料陣列同時產生畫面和（可選的）FAQPage JSON-LD；JSON-LD 用現有的 `JsonLd` 元件輸出。
 - 折疊答案用 `<details>`，不要用 `{open && <Answer />}`，確保答案在 HTML 裡。
-- `Cases.tsx` 是 client component，但初始畫面就輸出全部案例，所以不影響擷取；之後若改成「點了才載入」，就要重新檢查。
+- 品牌影音行銷頁是 server component，答案文字都直接輸出；`PriceIcon`、`ServiceIcon` 雖是 client component，但只負責圖示。
 
 ### 📊 Content Analysis Summary
 
-- **Answer pages analyzed:** 1（首頁；隱私權政策、服務條款屬法律頁，場域租借依負責人決定不列入）
+- **Answer pages analyzed:** 2（首頁、品牌影音行銷頁；隱私權政策與服務條款屬法律頁，場域租借不列入）
 - **Question-shaped headings:** 0 (0 answered in the first sentence)
-- **Median answer paragraph length:** 不適用（沒有問句式標題）；案例敘述約 40–70 字
-- **Definitional openings on concept pages:** 0/3（三項主要服務）
-- **Lists and tables in real HTML:** 全部（沒有用 div 或 `<br>` 假裝的清單）
+- **Median answer paragraph length:** 不適用（沒有問句式標題）；服務內容每項約 30–40 字
+- **Definitional openings on concept pages:** 0/1（品牌影音行銷頁）
+- **Lists and tables in real HTML:** 全部（1 個表格、2 個編號清單，其餘為 `<ul>`）
 - **Visible FAQ sections:** 0 (0 with matching FAQPage JSON-LD)
 - **Answers rendered only after interaction:** 0
 - **Main answers collapsed by default:** 0
@@ -420,11 +524,11 @@ No AI provider publishes how it chooses citations. This section measures readine
 
 ### Executive Summary
 
-**Citation Readiness Score:** 94 / 100
+**Citation Readiness Score:** 94.4 / 100
 
 **Grade:** A
 
-**Summary:** 所有 AI 爬蟲都可以進入，內容也都在靜態 HTML 裡。最好的部分是案例都寫了真實的客戶名稱，短影音觀看數也都連到原始貼文。最大的缺口是：所有主題都擠在首頁，沒有各自的獨立頁面；暖廚家味的募資金額、加盟店數等關鍵數字沒有附來源。
+**Summary:** 正式網站測試確認 AI 爬蟲都進得來，拿到的內容和一般訪客相同。比起上次，「品牌影音行銷」有了自己的頁面，Organization 也連上 YouTube、IG、FB、Threads 四個官方帳號。最大的缺口沒變：暖廚家味的募資金額、加盟店數等成果數字沒有附來源；另外兩項核心服務（活動／EFP 直播、節目製作）還沒有獨立頁面。
 
 #### Score Breakdown
 
@@ -432,11 +536,11 @@ No AI provider publishes how it chooses citations. This section measures readine
 |----------|-------|--------|
 | AI Crawler Access | 100/100 | 15% |
 | Technical AI Accessibility | 100/100 | 10% |
-| Topical Authority | 90/100 | 15% |
+| Topical Authority | 89/100 | 15% |
 | Original Research & Evidence | 85/100 | 15% |
 | Expert Perspectives & Authorship | 95/100 | 10% |
 | External Validation | 90/100 | 10% |
-| Entity Clarity | 98/100 | 10% |
+| Entity Clarity | 100/100 | 10% |
 | Extractable Passages | 99/100 | 5% |
 | Content Freshness | 98/100 | 5% |
 | llms.txt & Markdown Access 🧪 | 99/100 | 5% |
@@ -444,23 +548,23 @@ No AI provider publishes how it chooses citations. This section measures readine
 #### Issue Counts
 
 - 🔴 **Critical:** 0
-- 🟠 **High:** 2
-- 🟡 **Medium:** 4
+- 🟠 **High:** 1
+- 🟡 **Medium:** 6
 - 🔵 **Low / Suggestions:** 4
-- 🟢 **Passing checks:** 16
+- 🟢 **Passing checks:** 18
 
 Items marked 🧪 rest on heuristics, vendor studies or proposals rather than documented engine behavior. Apply judgment.
 
 ### 🤖 AI Crawler Access
 
-`src/app/robots.ts` 只有一條規則：`User-agent: *`、`Allow: /`，沒有任何針對個別機器人的規則，所以下表全部依 `*` 判定。
+`src/app/robots.ts` 只有一條規則：`User-agent: *`、`Allow: /`，沒有針對個別機器人的規則，所以下表全部依 `*` 判定。正式網站的 robots.txt 內容相同。
 
 #### Training crawlers and tokens
 
 | Bot | Operator | Controls | Status | Notes |
 |-----|----------|----------|--------|-------|
-| GPTBot | OpenAI | Training | ❓ Not specified（`*` → allowed） | |
-| ClaudeBot | Anthropic | Training | ❓ Not specified（allowed） | |
+| GPTBot | OpenAI | Training | ❓ Not specified（`*` → allowed） | 正式網站測試 200 |
+| ClaudeBot | Anthropic | Training | ❓ Not specified（allowed） | 正式網站測試 200 |
 | Google-Extended | Google | Gemini training and grounding (token; no effect on Search) | ❓ Not specified（allowed） | |
 | Applebot-Extended | Apple | Apple AI training (token) | ❓ Not specified（allowed） | |
 | meta-externalagent | Meta | Training and products | ❓ Not specified（allowed） | |
@@ -473,9 +577,9 @@ Items marked 🧪 rest on heuristics, vendor studies or proposals rather than do
 
 | Bot | Operator | Feeds | Status | Notes |
 |-----|----------|-------|--------|-------|
-| OAI-SearchBot | OpenAI | ChatGPT search | ❓ Not specified（allowed） | |
-| Claude-SearchBot | Anthropic | Claude search | ❓ Not specified（allowed） | |
-| PerplexityBot | Perplexity | Perplexity | ❓ Not specified（allowed） | |
+| OAI-SearchBot | OpenAI | ChatGPT search | ❓ Not specified（allowed） | 正式網站測試 200 |
+| Claude-SearchBot | Anthropic | Claude search | ❓ Not specified（allowed） | 正式網站測試 200 |
+| PerplexityBot | Perplexity | Perplexity | ❓ Not specified（allowed） | 正式網站測試 200 |
 | Meta-WebIndexer | Meta | Meta AI search | ❓ Not specified（allowed） | |
 | Amzn-SearchBot | Amazon | Alexa and search features | ❓ Not specified（allowed） | |
 | MistralAI-Index | Mistral | Mistral search | ❓ Not specified（allowed） | |
@@ -488,8 +592,8 @@ Items marked 🧪 rest on heuristics, vendor studies or proposals rather than do
 
 | Bot | Operator | Honors robots.txt? | Status | Notes |
 |-----|----------|--------------------|--------|-------|
-| ChatGPT-User | OpenAI | May not | ❓ Not specified（allowed） | |
-| Claude-User | Anthropic | Yes | ❓ Not specified（allowed） | |
+| ChatGPT-User | OpenAI | May not | ❓ Not specified（allowed） | 正式網站測試 200 |
+| Claude-User | Anthropic | Yes | ❓ Not specified（allowed） | 正式網站測試 200 |
 | Perplexity-User | Perplexity | Generally not | ❓ Not specified（allowed） | |
 | meta-externalfetcher | Meta | May not | ❓ Not specified（allowed） | |
 | Amzn-User | Amazon | Not fully | ❓ Not specified（allowed） | |
@@ -502,11 +606,42 @@ Items marked 🧪 rest on heuristics, vendor studies or proposals rather than do
 
 **Manual check:** Search Console → Settings → "Search generative AI". "Exclude" removes the site from AI Overviews and AI Mode.
 
-**Analysis:** 全部開放。對一個希望被企業主找到的服務型網站來說，這通常就是想要的設定：網站可以出現在 ChatGPT、Perplexity、Claude、Copilot 和 Google AI 摘要的答案裡，代價是內容也可能被拿去訓練模型。如果日後想「被引用但不被拿去訓練」，可以只擋訓練用爬蟲（GPTBot、ClaudeBot、Google-Extended、CCBot 等），同時保留搜尋用爬蟲；`/seo-fix` 會逐組詢問。部署在 GitHub Pages、沒有經過 Cloudflare，所以正式網站的 robots.txt 應該和程式產生的一樣（這次沒有連到正式網站確認）。
+**Analysis:** 全部開放，而且這次在正式網站上實測確認。對一個希望被企業主找到的服務型網站，這通常就是想要的設定：網站可以出現在 ChatGPT、Perplexity、Claude、Copilot 和 Google AI 摘要的答案裡，代價是內容也可能被拿去訓練模型。如果日後想「被引用但不被拿去訓練」，可以只擋訓練用爬蟲（GPTBot、ClaudeBot、Google-Extended、CCBot 等），同時保留搜尋用爬蟲；`/seo-fix` 會逐組詢問。
 
 ### 🌐 Live Check
 
-Not run.
+檢查時間：2026-11-13 04:05（台灣時間）。網站由 GitHub Pages 提供（回應標頭 `Server: GitHub.com`，經 Fastly），沒有經過 Cloudflare。
+
+**robots.txt：** 正式網站和程式產生的內容相同，主機沒有加規則，也沒有 `Content-Signal`。
+
+**llms.txt：** `https://hbh-tw.store/llms.txt` 回傳 404（沒有這個檔案）。
+
+**頁面：**
+
+| URL | 狀態 | X-Robots-Tag | robots meta | 主要內容在 HTML |
+|-----|------|--------------|-------------|-----------------|
+| `/` | 200 | 無 | 無 | yes |
+| `/services/brand-video/` | 200 | 無 | 無 | yes |
+| `/works/` | 200 | 無 | 無（可被收錄，見 SEO-1） | 部分（卡片標題在；完整介紹要點開才顯示） |
+| `/privacy/` | 200 | 無 | 無 | yes |
+| `/terms/` | 200 | 無 | 無 | yes |
+
+**AI user agent 測試（首頁）：**
+
+| Bot | 狀態 | 大小（bytes） | 和瀏覽器比 |
+|-----|------|---------------|------------|
+| 一般瀏覽器 | 200 | 267,875 | — |
+| GPTBot | 200 | 267,875 | 相同 |
+| OAI-SearchBot | 200 | 267,875 | 相同 |
+| ChatGPT-User | 200 | 267,875 | 相同 |
+| ClaudeBot | 200 | 267,875 | 相同 |
+| Claude-SearchBot | 200 | 267,875 | 相同 |
+| Claude-User | 200 | 267,875 | 相同 |
+| PerplexityBot | 200 | 267,875 | 相同 |
+
+GPTBot 拿到的內容和瀏覽器逐字相同。這項測試是用模擬的 user agent 做的，結果僅供參考；GitHub Pages 沒有防火牆規則可設定，實際爬蟲應該也是同樣結果。
+
+**Markdown negotiation 🧪：** 帶 `Accept: text/markdown` 請求首頁，回傳的仍是 HTML（`text/html`）。僅供參考，不需要處理。
 
 ### 🔎 Off-site Snapshot (not scored)
 
@@ -517,13 +652,13 @@ Not run. Pass `search=yes` with a live URL to `/seo-audit` to include it.
 - [ ] Wikidata item for the organization (Wikipedia article only if notable)
 - [ ] Current profiles on the main review platforms for this vertical（例如 Google 商家檔案）
 - [ ] Listings in relevant industry directories（例如影視製作、活動公司名錄）
-- [ ] Independent coverage (press, analyst, expert blogs)（已有工商時報、TVBS，見 GEO-4）
+- [ ] Independent coverage (press, analyst, expert blogs)（已有工商時報、TVBS，見 GEO-5）
 - [ ] Brand's own, disclosed participation in community discussions
 - [ ] Brand name and description consistent across all of the above
 
 ### 📄 llms.txt Status 🧪
 
-- **llms.txt:** missing
+- **llms.txt:** missing（正式網站回傳 404）
 - **llms-full.txt:** missing
 - **Format:** 不適用
 - **Staleness:** 不適用
@@ -537,56 +672,20 @@ None found.
 
 ### 🟠 High Priority Issues
 
-#### GEO-1: 所有服務和案例都在首頁，沒有獨立頁面
+#### GEO-1: 關鍵數字沒有附來源
 
-**File:** `src/app/page.tsx:58`
-**Category:** Topical Authority
-**Impact:** High
-
-**Current Code:**
-```tsx
-      <main id="main" className="flex-1">
-        <Hero />
-        <Services />
-        <ShortVideo />
-        <Cases />
-        <Contact />
-        <About />
-      </main>
-```
-
-**Problem:**
-三個核心主題（品牌影音行銷、活動／EFP 直播／媒體廣告、節目製作）和 10 個案例都在同一頁，每個主題只有幾行字，案例也只能用 `#錨點` 連結。AI 搜尋是以「段落和頁面」為單位擷取的；沒有一頁專門、深入講「EFP 多機直播」或「品牌短影音經營」，就很難被當成這個主題的來源引用。（以主題深度判斷權威是常見的經驗法則，各家 AI 都沒有公開具體的排名因素。）
-
-**Recommended Fix:**
-```text
-優先從最主要的營業項目開始，例如先做一頁「品牌短影音經營」：
-- /services/short-video/：說明服務內容、流程、適合哪些品牌，並連到相關案例
-- 案例獨立成頁（例如 /cases/zha-qi-lai/），寫出背景、做法、成果與時間
-- 首頁的服務區和案例區改成連到這些頁面，子頁面再互相連結
-頁面內容需要網站負責人提供；可以先從現有的案例文字擴寫。
-```
-
-**Why it matters for GEO:**
-有一頁專講某個主題、並和相關案例互相連結，AI 回答「台北 EFP 直播團隊推薦」這類問題時，才有完整的頁面可以引用。
-
-**Source:** https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
-
-#### GEO-2: 關鍵數字沒有附來源
-
-**File:** `src/constants/warmKitchen.ts:25`、`src/constants/cases.ts:13`、`src/constants/cases.ts:218`
+**File:** `src/constants/warmKitchen.ts:24`、`src/constants/cases.ts:13`、`src/constants/cases.ts:218`
 **Category:** Original Research & Evidence
 **Impact:** High
 
 **Current Code:**
 ```ts
-// src/constants/warmKitchen.ts:24-29
+// src/constants/warmKitchen.ts:24-28
 export const WARM_METRICS = [
   { value: "3,300萬+", label: "線上課程募資金額" },
   { value: "8,144份", highlight: "前一季", label: "捐出食物包" },
   { value: "1,357戶", label: "弱勢、急難家庭受助" },
   { value: "1,300公里", label: "志工環台親送" },
-] as const;
 
 // src/constants/cases.ts:13
     client: "三年即達成全台加盟店面超過十間。",
@@ -596,12 +695,12 @@ export const WARM_METRICS = [
 ```
 
 **Problem:**
-這些是網站上最有說服力的成果數字，但旁邊沒有說明資料來源和時間。相比之下，短影音的觀看數（158萬、474萬等）都直接連到原始貼文，是很好的示範。GEO 研究指出，附上來源的統計數字是提高被 AI 引用機率最有效的做法之一。
+這些是網站上最有說服力的成果數字，旁邊沒有說明資料來源和時間（和上次報告相同，尚未處理）。短影音的觀看數都直接連到原始貼文，是很好的示範。GEO 研究指出，附上來源的統計數字是提高被 AI 引用機率最有效的做法之一。
 
 **Recommended Fix:**
 ```text
 每個數字旁邊加上來源和時間，連到可以查證的頁面，例如：
-- 3,300萬+、8,144份、1,357戶：註明「資料來源：1919 食物銀行／ShiFu 平台，截至 YYYY 年 MM 月」，並連到公開頁面
+- 3,300萬+、8,144份、1,357戶：註明「資料來源：1919 食物銀行／課程平台，截至 YYYY 年 MM 月」並連到公開頁面
 - 「超過十間」：連到炸綺來的門市列表
 - 「數十家媒體報導」：列出幾則報導連結
 來源和日期必須由網站負責人提供，不能自行推測。
@@ -614,9 +713,55 @@ AI 傾向引用可以查證的數字；沒有來源的數字可能被忽略，�
 
 ### 🟡 Medium Priority Issues
 
-#### GEO-3: 「長年收視率第一」沒有說明是哪個節目
+#### GEO-2: 三項核心服務只有一項有獨立頁面
 
-**File:** `src/constants/site.ts:98`
+**File:** `src/constants/services.ts:11`
+**Category:** Topical Authority
+**Impact:** Medium
+
+**Current Code:**
+```ts
+  {
+    id: "event",
+    title: "活動 / EFP 直播 / 媒體廣告",
+    items: ["多機位/多平台 直播", "各類型活動統籌", "平面/動態 攝影紀錄", "記者會/新聞媒體投放"],
+  },
+  {
+    id: "commercial",
+    title: "節目製作",
+    items: ["電視/OTT節目製作", "專案策劃&統籌"],
+    caseHref: "#warm-kitchen",
+  },
+```
+
+**Problem:**
+「品牌影音行銷」已經有自己的頁面（上次報告的 GEO-1，從 High 降為 Medium）。另外兩項「活動／EFP 直播／媒體廣告」「節目製作」仍然只有首頁上的幾個短詞，連結也只跳到首頁的案例錨點。10 個案例也還沒有各自的頁面。AI 回答「EFP 多機直播團隊」這類問題時，沒有一頁專講這個主題的內容可以引用。（以主題深度判斷權威是常見的經驗法則，各家 AI 都沒有公開具體的排名因素。）
+
+**Recommended Fix:**
+```text
+照品牌影音行銷頁的做法，依營業重要性逐項新增：
+- /services/event-live/：活動與 EFP 直播的服務內容、流程、相關案例
+- /services/program/：節目製作
+新增後把 services.ts 的 caseHref 指到新頁面，並在各服務頁之間互相連結。
+頁面內容需要負責人提供。
+```
+
+**Why it matters for GEO:**
+有一頁專講某個主題、並和相關案例互相連結，AI 才有完整的頁面可以引用。
+
+**Source:** https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+
+#### GEO-3: 作品集分頁沒有任何連結連到它
+
+**File:** `src/app/works/page.tsx:17`
+**Category:** Topical Authority
+**Impact:** Medium
+
+Same as SEO-1。這一頁在正式網站上存在，但首頁按鈕已隱藏、也不在 sitemap，等於是孤立頁面。決定公開或加 `noindex` 之後，這項一併解決。
+
+#### GEO-4: 「長年收視率第一」沒有說明是哪個節目
+
+**File:** `src/constants/site.ts:101`
 **Category:** Original Research & Evidence
 **Impact:** Medium
 
@@ -626,7 +771,7 @@ AI 傾向引用可以查證的數字；沒有來源的數字可能被忽略，�
 ```
 
 **Problem:**
-「收視率第一」是很強的說法，但沒有說是哪個節目、哪個時段、根據哪份收視調查。沒有佐證的最高級說法，會降低 AI 對整段內容的信任。
+「收視率第一」是很強的說法，但沒有說是哪個節目、哪個時段、根據哪份收視調查。沒有佐證的最高級說法，會降低 AI 對整段內容的信任（和上次報告相同，尚未處理）。
 
 **Recommended Fix:**
 ```text
@@ -640,7 +785,7 @@ AI 傾向引用可以查證的數字；沒有來源的數字可能被忽略，�
 
 **Source:** https://arxiv.org/abs/2311.09735
 
-#### GEO-4: TVBS 報導沒有連到原始新聞
+#### GEO-5: TVBS 報導沒有連到原始新聞
 
 **File:** `src/constants/warmKitchen.ts:44`
 **Category:** External Validation
@@ -652,11 +797,11 @@ AI 傾向引用可以查證的數字；沒有來源的數字可能被忽略，�
 ```
 
 **Problem:**
-網站播放的是自己存的影片檔（`/videos/warm-news.mp4`），沒有連到 TVBS 的原始新聞頁。第三方媒體報導是 AI 判斷一家公司是否可信的重要依據；只放影片和說明文字，AI 無法追到報導本身。工商時報那篇已經有連結，是正確做法。
+網站播放的是自己存的影片檔，沒有連到 TVBS 的原始新聞頁。只放影片和說明文字，AI 無法追到報導本身。工商時報那篇已經有連結，是正確做法（和上次報告相同，尚未處理）。
 
 **Recommended Fix:**
 ```text
-在說明文字旁邊加上 TVBS 新聞的原始網址（例如 news.tvbs.com.tw 或 YouTube 官方頻道的報導連結）。
+在說明文字旁邊加上 TVBS 新聞的原始網址（例如 news.tvbs.com.tw 或 TVBS 官方 YouTube 頻道的報導連結）。
 網址請由網站負責人提供。
 ```
 
@@ -665,7 +810,7 @@ AI 搜尋引擎很重視第三方報導；有連結，AI 才能確認這份報�
 
 **Source:** https://arxiv.org/abs/2509.08919
 
-#### GEO-5: 沒有客戶推薦語
+#### GEO-6: 沒有客戶推薦語
 
 **File:** `src/constants/cases.ts`（10 個案例都沒有推薦語欄位）
 **Category:** External Validation
@@ -674,7 +819,7 @@ AI 搜尋引擎很重視第三方報導；有連結，AI 才能確認這份報�
 **Current Code:** N/A — element absent
 
 **Problem:**
-案例都寫了真實的客戶名稱（炸綺來、Hydrafacial、宏力移動、李熊鴨霸），這是加分的。但沒有任何客戶自己說的話。具名客戶的推薦語是很有力的第三方肯定。
+案例都寫了真實的客戶名稱，這是加分的，但沒有任何客戶自己說的話。具名客戶的推薦語是很有力的第三方肯定（和上次報告相同，尚未處理）。
 
 **Recommended Fix:**
 ```text
@@ -687,7 +832,7 @@ AI 搜尋引擎很重視第三方報導；有連結，AI 才能確認這份報�
 
 **Source:** https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
 
-#### GEO-6: 網站沒有說明公司背後是誰
+#### GEO-7: 網站沒有說明公司背後是誰
 
 **File:** `src/components/sections/About.tsx:9`
 **Category:** Expert Perspectives & Authorship
@@ -699,14 +844,14 @@ AI 搜尋引擎很重視第三方報導；有連結，AI 才能確認這份報�
 ```
 
 **Problem:**
-「關於我們」只有三組能力短詞，沒有負責人或核心團隊的名字、經歷，也沒有成立年份或公司登記名稱。隱私權政策和服務條款雖然都有，但同樣沒有說明營運主體是誰。
+「關於我們」只有三組能力短詞，沒有負責人或核心團隊的名字、經歷，也沒有成立年份或公司登記名稱（和上次報告相同，尚未處理）。
 
 **Recommended Fix:**
 ```text
 在「關於我們」加上：
-- 創辦人或製作人的姓名、職稱與代表作品（例如做過哪些電視節目）
+- 創辦人或製作人的姓名、職稱與代表作品
 - 成立年份、公司登記名稱（如有）
-之後可以再加上 Person 結構化資料。內容請由網站負責人提供。
+之後可以再加上 Person 結構化資料，以及 Organization 的 foundingDate、founder。內容請由負責人提供。
 ```
 
 **Why it matters for GEO:**
@@ -716,36 +861,9 @@ AI 在推薦服務商時，會優先引用身分清楚、有具名專業人士�
 
 ### 🔵 Suggestions & Experimental Practices 🧪
 
-#### GEO-7: Organization 結構化資料只連到 YouTube
-
-**File:** `src/app/page.tsx:24`
-**Category:** Entity Clarity
-**Impact:** Low
-
-**Current Code:**
-```tsx
-  sameAs: [SITE.contact.youtube],
-```
-
-**Problem:**
-`sameAs` 只有 YouTube 頻道，也沒有 `foundingDate`、`founder`。「好不好」是常見的口語詞，品牌名稱需要更多線索，AI 才能分辨這是哪一家公司。
-
-**Recommended Fix:**
-```tsx
-// 若公司有官方 FB 粉絲頁、IG、LINE 官方帳號或 Google 商家檔案，把網址加進來；
-// 成立年份、創辦人屬實再加。網址和資料請由網站負責人提供，不要猜。
-  sameAs: [SITE.contact.youtube, "<官方 FB 粉絲頁>", "<官方 IG>"],
-  foundingDate: "<YYYY>",
-```
-
-**Why it matters for GEO:**
-`sameAs` 把網站和公司的其他官方帳號串起來，AI 比較容易確認是同一家公司。
-
-**Source:** https://schema.org/Organization
-
 #### GEO-8: 沒有 dateModified
 
-**File:** `src/app/page.tsx:44`
+**File:** `src/app/page.tsx:45`
 **Category:** Content Freshness
 **Impact:** Low
 
@@ -761,11 +879,11 @@ const websiteLd = {
 ```
 
 **Problem:**
-sitemap 已經有各頁真正的更新日期（`src/app/sitemap.ts` 的 `UPDATED`），但頁面本身沒有 `dateModified`，也沒有 `article:modified_time`。
+5 個頁面的結構化資料都沒有 `dateModified`。sitemap 有各頁的更新日期（但目前沒跟上，見 SEO-2）。
 
 **Recommended Fix:**
 ```tsx
-// 把 sitemap 的 UPDATED 匯出共用，首頁加一筆 WebPage JSON-LD：
+// 把 sitemap.ts 的 UPDATED 匯出共用，各頁加一筆 WebPage JSON-LD：
 { "@context": "https://schema.org", "@type": "WebPage", url: `${SITE_URL}/`, dateModified: UPDATED.home }
 // 日期只在內容真的有改時才更新。
 ```
@@ -777,17 +895,21 @@ sitemap 已經有各頁真正的更新日期（`src/app/sitemap.ts` 的 `UPDATED
 
 #### GEO-9: 「關於我們」是拆開的短詞 🧪
 
-**File:** `src/constants/site.ts:98`
+**File:** `src/components/sections/About.tsx:27`
 **Category:** Extractable Passages
 **Impact:** Low 🧪
 
 **Current Code:**
-```ts
-    lines: ["長年收視率第一之", "電視節目製作團隊經驗"],
+```tsx
+                {p.lines.map((line) => (
+                  <p key={line} className="text-lg font-medium tracking-wide text-brand-navy">
+                    {line}
+                  </p>
+                ))}
 ```
 
 **Problem:**
-一句話被拆成兩個 `<p>`，三組能力也都是短詞（「平台 × 企劃 × 影像」）。被單獨擷取時，很難看懂完整意思。
+「長年收視率第一之」「電視節目製作團隊經驗」被拆成兩個 `<p>`。被單獨擷取時，前半句看不懂意思。
 
 **Recommended Fix:**
 ```text
@@ -802,7 +924,7 @@ sitemap 已經有各頁真正的更新日期（`src/app/sitemap.ts` 的 `UPDATED
 
 #### GEO-10: 沒有 llms.txt 🧪
 
-**File:** `public/`（沒有 `llms.txt`）
+**File:** `public/`（沒有 `llms.txt`；正式網站回傳 404）
 **Category:** llms.txt & Markdown Access 🧪
 **Impact:** Low 🧪
 
@@ -821,39 +943,65 @@ sitemap 已經有各頁真正的更新日期（`src/app/sitemap.ts` 的 `UPDATED
 
 **Source:** https://llmstxt.org/
 
+#### GEO-11: 首頁社群區塊沒有說明它和服務的關係 🧪
+
+**File:** `src/components/sections/IgFeed.tsx:172`
+**Category:** Topical Authority
+**Impact:** Low 🧪
+
+**Current Code:**
+```tsx
+        <SectionTitle title="AI自動化社群更新" en="Auto-update social media" />
+```
+
+**Problem:**
+這個區塊每天放進 9 則社群貼文，題目是時事趣聞（好萊塢女星、拉麵連鎖、Netflix 影集等），和影音製作沒有直接關係。區塊只有標題，沒有一句話說明「這些貼文是好不好娛樂用 AI 自動化經營社群的實際成果」。AI 擷取首頁時，會讀到一批和公司業務無關的標題，卻不知道它們是服務的示範。（主題集中度是經驗法則，不是公開的排名因素。）
+
+**Recommended Fix:**
+```text
+在標題下方加一句說明，把這個區塊和「社群帳號 AI 自動化營運」服務連起來，
+例如說明這是哪個帳號、由誰經營、多久更新一次。文字請負責人決定。
+```
+
+**Why it matters for GEO:**
+有了這句話，這個區塊就從「無關的內容」變成「服務的實證」。
+
+**Source:** https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+
 ### ✅ What's Working Well
 
-- ✅ robots.txt 對所有爬蟲開放，沒有誤擋 Googlebot、Bingbot 或 AI 搜尋爬蟲
-- ✅ 全站靜態輸出，內容都在初始 HTML 裡，不需要執行 JavaScript 才看得到
-- ✅ 沒有針對機器人顯示不同內容（沒有 middleware 或 user-agent 判斷）
-- ✅ 全站 HTTPS，沒有混合內容；404 頁回傳正確的 404 狀態碼
-- ✅ 短影音觀看數（158萬、118萬、474萬、194萬、39.9萬、209萬）都直接連到原始 IG／FB 貼文，可以查證
-- ✅ 案例都寫了真實客戶名稱，並連到客戶官網或作品（宏力移動官網、暖廚家味官網、1919 食物銀行）
-- ✅ 工商時報報導有連到原文
-- ✅ 暖廚家味寫出五位主廚的姓名和所屬餐廳
-- ✅ 首頁有 `Organization` JSON-LD（name、alternateName、url、logo、description、email、areaServed、knowsAbout、服務目錄）
-- ✅ 有隱私權政策、服務條款、聯絡方式
-- ✅ 有 `BreadcrumbList` 和清楚的網址結構
+- ✅ 正式網站實測：7 種 AI user agent 都拿到 200，內容和一般瀏覽器相同，沒有針對機器人顯示不同內容
+- ✅ robots.txt 對所有爬蟲開放，正式網站和程式一致
+- ✅ 全站靜態輸出，內容都在初始 HTML 裡
+- ✅ 「品牌影音行銷」有獨立頁面，包含服務內容、價格、流程和 3 個相關案例（上次 GEO-1 的第一步，已完成）
+- ✅ `Organization` 的 `sameAs` 連到 YouTube、Instagram、Facebook、Threads 四個官方帳號（上次 GEO-7，已修正）
+- ✅ 品牌影音行銷頁有 `Service` JSON-LD，`provider` 指回好不好娛樂
+- ✅ 價格是自家訂的第一手資料，寫得具體
+- ✅ 短影音觀看數都直接連到原始 IG／FB 貼文，可以查證
+- ✅ 案例都寫了真實客戶名稱，並連到客戶官網或作品；工商時報報導有連到原文
+- ✅ 社群貼文每則都連到原始貼文，並有 `<time>` 標示日期
+- ✅ 全站 HTTPS；`http://` 和 `www.` 都 301 轉到正式網址；404 頁回傳正確的 404 狀態碼
+- ✅ 有隱私權政策、服務條款、聯絡方式；子頁面都有 `BreadcrumbList`
 
 ### 🏗️ Framework-Specific Recommendations
 
 **Detected Framework:** Next.js 16.4.2（App Router、static export）
 
-- 新增服務頁或案例頁（GEO-1）時，直接用 App Router 的資料夾建立靜態頁面，例如 `src/app/services/short-video/page.tsx`；案例很多時，可以用 `src/app/cases/[slug]/page.tsx` 搭配 `generateStaticParams()`，資料沿用 `src/constants/cases.ts`。
-- 每個新頁面都要有 `metadata`（含 `...shareMeta()`）、`sitemap.ts` 的日期和麵包屑。
-- 若想區分「訓練」和「搜尋」爬蟲，在 `src/app/robots.ts` 的 `rules` 改成陣列，逐一列出機器人。
-- `dateModified` 可以和 `sitemap.ts` 共用同一份日期，避免兩邊不一致。
+- 新增其他服務頁（GEO-2）時，沿用 `src/app/services/brand-video/page.tsx` 的結構，文字放在 `src/constants/` 的獨立檔案。
+- 案例要獨立成頁時，用 `src/app/cases/[slug]/page.tsx` 搭配 `generateStaticParams()`，資料沿用 `src/constants/cases.ts`。
+- `dateModified` 和 `sitemap.ts` 共用同一份日期，避免兩邊不一致。
+- 若想區分「訓練」和「搜尋」爬蟲，把 `src/app/robots.ts` 的 `rules` 改成陣列，逐一列出機器人。
 
 ### 📊 Content Analysis Summary
 
-- **Content pages analyzed:** 1（首頁；場域租借依負責人決定不列入，隱私權政策與服務條款屬法律頁）
-- **Core topics:** 品牌影音行銷（短影音、自媒體經營）、活動／EFP 直播／媒體廣告、節目製作 (pages per topic: 0, 0, 0 獨立頁面；都只是首頁的區塊)
-- **Hub pages / orphan pages / thin pages:** 0 / 0 / 0（沒有主題子頁）
-- **Pages with first-party data:** 1（首頁的案例成果數字）
+- **Content pages analyzed:** 3（首頁、品牌影音行銷頁、作品集；場域租借不列入，隱私權政策與服務條款屬法律頁）
+- **Core topics:** 品牌影音行銷、活動／EFP 直播／媒體廣告、節目製作 (pages per topic: 1, 0, 0)
+- **Hub pages / orphan pages / thin pages:** 1 / 1 / 0（品牌影音行銷頁是主題頁；作品集是孤立頁面）
+- **Pages with first-party data:** 2（首頁的案例成果數字、品牌影音行銷頁的價格）
 - **Numeric claims with a linked source:** 7/14（短影音觀看數有連結；募資金額、食物包、受助戶數、環台公里數、加盟店數、媒體報導數、粉絲入場數沒有）
 - **Bylined content pages:** 0/0（沒有文章類頁面）(author pages with `Person` markup: 0)
-- **Organization `sameAs` links:** 1
-- **Pages with dateModified:** 0/4
+- **Organization `sameAs` links:** 4
+- **Pages with dateModified:** 0/5
 
 ### 📈 Measuring Citations
 
@@ -870,15 +1018,17 @@ This audit measures readiness, not citations. To track citations over time:
 
 Across all audited lenses, ranked by impact for the effort:
 
-1. **[Quick Win]** GEO-2：在暖廚家味、炸綺來、代言人記者會的數字旁加上來源連結和日期（需要負責人提供來源）
-2. **[Quick Win]** GEO-4：TVBS 報導加上原始新聞連結
-3. **[Quick Win]** GEO-3、GEO-6、AEO-6：「關於我們」寫出具名經歷和一段完整的公司介紹
-4. **[Quick Win]** GEO-7、GEO-8：Organization 補上其他官方帳號；首頁加 `dateModified`
-5. **[Medium Effort]** AEO-1、AEO-3：用 `/seo-questions` 整理問題，再用 `/seo-faq` 做常見問題區
-6. **[Medium Effort]** AEO-2：三項服務各加一句說明
-7. **[Medium Effort]** GEO-5：向客戶取得具名推薦語
-8. **[Larger Effort]** GEO-1：主要服務和代表案例做成獨立頁面
-9. **[Optional]** AEO-4、AEO-5、GEO-9、GEO-10、SEO-1
+1. **[Quick Win]** SEO-1（同 GEO-3）：決定作品集分頁要公開還是加 `noindex`（需要負責人決定）
+2. **[Quick Win]** SEO-2：把 sitemap 的首頁、品牌影音行銷頁日期更新為 2026-11-08（技術修正，可直接改）
+3. **[Quick Win]** GEO-1：成果數字旁加上來源連結和日期（需要負責人提供來源）
+4. **[Quick Win]** GEO-5：TVBS 報導加上原始新聞連結（需要負責人提供網址）
+5. **[Quick Win]** AEO-7、GEO-8：價格加更新日期；各頁加 `dateModified`
+6. **[Quick Win]** GEO-4、GEO-7、AEO-6：「關於我們」寫出具名經歷和一段完整的公司介紹
+7. **[Medium Effort]** AEO-2、GEO-11：品牌影音行銷加一句定義；社群區塊加一句說明
+8. **[Medium Effort]** AEO-1、AEO-3：用 `/seo-questions` 整理問題，再用 `/seo-faq` 做常見問題區
+9. **[Medium Effort]** GEO-6：向客戶取得具名推薦語
+10. **[Larger Effort]** GEO-2：活動／EFP 直播、節目製作各做一頁
+11. **[Optional]** AEO-4、AEO-5、GEO-9、GEO-10、SEO-3
 
 ---
 
@@ -887,10 +1037,11 @@ Across all audited lenses, ranked by impact for the effort:
 ```
 /seo-fix              # apply fixes from this report
 /seo-fix --dry-run    # preview the diffs without writing
-/seo-schema           # Organization sameAs、WebPage dateModified 等結構化資料
+/seo-schema           # WebPage dateModified、Organization founder 等結構化資料
 /seo-questions        # 整理目標客戶會問的問題，對照網站內容
 /seo-faq              # 建立常見問題區（答案由負責人提供）
 /seo-llms-txt         # 建立 llms.txt（可選）
+/seo-crawl            # 連到正式網站檢查 SEO 基本項目（狀態碼、轉址、標頭）
 ```
 
 ---
@@ -938,13 +1089,13 @@ Across all audited lenses, ranked by impact for the effort:
 
 ## 🔍 Audit Methodology
 
-Performed by the `ai-seo` plugin using Context7 MCP for real-time documentation（Next.js v16.2.9 Metadata API）.
+Performed by the `ai-seo` plugin using Context7 MCP for real-time documentation（Next.js Metadata API）.
 
-**Files analyzed:** 40（原始碼、設定檔，以及建置輸出 `out/` 的 5 個 HTML 頁面）
-**Routes detected:** 4（`/`、`/venue/`、`/privacy/`、`/terms/`，另有 404 頁）
-**Answer pages:** 1
-**Content pages:** 1
-**Live URLs fetched:** 0
+**Files analyzed:** 28（原始碼與設定檔），加上正式網站的 9 個回應
+**Routes detected:** 6（`/`、`/services/brand-video/`、`/works/`、`/venue/`、`/privacy/`、`/terms/`，另有 404 頁）
+**Answer pages:** 2
+**Content pages:** 3
+**Live URLs fetched:** 9（5 個頁面、robots.txt、sitemap.xml、llms.txt、一個不存在的網址；另有 3 次轉址測試、7 次 AI user agent 測試、1 次 Markdown 測試）
 **Web searches run:** 0
 
 ### Limitations
@@ -953,7 +1104,7 @@ Performed by the `ai-seo` plugin using Context7 MCP for real-time documentation�
 
 - Static analysis only (no runtime Core Web Vitals measurement)
 - Does not crawl external links
-- Does not test server response headers (recommend a separate HTTP header audit)
+- Does not test server response headers (recommend a separate HTTP header audit)；這次只看了首頁的回應標頭
 - Accessibility is surface-level. For WCAG 2.1/2.2 compliance, run `/accessibility-audit` from the ai-accessibility plugin.
 
 #### AEO
