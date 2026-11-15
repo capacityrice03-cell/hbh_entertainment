@@ -1,24 +1,20 @@
 // 抓 Threads（hbh__entertainment）貼文，給首頁「AI自動化社群更新」的 Threads 那一排用。
-// 只放 1 篇，網站上把它的圖卡排成一列左右滑（Rice 2026-11-08）：
-// 從「當天」（台灣日期）發的有圖貼文裡隨機挑一篇；當天還沒有，就從最近一天有發的貼文裡隨機挑。
-// 跳過 IG、FB 那兩排已有的題目（igFeed.json、fbFeed.json，比對文字相似度，見 sameTopic），所以要在 fetch-ig、fetch-fb 之後跑。
-// 當天的貼文都被跳過時，就從最近一天還有剩的貼文裡挑。影片用封面圖。
-// GitHub Actions 每天台灣時間 11:00 跑一次。
-// 輸出：src/constants/threadsFeed.json（陣列，只有 1 篇）、public/images/threads/<貼文ID>-<序號>.jpg。
+// 跟 IG 一樣一排 4 則、每則一張封面圖（Rice 2026-11-16，Threads 排在 IG 上面）：
+// 從最新的有圖貼文照新到舊挑 4 篇，跳過 IG、FB 那兩排已有的題目（igFeed.json、fbFeed.json，比對文字相似度，見 sameTopic），
+// 所以要在 fetch-ig、fetch-fb 之後跑。輪播用第一張，影片用封面圖。
+// GitHub Actions 每天台灣時間 08:00、12:00 跑。
+// 輸出：src/constants/threadsFeed.json（陣列，最多 4 篇）、public/images/threads/<貼文ID>.jpg。
 // 需要環境變數 THREADS_ACCESS_TOKEN（GitHub 上存在 Secrets；ai-office 續期後會同步過去）。
 // 沒有權杖或抓取失敗時：保留上一次的資料，不讓網站建置失敗。
 import { downloadJpeg, getJson, sameTopic, saveFeed, usedTexts, warn } from "./social-lib.mjs";
 
 const LABEL = "Threads 貼文";
+const COUNT = 4; // 一排 4 則，跟 IG 一樣
 
-// API 的時間像 2026-11-07T14:00:34+0000 → 台灣日期 "2026-11-07"
-const twDate = (ts) =>
-  new Date(ts.replace(/([+-]\d{2})(\d{2})$/, "$1:$2")).toLocaleDateString("sv-SE", { timeZone: "Asia/Taipei" });
-
-/** 貼文所有圖的網址（輪播是每一張，影片用封面）；沒有圖回傳空陣列 */
-function imagesOf(p) {
-  const items = p.media_type === "CAROUSEL_ALBUM" ? (p.children?.data ?? []) : [p];
-  return items.map((m) => (m.media_type === "VIDEO" ? m.thumbnail_url : m.media_url)).filter(Boolean);
+/** 貼文的封面圖網址（輪播用第一張，影片用封面）；沒有圖回傳 undefined */
+function coverOf(p) {
+  const m = p.media_type === "CAROUSEL_ALBUM" ? p.children?.data?.[0] : p;
+  return m?.media_type === "VIDEO" ? m.thumbnail_url : m?.media_url;
 }
 
 async function main() {
@@ -30,7 +26,7 @@ async function main() {
     "fields",
     "id,text,media_type,media_url,thumbnail_url,permalink,timestamp,children{media_type,media_url,thumbnail_url}",
   );
-  url.searchParams.set("limit", "25"); // 一天最多發幾篇，25 篇夠涵蓋當天
+  url.searchParams.set("limit", "25"); // 多抓一些，扣掉沒圖和跟 IG／FB 同題目的還夠 4 篇
   url.searchParams.set("access_token", token);
 
   let body;
@@ -43,34 +39,34 @@ async function main() {
   // 候選：有文字、有圖、不是 IG／FB 那兩排已有的題目；API 已經照新到舊排好
   const used = await usedTexts([["igFeed.json", "caption"], ["fbFeed.json", "message"]]);
   const candidates = (body.data ?? []).filter(
-    (p) => p.text?.trim() && p.permalink && imagesOf(p).length > 0 && !sameTopic(p.text, used),
+    (p) => p.text?.trim() && p.permalink && coverOf(p) && !sameTopic(p.text, used),
   );
-  if (candidates.length === 0) return warn(LABEL, "沒有找到有圖的貼文，沿用上一次的資料");
 
-  // 當天（台灣日期）的貼文；當天還沒發，就用最近一天有發的
-  const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Taipei" });
-  const day = candidates.some((p) => twDate(p.timestamp) === today) ? today : twDate(candidates[0].timestamp);
-  const sameDay = candidates.filter((p) => twDate(p.timestamp) === day);
-  const pick = sameDay[Math.floor(Math.random() * sameDay.length)];
-
+  // 先把圖片全部下載好，成功了才換掉舊資料
+  const posts = [];
   const images = new Map();
-  const list = [];
-  for (const [i, src] of imagesOf(pick).entries()) {
+  for (const p of candidates) {
+    if (posts.length >= COUNT) break;
     try {
-      const { data, width, height } = await downloadJpeg(src);
-      const name = `${pick.id}-${i + 1}.jpg`;
-      images.set(name, data);
-      list.push({ src: `/images/threads/${name}`, width, height });
+      const { data, width, height } = await downloadJpeg(coverOf(p));
+      images.set(`${p.id}.jpg`, data);
+      posts.push({
+        id: p.id,
+        text: p.text.trim(),
+        permalink: p.permalink,
+        timestamp: p.timestamp,
+        image: `/images/threads/${p.id}.jpg`,
+        width,
+        height,
+      });
     } catch (e) {
-      warn(LABEL, `貼文 ${pick.id} 第 ${i + 1} 張圖下載失敗（${e.message}），跳過這張`);
+      warn(LABEL, `貼文 ${p.id} 的圖片下載失敗（${e.message}），略過這則`);
     }
   }
-  if (list.length === 0) return warn(LABEL, "圖片全部下載失敗，沿用上一次的資料");
 
-  const post = { id: pick.id, text: pick.text.trim(), permalink: pick.permalink, timestamp: pick.timestamp, images: list };
-  await saveFeed("threads", images, "threadsFeed.json", [post]);
-  const note = day === today ? "當天" : `當天還沒發，改用 ${day}`;
-  console.log(`${LABEL}：已更新 1 則，${list.length} 張圖（${note}，${sameDay.length} 篇裡隨機挑，${pick.timestamp}）`);
+  if (posts.length === 0) return warn(LABEL, "沒有找到有圖的貼文，沿用上一次的資料");
+  await saveFeed("threads", images, "threadsFeed.json", posts);
+  console.log(`${LABEL}：已更新 ${posts.length} 則（最新 ${posts[0].timestamp}）`);
 }
 
 await main();

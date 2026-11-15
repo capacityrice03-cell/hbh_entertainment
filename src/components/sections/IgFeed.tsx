@@ -1,15 +1,14 @@
 import Image from "next/image";
 import SectionTitle from "@/components/ui/SectionTitle";
-import ScrollStrip from "@/components/ui/ScrollStrip";
 import { SITE } from "@/constants/site";
 import igPosts from "@/constants/igFeed.json";
 import fbPosts from "@/constants/fbFeed.json";
 import threadsPosts from "@/constants/threadsFeed.json";
 
-// 首頁「AI自動化社群更新」：三排。IG、FB 電腦一排 4 則；Threads 只放 1 篇，圖卡左右滑；只有 IG 那排下面有追蹤按鈕
+// 首頁「AI自動化社群更新」：三排，順序 Threads → IG → FB，電腦一排 4 則；只有 IG 那排下面有追蹤按鈕
+// - Threads：GitHub Actions 每天跑 scripts/fetch-threads.mjs 自動更新（最新 4 篇有圖的，不跟 IG／FB 同題目；顯示方式跟 IG 一樣，Rice 2026-11-16）
 // - Instagram：GitHub Actions 每天跑 scripts/fetch-ig.mjs 自動更新
 // - Facebook：GitHub Actions 每天跑 scripts/fetch-fb.mjs 自動更新（最近的貼文隨機挑 4 篇）
-// - Threads：GitHub Actions 每天跑 scripts/fetch-threads.mjs 自動更新（只放 1 篇，當天的貼文隨機挑、不跟 IG／FB 同題目，圖卡左右滑）
 
 // 日期一律用台灣時間顯示，例如 2026/11/07
 const dateFmt = new Intl.DateTimeFormat("zh-TW", {
@@ -108,71 +107,27 @@ const ROW =
   "-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-4 md:gap-5 md:overflow-visible md:px-0 md:pb-0";
 const ROW_ITEM = "w-[60%] shrink-0 snap-start sm:w-[40%] md:w-auto";
 
-type ThreadsPost = {
-  id: string;
-  text: string;
-  permalink: string;
-  timestamp: string;
-  images: { src: string; width: number; height: number }[];
-};
-const threadsPost = (threadsPosts as ThreadsPost[])[0];
-
-/** Threads 那排：只放 1 篇，標題文字在上（電腦在左），圖卡排成一列左右滑（Rice 2026-11-08） */
-function ThreadsRow({ post }: { post: ThreadsPost }) {
-  const { title, body } = splitText(post.text);
-  return (
-    <div className="mt-14">
-      <RowLabel name="Threads" href={SITE.contact.threads} icon="/images/icon-threads.png" />
-      <div className="md:grid md:grid-cols-4 md:gap-5">
-        <a
-          href={post.permalink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group mb-4 block md:mb-0 md:self-center"
-        >
-          <PostDate ts={post.timestamp} />
-          {title && (
-            <h4 className="mt-1 text-base leading-snug font-bold text-brand-navy group-hover:text-brand-blue md:text-lg">
-              {title}
-            </h4>
-          )}
-          {body && <p className="mt-2 line-clamp-4 text-sm leading-relaxed text-muted">{body}</p>}
-        </a>
-        <div className="md:col-span-3">
-          <ScrollStrip label={title ? `Threads 貼文圖卡：${title}` : "Threads 貼文圖卡"}>
-            {post.images.map((img, i) => (
-              <li key={img.src} className="w-[70%] shrink-0 snap-start sm:w-[42%] md:w-[calc((100%-2rem)/3.3)]">
-                <a
-                  href={post.permalink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative block aspect-[4/5] overflow-hidden rounded-xl bg-brand-cream ring-1 ring-black/5"
-                >
-                  <Image
-                    src={img.src}
-                    alt={`Threads 貼文第 ${i + 1} 張圖${title ? `：${title}` : ""}`}
-                    fill
-                    sizes="(min-width: 1152px) 250px, (min-width: 768px) 22vw, (min-width: 640px) 42vw, 70vw"
-                    className="object-cover"
-                  />
-                </a>
-              </li>
-            ))}
-          </ScrollStrip>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function IgFeed() {
   return (
     <section id="ig-feed" className="scroll-mt-24 bg-white py-20 md:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <SectionTitle title="AI自動化社群更新" en="Auto-update social media" />
 
-        {igPosts.length > 0 && (
+        {threadsPosts.length > 0 && (
           <div>
+            <RowLabel name="Threads" href={SITE.contact.threads} icon="/images/icon-threads.png" />
+            <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+              {threadsPosts.map((p) => (
+                <li key={p.id}>
+                  <PhotoCard href={p.permalink} image={p.image} text={p.text} ts={p.timestamp} platform="Threads" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {igPosts.length > 0 && (
+          <div className={threadsPosts.length > 0 ? "mt-14" : undefined}>
             <RowLabel name="Instagram" href={SITE.contact.instagram} icon="/images/icon-ig.png" />
             <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
               {igPosts.map((p) => (
@@ -197,8 +152,6 @@ export default function IgFeed() {
             </ul>
           </div>
         )}
-
-        {threadsPost && <ThreadsRow post={threadsPost} />}
       </div>
     </section>
   );
