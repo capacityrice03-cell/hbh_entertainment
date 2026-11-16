@@ -35,7 +35,7 @@ jobs:
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
-      # 抓 FB 粉專貼文（最近的貼文隨機挑 4 篇）；同上，失敗不擋上線；要在 Threads 之前跑
+      # 抓 FB 粉專貼文（最新 4 篇有圖的）；同上，失敗不擋上線；要在 Threads 之前跑
       - run: npm run fetch-fb
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}

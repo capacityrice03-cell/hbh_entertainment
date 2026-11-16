@@ -1,6 +1,6 @@
 // 抓 FB 粉專「好不好娛樂」最新貼文，給首頁「AI自動化社群更新」的 Facebook 那一排用（一排 4 則）。
-// 2026-11-08 起改成自動更新（原本是 Rice 指定貼文）：GitHub Actions 每天台灣時間 11:00 跑一次。
-// 挑法：最近 25 篇裡有文字、有圖的貼文隨機挑 4 篇，網站上照新到舊排；不跳過跟 IG 同題目的（Rice 2026-11-08）。
+// 2026-11-08 起改成自動更新（原本是 Rice 指定貼文）：GitHub Actions 每天台灣時間 08:00、12:00 跑。
+// 挑法：最新 4 篇有文字、有圖的貼文，照新到舊排（Rice 2026-11-17，原本是隨機挑）；不跳過跟 IG 同題目的（Rice 2026-11-08）。
 // 要在 fetch-threads 之前跑（Threads 會跳過 FB 那排已有的題目）。
 // 輸出：src/constants/fbFeed.json、public/images/fb/<貼文ID>.jpg。
 // 需要環境變數 FB_PAGE_ID、FB_PAGE_ACCESS_TOKEN（ai-office .env 的使用者權杖，這裡換成粉專權杖才讀得到；
@@ -34,12 +34,9 @@ async function main() {
     return warn(LABEL, `${e.message}，沿用上一次的資料（FB 授權可能過期，要重新授權）`);
   }
 
-  // 候選：最近 25 篇裡有文字、有圖的，打亂順序隨機挑（不跳過跟 IG 同題目的，Rice 2026-11-08）
+  // 候選：最近 25 篇裡有文字、有圖的，照新到舊挑最新的（不跳過跟 IG 同題目的，Rice 2026-11-08）
   const all = (body.data ?? []).filter((p) => p.message?.trim() && p.permalink_url && p.full_picture);
-  const ordered = all
-    .map((p) => [Math.random(), p])
-    .sort((a, b) => a[0] - b[0])
-    .map(([, p]) => p);
+  const ordered = [...all].sort((a, b) => b.created_time.localeCompare(a.created_time));
 
   // 先把圖片全部下載好，成功了才換掉舊資料
   const posts = [];
@@ -67,7 +64,7 @@ async function main() {
   // 網站上照新到舊排
   posts.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
   await saveFeed("fb", images, "fbFeed.json", posts);
-  console.log(`${LABEL}：已更新 ${posts.length} 則（從最近 ${all.length} 篇有圖的貼文裡隨機挑）`);
+  console.log(`${LABEL}：已更新 ${posts.length} 則（從最近 ${all.length} 篇有圖的貼文裡挑最新的）`);
 }
 
 await main();
