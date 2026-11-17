@@ -169,12 +169,12 @@ export default function GoleadProposalPage() {
               <Image src="/images/logo.png" alt={SITE.name} width={1225} height={746} className="h-10 w-auto md:h-12" />
             </span>
             <p className="mt-10 text-sm font-semibold tracking-[0.3em] text-brand-yellow md:text-base">{PROPOSAL.byline}</p>
-            <h1 className="mt-5 max-w-3xl text-4xl leading-tight font-bold tracking-wide text-white md:text-6xl md:leading-[1.2]">
-              {PROPOSAL.client} 2027
-              <br />
-              年度影音與品牌
-              <br />
-              整合行銷企劃書
+            {/* 兩行：客戶名稱放大，第二行企劃書名稱（Rice 2026-11-17 指定的排版） */}
+            <h1 className="mt-5 font-bold text-white">
+              <span className="block text-5xl leading-tight tracking-[0.12em] md:text-7xl">{PROPOSAL.client}</span>
+              <span className="mt-3 block text-2xl leading-snug tracking-wide md:mt-4 md:text-[2.5rem] md:whitespace-nowrap">
+                {PROPOSAL.subtitle}
+              </span>
             </h1>
             <div className="mt-6 flex w-28 gap-1">
               <span className="h-1.5 flex-1 rounded-full bg-brand-sky" />

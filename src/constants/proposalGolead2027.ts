@@ -7,6 +7,8 @@ export const PROPOSAL = {
   path: "/proposal/golead-2027/",
   title: "宏力移動 2027 年度影音與品牌整合行銷企劃書",
   client: "宏力移動",
+  /** 封面第二行（第一行是 client） */
+  subtitle: "年度影音與品牌整合行銷企劃書",
   clientEn: "Go Lead Mobility",
   byline: "2027 年度策略提案｜好不好娛樂企劃團隊",
   axes: ["企劃", "影像", "平台", "實體活動"],
