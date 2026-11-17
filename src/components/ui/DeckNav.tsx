@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { scrollToY } from "@/components/providers/SmoothScrollProvider";
 
 /**
  * 簡報頁的換頁控制：頁面上每個 [data-slide] 區塊算一頁。
@@ -24,16 +25,22 @@ export default function DeckNav() {
     return current;
   }, []);
 
-  const go = useCallback((target: number) => {
-    const list = slides();
-    const el = list[Math.max(0, Math.min(list.length - 1, target))];
-    if (!el) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({
-      top: el.getBoundingClientRect().top + window.scrollY,
-      behavior: reduce ? "auto" : "smooth",
-    });
-  }, []);
+  // 剛按過換頁、畫面還在捲的時候，記住要去的那一頁，連按兩下才會真的前進兩頁
+  const pending = useRef({ index: 0, at: 0 });
+
+  const go = useCallback(
+    (step: number | "first" | "last") => {
+      const list = slides();
+      const base = Date.now() - pending.current.at < 800 ? pending.current.index : currentIndex();
+      const wanted = step === "first" ? 0 : step === "last" ? list.length - 1 : base + step;
+      const target = Math.max(0, Math.min(list.length - 1, wanted));
+      const el = list[target];
+      if (!el) return;
+      pending.current = { index: target, at: Date.now() };
+      scrollToY(el.getBoundingClientRect().top + window.scrollY);
+    },
+    [currentIndex],
+  );
 
   const toggleFullscreen = useCallback(() => {
     if (document.fullscreenElement) document.exitFullscreen();
@@ -54,30 +61,29 @@ export default function DeckNav() {
       const tag = (e.target as HTMLElement | null)?.tagName;
       // 焦點在按鈕或連結上時，空白鍵留給它們自己用
       const onControl = tag === "BUTTON" || tag === "A" || tag === "INPUT" || tag === "TEXTAREA";
-      const i = currentIndex();
       switch (e.key) {
         case "ArrowRight":
         case "PageDown":
           e.preventDefault();
-          go(i + 1);
+          go(1);
           break;
         case " ":
           if (onControl) return;
           e.preventDefault();
-          go(e.shiftKey ? i - 1 : i + 1);
+          go(e.shiftKey ? -1 : 1);
           break;
         case "ArrowLeft":
         case "PageUp":
           e.preventDefault();
-          go(i - 1);
+          go(-1);
           break;
         case "Home":
           e.preventDefault();
-          go(0);
+          go("first");
           break;
         case "End":
           e.preventDefault();
-          go(Number.MAX_SAFE_INTEGER);
+          go("last");
           break;
         case "f":
         case "F":
@@ -114,7 +120,7 @@ export default function DeckNav() {
         aria-label="簡報換頁"
         className="fixed right-4 bottom-4 z-50 flex items-center gap-1 rounded-full bg-white/95 p-1 shadow-lg ring-1 ring-black/10 backdrop-blur print:hidden"
       >
-        <button type="button" className={button} onClick={() => go(index - 1)} disabled={index === 0} aria-label="上一頁">
+        <button type="button" className={button} onClick={() => go(-1)} disabled={index === 0} aria-label="上一頁">
           <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
             <path d="M12.5 4.5 7 10l5.5 5.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -125,7 +131,7 @@ export default function DeckNav() {
         <button
           type="button"
           className={button}
-          onClick={() => go(index + 1)}
+          onClick={() => go(1)}
           disabled={index === total - 1}
           aria-label="下一頁"
         >

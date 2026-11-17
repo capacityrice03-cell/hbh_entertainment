@@ -153,13 +153,14 @@ export default function GoleadProposalPage() {
             <>
               <Image
                 src={`${IMG}/golead-2027-cover.jpg`}
-                alt="宏力移動領航者活動戶外大合照，背景為台北 101"
+                alt="夜晚的台北街頭，司機站在計程車旁望向台北 101"
                 fill
                 priority
                 sizes="100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/85 to-brand-navy/30" aria-hidden="true" />
+              {/* 左邊壓暗讓標題好讀，右邊保留原圖 */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#061226]/85 via-[#061226]/45 to-transparent" aria-hidden="true" />
             </>
           }
         >
@@ -194,33 +195,20 @@ export default function GoleadProposalPage() {
 
         {/* 02 計畫摘要 */}
         <Slide>
-          <div className="grid items-center gap-10 lg:grid-cols-[7fr_5fr]">
-            <div>
-              <Heading en="Executive Summary" title="一、計畫摘要" lead={SUMMARY.intro} />
-              <dl className="space-y-5">
-                {SUMMARY.items.map((item) => (
-                  <div key={item.label} className="grid gap-2 md:grid-cols-[7rem_1fr] md:gap-5">
-                    <dt>
-                      <span className="inline-block rounded-full bg-brand-sky/25 px-4 py-1 text-sm font-bold tracking-widest text-brand-navy">
-                        {item.label}
-                      </span>
-                    </dt>
-                    <dd className="text-lg leading-relaxed text-ink">{item.text}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-sm lg:aspect-[4/5]">
-              <Image
-                src={`${IMG}/golead-2027-partners.jpg`}
-                alt="宏力移動與叫車平台、合作夥伴的室內大合照"
-                fill
-                loading="eager"
-                sizes="(min-width: 1024px) 460px, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+          <Heading en="Executive Summary" title="一、計畫摘要" lead={SUMMARY.intro} />
+          <dl className="space-y-4">
+            {SUMMARY.items.map((item, i) => (
+              <div
+                key={item.label}
+                className="grid gap-2 overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 md:grid-cols-[11rem_1fr] md:gap-0"
+              >
+                <dt className={`flex items-center px-6 py-3 text-xl font-bold tracking-widest text-brand-navy md:py-5 ${TRIO[i]}`}>
+                  {item.label}
+                </dt>
+                <dd className="flex items-center px-6 pb-4 text-lg leading-relaxed text-ink md:py-5 md:text-xl">{item.text}</dd>
+              </div>
+            ))}
+          </dl>
         </Slide>
 
         {/* 03 核心定位 */}
@@ -308,7 +296,7 @@ export default function GoleadProposalPage() {
         <PillarSlide
           pillar={PILLARS[2]}
           className="bg-slate-50"
-          image={{ src: `${IMG}/golead-2027-talk.jpg`, alt: "宏力移動領航者活動現場致詞" }}
+          image={{ src: `${IMG}/golead-2027-partners.jpg`, alt: "宏力移動與叫車平台、合作夥伴的室內大合照" }}
         />
         <PillarSlide pillar={PILLARS[3]} />
 
