@@ -250,7 +250,8 @@ export default function GoleadProposalPage() {
             </>
           }
         >
-          <div>
+          {/* 大螢幕把整組標題往左移一點，離 101 遠一些（Rice 2026-11-18） */}
+          <div className="xl:-translate-x-14">
             {/* 透明底 Logo；深色背景用白字版（由 logo.png 把灰字改白，色塊不變） */}
             <Image src={`${IMG}/logo-light.png`} alt={SITE.name} width={1225} height={746} className="block h-16 w-auto md:h-20" />
             <p className="mt-8 text-smfont-semibold tracking-[0.3em] text-brand-yellow md:text-base">{PROPOSAL.byline}</p>
