@@ -1,6 +1,7 @@
 // 抓 FB 粉專「好不好娛樂」最新貼文，給首頁「AI自動化社群更新」的 Facebook 那一排用（一排 4 則）。
 // 2026-11-08 起改成自動更新（原本是 Rice 指定貼文）：GitHub Actions 每天台灣時間 08:00、12:00 跑。
-// 挑法：最新 4 篇有文字、有圖的貼文，照新到舊排（Rice 2026-11-17，原本是隨機挑）；不跳過跟 IG 同題目的（Rice 2026-11-08）。
+// 挑法：從 7 天內有文字、有圖的貼文亂數挑 4 篇，顯示時照新到舊排；7 天內不滿 4 篇就用更早的最新貼文補滿
+// （Rice 2026-11-17 晚上改；同一天稍早是「最新 4 篇」，更早是「最近 25 篇隨機挑」）。不跳過跟 IG 同題目的（Rice 2026-11-08）。
 // 要在 fetch-threads 之前跑（Threads 會跳過 FB 那排已有的題目）。
 // 輸出：src/constants/fbFeed.json、public/images/fb/<貼文ID>.jpg。
 // 需要環境變數 FB_PAGE_ID、FB_PAGE_ACCESS_TOKEN（ai-office .env 的使用者權杖，這裡換成粉專權杖才讀得到；
@@ -10,6 +11,7 @@ import { downloadJpeg, getJson, saveFeed, warn } from "./social-lib.mjs";
 
 const LABEL = "FB 貼文";
 const COUNT = 4; // 一排 4 則
+const DAYS = 7; // 從最近幾天內的貼文亂數挑
 const API = "https://graph.facebook.com/v21.0";
 
 async function main() {
@@ -34,9 +36,19 @@ async function main() {
     return warn(LABEL, `${e.message}，沿用上一次的資料（FB 授權可能過期，要重新授權）`);
   }
 
-  // 候選：最近 25 篇裡有文字、有圖的，照新到舊挑最新的（不跳過跟 IG 同題目的，Rice 2026-11-08）
-  const all = (body.data ?? []).filter((p) => p.message?.trim() && p.permalink_url && p.full_picture);
-  const ordered = [...all].sort((a, b) => b.created_time.localeCompare(a.created_time));
+  // 候選：最近 25 篇裡有文字、有圖的（不跳過跟 IG 同題目的，Rice 2026-11-08）
+  const all = (body.data ?? [])
+    .filter((p) => p.message?.trim() && p.permalink_url && p.full_picture)
+    .sort((a, b) => b.created_time.localeCompare(a.created_time));
+  // 7 天內的貼文亂數排在前面；不滿 4 篇時，後面用更早的貼文照新到舊補滿（Rice 2026-11-17）
+  const since = Date.now() - DAYS * 24 * 60 * 60 * 1000;
+  const recent = all.filter((p) => new Date(p.created_time).getTime() >= since);
+  const older = all.filter((p) => !recent.includes(p));
+  for (let i = recent.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [recent[i], recent[j]] = [recent[j], recent[i]];
+  }
+  const ordered = [...recent, ...older];
 
   // 先把圖片全部下載好，成功了才換掉舊資料
   const posts = [];
@@ -64,7 +76,7 @@ async function main() {
   // 網站上照新到舊排
   posts.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
   await saveFeed("fb", images, "fbFeed.json", posts);
-  console.log(`${LABEL}：已更新 ${posts.length} 則（從最近 ${all.length} 篇有圖的貼文裡挑最新的）`);
+  console.log(`${LABEL}：已更新 ${posts.length} 則（${DAYS} 天內有圖的貼文 ${recent.length} 篇，從裡面亂數挑；不足時用更早的補）`);
 }
 
 await main();
