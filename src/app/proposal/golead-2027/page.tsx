@@ -165,10 +165,9 @@ export default function GoleadProposalPage() {
           }
         >
           <div>
-            <span className="inline-flex rounded-2xl bg-white px-4 py-2">
-              <Image src="/images/logo.png" alt={SITE.name} width={1225} height={746} className="h-10 w-auto md:h-12" />
-            </span>
-            <p className="mt-10 text-sm font-semibold tracking-[0.3em] text-brand-yellow md:text-base">{PROPOSAL.byline}</p>
+            {/* 透明底 Logo；深色背景用白字版（由 logo.png 把灰字改白，色塊不變） */}
+            <Image src={`${IMG}/logo-light.png`} alt={SITE.name} width={1225} height={746} className="block h-16 w-auto md:h-20" />
+            <p className="mt-8 text-smfont-semibold tracking-[0.3em] text-brand-yellow md:text-base">{PROPOSAL.byline}</p>
             {/* 兩行：客戶名稱放大，第二行企劃書名稱（Rice 2026-11-17 指定的排版） */}
             <h1 className="mt-5 font-bold text-white">
               <span className="block text-5xl leading-tight tracking-[0.12em] md:text-7xl">{PROPOSAL.client}</span>
