@@ -5,7 +5,6 @@ import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { AI_EVOLUTION, AI_EVOLUTION_PALETTES, AI_EVOLUTION_STEPS } from "@/constants/aiEvolution";
 import { SITE, breadcrumbLd, shareMeta } from "@/constants/site";
-import { withBase } from "@/lib/image-loader";
 
 const PATH = "/ai-social-evolution/";
 
@@ -82,18 +81,14 @@ export default function AiSocialEvolutionPage() {
           <div className="mx-auto max-w-4xl px-4">
             <h2 className="text-2xl font-bold text-brand-navy md:text-3xl">{AI_EVOLUTION_PALETTES.title}</h2>
             <p className="mt-3 leading-relaxed text-ink">{AI_EVOLUTION_PALETTES.text}</p>
-            {/* 點圖開原圖，手機可雙指放大 */}
-            <a href={withBase(AI_EVOLUTION_PALETTES.image.src)} target="_blank" rel="noopener noreferrer" className="mt-6 block">
-              <Image
-                src={AI_EVOLUTION_PALETTES.image.src}
-                alt={AI_EVOLUTION_PALETTES.title}
-                width={AI_EVOLUTION_PALETTES.image.width}
-                height={AI_EVOLUTION_PALETTES.image.height}
-                sizes="(min-width: 896px) 832px, 92vw"
-                className="h-auto w-full rounded-xl bg-white shadow-sm ring-1 ring-black/5"
-              />
-            </a>
-            <p className="mt-2 text-center text-sm text-muted">點圖可看原圖</p>
+            <Image
+              src={AI_EVOLUTION_PALETTES.image.src}
+              alt={AI_EVOLUTION_PALETTES.title}
+              width={AI_EVOLUTION_PALETTES.image.width}
+              height={AI_EVOLUTION_PALETTES.image.height}
+              sizes="(min-width: 896px) 832px, 92vw"
+              className="mt-6 h-auto w-full rounded-xl bg-white shadow-sm ring-1 ring-black/5"
+            />
           </div>
         </section>
 
