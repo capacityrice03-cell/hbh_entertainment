@@ -35,6 +35,7 @@
 | `src/constants/cases.ts` | 實際案例（型別見 `src/types/index.ts` 的 `CaseStudy`） |
 | `src/constants/shortVideo.ts` | 短影音區塊：代表影片（含 IG / FB 連結與播放數）、14 支短影音牆 |
 | `src/constants/warmKitchen.ts` | 代表作品《暖廚家味》專區 |
+| `src/constants/aiEvolution.ts` | 分頁 `/ai-social-evolution/`（AI 自動化社群：版型演化過程）的文字與圖片清單。頁面 `src/app/ai-social-evolution/page.tsx`，圖片 `public/images/ai-evolution/`；首頁社群區塊 FB 那排下面有按鈕連過去 |
 | `public/images/`、`public/videos/` | 圖片與影片，網頁裡用 `/images/xxx.jpg` 這種路徑引用 |
 
 `素材/` 資料夾（原始簡報、截圖）已加入 `.gitignore`，不會上傳。

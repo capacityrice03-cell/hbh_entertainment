@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { SITE } from "@/constants/site";
 import igPosts from "@/constants/igFeed.json";
@@ -9,6 +10,7 @@ import threadsPosts from "@/constants/threadsFeed.json";
 // - Threads：GitHub Actions 每天跑 scripts/fetch-threads.mjs 自動更新（最新 4 篇有圖的，不跟 IG／FB 同題目；顯示方式跟 IG 一樣，Rice 2026-11-16）
 // - Instagram：GitHub Actions 每天跑 scripts/fetch-ig.mjs 自動更新
 // - Facebook：GitHub Actions 每天跑 scripts/fetch-fb.mjs 自動更新（最新 4 篇有圖的）
+// - FB 那排下面有按鈕連到站內分頁 /ai-social-evolution/（圖卡版型演化過程，Rice 2026-11-17）
 
 // 日期一律用台灣時間顯示，例如 2026/11/07
 const dateFmt = new Intl.DateTimeFormat("zh-TW", {
@@ -150,6 +152,14 @@ export default function IgFeed() {
                 </li>
               ))}
             </ul>
+            <div className="mt-6 text-center">
+              <Link
+                href="/ai-social-evolution/"
+                className="inline-block rounded-full bg-brand-navy px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-blue"
+              >
+                AI 自動化社群：版型演化過程
+              </Link>
+            </div>
           </div>
         )}
       </div>
