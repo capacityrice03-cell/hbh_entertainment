@@ -27,13 +27,15 @@ export const metadata: Metadata = {
 };
 
 const IMG = "/images/proposal";
+// 內容頁統一的暖米色底（卡片維持白色）；封面和深藍頁不套用
+const PAPER = "bg-[#f6efe2]";
 // 專業、溫暖、科技／三個痛點／漏斗三層共用的三個品牌色
 const TRIO = ["bg-brand-sky", "bg-brand-yellow", "bg-brand-green"];
 
 /** 一頁簡報：至少一個螢幕高，內容垂直置中 */
 function Slide({
   children,
-  className = "bg-white",
+  className = PAPER,
   dark = false,
   backdrop,
 }: {
@@ -211,7 +213,7 @@ export default function GoleadProposalPage() {
         </Slide>
 
         {/* 03 核心定位 */}
-        <Slide className="bg-brand-cream/40">
+        <Slide>
           <Heading en="Brand & Account Positioning" title="二、核心定位與解決痛點" />
           <div className="rounded-3xl bg-brand-navy p-7 text-white md:p-10">
             <p className="text-sm font-semibold tracking-widest text-brand-yellow">品牌核心定調</p>
@@ -233,7 +235,7 @@ export default function GoleadProposalPage() {
         </Slide>
 
         {/* 04 受眾痛點與解決方案 */}
-        <Slide className="bg-slate-50">
+        <Slide>
           <Heading
             en="Target Audience"
             title="目標受眾與痛點解決方案"
@@ -291,16 +293,16 @@ export default function GoleadProposalPage() {
 
         {/* 06–09 內容矩陣四類 */}
         <PillarSlide pillar={PILLARS[0]} />
-        <PillarSlide pillar={PILLARS[1]} className="bg-brand-cream/40" />
+        <PillarSlide pillar={PILLARS[1]} />
         <PillarSlide
           pillar={PILLARS[2]}
-          className="bg-slate-50"
+         
           image={{ src: `${IMG}/golead-2027-partners.jpg`, alt: "宏力移動與叫車平台、合作夥伴的室內大合照" }}
         />
         <PillarSlide pillar={PILLARS[3]} />
 
         {/* 10 實體活動與地推 */}
-        <Slide className="bg-brand-cream/40">
+        <Slide>
           <Heading en="Offline & O2O Integration" title="四、實體活動與地推延伸" lead={OFFLINE.intro} />
           <ol className="grid gap-4 lg:grid-cols-3">
             {OFFLINE.fronts.map((front, i) => (
@@ -345,7 +347,7 @@ export default function GoleadProposalPage() {
         </Slide>
 
         {/* 12 追蹤指標明細 */}
-        <Slide className="bg-slate-50">
+        <Slide>
           <Heading en="KPIs & Metrics" title="追蹤指標與評估目標" />
           <ul className="grid gap-4 lg:grid-cols-3">
             {KPIS.map((k, i) => (
