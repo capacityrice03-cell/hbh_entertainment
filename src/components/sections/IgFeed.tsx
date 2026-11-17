@@ -9,7 +9,7 @@ import threadsPosts from "@/constants/threadsFeed.json";
 // 首頁「AI自動化社群更新」：三排，順序 Threads → IG → FB，電腦一排 4 則；只有 IG 那排下面有追蹤按鈕
 // - Threads：GitHub Actions 每天跑 scripts/fetch-threads.mjs 自動更新（最新 4 篇有圖的，不跟 IG／FB 同題目；顯示方式跟 IG 一樣，Rice 2026-11-16）
 // - Instagram：GitHub Actions 每天跑 scripts/fetch-ig.mjs 自動更新
-// - Facebook：GitHub Actions 每天跑 scripts/fetch-fb.mjs 自動更新（7 天內有圖的貼文亂數挑 4 篇）
+// - Facebook：GitHub Actions 每天跑 scripts/fetch-fb.mjs 自動更新（7 天內有圖的貼文亂數挑 4 篇，不跟 IG 同題目）
 // - FB 那排下面有按鈕連到站內分頁 /ai-social-evolution/（圖卡版型演化過程，Rice 2026-11-17）
 
 // 日期一律用台灣時間顯示，例如 2026/11/07
