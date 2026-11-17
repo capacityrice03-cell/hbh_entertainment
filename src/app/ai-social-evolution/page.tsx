@@ -52,7 +52,7 @@ export default function AiSocialEvolutionPage() {
                   <h2 className="min-w-0 pt-1 text-xl font-bold text-brand-navy md:pt-0 md:text-2xl">{step.title}</h2>
                 </div>
                 <p className="mt-3 leading-relaxed text-ink">{step.text}</p>
-                <ul className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+                <ul className={`mt-5 grid grid-cols-2 gap-3 md:gap-4 ${step.cols === 4 ? "md:grid-cols-4" : "md:grid-cols-3"}`}>
                   {step.images.map((img) => (
                     <li key={img.src} className={img.wide ? "col-span-2 md:col-span-3" : undefined}>
                       <figure>

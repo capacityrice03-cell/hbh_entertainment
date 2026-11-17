@@ -23,6 +23,8 @@ export type EvolutionStep = {
   title: string;
   text: string;
   images: EvolutionImage[];
+  /** 電腦版一排幾張（預設 3） */
+  cols?: 3 | 4;
 };
 
 const P = "/images/ai-evolution/";
@@ -62,16 +64,19 @@ export const AI_EVOLUTION_STEPS: EvolutionStep[] = [
     title: "首頁改成滿版漸層",
     text: "比較三種版型後選定：照片鋪滿，下半部漸層融進底色，大標題壓在上面。FB 同步改版，亮黃不再當主視覺。強調框那一行只放框內的字，其餘推到下一行。",
     images: [
-      { src: `${P}v3_compare.jpg`, width: 1131, height: 1400, caption: "改版前後對照", wide: true },
+      // Rice 2026-11-18：只留對照圖最上面一排三張＋Threads 首頁，共四張一排
+      tall("v3_s1_a"),
+      tall("v3_s1_b"),
+      tall("v3_s1_c"),
       tall("v3_threads", "Threads 首頁"),
     ],
+    cols: 4,
   },
   {
     title: "照片封面登場",
     text: "滿版示意照片加白字黑邊大標題，跟滿版漸層圖卡並排比較。",
     images: [
       { src: `${P}v4_compare.jpg`, width: 1400, height: 867, caption: "左為圖卡，右為照片封面", wide: true },
-      tall("v4_cover", "照片封面"),
     ],
   },
   {
