@@ -246,7 +246,7 @@ export const GROWTH = {
 
 export const ENDING = {
   title: "謝謝收看",
-  byline: "好不好娛樂｜品牌策略・影音企劃・整合行銷",
+  byline: "好不好娛樂｜品牌策略・影音企劃",
   recap: [
     { name: "司機專屬經紀人", text: "以專業、溫暖、科技重塑品牌" },
     { name: "四大影音內容柱", text: "故事・陪伴・活動・招募" },
