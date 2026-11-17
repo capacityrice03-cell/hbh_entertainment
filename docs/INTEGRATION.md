@@ -36,6 +36,7 @@
 | `src/constants/shortVideo.ts` | 短影音區塊：代表影片（含 IG / FB 連結與播放數）、14 支短影音牆 |
 | `src/constants/warmKitchen.ts` | 代表作品《暖廚家味》專區 |
 | `src/constants/aiEvolution.ts` | 分頁 `/ai-social-evolution/`（AI 自動化社群：版型演化過程）的文字與圖片清單。頁面 `src/app/ai-social-evolution/page.tsx`，圖片 `public/images/ai-evolution/`；首頁社群區塊 FB 那排下面有按鈕連過去 |
+| `src/constants/proposalGolead2027.ts` | 提案簡報頁 `/proposal/golead-2027/`（宏力移動 2027 企劃書）的文字。頁面 `src/app/proposal/golead-2027/page.tsx`，換頁控制 `src/components/ui/DeckNav.tsx`，照片 `public/images/proposal/`。**不放進選單和 sitemap、設 noindex**，只給拿到網址的人看 |
 | `public/images/`、`public/videos/` | 圖片與影片，網頁裡用 `/images/xxx.jpg` 這種路徑引用 |
 
 `素材/` 資料夾（原始簡報、截圖）已加入 `.gitignore`，不會上傳。
