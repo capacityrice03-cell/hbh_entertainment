@@ -19,7 +19,6 @@ export const SUMMARY = {
   intro:
     "本企劃案由好不好娛樂 (Haobuhao Entertainment) 專業團隊規劃，旨在全方位重塑「宏力移動 (Go Lead Mobility)」之品牌形象與市場定位。",
   items: [
-    { label: "提案單位", text: "好不好娛樂 (Haobuhao Entertainment)" },
     {
       label: "專案目標",
       text: "透過「企劃 x 影像 x 平台 x 實體活動」的垂直整合策略，將「宏力移動」的核心理念，真正與駕駛夥伴站在一起的團隊，打造「司機專屬經紀人」的品牌定位，透過社群媒體帳號推廣。",

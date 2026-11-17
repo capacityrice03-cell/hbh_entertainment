@@ -286,13 +286,13 @@ export default function GoleadProposalPage() {
               <div key={item.label} className={`relative grid gap-2 md:grid-cols-[11rem_1fr] md:gap-0 ${CARD}`}>
                 {/* 圖示徽章半壓在卡片左緣，不佔版面 */}
                 <IconBadge
-                  icon={(["briefcase", "target", "trend"] as const)[i]}
-                  tone={TONES[i]}
+                  icon={(["target", "trend"] as const)[i]}
+                  tone={TONES[i + 1]}
                   size="sm"
                   className="absolute top-1/2 -left-5 z-10 hidden -translate-y-1/2 md:flex"
                 />
                 {/* 色塊內縮 8px、四邊圓角；上下 padding 減掉同樣的量，整列高度不變 */}
-                <dt className={`m-2 flex items-center rounded-2xl px-6 py-3 text-xl font-bold tracking-widest text-brand-navy ${TRIO[i]}`}>
+                <dt className={`m-2 flex items-center rounded-2xl px-6 py-3 text-xl font-bold tracking-widest text-brand-navy ${TRIO[i + 1]}`}>
                   {item.label}
                 </dt>
                 <dd className="flex items-center px-6 pb-4 text-lg leading-relaxed text-ink md:py-5 md:text-xl">{item.text}</dd>
