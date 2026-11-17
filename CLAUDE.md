@@ -34,13 +34,12 @@ Next.js 16 靜態輸出（`output: "export"`）＋ Tailwind 4。push 到 `main` 
 
 ## 設計頁面要三人協同（Rice 2026-11-17）
 - 要設計新頁面、或大改一頁的版面時，專案 AI 一開始就找三個子代理協同製作，不自己一個人做完：
-  - **網頁設計師**：頁面架構、版面、程式、驗收（每頁高度、手機版、截圖），是主責。
+  - **網頁設計師** `web-designer`：頁面架構、版面、程式、驗收（每頁高度、手機版、截圖），是主責。心法 `web-design-mastery`（`D:\Projects\_shared\skills\web-design-mastery\`）。
   - **生圖師** `imagemaker`：需要的照片、情境圖（本機 ComfyUI，免費）。生成圖只當情境示意，先給 Rice 看過才放進頁面。
   - **美編設計師** `designer`（原設計師）：配色、圓潤修飾、插圖、圖示。
 - 子代理不能再派子代理，三個都由專案 AI 派工、整合、回報。同一個檔一次只讓一個人改。
-- 網頁設計師子代理還沒建好（已通知總監，`D:\Projects\_director\計畫\2026-11-17_網頁設計師子代理.md`）；建好之前這個角色由專案 AI 自己擔任，生圖師和美編設計師照派。
 - 不用三人協同的：改幾個字、換一張圖、SEO 標籤這類小修。
-- 第一次這樣做的紀錄和經驗（宏力移動提案簡報頁 `/proposal/golead-2027/`）也在上面那份通知裡。
+- 流程、版面經驗、踩過的坑、Rice 的回饋都在 `web-design-mastery` 的教材裡；Rice 對頁面的新回饋由專案 AI 記進它的 `examples\rice-feedback.md`。
 
 ## 已定案的設計決定（不要再提議改回）
 - 作品集 `/works/`：Bento 網格，元件在 `src/components/showcase/`；滑鼠移上去播放的預覽片放 `public/videos/previews/`。
