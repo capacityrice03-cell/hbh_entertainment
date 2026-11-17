@@ -203,18 +203,32 @@ function PillarSlide({
                 <CardAccent icon={art.dirs[di]} tone={TONES[(idx + di) % 3]} />
                 <h3 className="pr-12 text-xl font-bold text-brand-navy md:text-2xl">{d.title}</h3>
                 <p className="mt-2 text-lg leading-relaxed text-ink">{d.text}</p>
-                {d.link && (
-                  <a
-                    href={d.link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue-ink transition-colors hover:bg-brand-blue hover:text-white"
-                  >
-                    <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
-                      <path d="M6 4.5v11l9-5.5z" />
-                    </svg>
-                    {d.link.label}
-                  </a>
+                {(d.refLink || d.link) && (
+                  <div className="mt-3 flex flex-wrap gap-2.5">
+                    {d.refLink && (
+                      <Link
+                        href={d.refLink.url}
+                        target="_blank"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-brand-blue"
+                      >
+                        {d.refLink.label}
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    )}
+                    {d.link && (
+                      <a
+                        href={d.link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-brand-blue/40 px-4 py-1.5 text-sm font-medium text-brand-blue-ink transition-colors hover:bg-brand-blue hover:text-white"
+                      >
+                        <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+                          <path d="M6 4.5v11l9-5.5z" />
+                        </svg>
+                        {d.link.label}
+                      </a>
+                    )}
+                  </div>
                 )}
               </li>
             ))}
