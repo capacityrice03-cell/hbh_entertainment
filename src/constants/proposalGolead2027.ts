@@ -79,14 +79,7 @@ export type Pillar = {
   /** 總覽長條的寬度比例（以 8 支為滿） */
   share: number;
   appeal: string;
-  directions: {
-    title: string;
-    text: string;
-    /** 站內連結（官網的區塊），按鈕排在 link 左邊 */
-    refLink?: { label: string; url: string };
-    /** 站外影片連結 */
-    link?: { label: string; url: string };
-  }[];
+  directions: { title: string; text: string; link?: { label: string; url: string } }[];
 };
 
 export const PILLARS: Pillar[] = [
@@ -101,8 +94,6 @@ export const PILLARS: Pillar[] = [
       {
         title: "每個方向盤後的守護者",
         text: "採用暖廚家味敘事風格，微電影敘事，故事呈現司機為人生奮鬥的真實故事，展現宏力在背後的默默支持。",
-        refLink: { label: "同類型拍攝範例", url: "/#warm-kitchen" },
-        link: { label: "影片連結", url: "https://www.instagram.com/p/DRhO1ItE2uj/" },
       },
       {
         title: "創辦人理念與宏力願景",
