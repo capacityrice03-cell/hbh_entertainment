@@ -61,8 +61,14 @@ export default function AiSocialEvolutionPage() {
                           alt={img.caption ? `${step.title}：${img.caption}` : step.title}
                           width={img.width}
                           height={img.height}
-                          sizes={img.wide ? "(min-width: 768px) 700px, 92vw" : "(min-width: 768px) 220px, 46vw"}
-                          className={`h-auto rounded-xl shadow-sm ring-1 ring-black/5 ${img.wide ? "mx-auto w-full max-w-2xl" : "w-full"}`}
+                          sizes={
+                            img.full
+                              ? "(min-width: 896px) 832px, 92vw"
+                              : img.wide
+                                ? "(min-width: 768px) 700px, 92vw"
+                                : "(min-width: 768px) 220px, 46vw"
+                          }
+                          className={`h-auto rounded-xl shadow-sm ring-1 ring-black/5 ${img.wide && !img.full ? "mx-auto w-full max-w-2xl" : "w-full"}`}
                         />
                         {img.caption && (
                           <figcaption className="mt-2 text-center text-sm text-muted">{img.caption}</figcaption>
