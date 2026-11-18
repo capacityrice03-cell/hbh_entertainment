@@ -3,7 +3,7 @@
 
 export const AI_EVOLUTION = {
   title: "AI 自動化社群：版型調整過程",
-  en: "Card layout evolution",
+  en: "Card layout adjustments",
   intro:
     "好不好娛樂的 AI 動物小編每天自動產圖、發文。這一頁整理圖卡版型從第一版到現在的每一次調整。",
   backLabel: "回到 AI自動化社群更新",
@@ -87,12 +87,12 @@ export const AI_EVOLUTION_STEPS: EvolutionStep[] = [
     images: [tall("v5_C", "灰紅"), tall("v5_F", "青碧"), tall("v5_W", "暖米")],
   },
   {
-    title: "現在：照片封面為主",
+    title: "照片封面為主",
     text: "新聞、趣聞類發一張照片封面，內容寫在貼文裡；實用類試驗照片封面加重點卡。",
     images: [tall("v4b_cover", "照片封面"), tall("v6_cover", "照片封面")],
   },
   {
-    // Rice 2026-11-19：新的重點字卡設計，放在最新位置。標題、說明文字待 Rice 挑版本
+    // Rice 2026-11-19：新的重點字卡設計，放在最新位置；標題、說明 Rice 選定 A 版，手機維持整張對照圖
     title: "新版重點字卡：照片、郵戳、小情報",
     text: "重點字卡加上照片和郵戳圖章，條列下方多一格當地小情報；清單類內容另有一款列表版。",
     images: [{ src: `${P}v7_cards.jpg`, width: 1600, height: 989, wide: true, full: true }],
