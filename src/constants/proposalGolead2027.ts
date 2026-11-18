@@ -16,8 +16,11 @@ export const PROPOSAL = {
 };
 
 export const SUMMARY = {
-  intro:
-    "本企劃案由好不好娛樂 (Haobuhao Entertainment) 專業團隊規劃，旨在全方位重塑「宏力移動 (Go Lead Mobility)」之品牌形象與市場定位。",
+  // 兩行：電腦版在「規劃，」後面斷行（Rice 2026-11-18），手機版照寬度自動換行
+  intro: [
+    "本企劃案由好不好娛樂 (Haobuhao Entertainment) 專業團隊規劃，",
+    "旨在全方位重塑「宏力移動 (Go Lead Mobility)」之品牌形象與市場定位。",
+  ],
   items: [
     {
       label: "專案目標",

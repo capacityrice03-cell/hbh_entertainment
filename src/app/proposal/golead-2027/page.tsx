@@ -281,7 +281,7 @@ export default function GoleadProposalPage() {
 
         {/* 02 計畫摘要 */}
         <Slide backdrop={<DeckDecor hero="target" variant={0} />}>
-          <Heading en="Executive Summary" title="一、計畫摘要" lead={SUMMARY.intro} />
+          <Heading en="Executive Summary" title="一、計畫摘要" lead={<>{SUMMARY.intro[0]}<br className="hidden md:block" />{SUMMARY.intro[1]}</>} />
           <dl className="space-y-4">
             {SUMMARY.items.map((item, i) => (
               <div key={item.label} className={`relative grid gap-2 md:grid-cols-[11rem_1fr] md:gap-0 ${CARD}`}>
