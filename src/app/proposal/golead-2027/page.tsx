@@ -15,6 +15,7 @@ import {
   POSITIONING,
   PROPOSAL,
   SUMMARY,
+  THREADS_EXAMPLE,
   type Pillar,
 } from "@/constants/proposalGolead2027";
 import { SITE, shareMeta } from "@/constants/site";
@@ -154,6 +155,38 @@ function WarmKitchenRef() {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+/** 第 7 頁用：Threads 上的時事貼文舉例（點了開 Threads） */
+function ThreadsRef() {
+  const t = THREADS_EXAMPLE;
+  return (
+    <div className={`mt-4 flex items-center gap-5 px-5 py-4 ${CARD}`}>
+      <div className="min-w-0 flex-1">
+        <p className="text-xs font-semibold tracking-widest text-brand-orange-ink">{t.label}</p>
+        <p className="mt-1 text-xl font-bold text-brand-navy">「{t.quote}」</p>
+        <p className="mt-0.5 text-sm text-muted">{t.meta}</p>
+        <a
+          href={t.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-4 py-1.5 text-sm font-medium tracking-wider whitespace-nowrap text-white transition-colors hover:bg-brand-blue"
+        >
+          {t.cta}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <a
+        href={t.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${t.label}「${t.quote}」（開啟 Threads）`}
+        className="relative block aspect-[16/9] w-28 shrink-0 overflow-hidden rounded-xl ring-1 ring-black/10 transition-transform hover:-translate-y-0.5 sm:w-48"
+      >
+        <Image src={t.image} alt="" fill loading="eager" sizes="192px" className="object-cover" />
+      </a>
     </div>
   );
 }
@@ -399,6 +432,7 @@ export default function GoleadProposalPage() {
         <PillarSlide
           pillar={PILLARS[1]}
           image={{ src: `${IMG}/golead-2027-dashcam.jpg`, alt: "情境示意圖：從車內看出去的路口與行車紀錄器", wide: true }}
+          extra={<ThreadsRef />}
         />
         <PillarSlide
           pillar={PILLARS[2]}

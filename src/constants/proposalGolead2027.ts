@@ -111,7 +111,7 @@ export const PILLARS: Pillar[] = [
   {
     no: "02",
     tag: "差異化吸力",
-    title: "車禍事故探討專家",
+    title: "車禍事故探討",
     count: "3-4 支/月",
     share: 4,
     appeal: "結合時事熱點，創造自然流量，展現「經紀人」專業知識後盾，吸引同行注意並增加跳槽吸力。",
@@ -156,6 +156,16 @@ export const PILLARS: Pillar[] = [
     ],
   },
 ];
+
+// 第 7 頁「核心」卡片下方的 Threads 時事舉例（Rice 2026-11-18 指定的貼文；數字取自當天截圖）
+export const THREADS_EXAMPLE = {
+  label: "Threads 時事舉例",
+  quote: "就這樣給人家騎上去",
+  meta: "@owl.7130340・318.2 萬次瀏覽",
+  cta: "看 Threads 貼文",
+  url: "https://www.threads.com/@owl.7130340/post/Dfxr3QEk-WH",
+  image: "/images/proposal/threads-example.jpg",
+};
 
 export const OFFLINE = {
   intro: "為將線上流量有效轉化為實體招募成果，規劃三大地推與公關活動戰線：",
