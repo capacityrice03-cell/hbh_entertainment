@@ -186,19 +186,15 @@ export default function BrandPlanningPage() {
             <h2 className="mt-2 text-3xl font-bold tracking-wide text-brand-navy md:text-[40px] md:leading-tight">{PLAN.title}</h2>
             <span className="mt-4 block h-1 w-12 rounded-full bg-[#D84439]" aria-hidden="true" />
 
-            {/* 01、02、03 由上而下一整排，寬度相等，配色統一用奶油底＋白卡＋紅數字 */}
+            {/* 01、02、03 合成一張白卡（不顯示編號）：基本設計系統開發＋品牌應用系統設計項目 */}
             <div className="relative mt-10 overflow-hidden rounded-3xl bg-[#FFF3E3] p-5 md:p-8 lg:rounded-[2rem] lg:p-10">
               <span
                 className="pointer-events-none absolute -right-[110px] -bottom-[110px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/40"
                 aria-hidden="true"
               />
-              {/* 01 基本設計系統開發＋基本系統開發（時間軸） */}
-              <div className="relative flex flex-col gap-3 rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:flex-row md:gap-6">
-                <span className="text-[72px] leading-none font-black text-[#D84439] md:w-28 md:shrink-0 lg:text-[80px]">
-                  {planBase.no}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <h3 className="mt-1 text-2xl font-bold text-brand-navy lg:text-[28px]">{planBase.title}</h3>
+              <div className="relative rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:p-10">
+                <div>
+                  <h3 className="text-2xl font-bold text-brand-navy lg:text-[28px]">{planBase.title}</h3>
                   <p className="mt-3 leading-[1.8] text-ink">{planBase.text}</p>
 
                   <div className="mt-6 border-t border-brand-navy/10 pt-6">
@@ -220,22 +216,17 @@ export default function BrandPlanningPage() {
                     </ol>
                   </div>
                 </div>
-              </div>
 
-              {/* 品牌應用系統設計項目＝02 菜單設計（一）、03 店面形象視覺規劃（二） */}
-              <h3 className="relative mt-8 text-lg font-bold text-[#603630] lg:text-xl">{PLAN.appTitle}</h3>
-              <ul className="relative mt-5 flex flex-col gap-4">
+                {/* 品牌應用系統設計項目：菜單設計（一）、店面形象視覺規劃（二），標題大小同「基本設計系統開發」 */}
+                <h3 className="mt-10 border-t border-brand-navy/10 pt-8 text-2xl font-bold text-brand-navy lg:text-[28px]">
+                  {PLAN.appTitle}
+                </h3>
+                <ul className="mt-6 flex flex-col gap-8">
                   {appCards.map(({ card, group }, gi) => (
-                    <li
-                      key={card.no}
-                      className="flex flex-col gap-3 rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:flex-row md:gap-6"
-                    >
-                      <span className="text-[72px] leading-none font-black text-[#D84439] md:w-28 md:shrink-0 lg:text-[80px]">
-                        {card.no}
-                      </span>
-                      <div className="min-w-0 flex-1">
+                    <li key={card.no}>
+                      <div>
                         <p className="text-sm font-bold tracking-[0.08em] text-[#B8322A]">{group.group}</p>
-                        <h4 className="mt-1 text-2xl font-bold text-brand-navy lg:text-[28px]">{card.title}</h4>
+                        <h4 className="mt-1 text-xl font-bold text-brand-navy lg:text-[22px]">{card.title}</h4>
                         <p className="mt-3 leading-[1.8] text-ink">{card.text}</p>
                         {"note" in group && (
                           <p className="mt-3">
@@ -258,7 +249,8 @@ export default function BrandPlanningPage() {
                       </div>
                     </li>
                   ))}
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
