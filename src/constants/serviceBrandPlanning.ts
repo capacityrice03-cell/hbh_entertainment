@@ -1,14 +1,13 @@
 // 「品牌LOGO設計展店規劃」分頁（/services/brand-planning/）的文字。
-// 來源：食包食粽專案資料夾的 PDF（品牌形象方案、品牌設計方向）。PDF 沒有的句子一律放 TODO_TEXT，等 Rice 提供。
-
-/** 版面需要、但來源沒有的文字：先放這句，Rice 提供後換掉 */
-export const TODO_TEXT = "（文字待 Rice 提供）";
+// 來源：食包食粽專案資料夾的 PDF（品牌形象方案、品牌設計方向）；開頭介紹和各段導語是 Rice 選定的版本。
+// 合約條款（修改次數、重新收費）不放（Rice 2026-11-24）。
 
 export const BRAND_PLANNING = {
   // Rice 2026-11-24：頁名從「自創品牌運營規劃」改成跟首頁標籤一樣
   title: "品牌LOGO設計展店規劃",
   en: "Brand Planning",
-  intro: TODO_TEXT,
+  // Rice 2026-11-24 選 A 版
+  intro: "從品牌定位、LOGO 到店面與菜單，陪品牌把第一間店做出來",
   // Google 搜尋結果與結構化資料用的描述（畫面上看不到）
   description:
     "食包食粽案例：品牌設計方向、LOGO、店面視覺、電子菜單與紙本菜單，以及實際店面照片。好不好娛樂的品牌形象方案內容。",
@@ -55,11 +54,12 @@ export const PLAN = {
 export const CASE = {
   title: "食包食粽",
   steps: [
+    // lead：各段導語（Rice 2026-11-24 選 A 版）
     { id: "direction", no: "01", title: "品牌設計方向" },
-    { id: "logo", no: "02", title: "LOGO" },
-    { id: "store", no: "03", title: "店面視覺" },
-    { id: "menu", no: "04", title: "電子菜單／紙本菜單" },
-    { id: "photos", no: "05", title: "實際店面照片" },
+    { id: "logo", no: "02", title: "LOGO", lead: "以文字為核心，把刈包與粽子的形象融進字形" },
+    { id: "store", no: "03", title: "店面視覺", lead: "把品牌視覺帶進形象牆與櫃檯，打造專業且吸引人的店面" },
+    { id: "menu", no: "04", title: "電子菜單／紙本菜單", lead: "電子菜單 4 面、紙本菜單 2 面，提升品牌形象" },
+    { id: "photos", no: "05", title: "實際店面照片", lead: "完工後的實際店面" },
   ],
   // 品牌設計方向.pdf 第 3 頁的標題與說明（逐字）
   directionHead: "台式經典，風味新生",

@@ -14,7 +14,6 @@ import {
   PLAN,
   STORE_IMAGES,
   STORE_PHOTOS,
-  TODO_TEXT,
 } from "@/constants/serviceBrandPlanning";
 import { SITE, SITE_URL, breadcrumbLd, shareMeta } from "@/constants/site";
 
@@ -213,7 +212,7 @@ export default function BrandPlanningPage() {
 
             {/* 02 LOGO */}
             <div id={logo.id} className="mt-20 scroll-mt-6">
-              <StepHead no={logo.no} title={logo.title} lead={TODO_TEXT} />
+              <StepHead no={logo.no} title={logo.title} lead={logo.lead} />
               <div className="mx-auto mt-8 max-w-xl">
                 <Pic img={LOGO_IMAGES.story} sizes="(min-width: 768px) 576px, 100vw" />
               </div>
@@ -227,7 +226,7 @@ export default function BrandPlanningPage() {
 
             {/* 03 店面視覺 */}
             <div id={store.id} className="mt-20 scroll-mt-6">
-              <StepHead no={store.no} title={store.title} lead={TODO_TEXT} />
+              <StepHead no={store.no} title={store.title} lead={store.lead} />
               <div className="mt-8 grid gap-6 lg:grid-cols-2">
                 {[STORE_IMAGES.mockup, STORE_IMAGES.wall].map((m) => (
                   <figure key={m.src} className="space-y-3 text-center">
@@ -242,7 +241,7 @@ export default function BrandPlanningPage() {
 
             {/* 04 電子菜單／紙本菜單 */}
             <div id={menu.id} className="mt-20 scroll-mt-6">
-              <StepHead no={menu.no} title={menu.title} lead={TODO_TEXT} />
+              <StepHead no={menu.no} title={menu.title} lead={menu.lead} />
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {MENU_DIGITAL.map((m) => (
                   <Pic key={m.src} img={m} />
@@ -262,7 +261,7 @@ export default function BrandPlanningPage() {
 
             {/* 05 實際店面照片 */}
             <div id={photos.id} className="mt-20 scroll-mt-6">
-              <StepHead no={photos.no} title={photos.title} lead={TODO_TEXT} />
+              <StepHead no={photos.no} title={photos.title} lead={photos.lead} />
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {landscape.map((p, i) => (
                   <Pic key={p.src} img={p} className={i === 0 ? "md:col-span-2" : ""} sizes={i === 0 ? "(min-width: 1152px) 1120px, 100vw" : undefined} />
