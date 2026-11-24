@@ -12,15 +12,17 @@ export const BRAND_VIDEO = {
     "品牌影音行銷不適用一套公式，量身打造雖費時費力，但成效會說話；品牌在社群上長期曝光，需要的是與時俱進的正確方向。",
 } as const;
 
-// 服務內容：每項一個標題 + 一句說明
-export const BRAND_VIDEO_ITEMS = [
+// 服務內容：每項一個標題 + 一句說明；url 選填，有填的標題會變成連結（另開分頁）
+export const BRAND_VIDEO_ITEMS: { title: string; text: string; url?: string }[] = [
   {
     title: "客製化影音企劃",
     text: "依品牌定位與檔期規劃內容主題，例如品牌誕生、展店規劃、試營運到開幕的系列影音。",
+    url: "https://youtube.com/playlist?list=PLWaU_EMlsoBoRdoNzYNf6yvWSSThCnd4W&si=rSaptmf0FoQnlaVA",
   },
   {
     title: "系列短影音拍攝",
     text: "IG Reels、FB、TikTok 直式短影音，配合全年節慶與活動檔期持續產出。",
+    url: "https://youtube.com/playlist?list=PLWaU_EMlsoBpjwS9AXaFxXhoZCZSU9Ye8&si=K2vb894ogAORGoeB",
   },
   {
     title: "社群帳號經營",
@@ -29,12 +31,13 @@ export const BRAND_VIDEO_ITEMS = [
   {
     title: "業配與廣告影片",
     text: "商品廣告影片製作、置入行銷與導購，以轉化率為目標。",
+    url: "https://youtube.com/playlist?list=PLWaU_EMlsoBoXOTzrAJibJEQQLEnFmPOC&si=QHwQBMBJbVj-ZhLs",
   },
   {
     title: "人物故事短影音",
     text: "為IP關鍵人物量身打造故事短影音，是介紹品牌的一項利器。",
   },
-] as const;
+];
 
 // 服務方案與費用（負責人訂定的價格；市場行情原始整理在 素材/素材_給ai/短影音業界行情_整理.md）
 // amount：放大顯示的金額（前面自動加「約」、後面加「元」）；unit：金額後面的「／月」這類小字

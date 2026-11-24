@@ -94,7 +94,20 @@ export default function BrandVideoPage() {
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {BRAND_VIDEO_ITEMS.map((item) => (
                 <li key={item.title} className="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-brand-blue">{item.title}</h3>
+                  <h3 className="text-lg font-bold text-brand-blue">
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline-offset-4 hover:underline"
+                      >
+                        {item.title}
+                      </a>
+                    ) : (
+                      item.title
+                    )}
+                  </h3>
                   <p className="mt-2 leading-relaxed text-ink">{item.text}</p>
                 </li>
               ))}
