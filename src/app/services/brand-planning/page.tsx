@@ -366,22 +366,6 @@ export default function BrandPlanningPage() {
                     ))}
                   </ul>
                 </article>
-
-                {/* 菜單規劃：深藍底，用我們自己設計的菜單 */}
-                <article className="relative overflow-hidden rounded-[2rem] bg-brand-navy p-5 md:p-8 lg:p-10">
-                  <span
-                    className="pointer-events-none absolute -top-[80px] -right-[80px] h-[200px] w-[200px] rounded-full border-2 border-[#FCA95E]/35"
-                    aria-hidden="true"
-                  />
-                  <h4 className="text-2xl font-bold text-white md:text-[32px]">{DIRECTION.menu.title}</h4>
-                  <span className="mt-3 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
-                  <p className="mt-5 max-w-3xl leading-[1.9] text-white/90 md:text-lg">{DIRECTION.menu.text}</p>
-                  <div className="mt-8 grid items-center gap-4 md:grid-cols-[1fr_1.2fr] md:gap-6">
-                    {DIRECTION.menu.images.map((m) => (
-                      <Pic key={m.src} img={m} sizes="(min-width: 768px) 50vw, 100vw" className="shadow-lg" />
-                    ))}
-                  </div>
-                </article>
               </div>
             </div>
 
