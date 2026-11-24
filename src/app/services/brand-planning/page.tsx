@@ -99,7 +99,14 @@ export default function BrandPlanningPage() {
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 lg:grid-cols-2">
             <div>
               <p className="text-xs font-semibold tracking-[0.3em] text-brand-blue uppercase">{BRAND_PLANNING.en}</p>
-              <h1 className="mt-4 text-3xl font-bold tracking-widest text-brand-navy md:text-5xl">{BRAND_PLANNING.title}</h1>
+              <h1 className="mt-4 text-3xl font-bold tracking-widest text-brand-navy md:text-5xl">
+                {/* 畫面上分兩行（Rice 2026-11-25）；搜尋標題、麵包屑仍用 title */}
+                {BRAND_PLANNING.heading.map((line, i) => (
+                  <span key={line} className={i === 0 ? "block" : "mt-2 block"}>
+                    {line}
+                  </span>
+                ))}
+              </h1>
               <p className="mt-6 text-lg leading-relaxed whitespace-pre-line text-ink md:text-xl">{BRAND_PLANNING.intro}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a

@@ -5,7 +5,10 @@
 export const BRAND_PLANNING = {
   // Rice 2026-11-24：頁名從「自創品牌運營規劃」改成跟首頁標籤一樣
   title: "品牌LOGO設計展店規劃",
-  en: "Brand Planning",
+  // 頁面最上面的大標題，分兩行顯示（Rice 2026-11-25）
+  heading: ["品牌LOGO設計", "(店面設計規劃)"],
+  // 大標題上方的小字（Rice 2026-11-25 從 Brand Planning 改）
+  en: "京站美食街實體店面",
   // Rice 2026-11-24 選 A 版
   intro: "從品牌定位、LOGO 到店面與菜單，陪品牌把第一間店做出來",
   // Google 搜尋結果與結構化資料用的描述（畫面上看不到）
