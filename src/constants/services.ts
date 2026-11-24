@@ -5,7 +5,10 @@ export const SERVICES: Service[] = [
   {
     id: "channel",
     title: "品牌影音行銷",
-    items: ["客製化企劃內容", "FB、IG、Threads 帳號 AI 自動化營運"],
+    // 黃底標籤自己一行，連到「品牌LOGO設計展店規劃」分頁（Rice 2026-11-24）
+    featured: { label: "品牌LOGO設計展店規劃", href: "/services/brand-planning/" },
+    items: ["客製化企劃內容", "THREADS、FB、ig社群帳號AI自動化運營"],
+    itemLinks: { "THREADS、FB、ig社群帳號AI自動化運營": "#ig-feed" },
     caseHref: "/services/brand-video/",
   },
   {

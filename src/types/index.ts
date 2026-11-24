@@ -5,6 +5,10 @@ export type Service = {
   id: ServiceId;
   title: string;
   items: string[];
+  /** 首頁服務卡片最上面那行的黃底標籤（自己一行，點了開分頁） */
+  featured?: { label: string; href: string };
+  /** 一般標籤裡有連結的（標籤文字 → 連結），沒列的不能點 */
+  itemLinks?: Record<string, string>;
   /** 「相關案例引導」要跳去的位置；沒填就跳到該分類的案例列表 */
   caseHref?: string;
 };

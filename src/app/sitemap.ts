@@ -10,6 +10,7 @@ const UPDATED = {
   home: "2026-11-08",
   venue: "2026-11-01",
   brandVideo: "2026-11-08",
+  brandPlanning: "2026-11-24",
   aiEvolution: "2026-11-17",
   works: "2026-11-01",
   privacy: "2026-10-27",
@@ -26,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [`${SITE_URL}${SEO.ogImage}`],
     },
     { url: `${SITE_URL}/services/brand-video/`, lastModified: UPDATED.brandVideo, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/services/brand-planning/`, lastModified: UPDATED.brandPlanning, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ai-social-evolution/`, lastModified: UPDATED.aiEvolution, changeFrequency: "monthly", priority: 0.5 },
     // 作品集分頁先不導入（2026-11-08 Rice），要恢復把下一行註解拿掉
     // { url: `${SITE_URL}/works/`, lastModified: UPDATED.works, changeFrequency: "monthly", priority: 0.8 },
