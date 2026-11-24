@@ -75,7 +75,6 @@ function StepHead({ no, title, lead }: { no: string; title: string; lead?: strin
 
 export default function BrandPlanningPage() {
   const landscape = STORE_PHOTOS.filter((p) => p.w > p.h);
-  const portrait = STORE_PHOTOS.filter((p) => p.w <= p.h);
   const [dir, logo, store, menu, photos] = CASE.steps;
 
   return (
@@ -272,11 +271,6 @@ export default function BrandPlanningPage() {
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {landscape.map((p, i) => (
                   <Pic key={p.src} img={p} className={i === 0 ? "md:col-span-2" : ""} sizes={i === 0 ? "(min-width: 1152px) 1120px, 100vw" : undefined} />
-                ))}
-              </div>
-              <div className="mt-4 grid grid-cols-3 gap-3 md:gap-4">
-                {portrait.map((p) => (
-                  <Pic key={p.src} img={p} className="rounded-2xl" sizes="(min-width: 1152px) 370px, 33vw" />
                 ))}
               </div>
             </div>
