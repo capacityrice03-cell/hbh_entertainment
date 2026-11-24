@@ -73,8 +73,55 @@ function StepHead({ no, title, lead }: { no: string; title: string; lead?: strin
   );
 }
 
+// 品牌形象方案區塊：標準色票圓點（食包食粽色票），純裝飾
+const SWATCHES = ["#D84439", "#FFF3E3", "#603630", "#FCA95E"];
+
+// 四個規格膠囊前面的線稿圖示（純裝飾）：A4 紙本、電子菜單、店面吧檯、電子看板
+function SpecIcon({ kind }: { kind: number }) {
+  const paths = [
+    <>
+      <path d="M6 3h8l4 4v14H6z" />
+      <path d="M14 3v4h4M9 12h6M9 16h6" />
+    </>,
+    <>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M10 18h4" />
+    </>,
+    <>
+      <path d="M3 9l2-5h14l2 5c0 1.5-1.2 2.5-2.5 2.5S16 10.5 16 9c0 1.5-1.2 2.5-2 2.5S12 10.5 12 9c0 1.5-1 2.5-2 2.5S8 10.5 8 9c0 1.5-1.2 2.5-2.5 2.5S3 10.5 3 9z" />
+      <path d="M5 12v8h14v-8M4 20h16M9 16h6" />
+    </>,
+    <>
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      <path d="M12 16v4M8 20h8" />
+    </>,
+  ];
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="#B8322A"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="shrink-0"
+      aria-hidden="true"
+    >
+      {paths[kind]}
+    </svg>
+  );
+}
+
 export default function BrandPlanningPage() {
   const landscape = STORE_PHOTOS.filter((p) => p.w > p.h);
+  // 01 放左欄；02 對應「(一) 應用設計」、03 對應「(二) 環境風格」（Rice 2026-11-25 確認）
+  const planBase = PLAN.cards[0];
+  const appCards = [
+    { card: PLAN.cards[1], group: PLAN.app[0] },
+    { card: PLAN.cards[2], group: PLAN.app[1] },
+  ];
   const [dir, logo, store, menu, photos] = CASE.steps;
 
   return (
@@ -137,48 +184,87 @@ export default function BrandPlanningPage() {
         {/* 品牌形象方案（服務內容） */}
         <section className="py-14 md:py-20">
           <div className="mx-auto max-w-6xl px-4">
-            <p className="text-center text-xs font-semibold tracking-[0.3em] text-brand-blue uppercase">{PLAN.en}</p>
-            <h2 className="mt-2 text-center text-3xl font-bold tracking-wide text-brand-navy md:text-4xl">{PLAN.title}</h2>
-            <ul className="mt-10 grid gap-4 md:grid-cols-3">
-              {PLAN.cards.map((c) => (
-                <li key={c.no} className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-sky/25 text-sm font-bold text-brand-navy">
-                    {c.no}
-                  </span>
-                  <h3 className="mt-4 text-lg font-bold text-brand-blue">{c.title}</h3>
-                  <p className="mt-2 leading-relaxed text-ink">{c.text}</p>
-                </li>
-              ))}
-            </ul>
+            <p className="text-xs font-semibold tracking-[0.3em] text-brand-blue-ink uppercase">{PLAN.en}</p>
+            <h2 className="mt-2 text-3xl font-bold tracking-wide text-brand-navy md:text-[40px] md:leading-tight">{PLAN.title}</h2>
+            <span className="mt-4 block h-1 w-12 rounded-full bg-[#D84439]" aria-hidden="true" />
 
-            <div className="mt-10 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-3xl bg-brand-cream/60 p-6 md:p-8">
-                <h3 className="text-xl font-bold text-brand-navy">{PLAN.systemTitle}</h3>
-                <ul className="mt-4 space-y-3">
-                  {PLAN.system.map((s) => (
-                    <li key={s.item}>
-                      <span className="inline-block rounded-full bg-white px-3 py-0.5 text-sm font-bold text-brand-navy shadow-sm">{s.item}</span>
-                      {s.text && <p className="mt-1 leading-relaxed text-ink">{s.text}</p>}
-                    </li>
-                  ))}
-                </ul>
+            <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[5fr_7fr]">
+              {/* 左：01 基本設計系統開發＋基本系統開發（時間軸） */}
+              <div className="relative overflow-hidden rounded-3xl bg-brand-navy p-6 md:p-8 lg:rounded-[2rem] lg:p-10">
+                <div className="flex items-start justify-between gap-4">
+                  <span className="text-[72px] leading-none font-black text-[#FCA95E] lg:text-[128px]">{planBase.no}</span>
+                  <span className="mt-1 flex shrink-0 pl-4" aria-hidden="true">
+                    {SWATCHES.map((c) => (
+                      <span
+                        key={c}
+                        className="-ml-4 h-9 w-9 rounded-full ring-2 ring-brand-navy lg:h-14 lg:w-14"
+                        style={{ backgroundColor: c }}
+                      />
+                    ))}
+                  </span>
+                </div>
+                <h3 className="mt-6 text-2xl font-bold text-white lg:text-[28px]">{planBase.title}</h3>
+                <p className="mt-3 leading-[1.8] text-[#FFF3E3]">{planBase.text}</p>
+
+                <div className="mt-8 border-t border-white/20 pt-6">
+                  <h4 className="text-sm font-bold tracking-[0.08em] text-[#FCA95E]">{PLAN.systemTitle}</h4>
+                  <ol className="relative mt-5">
+                    <span className="absolute top-2 bottom-2 left-[6px] w-px bg-white/20" aria-hidden="true" />
+                    {PLAN.system.map((s, i) => (
+                      <li key={s.item} className="relative pb-6 pl-9 last:pb-0">
+                        <span
+                          className={`absolute top-[7px] left-0 h-[14px] w-[14px] rounded-full ${
+                            i === 0 ? "bg-[#FCA95E]" : "border-2 border-[#FCA95E] bg-brand-navy"
+                          }`}
+                          aria-hidden="true"
+                        />
+                        <p className={`font-bold text-white ${i === 0 ? "text-xl" : "text-base lg:text-[17px]"}`}>{s.item}</p>
+                        {s.text && <p className="mt-1 text-[15px] leading-relaxed text-[#FFF3E3]/85">{s.text}</p>}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
-              <div className="rounded-3xl bg-brand-cream/60 p-6 md:p-8">
-                <h3 className="text-xl font-bold text-brand-navy">{PLAN.appTitle}</h3>
-                <ul className="mt-4 space-y-5">
-                  {PLAN.app.map((g) => (
-                    <li key={g.group}>
-                      <p className="font-bold text-brand-blue-ink">
-                        {g.group}
-                        {"note" in g && <span className="ml-2 text-sm font-normal text-muted">{g.note}</span>}
-                      </p>
-                      <ul className="mt-2 flex flex-wrap gap-2">
-                        {g.items.map((it) => (
-                          <li key={it} className="rounded-full bg-white px-4 py-1.5 text-sm text-ink shadow-sm">
-                            {it}
-                          </li>
-                        ))}
-                      </ul>
+
+              {/* 右：品牌應用系統設計項目＝02 菜單設計（一）、03 店面形象視覺規劃（二） */}
+              <div className="relative flex flex-col overflow-hidden rounded-3xl bg-[#FFF3E3] p-5 md:p-8 lg:rounded-[2rem] lg:p-10">
+                <span
+                  className="pointer-events-none absolute -right-[110px] -bottom-[110px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/40"
+                  aria-hidden="true"
+                />
+                <h3 className="relative text-lg font-bold text-[#603630] lg:text-xl">{PLAN.appTitle}</h3>
+                <ul className="relative mt-5 flex flex-1 flex-col gap-4">
+                  {appCards.map(({ card, group }, gi) => (
+                    <li
+                      key={card.no}
+                      className="flex flex-1 flex-col gap-3 rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:flex-row md:gap-6"
+                    >
+                      <span className="text-[72px] leading-none font-black text-[#D84439] md:w-28 md:shrink-0 lg:text-[80px]">
+                        {card.no}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold tracking-[0.08em] text-[#B8322A]">{group.group}</p>
+                        <h4 className="mt-1 text-2xl font-bold text-brand-navy lg:text-[28px]">{card.title}</h4>
+                        <p className="mt-3 leading-[1.8] text-ink">{card.text}</p>
+                        {"note" in group && (
+                          <p className="mt-3">
+                            <span className="inline-block rounded-full border border-dashed border-[#603630]/40 px-3 py-0.5 text-sm font-medium text-[#603630]">
+                              {group.note}
+                            </span>
+                          </p>
+                        )}
+                        <ul className="mt-4 flex flex-wrap gap-2">
+                          {group.items.map((it, ii) => (
+                            <li
+                              key={it}
+                              className="flex max-w-full items-center gap-2 rounded-2xl border border-brand-navy/15 bg-white px-4 py-2.5 text-sm font-medium text-ink lg:text-[15px]"
+                            >
+                              <SpecIcon kind={gi * 2 + ii} />
+                              <span>{it}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </li>
                   ))}
                 </ul>
