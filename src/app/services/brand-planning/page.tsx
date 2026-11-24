@@ -7,7 +7,7 @@ import Contact from "@/components/sections/Contact";
 import {
   BRAND_PLANNING,
   CASE,
-  DIRECTION_SLIDES,
+  DIRECTION,
   LOGO_IMAGES,
   MENU_DIGITAL,
   MENU_PAPER,
@@ -58,6 +58,19 @@ function Pill({ children }: { children: React.ReactNode }) {
     <span className="inline-block rounded-full bg-brand-sky/25 px-4 py-1 text-sm font-medium tracking-wider text-brand-navy">
       {children}
     </span>
+  );
+}
+
+// 品牌設計方向各段內文：每個字串一段，字串內的換行照原稿保留
+function DirText({ paragraphs, className = "" }: { paragraphs: readonly string[]; className?: string }) {
+  return (
+    <div className={`mt-5 space-y-4 leading-[1.9] md:text-lg ${className}`}>
+      {paragraphs.map((t) => (
+        <p key={t} className="whitespace-pre-line">
+          {t}
+        </p>
+      ))}
+    </div>
   );
 }
 
@@ -277,10 +290,98 @@ export default function BrandPlanningPage() {
               <StepHead no={dir.no} title={dir.title} />
               <p className="mt-4 text-center text-xl font-bold text-brand-orange-ink">{CASE.directionHead}</p>
               <p className="mt-1 text-center leading-relaxed text-ink">{CASE.directionText}</p>
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                {DIRECTION_SLIDES.map((s) => (
-                  <Pic key={s.src} img={{ ...s, w: 1600, h: 899 }} />
-                ))}
+
+              {/* 傳統台味 × 創新風味：兩圓交疊 */}
+              <div className="mt-10 flex items-center justify-center">
+                <div className="relative z-0 flex h-36 w-36 items-center justify-center rounded-full bg-white text-center shadow-[0_8px_24px_-12px_rgba(96,54,48,0.35)] ring-1 ring-[#603630]/10 sm:h-48 sm:w-48 md:h-56 md:w-56">
+                  <p className="pr-3 text-xl leading-snug font-black tracking-[0.18em] whitespace-pre-line text-[#D84439] sm:pr-5 sm:text-3xl md:text-4xl">
+                    {DIRECTION.circles[0]}
+                  </p>
+                </div>
+                <div className="relative z-10 -ml-8 flex h-36 w-36 items-center justify-center rounded-full bg-[#D84439] text-center shadow-[0_8px_24px_-12px_rgba(96,54,48,0.5)] ring-4 ring-slate-50 sm:-ml-12 sm:h-48 sm:w-48 md:-ml-14 md:h-56 md:w-56">
+                  <p className="pl-3 text-xl leading-snug font-black tracking-[0.18em] whitespace-pre-line text-white sm:pl-5 sm:text-3xl md:text-4xl">
+                    {DIRECTION.circles[1]}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-12 flex flex-col gap-6 md:gap-8">
+                {/* 從市場到餐桌：奶油底，照片左、字右 */}
+                <article className="relative grid items-center gap-2 overflow-hidden rounded-[2rem] bg-[#FFF3E3] p-4 md:p-6 lg:grid-cols-2 lg:gap-8">
+                  <span
+                    className="pointer-events-none absolute -right-[90px] -bottom-[90px] h-[200px] w-[200px] rounded-full border-2 border-[#FCA95E]/40"
+                    aria-hidden="true"
+                  />
+                  <Pic img={DIRECTION.story.photo} className="shadow-md" />
+                  <div className="relative px-2 py-4 md:px-4 lg:py-6 lg:pr-10">
+                    <h4 className="text-2xl leading-snug font-bold text-balance text-[#D84439] md:text-[28px] lg:text-[28px]">{DIRECTION.story.title}</h4>
+                    <span className="mt-4 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
+                    <DirText paragraphs={DIRECTION.story.paragraphs} className="text-[#603630]" />
+                  </div>
+                </article>
+
+                {/* 刈包：白底，字左、照片右 */}
+                <article className="relative grid items-center gap-2 overflow-hidden rounded-[2rem] bg-white p-4 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] ring-1 ring-black/5 md:p-6 lg:grid-cols-2 lg:gap-8">
+                  <span
+                    className="pointer-events-none absolute -top-[70px] -left-[70px] h-[140px] w-[140px] rounded-full bg-[#FFF3E3]"
+                    aria-hidden="true"
+                  />
+                  <div className="relative px-2 py-4 md:px-4 lg:order-1 lg:py-6 lg:pl-10">
+                    <h4 className="text-2xl leading-snug font-bold text-balance text-[#D84439] md:text-[28px] lg:text-[28px]">{DIRECTION.bao.title}</h4>
+                    <span className="mt-4 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
+                    <DirText paragraphs={DIRECTION.bao.paragraphs} className="text-ink" />
+                  </div>
+                  <Pic img={DIRECTION.bao.photo} className="relative shadow-md lg:order-2" />
+                </article>
+
+                {/* 粽子：咖啡深底，照片左、字右 */}
+                <article className="relative grid items-center gap-2 overflow-hidden rounded-[2rem] bg-[#603630] p-4 md:p-6 lg:grid-cols-2 lg:gap-8">
+                  <span
+                    className="pointer-events-none absolute -top-[90px] -right-[90px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/35"
+                    aria-hidden="true"
+                  />
+                  <Pic img={DIRECTION.zongzi.photo} className="shadow-lg" />
+                  <div className="relative px-2 py-4 md:px-4 lg:py-6 lg:pr-10">
+                    <h4 className="text-2xl leading-snug font-bold text-balance text-[#FCA95E] md:text-[28px] lg:text-[28px]">{DIRECTION.zongzi.title}</h4>
+                    <span className="mt-4 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
+                    <DirText paragraphs={DIRECTION.zongzi.paragraphs} className="text-[#FFF3E3]" />
+                  </div>
+                </article>
+
+                {/* 關鍵賣點：奶油底，四張白卡 */}
+                <article className="rounded-[2rem] bg-[#FFF3E3] p-5 md:p-8 lg:p-10">
+                  <h4 className="text-2xl font-bold text-[#D84439] md:text-[32px]">{DIRECTION.points.title}</h4>
+                  <span className="mt-3 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
+                  <ul className="mt-6 grid grid-cols-2 gap-3 md:gap-5 lg:grid-cols-4">
+                    {DIRECTION.points.items.map((p) => (
+                      <li
+                        key={p.src}
+                        className="flex flex-col rounded-3xl bg-white p-2 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:p-3"
+                      >
+                        <Pic img={{ src: p.src, w: 1200, h: 900, alt: p.alt }} sizes="(min-width: 1024px) 25vw, 50vw" className="rounded-2xl shadow-none ring-0" />
+                        <p className="flex flex-1 items-center justify-center px-1 py-3 text-center text-sm leading-snug font-bold text-[#603630] md:text-base">
+                          {p.text}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+
+                {/* 菜單規劃：深藍底，用我們自己設計的菜單 */}
+                <article className="relative overflow-hidden rounded-[2rem] bg-brand-navy p-5 md:p-8 lg:p-10">
+                  <span
+                    className="pointer-events-none absolute -top-[80px] -right-[80px] h-[200px] w-[200px] rounded-full border-2 border-[#FCA95E]/35"
+                    aria-hidden="true"
+                  />
+                  <h4 className="text-2xl font-bold text-white md:text-[32px]">{DIRECTION.menu.title}</h4>
+                  <span className="mt-3 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
+                  <p className="mt-5 max-w-3xl leading-[1.9] text-white/90 md:text-lg">{DIRECTION.menu.text}</p>
+                  <div className="mt-8 grid items-center gap-4 md:grid-cols-[1fr_1.2fr] md:gap-6">
+                    {DIRECTION.menu.images.map((m) => (
+                      <Pic key={m.src} img={m} sizes="(min-width: 768px) 50vw, 100vw" className="shadow-lg" />
+                    ))}
+                  </div>
+                </article>
               </div>
             </div>
 
