@@ -73,8 +73,6 @@ function StepHead({ no, title, lead }: { no: string; title: string; lead?: strin
   );
 }
 
-// 品牌形象方案區塊：標準色票圓點（食包食粽色票），純裝飾
-const SWATCHES = ["#D84439", "#FFF3E3", "#603630", "#FCA95E"];
 
 // 四個規格膠囊前面的線稿圖示（純裝飾）：A4 紙本、電子菜單、店面吧檯、電子看板
 function SpecIcon({ kind }: { kind: number }) {
@@ -188,56 +186,49 @@ export default function BrandPlanningPage() {
             <h2 className="mt-2 text-3xl font-bold tracking-wide text-brand-navy md:text-[40px] md:leading-tight">{PLAN.title}</h2>
             <span className="mt-4 block h-1 w-12 rounded-full bg-[#D84439]" aria-hidden="true" />
 
-            <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[5fr_7fr]">
-              {/* 左：01 基本設計系統開發＋基本系統開發（時間軸） */}
-              <div className="relative overflow-hidden rounded-3xl bg-brand-navy p-6 md:p-8 lg:rounded-[2rem] lg:p-10">
-                <div className="flex items-start justify-between gap-4">
-                  <span className="text-[72px] leading-none font-black text-[#FCA95E] lg:text-[128px]">{planBase.no}</span>
-                  <span className="mt-1 flex shrink-0 pl-4" aria-hidden="true">
-                    {SWATCHES.map((c) => (
-                      <span
-                        key={c}
-                        className="-ml-4 h-9 w-9 rounded-full ring-2 ring-brand-navy lg:h-14 lg:w-14"
-                        style={{ backgroundColor: c }}
-                      />
-                    ))}
-                  </span>
-                </div>
-                <h3 className="mt-6 text-2xl font-bold text-white lg:text-[28px]">{planBase.title}</h3>
-                <p className="mt-3 leading-[1.8] text-[#FFF3E3]">{planBase.text}</p>
+            {/* 01、02、03 由上而下一整排，寬度相等，配色統一用奶油底＋白卡＋紅數字 */}
+            <div className="relative mt-10 overflow-hidden rounded-3xl bg-[#FFF3E3] p-5 md:p-8 lg:rounded-[2rem] lg:p-10">
+              <span
+                className="pointer-events-none absolute -right-[110px] -bottom-[110px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/40"
+                aria-hidden="true"
+              />
+              {/* 01 基本設計系統開發＋基本系統開發（時間軸） */}
+              <div className="relative flex flex-col gap-3 rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:flex-row md:gap-6">
+                <span className="text-[72px] leading-none font-black text-[#D84439] md:w-28 md:shrink-0 lg:text-[80px]">
+                  {planBase.no}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="mt-1 text-2xl font-bold text-brand-navy lg:text-[28px]">{planBase.title}</h3>
+                  <p className="mt-3 leading-[1.8] text-ink">{planBase.text}</p>
 
-                <div className="mt-8 border-t border-white/20 pt-6">
-                  <h4 className="text-sm font-bold tracking-[0.08em] text-[#FCA95E]">{PLAN.systemTitle}</h4>
-                  <ol className="relative mt-5">
-                    <span className="absolute top-2 bottom-2 left-[6px] w-px bg-white/20" aria-hidden="true" />
-                    {PLAN.system.map((s, i) => (
-                      <li key={s.item} className="relative pb-6 pl-9 last:pb-0">
-                        <span
-                          className={`absolute top-[7px] left-0 h-[14px] w-[14px] rounded-full ${
-                            i === 0 ? "bg-[#FCA95E]" : "border-2 border-[#FCA95E] bg-brand-navy"
-                          }`}
-                          aria-hidden="true"
-                        />
-                        <p className={`font-bold text-white ${i === 0 ? "text-xl" : "text-base lg:text-[17px]"}`}>{s.item}</p>
-                        {s.text && <p className="mt-1 text-[15px] leading-relaxed text-[#FFF3E3]/85">{s.text}</p>}
-                      </li>
-                    ))}
-                  </ol>
+                  <div className="mt-6 border-t border-brand-navy/10 pt-6">
+                    <h4 className="text-sm font-bold tracking-[0.08em] text-[#B8322A]">{PLAN.systemTitle}</h4>
+                    <ol className="relative mt-5">
+                      <span className="absolute top-2 bottom-2 left-[6px] w-px bg-[#D84439]/25" aria-hidden="true" />
+                      {PLAN.system.map((s, i) => (
+                        <li key={s.item} className="relative pb-6 pl-9 last:pb-0">
+                          <span
+                            className={`absolute top-[7px] left-0 h-[14px] w-[14px] rounded-full ${
+                              i === 0 ? "bg-[#D84439]" : "border-2 border-[#D84439] bg-white"
+                            }`}
+                            aria-hidden="true"
+                          />
+                          <p className={`font-bold text-brand-navy ${i === 0 ? "text-xl" : "text-base lg:text-[17px]"}`}>{s.item}</p>
+                          {s.text && <p className="mt-1 text-[15px] leading-relaxed text-ink">{s.text}</p>}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
                 </div>
               </div>
 
-              {/* 右：品牌應用系統設計項目＝02 菜單設計（一）、03 店面形象視覺規劃（二） */}
-              <div className="relative flex flex-col overflow-hidden rounded-3xl bg-[#FFF3E3] p-5 md:p-8 lg:rounded-[2rem] lg:p-10">
-                <span
-                  className="pointer-events-none absolute -right-[110px] -bottom-[110px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/40"
-                  aria-hidden="true"
-                />
-                <h3 className="relative text-lg font-bold text-[#603630] lg:text-xl">{PLAN.appTitle}</h3>
-                <ul className="relative mt-5 flex flex-1 flex-col gap-4">
+              {/* 品牌應用系統設計項目＝02 菜單設計（一）、03 店面形象視覺規劃（二） */}
+              <h3 className="relative mt-8 text-lg font-bold text-[#603630] lg:text-xl">{PLAN.appTitle}</h3>
+              <ul className="relative mt-5 flex flex-col gap-4">
                   {appCards.map(({ card, group }, gi) => (
                     <li
                       key={card.no}
-                      className="flex flex-1 flex-col gap-3 rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:flex-row md:gap-6"
+                      className="flex flex-col gap-3 rounded-3xl bg-white p-6 shadow-[0_8px_24px_-12px_rgba(96,54,48,0.25)] md:flex-row md:gap-6"
                     >
                       <span className="text-[72px] leading-none font-black text-[#D84439] md:w-28 md:shrink-0 lg:text-[80px]">
                         {card.no}
@@ -267,8 +258,7 @@ export default function BrandPlanningPage() {
                       </div>
                     </li>
                   ))}
-                </ul>
-              </div>
+              </ul>
             </div>
           </div>
         </section>
