@@ -53,6 +53,18 @@ function Pic({ img, className = "", sizes = "(min-width: 1024px) 50vw, 100vw" }:
   );
 }
 
+// AI 生成的情境照：右下角標「AI 示意圖」（Rice 2026-11-25）
+function AiPic({ img, className = "", picClassName = "" }: { img: Img; className?: string; picClassName?: string }) {
+  return (
+    <div className={`relative ${className}`}>
+      <Pic img={img} className={picClassName} />
+      <span className="absolute right-3 bottom-3 rounded-full bg-black/55 px-3 py-1 text-xs font-medium tracking-wider text-white backdrop-blur-sm">
+        AI 示意圖
+      </span>
+    </div>
+  );
+}
+
 function Pill({ children }: { children: React.ReactNode }) {
   return (
     <span className="inline-block rounded-full bg-brand-sky/25 px-4 py-1 text-sm font-medium tracking-wider text-brand-navy">
@@ -312,7 +324,7 @@ export default function BrandPlanningPage() {
                     className="pointer-events-none absolute -right-[90px] -bottom-[90px] h-[200px] w-[200px] rounded-full border-2 border-[#FCA95E]/40"
                     aria-hidden="true"
                   />
-                  <Pic img={DIRECTION.story.photo} className="shadow-md" />
+                  <AiPic img={DIRECTION.story.photo} picClassName="shadow-md" />
                   <div className="relative px-2 py-4 md:px-4 lg:py-6 lg:pr-10">
                     <h4 className="text-2xl leading-snug font-bold text-balance text-[#D84439] md:text-[28px] lg:text-[28px]">{DIRECTION.story.title}</h4>
                     <span className="mt-4 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
@@ -331,20 +343,20 @@ export default function BrandPlanningPage() {
                     <span className="mt-4 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
                     <DirText paragraphs={DIRECTION.bao.paragraphs} className="text-ink" />
                   </div>
-                  <Pic img={DIRECTION.bao.photo} className="relative shadow-md lg:order-2" />
+                  <AiPic img={DIRECTION.bao.photo} className="lg:order-2" picClassName="shadow-md" />
                 </article>
 
-                {/* 粽子：咖啡深底，照片左、字右 */}
-                <article className="relative grid items-center gap-2 overflow-hidden rounded-[2rem] bg-[#603630] p-4 md:p-6 lg:grid-cols-2 lg:gap-8">
+                {/* 粽子：淺蜜桃底（Rice 2026-11-25 從咖啡深底改淺色），照片左、字右 */}
+                <article className="relative grid items-center gap-2 overflow-hidden rounded-[2rem] bg-[#FDE8D4] p-4 md:p-6 lg:grid-cols-2 lg:gap-8">
                   <span
-                    className="pointer-events-none absolute -top-[90px] -right-[90px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/35"
+                    className="pointer-events-none absolute -top-[90px] -right-[90px] h-[220px] w-[220px] rounded-full border-2 border-[#FCA95E]/50"
                     aria-hidden="true"
                   />
-                  <Pic img={DIRECTION.zongzi.photo} className="shadow-lg" />
+                  <AiPic img={DIRECTION.zongzi.photo} picClassName="shadow-md" />
                   <div className="relative px-2 py-4 md:px-4 lg:py-6 lg:pr-10">
-                    <h4 className="text-2xl leading-snug font-bold text-balance text-[#FCA95E] md:text-[28px] lg:text-[28px]">{DIRECTION.zongzi.title}</h4>
+                    <h4 className="text-2xl leading-snug font-bold text-balance text-[#D84439] md:text-[28px] lg:text-[28px]">{DIRECTION.zongzi.title}</h4>
                     <span className="mt-4 block h-1 w-12 rounded-full bg-[#FCA95E]" aria-hidden="true" />
-                    <DirText paragraphs={DIRECTION.zongzi.paragraphs} className="text-[#FFF3E3]" />
+                    <DirText paragraphs={DIRECTION.zongzi.paragraphs} className="text-[#603630]" />
                   </div>
                 </article>
 
